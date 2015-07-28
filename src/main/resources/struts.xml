@@ -84,7 +84,7 @@
 		
 		<!-- 站点设置 -->
 		<action name="config_*" class="configAction" method="{1}">
-			<result>/admin/config.jsp</result>
+			<result>/admin/cn.gov.config.jsp</result>
 		</action>
 		
 		<!-- 用户管理 -->
