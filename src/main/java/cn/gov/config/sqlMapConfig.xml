@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<mappers>
+		<mapper resource="cn/gov/sqlmap/BasicMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/UserMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/ConfigMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/OrganizationMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/CategoryMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/ArticleMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/LinksMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/LogMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/MessageMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/ExtraMapper.xml" />
+	</mappers>
+    
+</configuration>

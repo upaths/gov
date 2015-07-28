@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="gov" extends="struts-default">
+		<!-- Random验证码 -->
+		<action name="rand" class="randomAction">
+			<result type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- 页面头部 -->
+		<action name="top" class="topAction">
+			<result>top.jsp</result>
+		</action>
+		<!-- 页面尾部 -->
+		<action name="bottom" class="bottomAction">
+			<result>bottom.jsp</result>
+		</action>
+		<!-- 首页 -->
+		<action name="index" class="indexAction">
+			<result>index.jsp</result>
+		</action>
+		<!-- 投诉建议 -->
+		<action name="msg_insert" class="messageAction" method="insert">
+		</action>
+		<!-- 机构设置查询 -->
+		<action name="org" class="organizationAction" method="showOrg">
+			<result>org.jsp</result>
+		</action>
+		<!-- 一级分类展示 -->
+		<action name="cat1" class="articleAction" method="showCat1">
+			<result>cat1.jsp</result>
+		</action>
+		<!-- 二级分类展示 -->
+		<action name="cat2" class="articleAction" method="showCat2">
+			<result>cat2.jsp</result>
+		</action>
+		<!-- 信息检索 -->
+		<action name="search" class="articleAction" method="search">
+			<result>search.jsp</result>
+		</action>
+		<!-- 文章展示 -->
+		<action name="showNews" class="articleAction" method="showNews">
+			<result>show_news.jsp</result>
+		</action>
+		<!-- 图片新闻 -->
+		<action name="picNews" class="articleAction" method="picNews">
+			<result>pic_news.jsp</result>
+		</action>
+		<!-- 图片新闻幻灯片 -->
+		<action name="slide" class="articleAction" method="slide">
+			<result>slide.jsp</result>
+		</action>
+		<!-- 热点新闻 -->
+		<action name="hot" class="articleAction" method="hot">
+			<result>hot.jsp</result>
+		</action>
+	</package>
+	
+	<package name="gov_admin" extends="struts-default"
+		namespace="/admin">
+		<!-- admin命名空间默认拦截器 -->
+		<interceptors>
+			<interceptor name="checkLogin" class="cn.gov.interceptor.CheckLoginInterceptor" />
+			<interceptor-stack name="adminStack">
+				<interceptor-ref name="checkLogin" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="adminStack" />
+		<global-results>
+			<result name="login" type="redirect">/admin/to_login.jsp</result>
+		</global-results>
+		
+		<!-- 登录验证 -->
+		<action name="login" class="loginAction">
+			<result name="success" type="redirect">/admin/manage.jsp</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+		
+		<!-- 站点设置 -->
+		<action name="config_*" class="configAction" method="{1}">
+			<result>/admin/config.jsp</result>
+		</action>
+		
+		<!-- 用户管理 -->
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="query">/admin/user.jsp</result>
+			<result name="toAdd">/admin/user_add.jsp</result>
+		</action>
+		
+		<!-- 机构设置 -->
+		<action name="organization_*" class="organizationAction" method="{1}">
+			<result name="toAdd">/admin/organization_add.jsp</result>
+			<result name="toUpdate">/admin/organization_update.jsp</result>
+			<result name="query">/admin/organization.jsp</result>
+		</action>
+		
+		<!-- 信息类别管理 -->
+		<action name="category_*" class="categoryAction" method="{1}">
+			<result name="query">/admin/category.jsp</result>
+		</action>
+		
+		<!-- 信息管理 -->
+		<action name="article_*" class="articleAction" method="{1}">
+			<result name="toAdd">/admin/article_add.jsp</result>
+			<result name="toUpdate">/admin/article_update.jsp</result>
+			<result name="query">/admin/article.jsp</result>
+		</action>
+		
+		<!-- 文字链接管理 -->
+		<action name="links_*" class="linksAction" method="{1}">
+			<result name="query">/admin/word_links.jsp</result>
+		</action>
+		
+		<!-- 登录日志管理 -->
+		<action name="log_*" class="logAction" method="{1}">
+			<result name="query">/admin/log.jsp</result>
+		</action>
+		
+		<!-- 投诉建议 -->
+		<action name="msg_*" class="messageAction" method="{1}">
+			<result name="query">/admin/msg.jsp</result>
+		</action>
+	</package>
+</struts>

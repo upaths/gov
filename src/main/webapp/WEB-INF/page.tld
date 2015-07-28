@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE taglib
+        PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name>tree</short-name>
+    <!--initTreeTag-->
+    <tag>
+        <name>pagination</name>
+        <tag-class>cn.gov.util.PaginationTag</tag-class>
+        <attribute>
+            <name>pageBean</name>
+            <required>true</required>
+            <rtexprvalue>yes</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>url</name>
+            <required>true</required>
+            <rtexprvalue>yes</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>cssClass</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description><![CDATA[The css class to use for element]]></description>
+        </attribute>
+        <attribute>
+            <name>cssStyle</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <description><![CDATA[The css style definitions for element to use]]></description>
+        </attribute>
+    </tag>
+</taglib>

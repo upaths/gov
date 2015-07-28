@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+			
+	<bean id="userAction" class="cn.gov.action.UserAction"
+		scope="prototype" autowire="byName" />
+		
+	<bean id="loginAction" class="cn.gov.action.LoginAction"
+		scope="prototype" autowire="byName" />
+		
+	<bean id="randomAction" class="cn.gov.action.RandomAction"
+		scope="prototype" autowire="no" />
+		
+	<bean id="configAction" class="cn.gov.action.ConfigAction"
+		scope="prototype" autowire="byName" />
+		
+	<bean id="organizationAction" class="cn.gov.action.OrganizationAction"
+		scope="prototype" autowire="byName" />
+		
+	<bean id="categoryAction" class="cn.gov.action.CategoryAction"
+		scope="prototype" autowire="byName" />
+		
+	<bean id="articleAction" class="cn.gov.action.ArticleAction"
+		scope="prototype" autowire="byName" />
+	
+	<bean id="linksAction" class="cn.gov.action.LinksAction"
+		scope="prototype" autowire="byName" />
+		
+	<bean id="logAction" class="cn.gov.action.LogAction"
+		scope="prototype" autowire="byName" />
+		
+	<bean id="topAction" class="cn.gov.action.TopAction"
+		scope="prototype" autowire="byName" />
+		
+	<bean id="bottomAction" class="cn.gov.action.BottomAction"
+		scope="prototype" autowire="byName" />
+		
+	<bean id="indexAction" class="cn.gov.action.IndexAction"
+		scope="prototype" autowire="byName" />
+		
+	<bean id="messageAction" class="cn.gov.action.MessageAction"
+		scope="prototype" autowire="byName" />
+</beans>

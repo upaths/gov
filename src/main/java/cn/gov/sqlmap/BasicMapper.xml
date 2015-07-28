@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="basic">
+    <sql id="pageStart">SELECT * FROM (SELECT A.*, rownum r FROM (</sql>
+    <sql id="pageEnd">) A WHERE rownum <![CDATA[ <= ]]> ${currentPage} * ${pageSize} ) B WHERE r > (${currentPage} - 1) *
+        #pageSize#
+    </sql>
+    <sql id="mysql_page"> limit ${currentIndex}, ${pageSize}</sql>
+</mapper>

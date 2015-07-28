@@ -1,0 +1,215 @@
+td {
+	font-family: Arial, Helvetica, sans-serif;
+	line-height: 18px;
+	color: #444444;
+	font-size: 12px;
+	letter-spacing: 1px;
+
+
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color:#7BB6E7;
+			scrollbar-face-color: #C1D8F6;
+	scrollbar-highlight-color: #EEF5FD;
+	scrollbar-shadow-color: #FFFFFF;
+	scrollbar-3dlight-color: #EDF1F6;
+	scrollbar-arrow-color:  #EEF5FD;
+	scrollbar-track-color: #EDF1F6;
+	scrollbar-darkshadow-color: #D0DDE6;
+}
+
+a:link {
+	text-decoration: none;
+	color: #000000;
+}
+a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+	color: red;
+}
+
+.time {
+	font-family: "Arial";
+	font-size: 10px;
+	color: #AAAAAA;
+}
+
+.white {
+	color: #FFFFFF;
+}
+
+.title {
+	font-family: "宋体";
+	font-size: 14px;
+}
+.gray {
+	color: #999999;
+}
+.red {
+	color: red;
+}
+.left_top {
+	font-size: 14px;
+	color: #000000;
+	font-weight: bold;
+}
+.red24 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 24px;
+	font-weight: bold;
+	color: #FF0000;
+}
+.hand {
+	CURSOR:hand
+}
+li {
+	line-height: 25px;
+}
+
+.kk {
+	border: 1px solid #CCCCCC;
+
+}
+hr {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;
+	height: 1px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.kk_white {
+	border: 1px solid #FFFFFF;
+}
+
+
+.bg_q {
+	border: 1px solid #9FCDEC;
+}
+
+.xux {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #E4EDF9;
+}
+.book_kk {
+	color: #FFFFFF;
+	background-color: #FF3300;
+	height: 18px;
+	padding-right: 3px;
+	padding-left: 3px;
+		CURSOR:hand;
+}
+.book_hf {
+	color: #FFFFFF;
+	background-color: #009900;
+	height: 18px;
+	padding-right: 3px;
+	padding-left: 3px;
+		CURSOR:hand;
+}
+
+
+.z {
+	padding: 6px;
+	line-height: 23px;
+}
+.zfb {
+	background-color: #FFFFCC;
+	padding: 5px;
+	border: 1px solid #FFCC33;
+}
+
+.nzcms_table_top {
+	font-family: "宋体";
+	font-size: 14px;
+	font-weight: bold;
+	background-image: url(../admin/images/nzcms_top01.gif);
+	height: 40px;
+	padding-top: 5px;
+	color: #000000;
+}
+.nzcms_table_top2 {
+	background-image: url(../admin/images/sort_bg.gif);
+	background-color: #C9DEFA;
+	background-repeat: repeat;
+}
+.nzcms_end {
+	background-repeat: repeat;
+	background-color: #D1E2F9;
+}
+
+
+
+
+input {
+	height: 23px;}
+	/*	这里是LEFT链接 */
+
+.top_link {
+	background-image: url(../admin/images/menu01.gif);
+	height: 25px;
+	width: 70px;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	padding-top: 5px;
+	cursor: pointer;
+}
+.top_hover {
+	background-image: url(../admin/images/menu02.gif);
+	height: 25px;
+	width: 70px;
+	color: #FFFF00;
+	font-size: 12px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	padding-top: 5px;
+	cursor: pointer;
+ }
+	/*	这里是LEFT链接 */
+
+a.left3:link {
+	text-decoration: none;
+	font-size: 12px;
+	height: 20px;
+	width: 140px;
+	padding-top: 12px;
+	padding-right: 0px;
+	padding-bottom: 8px;
+	padding-left: 40px;
+	background-image: url(../admin/images/left1.gif);
+	display: inline-block;
+}
+a.left3:visited {
+	text-decoration: none;
+	font-size: 12px;
+	height: 20px;
+	width: 140px;
+	padding-top: 12px;
+	padding-right: 0px;
+	padding-bottom: 8px;
+	padding-left: 40px;
+	background-image: url(../admin/images/left1.gif);
+	display: inline-block;
+}
+a.left3:hover {
+	text-decoration: none;
+	font-size: 12px;
+	height: 20px;
+	width: 140px;
+	padding-top: 12px;
+	padding-right: 0px;
+	padding-bottom: 8px;
+	padding-left: 40px;
+	background-image: url(../admin/images/left2.gif);
+	display: inline-block;
+}
+

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gov.dao.ExtraMapper" >
+	<select id="queryArticle" parameterType="map" resultType="java.util.HashMap">
+		<![CDATA[select * from 
+		(select a.*, b.id yjid, b.mc yjmc, instr(nr, '<img') sfyt from 
+			(select a.*, b.id ejid, b.mc ejmc, b.parent_id from article a, category b where a.lb = b.id) a, category b
+			where a.parent_id = b.id
+		) a]]>
+		<where>
+			<if test="yjid != null">
+				yjid = #{yjid}
+			</if>
+			<if test="ejid != null">
+				and ejid = #{ejid}
+			</if>
+			<if test="bt != null">
+				and bt like '%$bt$%'
+			</if>
+			<if test="sfyt != null">
+				and sfyt > 0
+			</if>
+		</where>
+		order by id desc
+		<include refid="basic.mysql_page"/>
+	</select>
+	
+	<select id="countArticle" parameterType="map" resultType="int">
+		<![CDATA[select count(*) from 
+		(select a.*, b.id yjid, b.mc yjmc, instr(nr, '<img') sfyt from 
+			(select a.*, b.id ejid, b.mc ejmc, b.parent_id from article a, category b where a.lb = b.id) a, category b
+			where a.parent_id = b.id
+		) a]]>
+		<where>
+			<if test="yjid != null">
+				yjid = #{yjid}
+			</if>
+			<if test="ejid != null">
+				and ejid = #{ejid}
+			</if>
+			<if test="bt != null">
+				and bt like '%$bt$%'
+			</if>
+			<if test="sfyt != null">
+				and sfyt > 0
+			</if>
+		</where>
+	</select>
+	
+	<select id="queryLog" parameterType="map" resultType="cn.gov.model.Log">
+		select * from log order by drsj desc
+		<include refid="basic.mysql_page"/>
+	</select>
+	
+	<select id="queryTopArticle" parameterType="map" resultType="java.util.HashMap">
+		<![CDATA[select * from 
+		(select a.*, b.id yjid, b.mc yjmc, instr(nr, '<img') sfyt from 
+			(select a.*, b.id ejid, b.mc ejmc, b.parent_id from article a, category b 
+			where a.lb = b.id and a.sfxs = true
+			) a, category b
+			where a.parent_id = b.id
+		) a]]>
+		<where>
+			<if test="yjid != null">
+				yjid = #{yjid}
+			</if>
+			<if test="ejid != null">
+				and ejid = #{ejid}
+			</if>
+			<if test="bt != null">
+				and bt like '%$bt$%'
+			</if>
+			<if test="sfyt != null">
+				and sfyt > 0
+			</if>
+		</where>
+		order by sftj desc, id desc
+		limit #num#
+	</select>
+	
+	<select id="queryMessage" parameterType="map" resultType="cn.gov.model.Message">
+		select * from message order by rq desc
+		<include refid="basic.mysql_page"/>
+	</select>
+	
+	<select id="queryHotArticle" parameterType="map" resultType="java.util.HashMap">
+		<![CDATA[select * from 
+		(select a.*, b.id yjid, b.mc yjmc, instr(nr, '<img') sfyt from 
+			(select a.*, b.id ejid, b.mc ejmc, b.parent_id from article a, category b 
+			where a.lb = b.id and a.sfxs = true
+			) a, category b
+			where a.parent_id = b.id
+		) a]]>
+		<where>
+			<if test="yjid != null">
+				yjid = #{yjid}
+			</if>
+			<if test="ejid != null">
+				and ejid = #{ejid}
+			</if>
+		</where>
+		order by sftj desc, ydcs desc, id desc
+		limit #num#
+	</select>
+</mapper>
