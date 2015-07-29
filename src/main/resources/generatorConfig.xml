@@ -7,7 +7,7 @@
     <properties resource="generator.properties"></properties>
 
     <!--指定特定数据库的jdbc驱动jar包的位置 -->
-    <classPathEntry location="${jdbc.driverLocation}"/>
+    <!-- <classPathEntry location="${jdbc.driverLocation}"/> -->
 
     <context id="default" targetRuntime="MyBatis3">
 
@@ -120,7 +120,7 @@
                      replaceString 则是要换成的字符串，默认情况下为空字符串，可选
 
             <columnRenamingRule searchString="" replaceString=""/>
--->
+            -->
 
 
             <!-- optional.告诉 MBG 忽略某一列
@@ -129,7 +129,7 @@
                     是否限定表的列名，即固定表列在Model中的名称
 
             <ignoreColumn column="PLAN_ID"  delimitedColumnName="true" />
--->
+            -->
 
             <!--optional.覆盖MBG对Model 的生成规则
                  column: 数据库的列名
