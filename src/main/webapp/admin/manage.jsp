@@ -8,10 +8,10 @@
 管理员 ，您好！欢迎您登录后台管理</title>
 </head>
 <frameset rows="78,*,30" frameborder="no" border="0">
-	<frame name="top_frame" src="top.jsp" scrolling="no" />
+	<frame name="top_frame" src="resource_top.action" scrolling="no" />
 	<frameset cols="210,*" frameborder="no" border="0">
-		<frame name="left_frame" src="left.jsp" scrolling="no" />
-		<frame name="right_frame" src="right.jsp" scrolling="yes" />
+		<frame name="left_frame" src="left_home.jsp" scrolling="no" />
+		<frame name="right_frame" src="resource_right.action" scrolling="yes" />
 	</frameset>
 	<frame src="bottom.jsp" scrolling="no" />
 </frameset>

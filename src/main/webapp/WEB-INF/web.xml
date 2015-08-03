@@ -31,6 +31,30 @@
 		</listener-class>
 	</listener>
 
+	<!-- 定义Spring配置文件位置 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:cn/gov/config/applicationContext.xml</param-value>
+	</context-param>
+	<!-- 定义log4j -->
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>gov.root</param-value>
+	</context-param>
+		<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:cn/gov/config/log4j.properties</param-value>
+	</context-param>
+	<context-param>
+		<param-name>log4jRefreshInterval</param-name>
+		<param-value>3000</param-value>
+	</context-param>
+	<listener>
+		<listener-class>
+			org.springframework.web.util.Log4jConfigListener
+		</listener-class>
+	</listener>
+
 	<welcome-file-list>
 		<welcome-file>default.jsp</welcome-file>
 		<welcome-file>index.jsp</welcome-file>

@@ -31,4 +31,6 @@
 		
 	<bean id="messageService" class="cn.gov.service.impl.MessageServiceImpl"
 		autowire="byName" />
+
+	<bean id="resourceService" class="cn.gov.service.impl.ResourceServiceImpl" autowire="byName" />
 </beans>

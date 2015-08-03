@@ -14,6 +14,10 @@
 		<mapper resource="cn/gov/sqlmap/LogMapper.xml" />
 		<mapper resource="cn/gov/sqlmap/MessageMapper.xml" />
 		<mapper resource="cn/gov/sqlmap/ExtraMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/ResourceMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/RoleMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/RoleResourceMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/UserRoleMapper.xml" />
 	</mappers>
     
 </configuration>

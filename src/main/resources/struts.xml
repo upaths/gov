@@ -81,6 +81,13 @@
 			<result name="success" type="redirect">/admin/manage.jsp</result>
 			<interceptor-ref name="defaultStack" />
 		</action>
+
+		<!-- 后台框架top -->
+		<action name="resource_*" class="resourceAction" method="{1}">
+			<result name="top">/admin/top.jsp</result>
+			<result name="left">/admin/left.jsp</result>
+			<result name="right">/admin/right.jsp</result>
+		</action>
 		
 		<!-- 站点设置 -->
 		<action name="config_*" class="configAction" method="{1}">

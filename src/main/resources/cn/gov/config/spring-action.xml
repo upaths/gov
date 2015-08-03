@@ -46,4 +46,7 @@
 		
 	<bean id="messageAction" class="cn.gov.action.MessageAction"
 		scope="prototype" autowire="byName" />
+
+	<bean id="resourceAction" class="cn.gov.action.ResourceAction"
+		  scope="prototype" autowire="byName" />
 </beans>
