@@ -10,7 +10,6 @@ import cn.gov.util.MD5Util;
 
 public class UserServiceImpl implements UserService {
 	private UserMapper userMapper;
-	private UserExample userExample;
 
 	public void insert(User user) {
 		user.setPassword(MD5Util.md5(user.getPassword()));
@@ -18,8 +17,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public List query() {
-		userExample.clear();
-		return userMapper.selectByExample(userExample);
+		return userMapper.selectByExample(null);
 	}
 
 	public int delete(String username) {
@@ -49,14 +47,6 @@ public class UserServiceImpl implements UserService {
 
 	public void setUserMapper(UserMapper userMapper) {
 		this.userMapper = userMapper;
-	}
-
-	public UserExample getUserExample() {
-		return userExample;
-	}
-
-	public void setUserExample(UserExample userExample) {
-		this.userExample = userExample;
 	}
 
 }

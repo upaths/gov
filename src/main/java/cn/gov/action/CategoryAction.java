@@ -3,26 +3,18 @@ package cn.gov.action;
 import java.util.List;
 
 import cn.gov.model.Category;
+import cn.gov.model.CategoryTree;
 import cn.gov.service.CategoryService;
 import cn.gov.util.AlertUtil;
 
 public class CategoryAction extends BasicAction {
 	private Category category;
-	private List list;
+	private List<Category> list;
 	private CategoryService categoryService;
 	
 	@SuppressWarnings("unchecked")
 	public String query() {
-		list = categoryService.queryFirstLevel();
-		for (int i = 0; i < list.size();) {
-			Category c = (Category)list.get(i);
-			List tmp = categoryService.queryChilds(c.getId());
-			if (tmp != null && tmp.size() > 0) {
-				list.addAll(i + 1, tmp);
-				i += tmp.size();
-			}
-			i++;
-		}
+		list = categoryService.queryCategoryList();
 		return "query";
 	}
 
@@ -51,10 +43,10 @@ public class CategoryAction extends BasicAction {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	public List getList() {
+	public List<Category> getList() {
 		return list;
 	}
-	public void setList(List list) {
+	public void setList(List<Category> list) {
 		this.list = list;
 	}
 	public CategoryService getCategoryService() {

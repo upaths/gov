@@ -10,7 +10,6 @@ import cn.gov.model.LogExample;
 import cn.gov.service.LogService;
 
 public class LogServiceImpl implements LogService {
-	private LogExample logExample;
 	private LogMapper logMapper;
 	private ExtraMapper extraMapper;
 	public void insert(Log log) {
@@ -26,16 +25,7 @@ public class LogServiceImpl implements LogService {
 	}
 
 	public int queryCount() {
-		logExample.clear();
-		return logMapper.countByExample(logExample);
-	}
-
-	public LogExample getLogExample() {
-		return logExample;
-	}
-
-	public void setLogExample(LogExample logExample) {
-		this.logExample = logExample;
+		return logMapper.countByExample(null);
 	}
 
 	public LogMapper getLogMapper() {

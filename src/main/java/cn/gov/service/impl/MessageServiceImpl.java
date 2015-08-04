@@ -10,7 +10,6 @@ import cn.gov.model.MessageExample;
 import cn.gov.service.MessageService;
 
 public class MessageServiceImpl implements MessageService {
-	private MessageExample messageExample;
 	private MessageMapper messageMapper;
 	private ExtraMapper extraMapper;
 	public void insert(Message message) {
@@ -26,16 +25,7 @@ public class MessageServiceImpl implements MessageService {
 	}
 
 	public int queryMessageCount() {
-		messageExample.clear();
-		return messageMapper.countByExample(messageExample);
-	}
-
-	public MessageExample getMessageExample() {
-		return messageExample;
-	}
-
-	public void setMessageExample(MessageExample messageExample) {
-		this.messageExample = messageExample;
+		return messageMapper.countByExample(null);
 	}
 
 	public MessageMapper getMessageMapper() {

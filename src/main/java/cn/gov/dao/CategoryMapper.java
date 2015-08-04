@@ -47,9 +47,11 @@ public interface CategoryMapper {
      */
     @Insert({
         "insert into category (id, mc, ",
-        "parent_id, px)",
+        "parent_id, px, category_type, ",
+        "display)",
         "values (#{id,jdbcType=INTEGER}, #{mc,jdbcType=VARCHAR}, ",
-        "#{parentId,jdbcType=INTEGER}, #{px,jdbcType=TINYINT})"
+        "#{parentId,jdbcType=INTEGER}, #{px,jdbcType=INTEGER}, #{categoryType,jdbcType=VARCHAR}, ",
+        "#{display,jdbcType=BIT})"
     })
     int insert(Category record);
 
@@ -77,7 +79,7 @@ public interface CategoryMapper {
      */
     @Select({
         "select",
-        "id, mc, parent_id, px",
+        "id, mc, parent_id, px, category_type, display",
         "from category",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -118,7 +120,9 @@ public interface CategoryMapper {
         "update category",
         "set mc = #{mc,jdbcType=VARCHAR},",
           "parent_id = #{parentId,jdbcType=INTEGER},",
-          "px = #{px,jdbcType=TINYINT}",
+          "px = #{px,jdbcType=INTEGER},",
+          "category_type = #{categoryType,jdbcType=VARCHAR},",
+          "display = #{display,jdbcType=BIT}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Category record);

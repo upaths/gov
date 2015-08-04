@@ -8,7 +8,6 @@ import cn.gov.model.LinksExample;
 import cn.gov.service.LinksService;
 
 public class LinksServiceImpl implements LinksService {
-	private LinksExample linksExample;
 	private LinksMapper linksMapper;
 	public void insert(Links links) {
 		linksMapper.insert(links);
@@ -23,22 +22,13 @@ public class LinksServiceImpl implements LinksService {
 	}
 
 	public List query() {
-		linksExample.clear();
+		LinksExample linksExample = new LinksExample();
 		linksExample.setOrderByClause("px");
 		return linksMapper.selectByExample(linksExample);
 	}
 
 	public int queryCount() {
-		linksExample.clear();
-		return linksMapper.countByExample(linksExample);
-	}
-
-	public LinksExample getLinksExample() {
-		return linksExample;
-	}
-
-	public void setLinksExample(LinksExample linksExample) {
-		this.linksExample = linksExample;
+		return linksMapper.countByExample(null);
 	}
 
 	public LinksMapper getLinksMapper() {

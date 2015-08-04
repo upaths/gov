@@ -11,7 +11,6 @@ import cn.gov.model.ArticleExample;
 import cn.gov.service.ArticleService;
 
 public class ArticleServiceImpl implements ArticleService {
-	private ArticleExample articleExample;
 	private ArticleMapper articleMapper;
 	private ExtraMapper extraMapper;
 	public void insert(Article article) {
@@ -48,14 +47,6 @@ public class ArticleServiceImpl implements ArticleService {
 
 	public List queryHotArticle(Map map) {
 		return extraMapper.queryHotArticle(map);
-	}
-
-	public ArticleExample getArticleExample() {
-		return articleExample;
-	}
-
-	public void setArticleExample(ArticleExample articleExample) {
-		this.articleExample = articleExample;
 	}
 
 	public ArticleMapper getArticleMapper() {

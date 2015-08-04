@@ -9,22 +9,19 @@ import cn.gov.service.ConfigService;
 
 public class ConfigServiceImpl implements ConfigService {
 	private ConfigMapper configMapper;
-	private ConfigExample configExample;
 	public boolean isExist() {
-		configExample.clear();
+		ConfigExample configExample = new ConfigExample();
 		return configMapper.countByExample(configExample) > 0;
 	}
 
 	public Config queryConfig() {
-		configExample.clear();
-		List list = configMapper.selectByExample(configExample);
+		List list = configMapper.selectByExample(null);
 		return  list!= null && list.size() > 0 ? (Config)list.get(0) : null;
 	}
 
 	public void updateConifg(Config config) {
 		if (isExist()) {
-			configExample.clear();
-			configMapper.updateByExample(config, configExample);
+			configMapper.updateByExample(config, null);
 		}else {
 			configMapper.insert(config);
 		}
@@ -38,12 +35,4 @@ public class ConfigServiceImpl implements ConfigService {
 		this.configMapper = configMapper;
 	}
 
-	public ConfigExample getConfigExample() {
-		return configExample;
-	}
-
-	public void setConfigExample(ConfigExample configExample) {
-		this.configExample = configExample;
-	}
-	
 }

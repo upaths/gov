@@ -1,14 +1,15 @@
 package cn.gov.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.gov.dao.CategoryMapper;
 import cn.gov.model.Category;
 import cn.gov.model.CategoryExample;
+import cn.gov.model.CategoryTree;
 import cn.gov.service.CategoryService;
 
 public class CategoryServiceImpl implements CategoryService {
-	private CategoryExample categoryExample;
 	private CategoryMapper categoryMapper;
 	public void insert(Category category) {
 		categoryMapper.insert(category);
@@ -23,20 +24,78 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	public int deleteChilds(Integer parentId) {
-		categoryExample.clear();
+		CategoryExample categoryExample = new CategoryExample();
 		categoryExample.createCriteria().andParentIdEqualTo(parentId);
 		return categoryMapper.deleteByExample(categoryExample);
 	}
 
+	@Override
+	public List<CategoryTree> queryCategoryTree() {
+		List<CategoryTree> categoryTreeList = new ArrayList<CategoryTree>();
+		List<Category> list = this.queryFirstLevel();
+		for (Category c : list) {
+			CategoryTree categoryTree = new CategoryTree(c);
+			this.buildCategoryTree(categoryTree);
+			categoryTreeList.add(categoryTree);
+		}
+		return categoryTreeList;
+	}
+
+	private CategoryTree buildCategoryTree(CategoryTree c) {
+		List<Category> childs = this.queryChilds(c.getId());
+		if (childs != null) {
+			c.setChilds(new ArrayList<CategoryTree>());
+			for (Category child : childs) {
+				CategoryTree childTree = new CategoryTree(child);
+				this.buildCategoryTree(childTree);
+				c.getChilds().add(childTree);
+			}
+		}
+		return c;
+	}
+
+	@Override
+	public List<Category> queryCategoryList() {
+		List<CategoryTree> trees = this.queryCategoryTree();
+		if (trees == null) {
+			return null;
+		}
+		List<Category> categories = new ArrayList<Category>();
+		int level = 0;
+		for (CategoryTree tree : trees) {
+			this.buildCategoryList(tree, categories, level);
+		}
+		return categories;
+	}
+
+	private List<Category> buildCategoryList(CategoryTree tree, List<Category> categories, int level) {
+		if (level > 0) {
+			String prev = "";
+			for (int i = 0; i < level; i++) {
+				prev += "&nbsp;&nbsp;&nbsp;&nbsp;";
+			}
+			tree.setMc(prev + "┣"+tree.getMc());
+		}
+		categories.add(tree);
+		if (tree.getChilds() != null) {
+			level++;
+			for (CategoryTree child : tree.getChilds()) {
+				this.buildCategoryList(child, categories, level);
+			}
+			level--;
+		}
+		return categories;
+	}
+
 	public List<Category> queryFirstLevel() {
-		categoryExample.clear();
+		CategoryExample categoryExample = new CategoryExample();
 		categoryExample.createCriteria().andParentIdIsNull();
 		categoryExample.setOrderByClause("px");
 		return categoryMapper.selectByExample(categoryExample);
 	}
 
 	public List<Category> queryChilds(Integer parentId) {
-		categoryExample.clear();
+		CategoryExample categoryExample = new CategoryExample();
 		categoryExample.createCriteria().andParentIdEqualTo(parentId);
 		categoryExample.setOrderByClause("px");
 		return categoryMapper.selectByExample(categoryExample);
@@ -44,7 +103,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	
 	public Category queryByMc(String mc) {
-		categoryExample.clear();
+		CategoryExample categoryExample = new CategoryExample();
 		categoryExample.createCriteria().andMcEqualTo(mc);
 		List<Category> list = categoryMapper.selectByExample(categoryExample);
 		return list == null || list.size() <= 0 ? null : list.get(0);
@@ -52,14 +111,6 @@ public class CategoryServiceImpl implements CategoryService {
 
 	public Category queryByPrimaryKey(Integer id) {
 		return categoryMapper.selectByPrimaryKey(id);
-	}
-
-	public CategoryExample getCategoryExample() {
-		return categoryExample;
-	}
-
-	public void setCategoryExample(CategoryExample categoryExample) {
-		this.categoryExample = categoryExample;
 	}
 
 	public CategoryMapper getCategoryMapper() {
