@@ -55,6 +55,39 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
+	public String queryCategoryTreeJson() {
+		List<CategoryTree> trees = this.queryCategoryTree();
+		if (trees == null) {
+			return null;
+		}
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < trees.size(); i++) {
+			CategoryTree tree = trees.get(i);
+			if (i > 0) {
+				sb.append(",");
+			}
+			this.buildCategoryJson(tree, sb);
+		}
+		return sb.toString();
+	}
+
+	private void buildCategoryJson(CategoryTree tree, StringBuffer sb) {
+		sb.append("{\"id\":\"").append(tree.getId()).append("\",\"text\":\"").append(tree.getMc()).append("\"");
+		if (tree.getChilds() != null && tree.getChilds().size() > 0) {
+			sb.append(",\"children\":[");
+			for (int i = 0; i < tree.getChilds().size(); i++) {
+				CategoryTree child = tree.getChilds().get(i);
+				if (i > 0) {
+					sb.append(",");
+				}
+				this.buildCategoryJson(child, sb);
+			}
+			sb.append("]");
+		}
+		sb.append("}");
+	}
+
+	@Override
 	public List<Category> queryCategoryList() {
 		List<CategoryTree> trees = this.queryCategoryTree();
 		if (trees == null) {
@@ -68,7 +101,7 @@ public class CategoryServiceImpl implements CategoryService {
 		return categories;
 	}
 
-	private List<Category> buildCategoryList(CategoryTree tree, List<Category> categories, int level) {
+	private void buildCategoryList(CategoryTree tree, List<Category> categories, int level) {
 		if (level > 0) {
 			String prev = "";
 			for (int i = 0; i < level; i++) {
@@ -84,7 +117,6 @@ public class CategoryServiceImpl implements CategoryService {
 			}
 			level--;
 		}
-		return categories;
 	}
 
 	public List<Category> queryFirstLevel() {

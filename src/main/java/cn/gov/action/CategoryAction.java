@@ -1,5 +1,6 @@
 package cn.gov.action;
 
+import java.io.IOException;
 import java.util.List;
 
 import cn.gov.model.Category;
@@ -8,6 +9,9 @@ import cn.gov.service.CategoryService;
 import cn.gov.util.AlertUtil;
 
 public class CategoryAction extends BasicAction {
+	private String type;
+	private Integer id;
+	private Integer parentId;
 	private Category category;
 	private List<Category> list;
 	private CategoryService categoryService;
@@ -18,13 +22,43 @@ public class CategoryAction extends BasicAction {
 		return "query";
 	}
 
+	public void queryCategoryTree() {
+		List<CategoryTree> list = categoryService.queryCategoryTree();
+		StringBuffer sb = new StringBuffer("[{\"id\":\"\",\"text\":\"作为一级栏目\"");
+		if (list != null && list.size() > 0) {
+			sb.append(",\"children\":[").append(categoryService.queryCategoryTreeJson()).append("]");
+		}
+		sb.append("}]");
+		response.setCharacterEncoding("UTF-8");
+		try {
+			response.getWriter().write(sb.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String toAdd() {
+		return "toAdd";
+	}
+
+	public String toUpdate() {
+		category = categoryService.queryByPrimaryKey(id);
+		return "toUpdate";
+	}
+
 	public String insert() {
+		if (category.getDisplay() == null) {
+			category.setDisplay(false);
+		}
 		categoryService.insert(category);
 		AlertUtil.alertThenGo(response, "添加成功！", "category_query.action");
 		return null;
 	}
 
 	public String update() {
+		if (category.getDisplay() == null) {
+			category.setDisplay(false);
+		}
 		categoryService.update(category);
 		AlertUtil.alertThenGo(response, "更新成功！", "category_query.action");
 		return null;
@@ -55,5 +89,28 @@ public class CategoryAction extends BasicAction {
 	public void setCategoryService(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
-	
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
+	}
 }

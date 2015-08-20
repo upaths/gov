@@ -68,21 +68,39 @@
 		</tr>
 		<tr align="center" bgcolor="#FFFFFF">
 			<td align="left" valign="top">
+				<table width="100%" border="0" cellpadding="0" cellspacing="0" class="xux" bgcolor="#C4D8ED">
+					<tr>
+						<td height="35" align="center" valign="middle">栏目名称</td>
+						<td width="10%" align="center" valign="middle">栏目类型</td>
+						<td width="10%" align="center" valign="middle">导航是否显示</td>
+						<td width="10%" align="center" valign="middle">排号</td>
+						<td width="15%" align="center" valign="middle">管理操作</td>
+					</tr>
+				</table>
 				<c:forEach items="${list }" var="item" varStatus="status">
-
-					<table width="100%" border="0" cellpadding="0" cellspacing="0"
-						class="xux">
+					<table width="100%" border="0" cellpadding="0" cellspacing="0" class="xux">
 						<tr>
 							<td height="35" align="left" valign="middle">&nbsp;&nbsp;${item.mc }</td>
-							<td width="10%" align="center" valign="middle">&nbsp;</td>
-							<td width="10%" align="center" valign="middle" class="gray">排号:${item.px }</td>
-							<td width="6%" align="center" valign="middle" class="gray"><a
-								href="javascript:$('#edit_${status.count }').toggle();void(0);">修改</a></td>
-							<td width="6%" align="center" valign="middle"><a
-								href="javascript:if(window.confirm('确认删除？')){del('${item.id }');}void(0);">删除</a></td>
+							<td width="10%" align="center" valign="middle">
+								<c:if test="${item.categoryType eq '1'}">栏目</c:if>
+								<c:if test="${item.categoryType eq '2'}">单页</c:if>
+								<c:if test="${item.categoryType eq '3'}">专题</c:if>
+								<c:if test="${item.categoryType eq '4'}">外链</c:if>
+							</td>
+							<td width="10%" align="center" valign="middle">
+								<c:if test="${!item.display }">不显示</c:if>
+								<c:if test="${item.display }">显示</c:if>
+							</td>
+							<td width="10%" align="center" valign="middle">${item.px }</td>
+							<td width="15%" align="center" valign="middle">
+								<a href="category_toAdd.action?type=${item.categoryType}&parentId=${item.id}">增加子栏目</a>|
+								<a href="category_toUpdate.action?id=${item.id}">修改</a>|
+								<a href="javascript:if(window.confirm('确认删除？')){del('${item.id }');}void(0);">删除</a>
+							</td>
 						</tr>
 					</table>
-				</c:forEach></td>
+				</c:forEach>
+			</td>
 		</tr>
 	</table>
 </body>

@@ -17,6 +17,8 @@ public interface CategoryService {
 
 	public List<CategoryTree> queryCategoryTree();
 
+	public String queryCategoryTreeJson();
+
 	public List<Category> queryCategoryList();
 
 	public List<Category> queryFirstLevel();

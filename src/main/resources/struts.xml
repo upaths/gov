@@ -110,6 +110,8 @@
 		<!-- 信息类别管理 -->
 		<action name="category_*" class="categoryAction" method="{1}">
 			<result name="query">/admin/category.jsp</result>
+			<result name="toAdd">/admin/category_add.jsp</result>
+			<result name="toUpdate">/admin/category_update.jsp</result>
 		</action>
 		
 		<!-- 信息管理 -->
