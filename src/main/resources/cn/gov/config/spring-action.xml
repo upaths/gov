@@ -49,4 +49,10 @@
 
 	<bean id="resourceAction" class="cn.gov.action.ResourceAction"
 		  scope="prototype" autowire="byName" />
+
+	<bean id="sourceAction" class="cn.gov.action.SourceAction"
+		  scope="prototype" autowire="byName" />
+
+	<bean id="positionAction" class="cn.gov.action.PositionAction"
+		  scope="prototype" autowire="byName" />
 </beans>

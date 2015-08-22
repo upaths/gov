@@ -17,6 +17,8 @@ public interface ArticleService {
 	
 	public Article queryArticleById(Integer id);
 
+	public List<Article> queryArticlesByCategoryId(Integer categoryId);
+
 	public List query(Map map);
 	
 	public int count(Map map);

@@ -13,7 +13,7 @@
 		<filter-name>struts2</filter-name>
 		<url-pattern>*.action</url-pattern>
 	</filter-mapping>
-	
+
 	<filter>
 		<filter-name>CheckLogin</filter-name>
 		<filter-class>
@@ -24,7 +24,7 @@
 		<filter-name>CheckLogin</filter-name>
 		<url-pattern>/admin/*</url-pattern>
 	</filter-mapping>
-	
+
 	<listener>
 		<listener-class>
 			org.springframework.web.context.ContextLoaderListener

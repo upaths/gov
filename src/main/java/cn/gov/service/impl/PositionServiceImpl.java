@@ -20,6 +20,26 @@ public class PositionServiceImpl implements PositionService {
         return positionMapper.selectByExample(positionExample);
     }
 
+    @Override
+    public Position queryPositionById(Integer positionId) {
+        return positionMapper.selectByPrimaryKey(positionId);
+    }
+
+    @Override
+    public void insertPosition(Position position) {
+        positionMapper.insert(position);
+    }
+
+    @Override
+    public int updatePosition(Position position) {
+        return positionMapper.updateByPrimaryKey(position);
+    }
+
+    @Override
+    public int deletePosition(Integer positionId) {
+        return positionMapper.deleteByPrimaryKey(positionId);
+    }
+
     public PositionMapper getPositionMapper() {
         return positionMapper;
     }

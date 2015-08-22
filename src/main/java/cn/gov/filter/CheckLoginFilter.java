@@ -23,6 +23,8 @@ public class CheckLoginFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest)arg0;
 		HttpServletResponse response = (HttpServletResponse) arg1;
 		HttpSession session = request.getSession();
+		// TODO 开发完成后删除
+		session.setAttribute("user", "admin");
 		String username = (String)session.getAttribute("user");
 		String url = request.getServletPath();
 		if (url.endsWith(".jsp") && !url.contains("/admin/index.jsp") && !url.contains("/admin/to_login.jsp") && (username == null || "".equals(username))) {

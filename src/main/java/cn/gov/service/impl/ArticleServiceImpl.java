@@ -33,6 +33,14 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleMapper.selectByPrimaryKey(id);
 	}
 
+	@Override
+	public List<Article> queryArticlesByCategoryId(Integer categoryId) {
+		ArticleExample articleExample = new ArticleExample();
+		articleExample.createCriteria().andLbEqualTo(categoryId);
+		articleExample.setOrderByClause("id desc");
+		return articleMapper.selectByExampleWithBLOBs(articleExample);
+	}
+
 	public List query(Map map) {
 		return extraMapper.queryArticle(map);
 	}

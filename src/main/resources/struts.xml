@@ -5,6 +5,16 @@
 
 <struts>
 	<package name="gov" extends="struts-default">
+		<interceptors>
+			<interceptor-stack name="appDefaultStack">
+				<interceptor-ref name="defaultStack">
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">ERROR</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="appDefaultStack" />
+
 		<!-- Random验证码 -->
 		<action name="rand" class="randomAction">
 			<result type="stream">
@@ -68,7 +78,11 @@
 			<interceptor name="checkLogin" class="cn.gov.interceptor.CheckLoginInterceptor" />
 			<interceptor-stack name="adminStack">
 				<interceptor-ref name="checkLogin" />
-				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="defaultStack">
+					<!--覆盖defultStack中的exception设置，启用它的日志功能-->
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">ERROR</param>
+				</interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
 		<default-interceptor-ref name="adminStack" />
@@ -115,12 +129,31 @@
 		</action>
 		
 		<!-- 信息管理 -->
+		<!-- 内容审核 -->
+		<action name="article_review" class="articleAction" method="query">
+			<param name="review">0</param>
+			<result name="query">/admin/article_review.jsp</result>
+		</action>
 		<action name="article_*" class="articleAction" method="{1}">
 			<result name="main">/admin/article_main.jsp</result>
 			<result name="left">/admin/article_left.jsp</result>
 			<result name="toAdd">/admin/article_add.jsp</result>
 			<result name="toUpdate">/admin/article_update.jsp</result>
 			<result name="query">/admin/article.jsp</result>
+		</action>
+
+		<!-- 来源管理 -->
+		<action name="source_*" class="sourceAction" method="{1}">
+			<result name="query">/admin/source.jsp</result>
+			<result name="toAdd">/admin/source_add.jsp</result>
+			<result name="toUpdate">/admin/source_update.jsp</result>
+		</action>
+
+		<!-- 推荐位管理 -->
+		<action name="position_*" class="positionAction" method="{1}">
+			<result name="query">/admin/position.jsp</result>
+			<result name="toAdd">/admin/position_add.jsp</result>
+			<result name="toUpdate">/admin/position_update.jsp</result>
 		</action>
 		
 		<!-- 文字链接管理 -->

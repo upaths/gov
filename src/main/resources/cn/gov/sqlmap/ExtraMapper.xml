@@ -10,13 +10,16 @@
 		) a]]>
 		<where>
 			<if test="categoryId != null">
-				and lb = #{categoryId}
+				and lb = ${categoryId}
 			</if>
 			<if test="bt != null">
-				and bt like '%$bt$%'
+				and bt like '%${bt}%'
 			</if>
 			<if test="sfyt != null">
 				and a.slt is not null
+			</if>
+			<if test="sfxs != null">
+				and a.sfxs = ${sfxs}
 			</if>
 		</where>
 		order by id desc
@@ -38,6 +41,9 @@
 			</if>
 			<if test="sfyt != null">
 				and a.slt is not null
+			</if>
+			<if test="sfxs != null">
+				and a.sfxs = ${sfxs}
 			</if>
 		</where>
 	</select>

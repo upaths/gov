@@ -1,5 +1,6 @@
 package cn.gov.action;
 
+import cn.gov.enums.CategoryEnum;
 import cn.gov.model.Article;
 import cn.gov.model.Category;
 import cn.gov.model.Position;
@@ -9,7 +10,9 @@ import cn.gov.service.CategoryService;
 import cn.gov.service.PositionService;
 import cn.gov.service.SourceService;
 import cn.gov.util.AlertUtil;
+import cn.gov.util.FileUtil;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,10 +29,13 @@ public class ArticleAction extends BasicAction {
 	private Integer articleId;
 	private Article article;
 	private String bt;
+	private Integer review;
 	private List list;
 	private String sysdate;
 	private List<Source> sourceList;
 	private List<Position> positionList;
+	private File image;
+	private String imageFileName;
 
 	/**
 	 * 文章主页面
@@ -70,10 +76,13 @@ public class ArticleAction extends BasicAction {
 			getPageBean().setPageSize(15);
 		}
 		if (null != categoryId){
-			getPageBean().addParam("categoryId", categoryId == null ? null : categoryId.toString());
+			getPageBean().addParam("categoryId", categoryId.toString());
 		}
 		if (null != bt){
 			getPageBean().addParam("bt", bt);
+		}
+		if (null != review){
+			getPageBean().addParam("sfxs", review.toString());
 		}
 		// 设置记录总数，否则不能正确取得pageSize
 		int count = articleService.count(getPageBean().getParams());
@@ -85,38 +94,98 @@ public class ArticleAction extends BasicAction {
 		getPageBean().addParam("pageSize",
 				String.valueOf(getPageBean().getPageSize()));
 		list = articleService.query(getPageBean().getParams());
-		category = categoryService.queryByPrimaryKey(categoryId);
+		if (categoryId != null) {
+			category = categoryService.queryByPrimaryKey(categoryId);
+		}
 		return "query";
 	}
 
 	public String toAdd() {
 		sourceList = sourceService.queryAllSource();
 		positionList = positionService.queryAllPosition();
+		category = categoryService.queryByPrimaryKey(categoryId);
 		sysdate = new SimpleDateFormat("yyyy年MM月dd日").format(new Date());
 		return "toAdd";
 	}
 
 	public String toUpdate() {
+		sourceList = sourceService.queryAllSource();
+		positionList = positionService.queryAllPosition();
 		article = articleService.queryArticleById(articleId);
+		category = categoryService.queryByPrimaryKey(categoryId);
 		return "toUpdate";
 	}
 	public String insert() {
+		if (image != null) {
+			String url = FileUtil.uploadFile(image, imageFileName, request);
+			article.setSlt(url);
+		}
 		article.setYdcs(0);
 		articleService.insert(article);
-		AlertUtil.alertThenGo(response, "添加成功！", "article_query.action?categoryId="+categoryId);
+		category = categoryService.queryByPrimaryKey(categoryId);
+		if (CategoryEnum.PAGE.toString().equals(category.getCategoryType())) {
+			AlertUtil.alertThenGo(response, "添加成功！", "article_page.action?categoryId="+categoryId);
+		}else {
+			AlertUtil.alertThenGo(response, "添加成功！", "article_query.action?categoryId="+categoryId);
+		}
 		return null;
 	}
 
 	public String update() {
+		if (image != null) {
+			String url = FileUtil.uploadFile(image, imageFileName, request);
+			article.setSlt(url);
+		}
 		articleService.update(article);
-		AlertUtil.alertThenGo(response, "更新成功！", "article_query.action?categoryId="+categoryId);
+		category = categoryService.queryByPrimaryKey(categoryId);
+		if (CategoryEnum.PAGE.toString().equals(category.getCategoryType())) {
+			AlertUtil.alertThenGo(response, "更新成功！", "article_page.action?categoryId="+categoryId);
+		}else {
+			AlertUtil.alertThenGo(response, "更新成功！", "article_query.action?categoryId="+categoryId);
+		}
 		return null;
 	}
 
 	public String delete() {
-		articleService.delete(article.getId());
+		articleService.delete(articleId);
 		AlertUtil.alertThenGo(response, "删除成功！", "article_query.action?categoryId="+categoryId);
 		return null;
+	}
+
+	/**
+	 * 更新是否审核
+	 */
+	public String updateReview() {
+		articleService.updateSelective(article);
+		String msg = "审核成功！";
+		if (!article.getSfxs()) {
+			msg = "撤销审核成功！";
+		}
+		if (categoryId == null) {
+			AlertUtil.alertThenGo(response, msg, "article_review.action");
+		}else {
+			AlertUtil.alertThenGo(response, msg, "article_query.action?categoryId="+categoryId);
+		}
+		return null;
+	}
+
+	/**
+	 * 单页
+	 * @return
+	 */
+	public String page() {
+		sourceList = sourceService.queryAllSource();
+		positionList = positionService.queryAllPosition();
+
+		List<Article> articleList = articleService.queryArticlesByCategoryId(categoryId);
+		category = categoryService.queryByPrimaryKey(categoryId);
+		if (articleList == null || articleList.size() == 0) {
+			sysdate = new SimpleDateFormat("yyyy年MM月dd日").format(new Date());
+			return "toAdd";
+		}else {
+			article = articleList.get(0);
+			return "toUpdate";
+		}
 	}
 
 	public CategoryService getCategoryService() {
@@ -221,5 +290,29 @@ public class ArticleAction extends BasicAction {
 
 	public void setPositionList(List<Position> positionList) {
 		this.positionList = positionList;
+	}
+
+	public File getImage() {
+		return image;
+	}
+
+	public void setImage(File image) {
+		this.image = image;
+	}
+
+	public String getImageFileName() {
+		return imageFileName;
+	}
+
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
+	}
+
+	public Integer getReview() {
+		return review;
+	}
+
+	public void setReview(Integer review) {
+		this.review = review;
 	}
 }

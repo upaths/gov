@@ -9,6 +9,7 @@ import cn.gov.service.CategoryService;
 import cn.gov.util.AlertUtil;
 
 public class CategoryAction extends BasicAction {
+
 	private String type;
 	private Integer id;
 	private Integer parentId;

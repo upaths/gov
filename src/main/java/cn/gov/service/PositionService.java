@@ -10,4 +10,12 @@ import java.util.List;
 public interface PositionService {
 
     public List<Position> queryAllPosition();
+
+    public Position queryPositionById(Integer positionId);
+
+    public void insertPosition(Position position);
+
+    public int updatePosition(Position position);
+
+    public int deletePosition(Integer positionId);
 }

@@ -20,15 +20,13 @@
 			<td align="center" bgcolor="#f0f0f0" class="nzcms_table_top"><table
 					width="100%" border="0" align="center" cellpadding="0"
 					cellspacing="0">
-					<form action="article_query.action" method="post">
+					<form action="article_review.action" method="post">
 						<tr>
 							<td align="left" style="padding-left: 10px;">
-							<strong>${category.mc}搜索</strong>
+							<strong>内容审核</strong>
        						&nbsp;标题：
-								<input name="categoryId" type="hidden" id="categoryId" value="${categoryId }" />
 								<input name="bt" type="text" id="bt" size="15" value="${bt }" />
 								<input type="submit" name="Submit2" value="搜索" id="Submit" />
-								<input type="button" value="新增" onclick="window.location.href='article_toAdd.action?categoryId=${categoryId }'" />
 							</td>
 						</tr>
 					</form>
@@ -73,14 +71,12 @@
 						<td align="center">&nbsp;${item.lrrq }</td>
 						<td align="center">&nbsp;${item.tjwmc }</td>
 						<td align="center">
-							<a href="javascript:window.location.href='article_toUpdate.action?articleId=${item.id }&categoryId=${categoryId}';void(0);">修改</a>
-							<a href="javascript:if(confirm('确定删除？')){window.location.href='article_delete.action?articleId=${item.id }&categoryId=${categoryId}';}void(0);">删除</a>
 							<c:choose>
 								<c:when test="${item.sfxs }">
-									<a href="javascript:if(confirm('确定撤销审核？')){window.location.href='article_updateReview.action?article.id=${item.id }&article.sfxs=false&categoryId=${categoryId}';}void(0);"><font class="red">撤销</font></a>
+									<a href="javascript:if(confirm('确定撤销审核？')){window.location.href='article_updateReview.action?article.id=${item.id }&article.sfxs=false';}void(0);"><font class="red">撤销</font></a>
 								</c:when>
 								<c:otherwise>
-									<a href="javascript:window.location.href='article_updateReview.action?article.id=${item.id }&article.sfxs=true&categoryId=${categoryId}';void(0);">审核</a>
+									<a href="javascript:window.location.href='article_updateReview.action?article.id=${item.id }&article.sfxs=true';void(0);">审核</a>
 								</c:otherwise>
 							</c:choose>
 						</td>
@@ -88,7 +84,7 @@
 					</c:forEach>
 					<tr align="center">
 						<td height="25" colspan="8" class="nzcms_table_top">
-							<page:pagination pageBean="${pageBean}" url="article_query.action" cssClass="txt_page"/>
+							<page:pagination pageBean="${pageBean}" url="article_review.action" cssClass="txt_page"/>
 						</td>
 					</tr>
 				</table>

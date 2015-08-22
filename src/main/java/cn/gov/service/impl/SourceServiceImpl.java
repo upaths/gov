@@ -20,6 +20,26 @@ public class SourceServiceImpl implements SourceService {
         return this.sourceMapper.selectByExample(sourceExample);
     }
 
+    @Override
+    public Source querySourceById(Integer sourceId) {
+        return sourceMapper.selectByPrimaryKey(sourceId);
+    }
+
+    @Override
+    public void insertSource(Source source) {
+        sourceMapper.insert(source);
+    }
+
+    @Override
+    public int updateSource(Source source) {
+        return sourceMapper.updateByPrimaryKey(source);
+    }
+
+    @Override
+    public int deleteSource(Integer sourceId) {
+        return sourceMapper.deleteByPrimaryKey(sourceId);
+    }
+
     public SourceMapper getSourceMapper() {
         return sourceMapper;
     }

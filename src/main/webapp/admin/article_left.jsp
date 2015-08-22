@@ -9,17 +9,33 @@
 <script type="text/javascript" src="../easyui/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="../easyui/easyloader.js"></script>
 <script type="text/javascript">
+	function findFirstLeafId(data) {
+		if (!data || data.length == 0) {
+			return null;
+		}
+		for (var i in data) {
+			if (!data[i].children) {
+				return data[i].id;
+			}else {
+				var leafId = findFirstLeafId(data[i].children);
+				if (leafId) {
+					return leafId;
+				}
+			}
+		}
+		return null;
+	}
 	$(function(){
 		using('tree', function () {
 	        $('#cc').tree({
 	        	url:'article_queryCategoryTree.action',
-	            onClick:function(node){
-	            	if (node.attributes && node.attributes.has_child == 'N') {
+				onSelect:function(node){
+	            	if (node.attributes && !node.children) {
 						var url = '';
 						if (node.attributes.category_type == "1") {
 							url = "article_query.action?categoryId="+node.id;
 						}else if (node.attributes.category_type == "2") {
-							url = "article_toUpdate.action?categoryId="+node.id;
+							url = "article_page.action?categoryId="+node.id;
 						}else if (node.attributes.category_type == "3") {
 							url = "article_query.action?categoryId="+node.id;
 						}else if (node.attributes.category_type == "4") {
@@ -27,7 +43,13 @@
 						}
 	            		$('#article_right', window.parent.document).attr("src", "${pageContext.request.contextPath}/admin/"+url);
 	            	}
-	          	}
+	          	},
+				onLoadSuccess:function(node, data) {
+					var firstLeaf = $('#cc').tree('find', findFirstLeafId(data));
+					if (firstLeaf) {
+						$('#cc').tree('select', firstLeaf.target);
+					}
+				}
 	        });
 	    });
 	}); 
