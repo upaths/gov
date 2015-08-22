@@ -24,6 +24,7 @@
 		var lb = $("#lb");
 		var lrrq = $("#lrrq");
 		var nr = $("#nr");
+        var tzlj = $("#tzlj");
 		nr.val(editor.html());
 		if (bt.val() == "") {
 			alert("标题不能为空！");
@@ -40,26 +41,22 @@
 			lrrq.focus();
 			return;
 		}
+        <c:if test="${categoryId != 4}">
 		if (nr.val() == "") {
 			alert("内容不能为空！");
 			nr.focus();
 			return;
 		}
+        </c:if>
+        <c:if test="${categoryId == 4}">
+        if (tzlj.val() == "") {
+            alert("跳转链接不能为空！");
+            tzlj.focus();
+            return;
+        }
+        </c:if>
 		$("#myform").submit();
 	}
-	
-	function getChild(dl_val) {
-		$.post("article_getChildList.action", {"cateId": dl_val },
-			function (data, textStatus){
-				$("#lb").empty();
-				for (var i = 0; i < data.length; i++) {
-					$("<option value='"+data[i].id+"'>"+data[i].mc+"</option>").appendTo("#lb");
-				}
-			}, "json");
-	}
-	$(document).ready(function() {
-		getChild($("#dl").val());
-	});
 </script>
 </head>
 <body>
@@ -76,54 +73,71 @@
     </tr>
     <tr bgcolor="#D2E8F6">
       <td height="40" colspan="2" align="left" class="zfb"  id='news' style='DISPLAY:none '>
-       <strong>添加说明书：</strong><br /><ol> <li>在此页面添加新的新闻信息；</li>
-       <li>添加新信息之前，必须先有信息类别，否则不能添加信息；</li>
+       <strong>添加说明书：</strong><br /><ol> <li>在此页面添加新的内容信息；</li>
+       <li>添加内容之前，必须先有内容栏目，否则不能添加内容；</li>
       </ol></td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >标题：</td>
       <td height="30" class="gray"><input name="article.bt" type="text" id="bt" size="50" maxlength="50"/>
-          <font color="red">*</font>信息标题
-    </tr>
-    <tr bgcolor="#FFFFFF">
-      <td height="30" align="center" bgcolor="#E4EDF9" >类别：</td>
-      <td height="30" valign="middle" class="gray" >
-      	<select size="1" id="dl" onChange="getChild(this.value);">
-      		<c:forEach items="${cateList }" var="item">
-            <option value="${item.id }">${item.mc }</option>
-            </c:forEach>
-        </select>
-        &nbsp;所属小类：
-        <select name="article.lb" id="lb">
-        </select>
+          <font color="red">*</font> 信息标题
+          <input type="hidden" name="article.lb" value="${categoryId}" />
       </td>
     </tr>
     <tr bgcolor="#FFFFFF">
-      <td height="30" align="center" bgcolor="#E4EDF9" >时间：</td>
-      <td height="30" valign="middle" class="gray" ><input name="article.lrrq" id="lrrq" type="text" value="${sysdate }" size="20">
-      <font color="red">*</font> 这里时间可以修改</td>
+        <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >短标题：</td>
+        <td height="30" class="gray"><input name="article.dbt" type="text" id="dbt" size="30" maxlength="50"/>
+            信息短标题
+        </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+        <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >关键字：</td>
+        <td height="30"><input name="article.gjz" type="text" id="gjz" size="50" />
+            <FONT color=gray></FONT></td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+        <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >摘要：</td>
+        <td height="30"><input name="article.zy" type="text" id="zy" size="50" />
+            <FONT color=gray></FONT></td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="30" align="center" bgcolor="#E4EDF9" >来源：</td>
-      <td height="30"><input name="article.xxly" type="text" value="互联网" />
-          <font color="gray">信息摘取哪里？</font></td>
+      <td height="30">
+          <select name="article.xxly" id="xxly">
+              <option value=""></option>
+              <c:forEach items="${sourceList}" var="item">
+                  <option value="${item.id}">${item.mc}</option>
+              </c:forEach>
+          </select>
+          <font color="gray">信息摘取哪里</font></td>
     </tr>
     <tr bgcolor="#FFFFFF">
-      <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >作者：</td>
-      <td height="30"><input name="article.gg" type="text" id="sub_user" value="<%=username %>" />
-          <FONT color=gray>发布信息的单位名称！</FONT></td>
+      <td width="10%" height="30" align="center" bgcolor="#E4EDF9">推荐位：</td>
+      <td height="30">
+          <select name="article.tjw" id="tjw">
+              <option value=""></option>
+              <c:forEach items="${positionList}" var="item">
+                  <option value="${item.id}">${item.mc}</option>
+              </c:forEach>
+          </select>
+          <font color="gray">是否推荐到首页</font></td>
     </tr>
     <tr bgcolor="#FFFFFF">
-      <td width="10%" height="30" align="center" bgcolor="#E4EDF9">推荐：</td>
-      <td height="30"><input name="article.sftj" type="checkbox" value="true">
-          <font color="gray">(打&quot;√&quot;则为推荐)</font></td>
+        <td height="30" align="center" bgcolor="#E4EDF9" >时间：</td>
+        <td height="30" valign="middle" class="gray" ><input name="article.lrrq" id="lrrq" type="text" value="${sysdate }" size="20">
+            <font color="red">*</font> 时间可以修改</td>
     </tr>
     <tr bgcolor="#FFFFFF">
-      <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >显示：</td>
-      <td height="30"><input name="article.sfxs" type="checkbox" value="true" checked>
+      <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >审核：</td>
+      <td height="30"><input name="article.sfxs" type="checkbox" value="true" checked style="vertical-align:middle; margin: 0 4px;">
           <font color="gray">(打&quot;√&quot;则会在网页上面显示，否则为隐藏在后台)</font></td>
     </tr>
-    <tr bgcolor="#FFFFFF">
+    <tr bgcolor="#FFFFFF" <c:if test="${categoryId != 4}">style="display: none;"</c:if>>
+        <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >跳转链接：</td>
+        <td height="30"><input name="article.tzlj" type="text" id="tzlj" size="50" />
+            <FONT color=gray></FONT></td>
+    </tr>
+    <tr bgcolor="#FFFFFF" <c:if test="${categoryId == 4}">style="display: none;"</c:if>>
       <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >内容：</td>
       <td height="30" valign="top">
       	<textarea name="article.nr" id="nr" cols="100" rows="8" style="width:700px;height:370px;visibility:hidden;"></textarea>

@@ -95,7 +95,7 @@
     </c:if>
     <tr bgcolor="#FFFFFF">
       <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >是否显示：</td>
-      <td height="30"><input name="category.display" type="checkbox" value="${category.display}" checked>
+      <td height="30"><input name="category.display" type="checkbox" value="${category.display}" checked style="vertical-align:middle; margin: 0 4px;">
           <font color="gray">(打&quot;√&quot;则会在网页上面显示，否则为隐藏在后台)</font></td>
     </tr>
     <tr bgcolor="#FFFFFF">

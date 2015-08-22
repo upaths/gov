@@ -152,5 +152,7 @@
         <table tableName="role" schema="gov"></table>
         <table tableName="user_role" schema="gov"></table>
         <table tableName="role_resource" schema="gov"></table>
+        <table tableName="source" schema="gov"></table>
+        <table tableName="position" schema="gov"></table>
     </context>
 </generatorConfiguration>

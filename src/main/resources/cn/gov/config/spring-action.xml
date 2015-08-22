@@ -26,7 +26,7 @@
 	<bean id="categoryAction" class="cn.gov.action.CategoryAction"
 		scope="prototype" autowire="byName" />
 		
-	<bean id="articleAction" class="cn.gov.action.BottomAction$ArticleAction"
+	<bean id="articleAction" class="cn.gov.action.ArticleAction"
 		scope="prototype" autowire="byName" />
 	
 	<bean id="linksAction" class="cn.gov.action.LinksAction"

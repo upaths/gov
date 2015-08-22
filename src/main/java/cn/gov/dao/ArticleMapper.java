@@ -48,12 +48,14 @@ public interface ArticleMapper {
     @Insert({
         "insert into article (id, bt, ",
         "lb, lrrq, xxly, ",
-        "gg, sftj, sfxs, ",
-        "ydcs, nr)",
+        "dbt, tjw, sfxs, ",
+        "ydcs, gjc, zy, ",
+        "slt, tzlj, nr)",
         "values (#{id,jdbcType=INTEGER}, #{bt,jdbcType=VARCHAR}, ",
-        "#{lb,jdbcType=INTEGER}, #{lrrq,jdbcType=VARCHAR}, #{xxly,jdbcType=VARCHAR}, ",
-        "#{gg,jdbcType=VARCHAR}, #{sftj,jdbcType=BIT}, #{sfxs,jdbcType=BIT}, ",
-        "#{ydcs,jdbcType=INTEGER}, #{nr,jdbcType=LONGVARCHAR})"
+        "#{lb,jdbcType=INTEGER}, #{lrrq,jdbcType=VARCHAR}, #{xxly,jdbcType=INTEGER}, ",
+        "#{dbt,jdbcType=VARCHAR}, #{tjw,jdbcType=INTEGER}, #{sfxs,jdbcType=BIT}, ",
+        "#{ydcs,jdbcType=INTEGER}, #{gjc,jdbcType=VARCHAR}, #{zy,jdbcType=VARCHAR}, ",
+        "#{slt,jdbcType=VARCHAR}, #{tzlj,jdbcType=VARCHAR}, #{nr,jdbcType=LONGVARCHAR})"
     })
     int insert(Article record);
 
@@ -89,7 +91,7 @@ public interface ArticleMapper {
      */
     @Select({
         "select",
-        "id, bt, lb, lrrq, xxly, gg, sftj, sfxs, ydcs, nr",
+        "id, bt, lb, lrrq, xxly, dbt, tjw, sfxs, ydcs, gjc, zy, slt, tzlj, nr",
         "from article",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -139,11 +141,15 @@ public interface ArticleMapper {
         "set bt = #{bt,jdbcType=VARCHAR},",
           "lb = #{lb,jdbcType=INTEGER},",
           "lrrq = #{lrrq,jdbcType=VARCHAR},",
-          "xxly = #{xxly,jdbcType=VARCHAR},",
-          "gg = #{gg,jdbcType=VARCHAR},",
-          "sftj = #{sftj,jdbcType=BIT},",
+          "xxly = #{xxly,jdbcType=INTEGER},",
+          "dbt = #{dbt,jdbcType=VARCHAR},",
+          "tjw = #{tjw,jdbcType=INTEGER},",
           "sfxs = #{sfxs,jdbcType=BIT},",
           "ydcs = #{ydcs,jdbcType=INTEGER},",
+          "gjc = #{gjc,jdbcType=VARCHAR},",
+          "zy = #{zy,jdbcType=VARCHAR},",
+          "slt = #{slt,jdbcType=VARCHAR},",
+          "tzlj = #{tzlj,jdbcType=VARCHAR},",
           "nr = #{nr,jdbcType=LONGVARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -160,11 +166,15 @@ public interface ArticleMapper {
         "set bt = #{bt,jdbcType=VARCHAR},",
           "lb = #{lb,jdbcType=INTEGER},",
           "lrrq = #{lrrq,jdbcType=VARCHAR},",
-          "xxly = #{xxly,jdbcType=VARCHAR},",
-          "gg = #{gg,jdbcType=VARCHAR},",
-          "sftj = #{sftj,jdbcType=BIT},",
+          "xxly = #{xxly,jdbcType=INTEGER},",
+          "dbt = #{dbt,jdbcType=VARCHAR},",
+          "tjw = #{tjw,jdbcType=INTEGER},",
           "sfxs = #{sfxs,jdbcType=BIT},",
-          "ydcs = #{ydcs,jdbcType=INTEGER}",
+          "ydcs = #{ydcs,jdbcType=INTEGER},",
+          "gjc = #{gjc,jdbcType=VARCHAR},",
+          "zy = #{zy,jdbcType=VARCHAR},",
+          "slt = #{slt,jdbcType=VARCHAR},",
+          "tzlj = #{tzlj,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Article record);

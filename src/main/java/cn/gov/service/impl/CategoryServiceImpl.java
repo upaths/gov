@@ -73,6 +73,15 @@ public class CategoryServiceImpl implements CategoryService {
 
 	private void buildCategoryJson(CategoryTree tree, StringBuffer sb) {
 		sb.append("{\"id\":\"").append(tree.getId()).append("\",\"text\":\"").append(tree.getMc()).append("\"");
+		if (tree.getCategoryType() != null && !"".equals(tree.getCategoryType())) {
+			sb.append(",\"attributes\":{\"category_type\":\"").append(tree.getCategoryType()).append("\"");
+			if (tree.getChilds() != null && tree.getChilds().size() > 0) {
+				sb.append(",\"has_child\":\"Y\"");
+			}else {
+				sb.append(",\"has_child\":\"N\"");
+			}
+			sb.append("}");
+		}
 		if (tree.getChilds() != null && tree.getChilds().size() > 0) {
 			sb.append(",\"children\":[");
 			for (int i = 0; i < tree.getChilds().size(); i++) {

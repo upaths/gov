@@ -23,11 +23,8 @@ public class CategoryAction extends BasicAction {
 	}
 
 	public void queryCategoryTree() {
-		List<CategoryTree> list = categoryService.queryCategoryTree();
 		StringBuffer sb = new StringBuffer("[{\"id\":\"\",\"text\":\"作为一级栏目\"");
-		if (list != null && list.size() > 0) {
-			sb.append(",\"children\":[").append(categoryService.queryCategoryTreeJson()).append("]");
-		}
+		sb.append(",\"children\":[").append(categoryService.queryCategoryTreeJson()).append("]");
 		sb.append("}]");
 		response.setCharacterEncoding("UTF-8");
 		try {

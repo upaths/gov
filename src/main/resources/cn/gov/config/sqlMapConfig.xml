@@ -18,6 +18,8 @@
 		<mapper resource="cn/gov/sqlmap/RoleMapper.xml" />
 		<mapper resource="cn/gov/sqlmap/RoleResourceMapper.xml" />
 		<mapper resource="cn/gov/sqlmap/UserRoleMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/SourceMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/PositionMapper.xml" />
 	</mappers>
     
 </configuration>

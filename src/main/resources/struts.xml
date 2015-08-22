@@ -116,6 +116,8 @@
 		
 		<!-- 信息管理 -->
 		<action name="article_*" class="articleAction" method="{1}">
+			<result name="main">/admin/article_main.jsp</result>
+			<result name="left">/admin/article_left.jsp</result>
 			<result name="toAdd">/admin/article_add.jsp</result>
 			<result name="toUpdate">/admin/article_update.jsp</result>
 			<result name="query">/admin/article.jsp</result>

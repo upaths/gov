@@ -33,4 +33,8 @@
 		autowire="byName" />
 
 	<bean id="resourceService" class="cn.gov.service.impl.ResourceServiceImpl" autowire="byName" />
+
+	<bean id="sourceService" class="cn.gov.service.impl.SourceServiceImpl" autowire="byName" />
+
+	<bean id="positionService" class="cn.gov.service.impl.PositionServiceImpl" autowire="byName" />
 </beans>

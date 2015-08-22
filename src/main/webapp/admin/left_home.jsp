@@ -8,7 +8,7 @@
 <body>
 <table border="0" width="200" height="100%" cellpadding="0" cellspacing="0" bgcolor="#C9DEFA">
 <tr><td valign="top">
-<table width="200" height="45" border="0" cellpadding="0" cellspacing="0" background="images/nzsoft_14.gif" id="1">
+<table width="200" height="45" border="0" cellpadding="0" cellspacing="0" background="images/left_top.jpg" id="1">
   <tr>
     <td width="60" align="center">&nbsp;</td>
     <td class="left_top">Welcome</td>
