@@ -29,8 +29,8 @@ public class IndexAction extends BasicAction {
 
 	public String test() {
 		tpxwList = new ArrayList();
-		tpxwList.add("测试1");
-		tpxwList.add("测试2");
+		tpxwList.add("测试abc");
+		tpxwList.add("测试def");
 		return SUCCESS;
 	}
 

@@ -6,12 +6,9 @@
 </head>
 <body>
 <@upper>
-bar
-<#-- 这里允许使用所有的 FTL -->
-    <#list ["red", "green", "blue"] as color>
-    ${color}
+    <#list tpxwList as s>
+        ${s}<br />
     </#list>
-baaz
 </@upper>
 </body>
 </html>
