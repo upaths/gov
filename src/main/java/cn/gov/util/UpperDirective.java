@@ -21,8 +21,7 @@ public class UpperDirective implements TemplateDirectiveModel {
         System.out.println("执行标签方法=====================================================================");
         // 检查参数是否传入
         if (!params.isEmpty()) {
-            throw new TemplateModelException(
-                    "This directive doesn't allow parameters.");
+            throw new TemplateModelException("This directive doesn't allow parameters.");
         }
         if (loopVars.length != 0) {
             throw new TemplateModelException("This directive doesn't allow loop variables.");
@@ -45,6 +44,7 @@ public class UpperDirective implements TemplateDirectiveModel {
         UpperCaseFilterWriter (Writer out) {
             this.out = out;
         }
+        @Override
         public void write(char[] cbuf, int off, int len)
                 throws IOException {
             char[] transformedCbuf = new char[len];

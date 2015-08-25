@@ -40,6 +40,12 @@
 		</listener-class>
 	</listener>
 
+	<listener>
+		<listener-class>
+			org.springframework.web.context.request.RequestContextListener
+		</listener-class>
+	</listener>
+
 	<!-- 定义Spring配置文件位置 -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>

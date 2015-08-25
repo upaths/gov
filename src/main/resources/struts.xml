@@ -4,6 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+	<constant name="struts.freemarker.manager.classname" value="cn.gov.freemarker.MyFreemarkerManager" />
 	<package name="gov" extends="struts-default">
 		<interceptors>
 			<interceptor-stack name="appDefaultStack">
@@ -72,6 +73,12 @@
 		<!-- freemarker测试 -->
 		<action name="test" class="indexAction" method="test">
 			<result type="freemarker">/WEB-INF/ftl/test.ftl</result>
+		</action>
+		<action name="test_repeat" class="indexAction" method="test">
+			<result type="freemarker">/WEB-INF/ftl/test_repeat.ftl</result>
+		</action>
+		<action name="test_article" class="indexAction" method="test">
+			<result type="freemarker">/WEB-INF/ftl/test_article.ftl</result>
 		</action>
 	</package>
 	

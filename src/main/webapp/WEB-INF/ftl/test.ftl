@@ -1,5 +1,4 @@
 <#assign s=JspTaglibs["/WEB-INF/struts-tags.tld"] />
-<#assign upper = "cn.gov.util.UpperDirective"?new()>
 <html>
 <head>
     <title>测试</title>
