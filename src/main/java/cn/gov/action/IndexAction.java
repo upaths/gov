@@ -26,7 +26,14 @@ public class IndexAction extends BasicAction {
 	private Category tzgg;
 	private Category zwgk;
 	private Category zcfg;
-	
+
+	public String test() {
+		tpxwList = new ArrayList();
+		tpxwList.add("测试1");
+		tpxwList.add("测试2");
+		return SUCCESS;
+	}
+
 	@SuppressWarnings("unchecked")
 	public String execute() {
 		tpxw = categoryService.queryByMc("图片新闻");

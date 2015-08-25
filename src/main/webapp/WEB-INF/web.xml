@@ -25,6 +25,15 @@
 		<url-pattern>/admin/*</url-pattern>
 	</filter-mapping>
 
+	<servlet>
+		<servlet-name>JspSupportServlet</servlet-name>
+		<servlet-class>
+			org.apache.struts2.views.JspSupportServlet
+		</servlet-class>
+		<!--配置JspSupportServlet自启动-->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
 	<listener>
 		<listener-class>
 			org.springframework.web.context.ContextLoaderListener

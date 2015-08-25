@@ -69,6 +69,10 @@
 		<action name="hot" class="articleAction" method="hot">
 			<result>hot.jsp</result>
 		</action>
+		<!-- freemarker测试 -->
+		<action name="test" class="indexAction" method="test">
+			<result type="freemarker">/WEB-INF/ftl/test.ftl</result>
+		</action>
 	</package>
 	
 	<package name="gov_admin" extends="struts-default"
