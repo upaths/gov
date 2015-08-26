@@ -30,12 +30,14 @@ public interface ConfigMapper {
      * @mbggenerated
      */
     @Insert({
-        "insert into config (ffzgn, tqyb, ",
-        "wzbt, gjzc, wzms, ",
-        "wydb)",
-        "values (#{ffzgn,jdbcType=BIT}, #{tqyb,jdbcType=VARCHAR}, ",
-        "#{wzbt,jdbcType=VARCHAR}, #{gjzc,jdbcType=VARCHAR}, #{wzms,jdbcType=VARCHAR}, ",
-        "#{wydb,jdbcType=VARCHAR})"
+        "insert into config (zdm, ym, ",
+        "bah, bqxx, zdkqgb, ",
+        "gbtsxx, wzbt, gjzc, ",
+        "wzms, ffzgn)",
+        "values (#{zdm,jdbcType=VARCHAR}, #{ym,jdbcType=VARCHAR}, ",
+        "#{bah,jdbcType=VARCHAR}, #{bqxx,jdbcType=VARCHAR}, #{zdkqgb,jdbcType=BIT}, ",
+        "#{gbtsxx,jdbcType=VARCHAR}, #{wzbt,jdbcType=VARCHAR}, #{gjzc,jdbcType=VARCHAR}, ",
+        "#{wzms,jdbcType=VARCHAR}, #{ffzgn,jdbcType=BIT})"
     })
     int insert(Config record);
 

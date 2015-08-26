@@ -21,7 +21,7 @@ public class ConfigServiceImpl implements ConfigService {
 
 	public void updateConifg(Config config) {
 		if (isExist()) {
-			configMapper.updateByExample(config, null);
+			configMapper.updateByExample(config, new ConfigExample());
 		}else {
 			configMapper.insert(config);
 		}

@@ -4,8 +4,8 @@
     <title>文章循环</title>
 </head>
 <body>
-<@article catid=53; article>
+<@wy_article catid=53; article>
     <strong>${article.bt}</strong><br />
-</@article>
+</@wy_article>
 </body>
 </html>

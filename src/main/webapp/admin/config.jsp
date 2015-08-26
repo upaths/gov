@@ -15,7 +15,7 @@
 </table>
 <table width="98%" border="1" align="left" cellpadding="5" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#C4D8ED">
     <tr bgcolor="#D2E8F6">
-      <td height="40" colspan="2" align="center" class="nzcms_table_top" >网站优化信息设置</td>
+      <td height="40" colspan="2" align="center" class="nzcms_table_top" >站点设置</td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="25" colspan="2" align="left"><input name="Submit2" type="submit" class="button" value=" 提交 " />
@@ -23,34 +23,62 @@
         <input name="Submit22" type="reset" class="button" value=" 重置 " /></td>
     </tr>
     <tr bgcolor="#FFFFFF">
-      <td width="12%" height="40" align="right">防复制功能：</td>
-      <td><input name="config.ffzgn" type="checkbox" id="fz" value="true" <c:if test="${config.ffzgn }">checked</c:if> />
-打了√开启网站防复制功能，不打则用户可以复制网站内容。</td>
+        <td height="25" align="right">站点名：</td>
+        <td>
+            <textarea name="config.zdm" cols="70" rows="3">${config.zdm }</textarea>
+        </td>
     </tr>
     <tr bgcolor="#FFFFFF">
-      <td height="25" align="right">天气预报：</td>
-      <td><textarea name="config.tqyb" cols="70" rows="4" id="nzcms_tq">${config.tqyb }</textarea>
-          <span class="red"> 首页天气预报的代码</span></td>
+        <td height="25" align="right">域名：</td>
+        <td>
+            <textarea name="config.ym" cols="70" rows="3">${config.ym }</textarea>
+        </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+        <td height="25" align="right">备案号：</td>
+        <td>
+            <textarea name="config.bah" cols="70" rows="3">${config.bah }</textarea>
+        </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+        <td height="25" align="right">版权信息：</td>
+        <td>
+            <textarea name="config.bqxx" cols="70" rows="3">${config.bqxx }</textarea>
+        </td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="25" align="right">网站标题：</td>
-      <td><textarea name="config.wzbt" cols="70" rows="4" id="title">${config.wzbt }</textarea>
-          <span class="red">字符请用_分隔开</span></td>
+      <td>
+          <textarea name="config.wzbt" cols="70" rows="3" id="title">${config.wzbt }</textarea>
+      </td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="25" align="right">关键字词：<br /></td>
-      <td><textarea name="config.gjzc" cols="70" rows="4" id="keywords">${config.gjzc }</textarea>
+      <td><textarea name="config.gjzc" cols="70" rows="3" id="keywords">${config.gjzc }</textarea>
           <span class="red">字符请用, 分隔开</span></td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="25" align="right">网站描述：<br />      </td>
-      <td><textarea name="config.wzms" cols="70" rows="4" id="description">${config.wzms }</textarea>
+      <td><textarea name="config.wzms" cols="70" rows="3" id="description">${config.wzms }</textarea>
           <span class="red">字符请用,分隔开</span></td>
     </tr>
     <tr bgcolor="#FFFFFF">
-      <td height="25" align="right">网页底部：</td>
-      <td><textarea name="config.wydb" cols="70" rows="4" id="ms">${config.wydb }</textarea>
-          <span class="red">支持HTML代码，换行请加代码：&lt;br&gt;</span></td>
+        <td width="12%" height="40" align="right">防复制功能：</td>
+        <td><input name="config.ffzgn" type="checkbox" id="fz" value="true" <c:if test="${config.ffzgn }">checked</c:if> />
+            打了√开启网站防复制功能，不打则用户可以复制网站内容。</td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+        <td height="25" align="right">开启/关闭：</td>
+        <td>
+            <input name="config.zdkqgb" type="checkbox" id="zdkqgb" value="true" <c:if test="${config.zdkqgb }">checked</c:if> />
+            打了√关闭站点访问，用户访问时提示关闭信息。
+        </td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+        <td height="25" align="right">关闭信息：</td>
+        <td>
+            <textarea name="config.gbtsxx" cols="70" rows="3">${config.gbtsxx }</textarea>
+        </td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td align="right">&nbsp;</td>
