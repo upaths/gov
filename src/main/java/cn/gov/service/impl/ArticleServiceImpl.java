@@ -36,7 +36,7 @@ public class ArticleServiceImpl implements ArticleService {
 	@Override
 	public List<Article> queryArticlesByCategoryId(Integer categoryId) {
 		ArticleExample articleExample = new ArticleExample();
-		articleExample.createCriteria().andLbEqualTo(categoryId);
+		articleExample.createCriteria().andCatIdEqualTo(categoryId);
 		articleExample.setOrderByClause("id desc");
 		return articleMapper.selectByExampleWithBLOBs(articleExample);
 	}

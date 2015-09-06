@@ -46,16 +46,18 @@ public interface ArticleMapper {
      * @mbggenerated
      */
     @Insert({
-        "insert into article (id, bt, ",
-        "lb, lrrq, xxly, ",
-        "dbt, tjw, sfxs, ",
-        "ydcs, gjc, zy, ",
-        "slt, tzlj, nr)",
-        "values (#{id,jdbcType=INTEGER}, #{bt,jdbcType=VARCHAR}, ",
-        "#{lb,jdbcType=INTEGER}, #{lrrq,jdbcType=VARCHAR}, #{xxly,jdbcType=INTEGER}, ",
-        "#{dbt,jdbcType=VARCHAR}, #{tjw,jdbcType=INTEGER}, #{sfxs,jdbcType=BIT}, ",
-        "#{ydcs,jdbcType=INTEGER}, #{gjc,jdbcType=VARCHAR}, #{zy,jdbcType=VARCHAR}, ",
-        "#{slt,jdbcType=VARCHAR}, #{tzlj,jdbcType=VARCHAR}, #{nr,jdbcType=LONGVARCHAR})"
+        "insert into article (id, title, ",
+        "cat_id, date, source_id, ",
+        "short_title, position_id, ",
+        "display, read_time, keyword, ",
+        "summary, thumb, ",
+        "url, doc, content)",
+        "values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, ",
+        "#{catId,jdbcType=INTEGER}, #{date,jdbcType=VARCHAR}, #{sourceId,jdbcType=INTEGER}, ",
+        "#{shortTitle,jdbcType=VARCHAR}, #{positionId,jdbcType=INTEGER}, ",
+        "#{display,jdbcType=BIT}, #{readTime,jdbcType=INTEGER}, #{keyword,jdbcType=VARCHAR}, ",
+        "#{summary,jdbcType=VARCHAR}, #{thumb,jdbcType=VARCHAR}, ",
+        "#{url,jdbcType=VARCHAR}, #{doc,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})"
     })
     int insert(Article record);
 
@@ -91,7 +93,8 @@ public interface ArticleMapper {
      */
     @Select({
         "select",
-        "id, bt, lb, lrrq, xxly, dbt, tjw, sfxs, ydcs, gjc, zy, slt, tzlj, nr",
+        "id, title, cat_id, date, source_id, short_title, position_id, display, read_time, ",
+        "keyword, summary, thumb, url, doc, content",
         "from article",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -138,19 +141,20 @@ public interface ArticleMapper {
      */
     @Update({
         "update article",
-        "set bt = #{bt,jdbcType=VARCHAR},",
-          "lb = #{lb,jdbcType=INTEGER},",
-          "lrrq = #{lrrq,jdbcType=VARCHAR},",
-          "xxly = #{xxly,jdbcType=INTEGER},",
-          "dbt = #{dbt,jdbcType=VARCHAR},",
-          "tjw = #{tjw,jdbcType=INTEGER},",
-          "sfxs = #{sfxs,jdbcType=BIT},",
-          "ydcs = #{ydcs,jdbcType=INTEGER},",
-          "gjc = #{gjc,jdbcType=VARCHAR},",
-          "zy = #{zy,jdbcType=VARCHAR},",
-          "slt = #{slt,jdbcType=VARCHAR},",
-          "tzlj = #{tzlj,jdbcType=VARCHAR},",
-          "nr = #{nr,jdbcType=LONGVARCHAR}",
+        "set title = #{title,jdbcType=VARCHAR},",
+          "cat_id = #{catId,jdbcType=INTEGER},",
+          "date = #{date,jdbcType=VARCHAR},",
+          "source_id = #{sourceId,jdbcType=INTEGER},",
+          "short_title = #{shortTitle,jdbcType=VARCHAR},",
+          "position_id = #{positionId,jdbcType=INTEGER},",
+          "display = #{display,jdbcType=BIT},",
+          "read_time = #{readTime,jdbcType=INTEGER},",
+          "keyword = #{keyword,jdbcType=VARCHAR},",
+          "summary = #{summary,jdbcType=VARCHAR},",
+          "thumb = #{thumb,jdbcType=VARCHAR},",
+          "url = #{url,jdbcType=VARCHAR},",
+          "doc = #{doc,jdbcType=VARCHAR},",
+          "content = #{content,jdbcType=LONGVARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKeyWithBLOBs(Article record);
@@ -163,18 +167,19 @@ public interface ArticleMapper {
      */
     @Update({
         "update article",
-        "set bt = #{bt,jdbcType=VARCHAR},",
-          "lb = #{lb,jdbcType=INTEGER},",
-          "lrrq = #{lrrq,jdbcType=VARCHAR},",
-          "xxly = #{xxly,jdbcType=INTEGER},",
-          "dbt = #{dbt,jdbcType=VARCHAR},",
-          "tjw = #{tjw,jdbcType=INTEGER},",
-          "sfxs = #{sfxs,jdbcType=BIT},",
-          "ydcs = #{ydcs,jdbcType=INTEGER},",
-          "gjc = #{gjc,jdbcType=VARCHAR},",
-          "zy = #{zy,jdbcType=VARCHAR},",
-          "slt = #{slt,jdbcType=VARCHAR},",
-          "tzlj = #{tzlj,jdbcType=VARCHAR}",
+        "set title = #{title,jdbcType=VARCHAR},",
+          "cat_id = #{catId,jdbcType=INTEGER},",
+          "date = #{date,jdbcType=VARCHAR},",
+          "source_id = #{sourceId,jdbcType=INTEGER},",
+          "short_title = #{shortTitle,jdbcType=VARCHAR},",
+          "position_id = #{positionId,jdbcType=INTEGER},",
+          "display = #{display,jdbcType=BIT},",
+          "read_time = #{readTime,jdbcType=INTEGER},",
+          "keyword = #{keyword,jdbcType=VARCHAR},",
+          "summary = #{summary,jdbcType=VARCHAR},",
+          "thumb = #{thumb,jdbcType=VARCHAR},",
+          "url = #{url,jdbcType=VARCHAR},",
+          "doc = #{doc,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Article record);

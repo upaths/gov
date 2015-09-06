@@ -47,9 +47,9 @@ public interface MessageMapper {
      */
     @Insert({
         "insert into message (id, ip, ",
-        "bt, rq, nr)",
+        "title, date, content)",
         "values (#{id,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, ",
-        "#{bt,jdbcType=VARCHAR}, #{rq,jdbcType=TIMESTAMP}, #{nr,jdbcType=LONGVARCHAR})"
+        "#{title,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})"
     })
     int insert(Message record);
 
@@ -85,7 +85,7 @@ public interface MessageMapper {
      */
     @Select({
         "select",
-        "id, ip, bt, rq, nr",
+        "id, ip, title, date, content",
         "from message",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -133,9 +133,9 @@ public interface MessageMapper {
     @Update({
         "update message",
         "set ip = #{ip,jdbcType=VARCHAR},",
-          "bt = #{bt,jdbcType=VARCHAR},",
-          "rq = #{rq,jdbcType=TIMESTAMP},",
-          "nr = #{nr,jdbcType=LONGVARCHAR}",
+          "title = #{title,jdbcType=VARCHAR},",
+          "date = #{date,jdbcType=TIMESTAMP},",
+          "content = #{content,jdbcType=LONGVARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKeyWithBLOBs(Message record);
@@ -149,8 +149,8 @@ public interface MessageMapper {
     @Update({
         "update message",
         "set ip = #{ip,jdbcType=VARCHAR},",
-          "bt = #{bt,jdbcType=VARCHAR},",
-          "rq = #{rq,jdbcType=TIMESTAMP}",
+          "title = #{title,jdbcType=VARCHAR},",
+          "date = #{date,jdbcType=TIMESTAMP}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Message record);

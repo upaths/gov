@@ -46,10 +46,10 @@ public interface LinksMapper {
      * @mbggenerated
      */
     @Insert({
-        "insert into links (id, mc, ",
-        "url, px)",
-        "values (#{id,jdbcType=INTEGER}, #{mc,jdbcType=VARCHAR}, ",
-        "#{url,jdbcType=VARCHAR}, #{px,jdbcType=INTEGER})"
+        "insert into links (id, name, ",
+        "url, sort, cat_id)",
+        "values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, ",
+        "#{url,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{catId,jdbcType=INTEGER})"
     })
     int insert(Links record);
 
@@ -77,7 +77,7 @@ public interface LinksMapper {
      */
     @Select({
         "select",
-        "id, mc, url, px",
+        "id, name, url, sort, cat_id",
         "from links",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -116,9 +116,10 @@ public interface LinksMapper {
      */
     @Update({
         "update links",
-        "set mc = #{mc,jdbcType=VARCHAR},",
+        "set name = #{name,jdbcType=VARCHAR},",
           "url = #{url,jdbcType=VARCHAR},",
-          "px = #{px,jdbcType=INTEGER}",
+          "sort = #{sort,jdbcType=INTEGER},",
+          "cat_id = #{catId,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Links record);

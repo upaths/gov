@@ -46,10 +46,10 @@ public interface SourceMapper {
      * @mbggenerated
      */
     @Insert({
-        "insert into source (id, mc, ",
-        "px)",
-        "values (#{id,jdbcType=INTEGER}, #{mc,jdbcType=VARCHAR}, ",
-        "#{px,jdbcType=INTEGER})"
+        "insert into source (id, name, ",
+        "sort)",
+        "values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, ",
+        "#{sort,jdbcType=INTEGER})"
     })
     int insert(Source record);
 
@@ -77,7 +77,7 @@ public interface SourceMapper {
      */
     @Select({
         "select",
-        "id, mc, px",
+        "id, name, sort",
         "from source",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -116,8 +116,8 @@ public interface SourceMapper {
      */
     @Update({
         "update source",
-        "set mc = #{mc,jdbcType=VARCHAR},",
-          "px = #{px,jdbcType=INTEGER}",
+        "set name = #{name,jdbcType=VARCHAR},",
+          "sort = #{sort,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Source record);

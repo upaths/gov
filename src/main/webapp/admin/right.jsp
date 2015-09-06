@@ -46,7 +46,7 @@
                     <table border="1" cellpadding="5" cellspacing="0" bordercolor="#FFFFFF"onMouseOver="this.style.borderColor='#5FBDDC';" onMouseOut="this.style.borderColor='#9FCDEC'" class="bg_q">
                     <tr>
                         <td align="center" onclick="selectResource('${item.id}');" style="width:176px; height:75px; cursor:hand; background-image: url(images/nzcms/home_${item.id}.jpg)">
-                            <div style="font-weight: bold; padding-left: 30px;">${item.mc}</div>
+                            <div style="font-weight: bold; padding-left: 30px;">${item.name}</div>
                         </td>
                     </tr>
                     </table>

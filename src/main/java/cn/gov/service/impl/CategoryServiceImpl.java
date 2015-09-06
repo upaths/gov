@@ -72,7 +72,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	private void buildCategoryJson(CategoryTree tree, StringBuffer sb) {
-		sb.append("{\"id\":\"").append(tree.getId()).append("\",\"text\":\"").append(tree.getMc()).append("\"");
+		sb.append("{\"id\":\"").append(tree.getId()).append("\",\"text\":\"").append(tree.getName()).append("\"");
 		if (tree.getCategoryType() != null && !"".equals(tree.getCategoryType())) {
 			sb.append(",\"attributes\":{\"category_type\":\"").append(tree.getCategoryType()).append("\"}");
 		}
@@ -110,7 +110,7 @@ public class CategoryServiceImpl implements CategoryService {
 			for (int i = 0; i < level; i++) {
 				prev += "&nbsp;&nbsp;&nbsp;&nbsp;";
 			}
-			tree.setMc(prev + "┣"+tree.getMc());
+			tree.setName(prev + "┣" + tree.getName());
 		}
 		categories.add(tree);
 		if (tree.getChilds() != null) {
@@ -125,21 +125,21 @@ public class CategoryServiceImpl implements CategoryService {
 	public List<Category> queryFirstLevel() {
 		CategoryExample categoryExample = new CategoryExample();
 		categoryExample.createCriteria().andParentIdIsNull();
-		categoryExample.setOrderByClause("px");
+		categoryExample.setOrderByClause("sort");
 		return categoryMapper.selectByExample(categoryExample);
 	}
 
 	public List<Category> queryChilds(Integer parentId) {
 		CategoryExample categoryExample = new CategoryExample();
 		categoryExample.createCriteria().andParentIdEqualTo(parentId);
-		categoryExample.setOrderByClause("px");
+		categoryExample.setOrderByClause("sort");
 		return categoryMapper.selectByExample(categoryExample);
 	}
 
 	
-	public Category queryByMc(String mc) {
+	public Category queryByName(String name) {
 		CategoryExample categoryExample = new CategoryExample();
-		categoryExample.createCriteria().andMcEqualTo(mc);
+		categoryExample.createCriteria().andNameEqualTo(name);
 		List<Category> list = categoryMapper.selectByExample(categoryExample);
 		return list == null || list.size() <= 0 ? null : list.get(0);
 	}

@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="page" uri="/WEB-INF/page.tld" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//
+DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -41,13 +42,13 @@
 								<td height="30" align="center"><input name="id"
 									type="checkbox" value="${item.id }" /></td>
 								<td align="center">${item.ip }</td>
-								<td align="center">${item.user }</td>
+								<td align="center">${item.username }</td>
 								<td align="center">
-									<fmt:formatDate value="${item.drsj}" type="both" pattern="yyyy-MM-dd HH:mm:ss" />
+									<fmt:formatDate value="${item.loginTime}" type="both" pattern="yyyy-MM-dd HH:mm:ss" />
 								</td>
 								<td align="center">
-									<c:if test="${item.sfcg }">成功</c:if>
-									<c:if test="${!item.sfcg }">失败</c:if>
+									<c:if test="${item.success }">成功</c:if>
+									<c:if test="${!item.success }">失败</c:if>
 								</td>
 								<td align="center">
 									<a href="log_delete.action?log.id=${item.id }" onclick="return confirm('确定删除？')">删除</a>

@@ -6,17 +6,13 @@ import java.util.Map;
 
 import cn.gov.model.Category;
 import cn.gov.model.Config;
-import cn.gov.model.Organization;
 import cn.gov.service.CategoryService;
 import cn.gov.service.ConfigService;
-import cn.gov.service.OrganizationService;
 
 public class TopAction extends BasicAction {
 	private ConfigService configService;
 	private CategoryService categoryService;
-	private OrganizationService organizationService;
 	private Map<Category, List<Category>> catMap;
-	private List<Organization> orgList;
 	private Config config;
 	
 	public String execute() {
@@ -30,7 +26,6 @@ public class TopAction extends BasicAction {
 				catMap.put(c, childs);
 			}
 		}
-		orgList = organizationService.queryFirstLevel();
 		return SUCCESS;
 	}
 
@@ -56,22 +51,6 @@ public class TopAction extends BasicAction {
 
 	public void setConfig(Config config) {
 		this.config = config;
-	}
-
-	public OrganizationService getOrganizationService() {
-		return organizationService;
-	}
-
-	public void setOrganizationService(OrganizationService organizationService) {
-		this.organizationService = organizationService;
-	}
-
-	public List<Organization> getOrgList() {
-		return orgList;
-	}
-
-	public void setOrgList(List<Organization> orgList) {
-		this.orgList = orgList;
 	}
 
 	public Map<Category, List<Category>> getCatMap() {

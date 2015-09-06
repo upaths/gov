@@ -38,7 +38,7 @@
 						<tr onMouseOver="this.bgColor='#E4EDF9';"
 							onMouseOut="this.bgColor='#FFFFFF';" bgcolor="#ffffff">
 							<td height="30" align="center">${status.count }</td>
-							<td align="center">${item.mc }</td>
+							<td align="center">${item.name }</td>
 							<td align="center">
 								<a href="position_toUpdate.action?position.id=${item.id}">修改</a>|
 								<a href="javascript:if(window.confirm('确认删除？')){window.location.href='position_delete.action?position.id=${item.id}';}void(0);">删除</a>

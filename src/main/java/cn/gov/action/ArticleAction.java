@@ -28,7 +28,7 @@ public class ArticleAction extends BasicAction {
 	private Category category;
 	private Integer articleId;
 	private Article article;
-	private String bt;
+	private String title;
 	private Integer review;
 	private List list;
 	private String sysdate;
@@ -36,6 +36,8 @@ public class ArticleAction extends BasicAction {
 	private List<Position> positionList;
 	private File image;
 	private String imageFileName;
+	private File doc;
+	private String docFileName;
 
 	/**
 	 * 文章主页面
@@ -78,11 +80,11 @@ public class ArticleAction extends BasicAction {
 		if (null != categoryId){
 			getPageBean().addParam("categoryId", categoryId.toString());
 		}
-		if (null != bt){
-			getPageBean().addParam("bt", bt);
+		if (null != title){
+			getPageBean().addParam("title", title);
 		}
 		if (null != review){
-			getPageBean().addParam("sfxs", review.toString());
+			getPageBean().addParam("display", review.toString());
 		}
 		// 设置记录总数，否则不能正确取得pageSize
 		int count = articleService.count(getPageBean().getParams());
@@ -104,7 +106,7 @@ public class ArticleAction extends BasicAction {
 		sourceList = sourceService.queryAllSource();
 		positionList = positionService.queryAllPosition();
 		category = categoryService.queryByPrimaryKey(categoryId);
-		sysdate = new SimpleDateFormat("yyyy年MM月dd日").format(new Date());
+		sysdate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
 		return "toAdd";
 	}
 
@@ -118,9 +120,13 @@ public class ArticleAction extends BasicAction {
 	public String insert() {
 		if (image != null) {
 			String url = FileUtil.uploadFile(image, imageFileName, request);
-			article.setSlt(url);
+			article.setThumb(url);
 		}
-		article.setYdcs(0);
+		if (doc != null) {
+			String url = FileUtil.uploadFile(doc, docFileName, request);
+			article.setDoc(url);
+		}
+		article.setReadTime(0);
 		articleService.insert(article);
 		category = categoryService.queryByPrimaryKey(categoryId);
 		if (CategoryEnum.PAGE.toString().equals(category.getCategoryType())) {
@@ -134,7 +140,11 @@ public class ArticleAction extends BasicAction {
 	public String update() {
 		if (image != null) {
 			String url = FileUtil.uploadFile(image, imageFileName, request);
-			article.setSlt(url);
+			article.setThumb(url);
+		}
+		if (doc != null) {
+			String url = FileUtil.uploadFile(doc, docFileName, request);
+			article.setDoc(url);
 		}
 		articleService.update(article);
 		category = categoryService.queryByPrimaryKey(categoryId);
@@ -158,7 +168,7 @@ public class ArticleAction extends BasicAction {
 	public String updateReview() {
 		articleService.updateSelective(article);
 		String msg = "审核成功！";
-		if (!article.getSfxs()) {
+		if (!article.getDisplay()) {
 			msg = "撤销审核成功！";
 		}
 		if (categoryId == null) {
@@ -212,12 +222,12 @@ public class ArticleAction extends BasicAction {
 		this.categoryId = categoryId;
 	}
 
-	public String getBt() {
-		return bt;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setBt(String bt) {
-		this.bt = bt;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public List getList() {
@@ -314,5 +324,21 @@ public class ArticleAction extends BasicAction {
 
 	public void setReview(Integer review) {
 		this.review = review;
+	}
+
+	public File getDoc() {
+		return doc;
+	}
+
+	public void setDoc(File doc) {
+		this.doc = doc;
+	}
+
+	public String getDocFileName() {
+		return docFileName;
+	}
+
+	public void setDocFileName(String docFileName) {
+		this.docFileName = docFileName;
 	}
 }

@@ -46,10 +46,10 @@ public interface PositionMapper {
      * @mbggenerated
      */
     @Insert({
-        "insert into position (id, mc, ",
-        "px)",
-        "values (#{id,jdbcType=INTEGER}, #{mc,jdbcType=VARCHAR}, ",
-        "#{px,jdbcType=INTEGER})"
+        "insert into position (id, name, ",
+        "sort)",
+        "values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, ",
+        "#{sort,jdbcType=INTEGER})"
     })
     int insert(Position record);
 
@@ -77,7 +77,7 @@ public interface PositionMapper {
      */
     @Select({
         "select",
-        "id, mc, px",
+        "id, name, sort",
         "from position",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -116,8 +116,8 @@ public interface PositionMapper {
      */
     @Update({
         "update position",
-        "set mc = #{mc,jdbcType=VARCHAR},",
-          "px = #{px,jdbcType=INTEGER}",
+        "set name = #{name,jdbcType=VARCHAR},",
+          "sort = #{sort,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Position record);

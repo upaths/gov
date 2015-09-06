@@ -5,6 +5,7 @@
 
 <struts>
 	<constant name="struts.freemarker.manager.classname" value="cn.gov.freemarker.MyFreemarkerManager" />
+	<constant name="struts.multipart.maxSize" value="104857600"></constant>
 	<package name="gov" extends="struts-default">
 		<interceptors>
 			<interceptor-stack name="appDefaultStack">
@@ -124,14 +125,7 @@
 			<result name="query">/admin/user.jsp</result>
 			<result name="toAdd">/admin/user_add.jsp</result>
 		</action>
-		
-		<!-- 机构设置 -->
-		<action name="organization_*" class="organizationAction" method="{1}">
-			<result name="toAdd">/admin/organization_add.jsp</result>
-			<result name="toUpdate">/admin/organization_update.jsp</result>
-			<result name="query">/admin/organization.jsp</result>
-		</action>
-		
+
 		<!-- 信息类别管理 -->
 		<action name="category_*" class="categoryAction" method="{1}">
 			<result name="query">/admin/category.jsp</result>
@@ -166,6 +160,11 @@
 			<result name="toAdd">/admin/position_add.jsp</result>
 			<result name="toUpdate">/admin/position_update.jsp</result>
 		</action>
+
+		<!-- 链接类型管理 -->
+		<action name="link_cat_*" class="linkCategoryAction" method="{1}">
+			<result name="query">/admin/link_category.jsp</result>
+		</action>
 		
 		<!-- 文字链接管理 -->
 		<action name="links_*" class="linksAction" method="{1}">
@@ -175,6 +174,11 @@
 		<!-- 登录日志管理 -->
 		<action name="log_*" class="logAction" method="{1}">
 			<result name="query">/admin/log.jsp</result>
+		</action>
+
+		<!-- IP禁止管理 -->
+		<action name="ip_forbid_*" class="ipForbidAction" method="{1}">
+			<result name="query">/admin/ip_forbid.jsp</result>
 		</action>
 		
 		<!-- 投诉建议 -->

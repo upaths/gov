@@ -47,9 +47,9 @@ public interface UserRoleMapper {
      */
     @Insert({
         "insert into user_role (id, username, ",
-        "roleid)",
+        "role_id)",
         "values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, ",
-        "#{roleid,jdbcType=INTEGER})"
+        "#{roleId,jdbcType=INTEGER})"
     })
     int insert(UserRole record);
 
@@ -77,7 +77,7 @@ public interface UserRoleMapper {
      */
     @Select({
         "select",
-        "id, username, roleid",
+        "id, username, role_id",
         "from user_role",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -117,7 +117,7 @@ public interface UserRoleMapper {
     @Update({
         "update user_role",
         "set username = #{username,jdbcType=VARCHAR},",
-          "roleid = #{roleid,jdbcType=INTEGER}",
+          "role_id = #{roleId,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(UserRole record);

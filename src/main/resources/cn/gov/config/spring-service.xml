@@ -14,9 +14,6 @@
 	<bean id="configService" class="cn.gov.service.impl.ConfigServiceImpl"
 		autowire="byName" />
 		
-	<bean id="organizationService" class="cn.gov.service.impl.OrganizationServiceImpl"
-		autowire="byName" />
-		
 	<bean id="categoryService" class="cn.gov.service.impl.CategoryServiceImpl"
 		autowire="byName" />
 		
@@ -37,4 +34,8 @@
 	<bean id="sourceService" class="cn.gov.service.impl.SourceServiceImpl" autowire="byName" />
 
 	<bean id="positionService" class="cn.gov.service.impl.PositionServiceImpl" autowire="byName" />
+
+	<bean id="ipForbidService" class="cn.gov.service.impl.IpForbidServiceImpl" autowire="byName" />
+
+	<bean id="linkCategoryService" class="cn.gov.service.impl.LinkCategoryServiceImpl" autowire="byName" />
 </beans>

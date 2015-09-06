@@ -46,10 +46,10 @@ public interface RoleResourceMapper {
      * @mbggenerated
      */
     @Insert({
-        "insert into role_resource (id, roleid, ",
-        "resourceid)",
-        "values (#{id,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER}, ",
-        "#{resourceid,jdbcType=INTEGER})"
+        "insert into role_resource (id, role_id, ",
+        "resource_id)",
+        "values (#{id,jdbcType=INTEGER}, #{roleId,jdbcType=INTEGER}, ",
+        "#{resourceId,jdbcType=INTEGER})"
     })
     int insert(RoleResource record);
 
@@ -77,7 +77,7 @@ public interface RoleResourceMapper {
      */
     @Select({
         "select",
-        "id, roleid, resourceid",
+        "id, role_id, resource_id",
         "from role_resource",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -116,8 +116,8 @@ public interface RoleResourceMapper {
      */
     @Update({
         "update role_resource",
-        "set roleid = #{roleid,jdbcType=INTEGER},",
-          "resourceid = #{resourceid,jdbcType=INTEGER}",
+        "set role_id = #{roleId,jdbcType=INTEGER},",
+          "resource_id = #{resourceId,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(RoleResource record);

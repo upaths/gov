@@ -16,7 +16,7 @@ public class PositionServiceImpl implements PositionService {
     @Override
     public List<Position> queryAllPosition() {
         PositionExample positionExample = new PositionExample();
-        positionExample.setOrderByClause("px");
+        positionExample.setOrderByClause("sort");
         return positionMapper.selectByExample(positionExample);
     }
 

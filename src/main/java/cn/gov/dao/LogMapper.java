@@ -47,9 +47,11 @@ public interface LogMapper {
      */
     @Insert({
         "insert into log (id, ip, ",
-        "user, drsj, sfcg)",
+        "username, login_time, ",
+        "success)",
         "values (#{id,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, ",
-        "#{user,jdbcType=VARCHAR}, #{drsj,jdbcType=TIMESTAMP}, #{sfcg,jdbcType=BIT})"
+        "#{username,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP}, ",
+        "#{success,jdbcType=BIT})"
     })
     int insert(Log record);
 
@@ -77,7 +79,7 @@ public interface LogMapper {
      */
     @Select({
         "select",
-        "id, ip, user, drsj, sfcg",
+        "id, ip, username, login_time, success",
         "from log",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -117,9 +119,9 @@ public interface LogMapper {
     @Update({
         "update log",
         "set ip = #{ip,jdbcType=VARCHAR},",
-          "user = #{user,jdbcType=VARCHAR},",
-          "drsj = #{drsj,jdbcType=TIMESTAMP},",
-          "sfcg = #{sfcg,jdbcType=BIT}",
+          "username = #{username,jdbcType=VARCHAR},",
+          "login_time = #{loginTime,jdbcType=TIMESTAMP},",
+          "success = #{success,jdbcType=BIT}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Log record);

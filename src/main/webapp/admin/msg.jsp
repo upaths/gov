@@ -36,10 +36,10 @@
 							<tr onMouseOver="this.bgColor='#E4EDF9';"
 								onMouseOut="this.bgColor='#FFFFFF';" bgcolor="#ffffff">
 								<td height="30" align="center">${status.count }</td>
-								<td align="center">${item.bt }</td>
-								<td align="center">${item.nr }</td>
+								<td align="center">${item.title }</td>
+								<td align="center">${item.content }</td>
 								<td align="center">
-									<fmt:formatDate value="${item.rq}" type="both" pattern="yyyy-MM-dd HH:mm:ss" />
+									<fmt:formatDate value="${item.date}" type="both" pattern="yyyy-MM-dd HH:mm:ss" />
 								</td>
 							</tr>
 						</c:forEach>

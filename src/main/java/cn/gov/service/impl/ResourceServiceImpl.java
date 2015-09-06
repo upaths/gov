@@ -28,22 +28,22 @@ public class ResourceServiceImpl implements ResourceService {
         }
         UserRole userRole = userRoles.get(0);
         RoleResourceExample roleResourceExample = new RoleResourceExample();
-        roleResourceExample.createCriteria().andRoleidEqualTo(userRole.getRoleid());
+        roleResourceExample.createCriteria().andRoleIdEqualTo(userRole.getRoleId());
         List<RoleResource> roleResources = roleResourceMapper.selectByExample(roleResourceExample);
         if (roleResources == null || roleResources.size() == 0) {
             return null;
         }
         List<Integer> resourceIds = new ArrayList<Integer>(roleResources.size());
         for (RoleResource roleResource : roleResources) {
-            resourceIds.add(roleResource.getResourceid());
+            resourceIds.add(roleResource.getResourceId());
         }
         ResourceExample resourceExample = new ResourceExample();
         if (resourceId == null) {
-            resourceExample.createCriteria().andIdIn(resourceIds).andParentidIsNull();
+            resourceExample.createCriteria().andIdIn(resourceIds).andParentIdIsNull();
         }else {
-            resourceExample.createCriteria().andIdIn(resourceIds).andParentidEqualTo(resourceId);
+            resourceExample.createCriteria().andIdIn(resourceIds).andParentIdEqualTo(resourceId);
         }
-        resourceExample.setOrderByClause("px asc");
+        resourceExample.setOrderByClause("sort asc");
         return resourceMapper.selectByExample(resourceExample);
     }
 

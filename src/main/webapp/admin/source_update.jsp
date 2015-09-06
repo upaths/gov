@@ -11,21 +11,21 @@
 <script type="text/javascript" src="../easyui/easyloader.js"></script>
 <script type="text/javascript">
     function check() {
-		var mc = $("#mc");
-		var px = $("#px");
-		if (mc.val() == "") {
+		var name = $("#name");
+		var sort = $("#sort");
+		if (name.val() == "") {
 			alert("来源名称不能为空！");
-			mc.focus();
+			name.focus();
 			return;
 		}
-		if (px.val() == "") {
+		if (sort.val() == "") {
 			alert("来源序号不能为空！");
-			px.focus();
+			sort.focus();
 			return;
 		}
-        if (isNaN(px.val())) {
+        if (isNaN(sort.val())) {
             alert("顺序请输入数字！");
-            px.select();
+            sort.select();
             return;
         }
 		$("#myform").submit();
@@ -54,12 +54,12 @@
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="30" align="center" bgcolor="#E4EDF9" >来源名称：</td>
-      <td height="30" valign="middle" class="gray" ><input name="source.mc" id="mc" type="text" size="50" value="${source.mc}">
+      <td height="30" valign="middle" class="gray" ><input name="source.name" id="name" type="text" size="50" value="${source.name}">
       <font color="red">*</font></td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="30" align="center" bgcolor="#E4EDF9" >来源序号：</td>
-      <td height="30"><input name="source.px" id="px" type="text" value="${source.px}" />
+      <td height="30"><input name="source.sort" id="sort" type="text" value="${source.sort}" />
           <font color="red">*</font>&nbsp;&nbsp;<font color="gray">根据来源序号进行排序</font></td>
     </tr>
     <tr bgcolor="#FFFFFF">

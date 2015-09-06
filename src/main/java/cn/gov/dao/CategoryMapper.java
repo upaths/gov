@@ -46,12 +46,14 @@ public interface CategoryMapper {
      * @mbggenerated
      */
     @Insert({
-        "insert into category (id, mc, ",
-        "parent_id, px, category_type, ",
-        "display, url)",
-        "values (#{id,jdbcType=INTEGER}, #{mc,jdbcType=VARCHAR}, ",
-        "#{parentId,jdbcType=INTEGER}, #{px,jdbcType=INTEGER}, #{categoryType,jdbcType=VARCHAR}, ",
-        "#{display,jdbcType=BIT}, #{url,jdbcType=VARCHAR})"
+        "insert into category (id, name, ",
+        "parent_id, sort, ",
+        "category_type, display, ",
+        "url)",
+        "values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, ",
+        "#{parentId,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, ",
+        "#{categoryType,jdbcType=VARCHAR}, #{display,jdbcType=BIT}, ",
+        "#{url,jdbcType=VARCHAR})"
     })
     int insert(Category record);
 
@@ -79,7 +81,7 @@ public interface CategoryMapper {
      */
     @Select({
         "select",
-        "id, mc, parent_id, px, category_type, display, url",
+        "id, name, parent_id, sort, category_type, display, url",
         "from category",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -118,9 +120,9 @@ public interface CategoryMapper {
      */
     @Update({
         "update category",
-        "set mc = #{mc,jdbcType=VARCHAR},",
+        "set name = #{name,jdbcType=VARCHAR},",
           "parent_id = #{parentId,jdbcType=INTEGER},",
-          "px = #{px,jdbcType=INTEGER},",
+          "sort = #{sort,jdbcType=INTEGER},",
           "category_type = #{categoryType,jdbcType=VARCHAR},",
           "display = #{display,jdbcType=BIT},",
           "url = #{url,jdbcType=VARCHAR}",

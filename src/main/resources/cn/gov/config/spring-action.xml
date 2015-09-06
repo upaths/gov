@@ -19,10 +19,7 @@
 		
 	<bean id="configAction" class="cn.gov.action.ConfigAction"
 		scope="prototype" autowire="byName" />
-		
-	<bean id="organizationAction" class="cn.gov.action.OrganizationAction"
-		scope="prototype" autowire="byName" />
-		
+
 	<bean id="categoryAction" class="cn.gov.action.CategoryAction"
 		scope="prototype" autowire="byName" />
 		
@@ -54,5 +51,11 @@
 		  scope="prototype" autowire="byName" />
 
 	<bean id="positionAction" class="cn.gov.action.PositionAction"
+		  scope="prototype" autowire="byName" />
+
+	<bean id="ipForbidAction" class="cn.gov.action.IpForbidAction"
+		  scope="prototype" autowire="byName" />
+
+	<bean id="linkCategoryAction" class="cn.gov.action.LinkCategoryAction"
 		  scope="prototype" autowire="byName" />
 </beans>

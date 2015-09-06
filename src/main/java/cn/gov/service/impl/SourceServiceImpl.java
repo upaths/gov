@@ -16,7 +16,7 @@ public class SourceServiceImpl implements SourceService {
     @Override
     public List<Source> queryAllSource() {
         SourceExample sourceExample = new SourceExample();
-        sourceExample.setOrderByClause("px");
+        sourceExample.setOrderByClause("sort");
         return this.sourceMapper.selectByExample(sourceExample);
     }
 

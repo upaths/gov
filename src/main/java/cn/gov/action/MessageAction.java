@@ -38,7 +38,7 @@ public class MessageAction extends BasicAction {
 	
 	public String insert() {
 		message.setIp(IpUtil.getClientIp(request));
-		message.setRq(new Date());
+		message.setDate(new Date());
 		messageService.insert(message);
 		AlertUtil.alertThenGo(response, "留言成功，我们会尽快与您联系！", "message.jsp");
 		return null;

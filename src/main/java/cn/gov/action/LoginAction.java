@@ -19,10 +19,10 @@ public class LoginAction extends BasicAction {
 	@SuppressWarnings("unchecked")
 	public String execute() {
 		Log log = new Log();
-		log.setUser(username);
+		log.setUsername(username);
 		log.setIp(IpUtil.getClientIp(request));
-		log.setDrsj(new Date());
-		log.setSfcg(false);
+		log.setLoginTime(new Date());
+		log.setSuccess(false);
 		String isSuc = LOGIN;
 		// 从session中取出RandomAction.java 中生成的验证码random
 		String arandom = (String) (ActionContext.getContext().getSession().get("random"));
@@ -30,7 +30,7 @@ public class LoginAction extends BasicAction {
 		if (rand != null && rand.equals(arandom)) {
 			if (userService.check(username, password)) {
 				ActionContext.getContext().getSession().put("user", username);
-				log.setSfcg(true);
+				log.setSuccess(true);
 				isSuc = SUCCESS;
 			}
 		}

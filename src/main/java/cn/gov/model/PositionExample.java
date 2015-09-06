@@ -254,133 +254,133 @@ public class PositionExample {
             return (Criteria) this;
         }
 
-        public Criteria andMcIsNull() {
-            addCriterion("mc is null");
+        public Criteria andNameIsNull() {
+            addCriterion("name is null");
             return (Criteria) this;
         }
 
-        public Criteria andMcIsNotNull() {
-            addCriterion("mc is not null");
+        public Criteria andNameIsNotNull() {
+            addCriterion("name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMcEqualTo(String value) {
-            addCriterion("mc =", value, "mc");
+        public Criteria andNameEqualTo(String value) {
+            addCriterion("name =", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMcNotEqualTo(String value) {
-            addCriterion("mc <>", value, "mc");
+        public Criteria andNameNotEqualTo(String value) {
+            addCriterion("name <>", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMcGreaterThan(String value) {
-            addCriterion("mc >", value, "mc");
+        public Criteria andNameGreaterThan(String value) {
+            addCriterion("name >", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMcGreaterThanOrEqualTo(String value) {
-            addCriterion("mc >=", value, "mc");
+        public Criteria andNameGreaterThanOrEqualTo(String value) {
+            addCriterion("name >=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMcLessThan(String value) {
-            addCriterion("mc <", value, "mc");
+        public Criteria andNameLessThan(String value) {
+            addCriterion("name <", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMcLessThanOrEqualTo(String value) {
-            addCriterion("mc <=", value, "mc");
+        public Criteria andNameLessThanOrEqualTo(String value) {
+            addCriterion("name <=", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMcLike(String value) {
-            addCriterion("mc like", value, "mc");
+        public Criteria andNameLike(String value) {
+            addCriterion("name like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMcNotLike(String value) {
-            addCriterion("mc not like", value, "mc");
+        public Criteria andNameNotLike(String value) {
+            addCriterion("name not like", value, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMcIn(List<String> values) {
-            addCriterion("mc in", values, "mc");
+        public Criteria andNameIn(List<String> values) {
+            addCriterion("name in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMcNotIn(List<String> values) {
-            addCriterion("mc not in", values, "mc");
+        public Criteria andNameNotIn(List<String> values) {
+            addCriterion("name not in", values, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMcBetween(String value1, String value2) {
-            addCriterion("mc between", value1, value2, "mc");
+        public Criteria andNameBetween(String value1, String value2) {
+            addCriterion("name between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andMcNotBetween(String value1, String value2) {
-            addCriterion("mc not between", value1, value2, "mc");
+        public Criteria andNameNotBetween(String value1, String value2) {
+            addCriterion("name not between", value1, value2, "name");
             return (Criteria) this;
         }
 
-        public Criteria andPxIsNull() {
-            addCriterion("px is null");
+        public Criteria andSortIsNull() {
+            addCriterion("sort is null");
             return (Criteria) this;
         }
 
-        public Criteria andPxIsNotNull() {
-            addCriterion("px is not null");
+        public Criteria andSortIsNotNull() {
+            addCriterion("sort is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPxEqualTo(Integer value) {
-            addCriterion("px =", value, "px");
+        public Criteria andSortEqualTo(Integer value) {
+            addCriterion("sort =", value, "sort");
             return (Criteria) this;
         }
 
-        public Criteria andPxNotEqualTo(Integer value) {
-            addCriterion("px <>", value, "px");
+        public Criteria andSortNotEqualTo(Integer value) {
+            addCriterion("sort <>", value, "sort");
             return (Criteria) this;
         }
 
-        public Criteria andPxGreaterThan(Integer value) {
-            addCriterion("px >", value, "px");
+        public Criteria andSortGreaterThan(Integer value) {
+            addCriterion("sort >", value, "sort");
             return (Criteria) this;
         }
 
-        public Criteria andPxGreaterThanOrEqualTo(Integer value) {
-            addCriterion("px >=", value, "px");
+        public Criteria andSortGreaterThanOrEqualTo(Integer value) {
+            addCriterion("sort >=", value, "sort");
             return (Criteria) this;
         }
 
-        public Criteria andPxLessThan(Integer value) {
-            addCriterion("px <", value, "px");
+        public Criteria andSortLessThan(Integer value) {
+            addCriterion("sort <", value, "sort");
             return (Criteria) this;
         }
 
-        public Criteria andPxLessThanOrEqualTo(Integer value) {
-            addCriterion("px <=", value, "px");
+        public Criteria andSortLessThanOrEqualTo(Integer value) {
+            addCriterion("sort <=", value, "sort");
             return (Criteria) this;
         }
 
-        public Criteria andPxIn(List<Integer> values) {
-            addCriterion("px in", values, "px");
+        public Criteria andSortIn(List<Integer> values) {
+            addCriterion("sort in", values, "sort");
             return (Criteria) this;
         }
 
-        public Criteria andPxNotIn(List<Integer> values) {
-            addCriterion("px not in", values, "px");
+        public Criteria andSortNotIn(List<Integer> values) {
+            addCriterion("sort not in", values, "sort");
             return (Criteria) this;
         }
 
-        public Criteria andPxBetween(Integer value1, Integer value2) {
-            addCriterion("px between", value1, value2, "px");
+        public Criteria andSortBetween(Integer value1, Integer value2) {
+            addCriterion("sort between", value1, value2, "sort");
             return (Criteria) this;
         }
 
-        public Criteria andPxNotBetween(Integer value1, Integer value2) {
-            addCriterion("px not between", value1, value2, "px");
+        public Criteria andSortNotBetween(Integer value1, Integer value2) {
+            addCriterion("sort not between", value1, value2, "sort");
             return (Criteria) this;
         }
     }

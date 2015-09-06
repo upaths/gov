@@ -40,6 +40,8 @@
 							url = "article_query.action?categoryId="+node.id;
 						}else if (node.attributes.category_type == "4") {
 							url = "article_query.action?categoryId="+node.id;
+						}else if (node.attributes.category_type == "5") {
+							url = "article_query.action?categoryId="+node.id;
 						}
 	            		$('#article_right', window.parent.document).attr("src", "${pageContext.request.contextPath}/admin/"+url);
 	            	}

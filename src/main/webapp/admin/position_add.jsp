@@ -11,21 +11,21 @@
 <script type="text/javascript" src="../easyui/easyloader.js"></script>
 <script type="text/javascript">
     function check() {
-		var mc = $("#mc");
-		var px = $("#px");
-		if (mc.val() == "") {
+		var name = $("#name");
+		var sort = $("#sort");
+		if (name.val() == "") {
 			alert("推荐位名称不能为空！");
-			mc.focus();
+			name.focus();
 			return;
 		}
-		if (px.val() == "") {
+		if (sort.val() == "") {
 			alert("推荐位序号不能为空！");
-			px.focus();
+			sort.focus();
 			return;
 		}
-        if (isNaN(px.val())) {
+        if (isNaN(sort.val())) {
             alert("顺序请输入数字！");
-            px.select();
+            sort.select();
             return;
         }
 		$("#myform").submit();
@@ -53,12 +53,12 @@
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="30" align="center" bgcolor="#E4EDF9" >推荐位名称：</td>
-      <td height="30" valign="middle" class="gray" ><input name="position.mc" id="mc" type="text" size="50">
+      <td height="30" valign="middle" class="gray" ><input name="position.name" id="name" type="text" size="50">
       <font color="red">*</font></td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="30" align="center" bgcolor="#E4EDF9" >推荐位序号：</td>
-      <td height="30"><input name="position.px" id="px" type="text" value="" />
+      <td height="30"><input name="position.sort" id="sort" type="text" value="" />
           <font color="red">*</font>&nbsp;&nbsp;<font color="gray">根据推荐位序号进行排序</font></td>
     </tr>
     <tr bgcolor="#FFFFFF">

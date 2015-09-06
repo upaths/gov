@@ -27,5 +27,5 @@ public interface CategoryService {
 
 	public Category queryByPrimaryKey(Integer id);
 	
-	public Category queryByMc(String mc);
+	public Category queryByName(String mc);
 }

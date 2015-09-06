@@ -25,7 +25,7 @@
 							<td align="left" style="padding-left: 10px;">
 							<strong>内容审核</strong>
        						&nbsp;标题：
-								<input name="bt" type="text" id="bt" size="15" value="${bt }" />
+								<input name="title" type="text" id="title" size="15" value="${title }" />
 								<input type="submit" name="Submit2" value="搜索" id="Submit" />
 							</td>
 						</tr>
@@ -51,7 +51,7 @@
 						onMouseOut="this.bgColor='#FFFFFF';" bgcolor="#ffffff">
 						<td height="30" align="center"><font class="sidebarblock">
 						<c:choose>
-							<c:when test="${item.sfxs }">
+							<c:when test="${item.display }">
 								<img src="images/dui.png" alt="已审核" />
 							</c:when>
 							<c:otherwise>
@@ -60,23 +60,23 @@
 						</c:choose>
 						</font></td>
 						<td>
-							&nbsp;<a href="../showNews.action?article.id=${item.id }" target="_blank">${item.bt }</a>
-							<c:if test="${!(empty item.slt) }">
+							&nbsp;<a href="../showNews.action?article.id=${item.id }" target="_blank">${item.title }</a>
+							<c:if test="${!(empty item.thumb) }">
 								<img src="../images/type_img.png" alt="图" />
 							</c:if>
 						</td>
-						<td align="center">&nbsp;${item.dbt }</td>
-						<td align="center">&nbsp;${item.lbmc }</td>
-						<td align="center">&nbsp;${item.xxlymc }</td>
-						<td align="center">&nbsp;${item.lrrq }</td>
-						<td align="center">&nbsp;${item.tjwmc }</td>
+						<td align="center">&nbsp;${item.short_title }</td>
+						<td align="center">&nbsp;${item.cat_name }</td>
+						<td align="center">&nbsp;${item.source_name }</td>
+						<td align="center">&nbsp;${item.date }</td>
+						<td align="center">&nbsp;${item.position_name }</td>
 						<td align="center">
 							<c:choose>
 								<c:when test="${item.sfxs }">
-									<a href="javascript:if(confirm('确定撤销审核？')){window.location.href='article_updateReview.action?article.id=${item.id }&article.sfxs=false';}void(0);"><font class="red">撤销</font></a>
+									<a href="javascript:if(confirm('确定撤销审核？')){window.location.href='article_updateReview.action?article.id=${item.id }&article.display=false';}void(0);"><font class="red">撤销</font></a>
 								</c:when>
 								<c:otherwise>
-									<a href="javascript:window.location.href='article_updateReview.action?article.id=${item.id }&article.sfxs=true';void(0);">审核</a>
+									<a href="javascript:window.location.href='article_updateReview.action?article.id=${item.id }&article.display=true';void(0);">审核</a>
 								</c:otherwise>
 							</c:choose>
 						</td>

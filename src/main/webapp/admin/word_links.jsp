@@ -7,10 +7,10 @@
 <link href="../css/admin_css.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 function check(form) {
-	var mc = form["links.mc"];
+	var name = form["links.name"];
 	var url = form["links.url"];
-	var px = form["links.px"];
-	if (mc.value == "") {
+	var sort = form["links.sort"];
+	if (name.value == "") {
 		alert("网站名称不能为空！");
 		return false;
 	}
@@ -18,11 +18,11 @@ function check(form) {
 		alert("网站地址不能为空！");
 		return false;
 	}
-	if (px.value == "") {
+	if (sort.value == "") {
 		alert("顺序不能为空！");
 		return false;
 	}
-	if (isNaN(px.value)) {
+	if (isNaN(sort.value)) {
 		alert("顺序请输入数字！");
 		return false;
 	}
@@ -39,22 +39,34 @@ function check(form) {
 <table width="100%" border="1" align="center" cellpadding="0" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#C4D8ED" class="tableBorder">
   <form action="links_insert.action" method="post" id="form0" onsubmit="return check(this)">
     <tr>
-      <td height="40" colspan="4" align="center" class="nzcms_table_top" >添加文字链接</td>
+      <td height="40" colspan="5" align="center" class="nzcms_table_top" >
+        <input type="button" value="链接类型管理" style="float: right;position:relative;right:20px;padding:0 10px;color:red;" onclick="window.location.href='link_cat_query.action'">
+        添加文字链接
+      </td>
     </tr>
     <tr bgcolor="#F9F9F9">
       <td height="20" align="center" class="nzcms_table_top2">网站名称 </td>
+      <td align="center" bgcolor="#F9F9F9" class="nzcms_table_top2">链接类型 </td>
       <td align="center" bgcolor="#F9F9F9" class="nzcms_table_top2">网站地址 </td>
       <td width="7%" align="center" class="nzcms_table_top2">排 序 </td>
       <td width="15%" align="center" class="nzcms_table_top2">操 作 </td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="30" align="center" bgcolor="#FFFFFF">
-      	<input name="links.mc" type="text" id="mc" />
+      	<input name="links.name" type="text" id="name" />
       </td>
       <td align="center" bgcolor="#FFFFFF">
-      	<input name="links.url" type="text" id="url" size="50" />
+        <select name="links.lb">
+          <c:forEach items="${linkCategoryList}" var="lb">
+            <option value="${lb.id}">${lb.name}</option>
+          </c:forEach>
+        </select>
+      </td>
       <td align="center" bgcolor="#FFFFFF">
-      	<input name="links.px" type="text" id="px" value="${px }" size="3" />
+        <input name="links.url" type="text" id="url" size="50" />
+      </td>
+      <td align="center" bgcolor="#FFFFFF">
+      	<input name="links.sort" type="text" id="sort" value="${sort }" size="3" />
       </td>
       <td align="center" bgcolor="#FFFFFF">
       	<input name="Submit2" type="submit" class="button" value="添加" />
@@ -70,10 +82,11 @@ function check(form) {
 <c:if test="${!empty list }">
 <table width="100%" border="1" align="center" cellpadding="0" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#C4D8ED" class="tableBorder" id="2">
   <tr>
-    <td height="40" colspan="5" align="center" class="nzcms_table_top" >文字链接列表</td>
+    <td height="40" colspan="6" align="center" class="nzcms_table_top" >文字链接列表</td>
   </tr>
   <tr bgcolor="#f9f9f9">
     <td align="center" class="nzcms_table_top2">网站名称</td>
+    <td align="center" bgcolor="#F9F9F9" class="nzcms_table_top2">链接类型 </td>
     <td align="center" bgcolor="#f9f9f9" class="nzcms_table_top2">网站地址</td>
     <td width="7%" align="center" class="nzcms_table_top2">排 序</td>
     <td width="7%" align="center" class="nzcms_table_top2">修改</td>
@@ -84,10 +97,17 @@ function check(form) {
     <form method="post" action="links_update.action" onsubmit="return check(this)">
       <td height="40" align="center" bgcolor="#FFFFFF">
       	<input name="links.id" type="hidden" value="${item.id }">
-      	<input name="links.mc" type="text" value="${item.mc }">
+      	<input name="links.name" type="text" value="${item.name }">
+      </td>
+      <td align="center" bgcolor="#FFFFFF">
+        <select name="links.cat_id">
+          <c:forEach items="${linkCategoryList}" var="cat">
+            <option value="${cat.id}" <c:if test="${item.catId == cat.id}">selected</c:if>>${cat.name}</option>
+          </c:forEach>
+        </select>
       </td>
       <td align="center" bgcolor="#FFFFFF"><input name="links.url" type="text" value="${item.url }" size="50"></td>
-      <td height="40" align="center" bgcolor="#FFFFFF"><input name="links.px" type="text" value="${item.px }" size="3"></td>
+      <td height="40" align="center" bgcolor="#FFFFFF"><input name="links.sort" type="text" value="${item.sort }" size="3"></td>
       <td height="40" align="center" bgcolor="#FFFFFF"><input name="Submit" type="submit" class="button" value="修改"></td>
       <td height="40" align="center" bgcolor="#FFFFFF"><a href="links_delete.action?links.id=${item.id }" onclick="return confirm('确定删除？')"><font color="#FF0000">删除</font></a></td>
     </form>

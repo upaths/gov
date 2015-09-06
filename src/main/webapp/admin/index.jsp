@@ -60,9 +60,6 @@ a:active {
 	font-size: 10px;
 	color: #2A33A8;
 }
-.14 {	font-size: 14px;
-	font-weight: bold;
-}
 .zx {
 	border-right-width: 1px;
 	border-right-style: solid;

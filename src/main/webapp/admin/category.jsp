@@ -9,17 +9,17 @@
 <script type="text/javascript" src="../script/script.js"></script>
 <script type="text/javascript">
 	function check() {
-		var mc = $("#mc");
-		var px = $("#px");
-		if (mc.val() == "") {
+		var name = $("#name");
+		var sort = $("#sort");
+		if (name.val() == "") {
 			alert("类别名称不能为空！");
 			return false;
 		}
-		if (px.val() == "") {
+		if (sort.val() == "") {
 			alert("顺序不能为空！");
 			return false;
 		}
-		if (isNaN(px.val())) {
+		if (isNaN(sort.val())) {
 			alert("顺序请输入数字！");
 			return false;
 		}
@@ -27,13 +27,13 @@
 	}
 	
 	function go(i, c, action) {
-		var mc = $("#mc");
+		var name = $("#name");
 		var parentId = $("#parentId");
-		var px = $("#px");
+		var sort = $("#sort");
 		var id = $("#id");
-		mc.val($("#mc_"+i+"_"+c).val());
+		name.val($("#mc_"+i+"_"+c).val());
 		parentId.val($("#parentId_"+i+"_"+c).val());
-		px.val($("#px_"+i+"_"+c).val());
+		sort.val($("#px_"+i+"_"+c).val());
 		if ($("#id_"+i+"_"+c)) {
 			id.val($("#id_"+i+"_"+c).val());
 		}
@@ -52,9 +52,9 @@
 	<form name="myform" id="myform" method="post" action=""
 		style="margin: 0;">
 		<input type="hidden" name="category.id" id="id" />
-		<input type="hidden" name="category.mc" id="mc" />
+		<input type="hidden" name="category.name" id="name" />
 		<input type="hidden" name="category.parentId" id="parentId" />
-		<input type="hidden" name="category.px" id="px" />
+		<input type="hidden" name="category.sort" id="sort" />
 	</form>
 	<table width="0" height="6" border="0" cellpadding="0" cellspacing="0">
 		<tr>
@@ -80,18 +80,19 @@
 				<c:forEach items="${list }" var="item" varStatus="status">
 					<table width="100%" border="0" cellpadding="0" cellspacing="0" class="xux">
 						<tr>
-							<td height="35" align="left" valign="middle">&nbsp;&nbsp;${item.mc }</td>
+							<td height="35" align="left" valign="middle">&nbsp;&nbsp;${item.name }</td>
 							<td width="10%" align="center" valign="middle">
 								<c:if test="${item.categoryType eq '1'}">栏目</c:if>
 								<c:if test="${item.categoryType eq '2'}">单页</c:if>
 								<c:if test="${item.categoryType eq '3'}">专题</c:if>
 								<c:if test="${item.categoryType eq '4'}">外链</c:if>
+								<c:if test="${item.categoryType eq '5'}">文件</c:if>
 							</td>
 							<td width="10%" align="center" valign="middle">
 								<c:if test="${!item.display }">不显示</c:if>
 								<c:if test="${item.display }">显示</c:if>
 							</td>
-							<td width="10%" align="center" valign="middle">${item.px }</td>
+							<td width="10%" align="center" valign="middle">${item.sort }</td>
 							<td width="15%" align="center" valign="middle">
 								<a href="category_toAdd.action?type=${item.categoryType}&parentId=${item.id}">增加子栏目</a>|
 								<a href="category_toUpdate.action?id=${item.id}">修改</a>|

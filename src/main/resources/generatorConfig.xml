@@ -146,7 +146,6 @@
         <table tableName="links" schema="gov"></table>
         <table tableName="log" schema="gov"></table>
         <table tableName="message" schema="gov"></table>
-        <table tableName="organization" schema="gov"></table>
         <table tableName="user" schema="gov"></table>
         <table tableName="resource" schema="gov"></table>
         <table tableName="role" schema="gov"></table>
@@ -154,5 +153,7 @@
         <table tableName="role_resource" schema="gov"></table>
         <table tableName="source" schema="gov"></table>
         <table tableName="position" schema="gov"></table>
+        <table tableName="ip_forbid" schema="gov"></table>
+        <table tableName="link_category" schema="gov"></table>
     </context>
 </generatorConfiguration>

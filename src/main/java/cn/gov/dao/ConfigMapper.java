@@ -30,14 +30,16 @@ public interface ConfigMapper {
      * @mbggenerated
      */
     @Insert({
-        "insert into config (zdm, ym, ",
-        "bah, bqxx, zdkqgb, ",
-        "gbtsxx, wzbt, gjzc, ",
-        "wzms, ffzgn)",
-        "values (#{zdm,jdbcType=VARCHAR}, #{ym,jdbcType=VARCHAR}, ",
-        "#{bah,jdbcType=VARCHAR}, #{bqxx,jdbcType=VARCHAR}, #{zdkqgb,jdbcType=BIT}, ",
-        "#{gbtsxx,jdbcType=VARCHAR}, #{wzbt,jdbcType=VARCHAR}, #{gjzc,jdbcType=VARCHAR}, ",
-        "#{wzms,jdbcType=VARCHAR}, #{ffzgn,jdbcType=BIT})"
+        "insert into config (name, domain_name, ",
+        "filing_num, copyright, ",
+        "toggle, close_info, title, ",
+        "keyword, description, ",
+        "prevent_copy)",
+        "values (#{name,jdbcType=VARCHAR}, #{domainName,jdbcType=VARCHAR}, ",
+        "#{filingNum,jdbcType=VARCHAR}, #{copyright,jdbcType=VARCHAR}, ",
+        "#{toggle,jdbcType=BIT}, #{closeInfo,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, ",
+        "#{keyword,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, ",
+        "#{preventCopy,jdbcType=BIT})"
     })
     int insert(Config record);
 

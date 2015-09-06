@@ -46,10 +46,10 @@ public interface ResourceMapper {
      * @mbggenerated
      */
     @Insert({
-        "insert into resource (id, mc, ",
-        "url, parentid, px)",
-        "values (#{id,jdbcType=INTEGER}, #{mc,jdbcType=VARCHAR}, ",
-        "#{url,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, #{px,jdbcType=INTEGER})"
+        "insert into resource (id, name, ",
+        "url, parent_id, sort)",
+        "values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, ",
+        "#{url,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER})"
     })
     int insert(Resource record);
 
@@ -77,7 +77,7 @@ public interface ResourceMapper {
      */
     @Select({
         "select",
-        "id, mc, url, parentid, px",
+        "id, name, url, parent_id, sort",
         "from resource",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -116,10 +116,10 @@ public interface ResourceMapper {
      */
     @Update({
         "update resource",
-        "set mc = #{mc,jdbcType=VARCHAR},",
+        "set name = #{name,jdbcType=VARCHAR},",
           "url = #{url,jdbcType=VARCHAR},",
-          "parentid = #{parentid,jdbcType=INTEGER},",
-          "px = #{px,jdbcType=INTEGER}",
+          "parent_id = #{parentId,jdbcType=INTEGER},",
+          "sort = #{sort,jdbcType=INTEGER}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Resource record);

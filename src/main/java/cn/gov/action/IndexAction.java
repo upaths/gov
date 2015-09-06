@@ -36,11 +36,11 @@ public class IndexAction extends BasicAction {
 
 	@SuppressWarnings("unchecked")
 	public String execute() {
-		tpxw = categoryService.queryByMc("图片新闻");
-		syxw = categoryService.queryByMc("质监新闻");
-		tzgg = categoryService.queryByMc("通知公告");
-		zwgk = categoryService.queryByMc("政务公开");
-		zcfg = categoryService.queryByMc("政策法规");
+		tpxw = categoryService.queryByName("图片新闻");
+		syxw = categoryService.queryByName("质监新闻");
+		tzgg = categoryService.queryByName("通知公告");
+		zwgk = categoryService.queryByName("政务公开");
+		zcfg = categoryService.queryByName("政策法规");
 		Map map = new HashMap();
 		if (tpxw != null) {
 			map.put("num", 7);

@@ -40,7 +40,7 @@
       <tr>
         <td width="70" id="resource_home" align="center" class="top_hover" onclick="javascript:selectResource('home');void(0);">后台首页</td>
         <c:forEach items="${resourceList}" var="item" varStatus="status">
-          <td width="70" id="resource_${item.id}" align="center" class="top_link" onclick="javascript:selectResource('${item.id}');void(0);">${item.mc}</td>
+          <td width="70" id="resource_${item.id}" align="center" class="top_link" onclick="javascript:selectResource('${item.id}');void(0);">${item.name}</td>
         </c:forEach>
         <td width="70" align="center">&nbsp;</td>
         <td width="70" align="center"><img src="images/help.gif" alt="帮助" border="0"></td>

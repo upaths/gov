@@ -9,48 +9,52 @@
     <script charset="utf-8" src="editor/kindeditor-min.js"></script>
     <script charset="utf-8" src="editor/lang/zh_CN.js"></script>
     <script>
+        <c:if test="${category.categoryType == '1' || category.categoryType == '2' || category.categoryType == '3'}">
         var editor;
         $(function() {
-            editor = KindEditor.create('textarea[name="article.nr"]', {
+            editor = KindEditor.create('textarea[name="article.content"]', {
                 cssPath : 'editor/plugins/code/prettify.css',
                 uploadJson : 'upload_json.jsp',
                 fileManagerJson : 'file_manager_json.jsp',
                 allowFileManager : true
             });
         });
+        </c:if>
         function check() {
-            var bt = $("#bt");
-            var lb = $("#lb");
-            var lrrq = $("#lrrq");
-            var nr = $("#nr");
-            var tzlj = $("#tzlj");
-            nr.val(editor.html());
-            if (bt.val() == "") {
+            var title = $("#title");
+            var date = $("#date");
+            if (title.val() == "") {
                 alert("标题不能为空！");
-                bt.focus();
+                title.focus();
                 return;
             }
-            if (lb.val() == "") {
-                alert("类别不能为空！");
-                lb.focus();
-                return;
-            }
-            if (lrrq.val() == "") {
+            if (date.val() == "") {
                 alert("时间不能为空！");
-                lrrq.focus();
+                date.focus();
                 return;
             }
-            <c:if test="${categoryId != 4}">
-            if (nr.val() == "") {
+            <c:if test="${category.categoryType == '1' || category.categoryType == '2' || category.categoryType == '3'}">
+            var content = $("#content");
+            content.val(editor.html());
+            if (content.val() == "") {
                 alert("内容不能为空！");
-                nr.focus();
+                content.focus();
                 return;
             }
             </c:if>
-            <c:if test="${categoryId == 4}">
-            if (tzlj.val() == "") {
+            <c:if test="${category.categoryType == '4'}">
+            var url = $("#url");
+            if (url.val() == "") {
                 alert("跳转链接不能为空！");
-                tzlj.focus();
+                url.focus();
+                return;
+            }
+            </c:if>
+            <c:if test="${category.categoryType == '5'}">
+            var doc = $("#doc");
+            if (doc.val() == "") {
+                alert("文件不能为空！");
+                doc.focus();
                 return;
             }
             </c:if>
@@ -70,7 +74,7 @@
     <table width="100%"  border="1" align="center" cellpadding="5" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#C4D8ED">
         <tr bgcolor="#D2E8F6">
             <td height="40" align="center" class="nzcms_table_top" ><a href="javascript:$('#news').toggle();void(0);">说明书<img src="images/help.png" alt="问" border="0" /></a></td>
-            <td height="40" align="center" class="nzcms_table_top" >${category.mc}</td>
+            <td height="40" align="center" class="nzcms_table_top" >${category.name}</td>
         </tr>
         <tr bgcolor="#D2E8F6">
             <td height="40" colspan="2" align="left" class="zfb"  id='news' style='DISPLAY:none '>
@@ -79,34 +83,34 @@
         </tr>
         <tr bgcolor="#FFFFFF">
             <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >标题：</td>
-            <td height="30" class="gray"><input name="article.bt" type="text" id="bt" size="50" maxlength="100" value="${article.bt}"/>
+            <td height="30" class="gray"><input name="article.title" type="text" id="title" size="50" maxlength="100" value="${article.title}"/>
                 <font color="red">*</font> 信息标题
-                <input type="hidden" name="article.lb" value="${article.lb}" />
+                <input type="hidden" name="article.catId" value="${article.catId}" />
             </td>
         </tr>
         <tr bgcolor="#FFFFFF">
             <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >短标题：</td>
-            <td height="30" class="gray"><input name="article.dbt" type="text" id="dbt" size="30" maxlength="50" value="${article.dbt}"/>
+            <td height="30" class="gray"><input name="article.shortTitle" type="text" id="shortTitle" size="30" maxlength="50" value="${article.shortTitle}"/>
                 信息短标题
             </td>
         </tr>
         <tr bgcolor="#FFFFFF">
             <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >关键词：</td>
-            <td height="30"><input name="article.gjc" type="text" id="gjc" size="50" maxlength="100" value="${article.gjc}" />
+            <td height="30"><input name="article.keyword" type="text" id="keyword" size="50" maxlength="100" value="${article.keyword}" />
                 <FONT color=gray></FONT></td>
         </tr>
         <tr bgcolor="#FFFFFF">
             <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >摘要：</td>
-            <td height="30"><input name="article.zy" type="text" id="zy" size="50" maxlength="100" value="${article.zy}" />
+            <td height="30"><input name="article.summary" type="text" id="summary" size="50" maxlength="100" value="${article.summary}" />
                 <FONT color=gray></FONT></td>
         </tr>
         <tr bgcolor="#FFFFFF">
             <td height="30" align="center" bgcolor="#E4EDF9" >来源：</td>
             <td height="30">
-                <select name="article.xxly" id="xxly">
+                <select name="article.sourceId" id="sourceId">
                     <option value=""></option>
                     <c:forEach items="${sourceList}" var="item">
-                        <option value="${item.id}" <c:if test="${item.id == article.xxly}">selected</c:if>>${item.mc}</option>
+                        <option value="${item.id}" <c:if test="${item.id == article.sourceId}">selected</c:if>>${item.name}</option>
                     </c:forEach>
                 </select>
                 <font color="gray">信息摘取哪里</font></td>
@@ -114,10 +118,10 @@
         <tr bgcolor="#FFFFFF">
             <td width="10%" height="30" align="center" bgcolor="#E4EDF9">推荐位：</td>
             <td height="30">
-                <select name="article.tjw" id="tjw">
+                <select name="article.positionId" id="positionId">
                     <option value=""></option>
                     <c:forEach items="${positionList}" var="item">
-                        <option value="${item.id}" <c:if test="${item.id == article.tjw}">selected</c:if>>${item.mc}</option>
+                        <option value="${item.id}" <c:if test="${item.id == article.positionId}">selected</c:if>>${item.name}</option>
                     </c:forEach>
                 </select>
                 <font color="gray">是否推荐到首页</font></td>
@@ -125,34 +129,50 @@
         <tr bgcolor="#FFFFFF">
             <td height="30" align="center" bgcolor="#E4EDF9" >缩略图：</td>
             <td height="30" valign="middle" class="gray" >
-                <input name="image" id="slt" type="file" />
-                <input type="hidden" name="article.slt" value="${article.slt}" />
-                <c:if test="${!empty article.slt }">
-                    <a href="${pageContext.request.contextPath }${article.slt}" target="_blank">点击查看缩略图</a>
+                <input name="image" id="thumb" type="file" />
+                <input type="hidden" name="article.thumb" value="${article.thumb}" />
+                <c:if test="${!empty article.thumb }">
+                    <a href="${pageContext.request.contextPath }${article.thumb}" target="_blank">点击查看缩略图</a>
                 </c:if>
             </td>
         </tr>
         <tr bgcolor="#FFFFFF">
             <td height="30" align="center" bgcolor="#E4EDF9" >时间：</td>
-            <td height="30" valign="middle" class="gray" ><input name="article.lrrq" id="lrrq" type="text" value="${article.lrrq }" size="20" maxlength="45">
+            <td height="30" valign="middle" class="gray" ><input name="article.date" id="date" type="text" value="${article.date }" size="20" maxlength="45">
                 <font color="red">*</font> 时间可以修改</td>
         </tr>
         <tr bgcolor="#FFFFFF" <c:if test="${category.categoryType == '2'}">style="display: none;" </c:if>>
             <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >审核：</td>
-            <td height="30"><input name="article.sfxs" type="checkbox" value="true" <c:if test="${article.sfxs}">checked</c:if> style="vertical-align:middle; margin: 0 4px;">
+            <td height="30"><input name="article.display" type="checkbox" value="true" <c:if test="${article.display}">checked</c:if> style="vertical-align:middle; margin: 0 4px;">
                 <font color="gray">(打&quot;√&quot;则会在网页上面显示，否则为隐藏在后台)</font></td>
         </tr>
-        <tr bgcolor="#FFFFFF" <c:if test="${categoryId != 4}">style="display: none;"</c:if>>
-            <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >跳转链接：</td>
-            <td height="30"><input name="article.tzlj" type="text" id="tzlj" size="50" maxlength="100" value="${article.tzlj}" />
-                <FONT color=gray></FONT></td>
-        </tr>
-        <tr bgcolor="#FFFFFF" <c:if test="${categoryId == 4}">style="display: none;"</c:if>>
+        <c:if test="${category.categoryType == '1' || category.categoryType == '2' || category.categoryType == '3'}">
+        <tr bgcolor="#FFFFFF">
             <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >内容：</td>
             <td height="30" valign="top">
-                <textarea name="article.nr" id="nr" cols="100" rows="8" style="width:700px;height:370px;visibility:hidden;">${article.nr}</textarea>
+                <textarea name="article.content" id="content" cols="100" rows="8" style="width:700px;height:370px;visibility:hidden;">${article.content}</textarea>
             </td>
         </tr>
+        </c:if>
+        <c:if test="${category.categoryType == '4'}">
+        <tr bgcolor="#FFFFFF">
+            <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >跳转链接：</td>
+            <td height="30"><input name="article.url" type="text" id="url" size="50" maxlength="100" value="${article.url}" />
+                <FONT color=gray></FONT></td>
+        </tr>
+        </c:if>
+        <c:if test="${category.categoryType == '5'}">
+            <tr bgcolor="#FFFFFF">
+                <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >文件：</td>
+                <td height="30">
+                    <input name="doc" type="file" id="doc" />
+                    <input type="hidden" name="article.doc" value="${article.doc}" />
+                    <c:if test="${!empty article.doc }">
+                        <a href="${pageContext.request.contextPath }${article.doc}" target="_blank">点击查看文件</a>
+                    </c:if>
+                </td>
+            </tr>
+        </c:if>
         <tr bgcolor="#FFFFFF">
             <td width="10%" height="30" bgcolor="#E4EDF9" >&nbsp;</td>
             <td height="30"><input type="button" class="button" value=" 提 交 " onclick="check();">

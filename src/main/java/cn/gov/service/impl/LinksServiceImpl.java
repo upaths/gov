@@ -23,7 +23,7 @@ public class LinksServiceImpl implements LinksService {
 
 	public List query() {
 		LinksExample linksExample = new LinksExample();
-		linksExample.setOrderByClause("px");
+		linksExample.setOrderByClause("sort");
 		return linksMapper.selectByExample(linksExample);
 	}
 
