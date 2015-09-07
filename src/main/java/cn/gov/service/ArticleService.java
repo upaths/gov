@@ -22,8 +22,5 @@ public interface ArticleService {
 	public List query(Map map);
 	
 	public int count(Map map);
-	
-	public List queryTopArticle(Map map);
-	
-	public List queryHotArticle(Map map);
+
 }

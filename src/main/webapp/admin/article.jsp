@@ -75,14 +75,16 @@
 						<td align="center">
 							<a href="javascript:window.location.href='article_toUpdate.action?articleId=${item.id }&categoryId=${categoryId}';void(0);">修改</a>
 							<a href="javascript:if(confirm('确定删除？')){window.location.href='article_delete.action?articleId=${item.id }&categoryId=${categoryId}';}void(0);">删除</a>
-							<c:choose>
-								<c:when test="${item.display }">
-									<a href="javascript:if(confirm('确定撤销审核？')){window.location.href='article_updateReview.action?article.id=${item.id }&article.display=false&categoryId=${categoryId}';}void(0);"><font class="red">撤销</font></a>
-								</c:when>
-								<c:otherwise>
-									<a href="javascript:window.location.href='article_updateReview.action?article.id=${item.id }&article.display=true&categoryId=${categoryId}';void(0);">审核</a>
-								</c:otherwise>
-							</c:choose>
+							<c:if test="${role.roleCode eq 'SUPER_ADMIN' || role.roleCode eq 'SITE_ADMIN'}">
+								<c:choose>
+									<c:when test="${item.display }">
+										<a href="javascript:if(confirm('确定撤销审核？')){window.location.href='article_updateReview.action?article.id=${item.id }&article.display=false&categoryId=${categoryId}';}void(0);"><font class="red">撤销</font></a>
+									</c:when>
+									<c:otherwise>
+										<a href="javascript:window.location.href='article_updateReview.action?article.id=${item.id }&article.display=true&categoryId=${categoryId}';void(0);">审核</a>
+									</c:otherwise>
+								</c:choose>
+							</c:if>
 						</td>
 					</tr>
 					</c:forEach>

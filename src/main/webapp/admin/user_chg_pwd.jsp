@@ -9,68 +9,31 @@
 <script type="text/javascript" src="../script/script.js"></script>
 <script type="text/javascript">
 function check() {
-	var username = $("#username");
 	var password = $("#password");
-    var realname = $("#realname");
-	if (username.val() == "") {
-		alert("帐号不能为空！");
-		username.focus();
-		return;
-	}
 	if (password.val() == "") {
 		alert("密码不能为空！");
 		password.focus();
 		return;
 	}
-    if (realname.val() == "") {
-        alert("真实姓名不能为空！");
-        realname.focus();
-        return;
-    }
-	$.post("user_check.action",{"user.username":username.val()},function(result) {
-		if (result == "0") {
-			$("#form1").submit();
-		}else {
-			alert("用户名已存在！");
-		}
-	});
+	$("#form1").submit();
 }
 </script>
 </head>
 <body>
-  <form action="user_add.action" method="post" name="form1" id="form1">
+  <form action="user_changePassword.action" method="post" name="form1" id="form1">
 <table width="100%"  border="1" align="center" cellpadding="5" cellspacing="1" bordercolor="#FFFFFF" bgcolor="#C4D8ED">
     <tr bgcolor="#D2E8F6">
       <td height="40" align="center" class="nzcms_table_top" ><a href="javascript:$('#news').toggle();void(0);">说明书<img src="images/help.png" alt="问" border="0" /></a></td>
-      <td height="40" align="center" class="nzcms_table_top" >添加用户</td>
+      <td height="40" align="center" class="nzcms_table_top" >修改密码</td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="30" colspan="2" align="left" bgcolor="#E4EDF9" class="zfb" id='news' style='DISPLAY:none '><ol>
-        <li>新增管理员用户，并设置登录后台密码及角色；</li>
+        <li>修改当前登录用户的密码；</li>
         </ol>      </td>
     </tr>
     <tr bgcolor="#FFFFFF">
-      <td width="81" height="30" align="center" bgcolor="#E4EDF9">帐号：</td>
-      <td height="30"><input name="user.username" type="text" id="username" maxlength="20" />
-          <font color="red">*提醒：用户名可以使用中文姓名！</font></td>
-    </tr>
-    <tr bgcolor="#FFFFFF">
-      <td height="30" align="center" bgcolor="#E4EDF9">密码：</td>
+      <td height="30" width="81" align="center" bgcolor="#E4EDF9">新密码：</td>
       <td height="30"><input name="user.password" id="password" maxlength="20" ></td>
-    </tr>
-    <tr bgcolor="#FFFFFF">
-        <td height="30" align="center" bgcolor="#E4EDF9">真实姓名：</td>
-        <td height="30"><input name="user.realname" id="realname" maxlength="20" ></td>
-    </tr>
-    <tr bgcolor="#FFFFFF">
-        <td height="30" align="center" bgcolor="#E4EDF9">角色：</td>
-        <td height="30">
-            <select name="roleId">
-                <c:forEach items="${roleList}" var="role">
-                    <option value="${role.id}">${role.roleName}</option>
-                </c:forEach>
-            </select>
-        </td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="30" align="center" bgcolor="#E4EDF9">&nbsp;</td>

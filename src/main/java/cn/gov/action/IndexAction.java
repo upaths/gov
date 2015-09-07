@@ -46,7 +46,7 @@ public class IndexAction extends BasicAction {
 			map.put("num", 7);
 			map.put("ejid", tpxw.getId());
 			map.put("sfyt", 1);
-			tpxwList = articleService.queryTopArticle(map);
+//			tpxwList = articleService.queryTopArticle(map);
 			for (int i = 0; i < tpxwList.size(); i++) {
 				Map tpxwMap = (Map)tpxwList.get(i);
 				Pattern p = Pattern.compile("<img .*? src=\"(.+?)\" .*?/>");
@@ -56,7 +56,7 @@ public class IndexAction extends BasicAction {
 				}
 			}
 			map.put("num", 20);
-			List tmpList = articleService.queryTopArticle(map);
+			List tmpList = null;
 			for (int i = 0; i < tmpList.size(); i++) {
 				Map tpxwMap = (Map)tmpList.get(i);
 				Pattern p = Pattern.compile("<img .*? src=\"(.+?)\" .*?/>");
@@ -74,22 +74,22 @@ public class IndexAction extends BasicAction {
 		if (syxw != null) {
 			map.put("num", 7);
 			map.put("ejid", syxw.getId());
-			syxwList = articleService.queryTopArticle(map);
+//			syxwList = articleService.queryTopArticle(map);
 		}
 		if (tzgg != null) {
 			map.put("num", 8);
 			map.put("ejid", tzgg.getId());
-			tzggList = articleService.queryTopArticle(map);
+//			tzggList = articleService.queryTopArticle(map);
 		}
 		if (zwgk != null) {
 			map.put("num", 7);
 			map.put("ejid", zwgk.getId());
-			zwgkList = articleService.queryTopArticle(map);
+//			zwgkList = articleService.queryTopArticle(map);
 		}
 		if (zcfg != null) {
 			map.put("num", 7);
 			map.put("ejid", zcfg.getId());
-			zcfgList = articleService.queryTopArticle(map);
+//			zcfgList = articleService.queryTopArticle(map);
 		}
 		return SUCCESS;
 	}

@@ -30,7 +30,8 @@
 	        $('#cc').tree({
 	        	url:'article_queryCategoryTree.action',
 				onSelect:function(node){
-	            	if (node.attributes && !node.children) {
+					var children = $(this).tree('getChildren', node.target);
+	            	if (node.attributes && (!children || children.length == 0)) {
 						var url = '';
 						if (node.attributes.category_type == "1") {
 							url = "article_query.action?categoryId="+node.id;

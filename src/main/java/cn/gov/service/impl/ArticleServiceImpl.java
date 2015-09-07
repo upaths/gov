@@ -49,14 +49,6 @@ public class ArticleServiceImpl implements ArticleService {
 		return extraMapper.countArticle(map);
 	}
 
-	public List queryTopArticle(Map map) {
-		return extraMapper.queryTopArticle(map);
-	}
-
-	public List queryHotArticle(Map map) {
-		return extraMapper.queryHotArticle(map);
-	}
-
 	public ArticleMapper getArticleMapper() {
 		return articleMapper;
 	}

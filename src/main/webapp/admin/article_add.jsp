@@ -137,11 +137,13 @@
         <td height="30" valign="middle" class="gray" ><input name="article.date" id="date" type="text" value="${sysdate }" size="20" maxlength="45">
             <font color="red">*</font> 时间可以修改</td>
     </tr>
+    <c:if test="${role.roleCode eq 'SUPER_ADMIN' || role.roleCode eq 'SITE_ADMIN'}">
     <tr bgcolor="#FFFFFF" <c:if test="${category.categoryType == '2'}">style="display: none;" </c:if>>
       <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >审核：</td>
       <td height="30"><input name="article.display" type="checkbox" value="true" checked style="vertical-align:middle; margin: 0 4px;">
           <font color="gray">(打&quot;√&quot;则会在网页上面显示，否则为隐藏在后台)</font></td>
     </tr>
+    </c:if>
     <c:if test="${category.categoryType == '1' || category.categoryType == '2' || category.categoryType == '3'}">
     <tr bgcolor="#FFFFFF">
         <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >内容：</td>

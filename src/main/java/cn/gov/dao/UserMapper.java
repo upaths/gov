@@ -46,8 +46,10 @@ public interface UserMapper {
      * @mbggenerated
      */
     @Insert({
-        "insert into user (username, password)",
-        "values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})"
+        "insert into user (username, password, ",
+        "realname, ip, login_time)",
+        "values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, ",
+        "#{realname,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP})"
     })
     int insert(User record);
 
@@ -75,7 +77,7 @@ public interface UserMapper {
      */
     @Select({
         "select",
-        "username, password",
+        "username, password, realname, ip, login_time",
         "from user",
         "where username = #{username,jdbcType=VARCHAR}"
     })
@@ -114,7 +116,10 @@ public interface UserMapper {
      */
     @Update({
         "update user",
-        "set password = #{password,jdbcType=VARCHAR}",
+        "set password = #{password,jdbcType=VARCHAR},",
+          "realname = #{realname,jdbcType=VARCHAR},",
+          "ip = #{ip,jdbcType=VARCHAR},",
+          "login_time = #{loginTime,jdbcType=TIMESTAMP}",
         "where username = #{username,jdbcType=VARCHAR}"
     })
     int updateByPrimaryKey(User record);

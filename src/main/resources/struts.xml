@@ -124,6 +124,7 @@
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="query">/admin/user.jsp</result>
 			<result name="toAdd">/admin/user_add.jsp</result>
+			<result name="toChangePassword">/admin/user_chg_pwd.jsp</result>
 		</action>
 
 		<!-- 信息类别管理 -->

@@ -3,6 +3,7 @@ package cn.gov.action;
 import java.util.Date;
 
 import cn.gov.model.Log;
+import cn.gov.model.User;
 import cn.gov.service.LogService;
 import cn.gov.service.UserService;
 import cn.gov.util.IpUtil;
@@ -35,6 +36,11 @@ public class LoginAction extends BasicAction {
 			}
 		}
 		logService.insert(log);
+		User user = new User();
+		user.setUsername(username);
+		user.setIp(IpUtil.getClientIp(request));
+		user.setLoginTime(new Date());
+		userService.updateSelective(user);
 		return isSuc;
 	}
 

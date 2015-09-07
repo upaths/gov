@@ -1,16 +1,11 @@
 package cn.gov.action;
 
 import cn.gov.enums.CategoryEnum;
-import cn.gov.model.Article;
-import cn.gov.model.Category;
-import cn.gov.model.Position;
-import cn.gov.model.Source;
-import cn.gov.service.ArticleService;
-import cn.gov.service.CategoryService;
-import cn.gov.service.PositionService;
-import cn.gov.service.SourceService;
+import cn.gov.model.*;
+import cn.gov.service.*;
 import cn.gov.util.AlertUtil;
 import cn.gov.util.FileUtil;
+import com.opensymphony.xwork2.ActionContext;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,6 +19,7 @@ public class ArticleAction extends BasicAction {
 	private ArticleService articleService;
 	private SourceService sourceService;
 	private PositionService positionService;
+	private UserService userService;
 	private Integer categoryId;
 	private Category category;
 	private Integer articleId;
@@ -38,6 +34,7 @@ public class ArticleAction extends BasicAction {
 	private String imageFileName;
 	private File doc;
 	private String docFileName;
+	private Role role;
 
 	/**
 	 * 文章主页面
@@ -99,6 +96,7 @@ public class ArticleAction extends BasicAction {
 		if (categoryId != null) {
 			category = categoryService.queryByPrimaryKey(categoryId);
 		}
+		role = userService.queryRoleByUsername((String) ActionContext.getContext().getSession().get("user"));
 		return "query";
 	}
 
@@ -107,6 +105,7 @@ public class ArticleAction extends BasicAction {
 		positionList = positionService.queryAllPosition();
 		category = categoryService.queryByPrimaryKey(categoryId);
 		sysdate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		role = userService.queryRoleByUsername((String) ActionContext.getContext().getSession().get("user"));
 		return "toAdd";
 	}
 
@@ -115,6 +114,7 @@ public class ArticleAction extends BasicAction {
 		positionList = positionService.queryAllPosition();
 		article = articleService.queryArticleById(articleId);
 		category = categoryService.queryByPrimaryKey(categoryId);
+		role = userService.queryRoleByUsername((String) ActionContext.getContext().getSession().get("user"));
 		return "toUpdate";
 	}
 	public String insert() {
@@ -127,6 +127,9 @@ public class ArticleAction extends BasicAction {
 			article.setDoc(url);
 		}
 		article.setReadTime(0);
+		if (article.getDisplay() == null) {
+			article.setDisplay(false);
+		}
 		articleService.insert(article);
 		category = categoryService.queryByPrimaryKey(categoryId);
 		if (CategoryEnum.PAGE.toString().equals(category.getCategoryType())) {
@@ -340,5 +343,21 @@ public class ArticleAction extends BasicAction {
 
 	public void setDocFileName(String docFileName) {
 		this.docFileName = docFileName;
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 }

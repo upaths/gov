@@ -46,8 +46,10 @@ public interface RoleMapper {
      * @mbggenerated
      */
     @Insert({
-        "insert into role (id, rolename)",
-        "values (#{id,jdbcType=INTEGER}, #{rolename,jdbcType=VARCHAR})"
+        "insert into role (id, role_name, ",
+        "role_code)",
+        "values (#{id,jdbcType=INTEGER}, #{roleName,jdbcType=VARCHAR}, ",
+        "#{roleCode,jdbcType=VARCHAR})"
     })
     int insert(Role record);
 
@@ -75,7 +77,7 @@ public interface RoleMapper {
      */
     @Select({
         "select",
-        "id, rolename",
+        "id, role_name, role_code",
         "from role",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -114,7 +116,8 @@ public interface RoleMapper {
      */
     @Update({
         "update role",
-        "set rolename = #{rolename,jdbcType=VARCHAR}",
+        "set role_name = #{roleName,jdbcType=VARCHAR},",
+          "role_code = #{roleCode,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Role record);

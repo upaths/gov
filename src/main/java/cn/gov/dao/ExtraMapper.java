@@ -12,9 +12,7 @@ public interface ExtraMapper {
 	
 	public List queryLog(Map map);
 	
-	public List queryTopArticle(Map map);
-	
 	public List queryMessage(Map map);
 	
-	public List queryHotArticle(Map map);
+	public List<Map> queryAllUser();
 }
