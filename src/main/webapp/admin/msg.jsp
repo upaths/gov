@@ -28,23 +28,50 @@
 					bordercolor="#FFFFFF" bgcolor="#C9DEFA">
 						<tr align="center" bgcolor="#C9DEFA">
 							<td width="5%" class="nzcms_table_top2">序号</td>
-							<td width="20%" class="nzcms_table_top2">标题</td>
-							<td width="55%" class="nzcms_table_top2">内容</td>
-							<td width="20%" class="nzcms_table_top2">时间</td>
+							<td class="nzcms_table_top2">状态</td>
+							<td class="nzcms_table_top2">标题</td>
+							<td class="nzcms_table_top2">内容</td>
+							<td class="nzcms_table_top2">时间</td>
+							<td class="nzcms_table_top2">姓名</td>
+							<td class="nzcms_table_top2">IP</td>
+							<td class="nzcms_table_top2">操作</td>
 						</tr>
 						<c:forEach items="${list }" var="item" varStatus="status">
 							<tr onMouseOver="this.bgColor='#E4EDF9';"
 								onMouseOut="this.bgColor='#FFFFFF';" bgcolor="#ffffff">
 								<td height="30" align="center">${status.count }</td>
+								<td align="center">
+									<c:choose>
+										<c:when test="${item.display }">
+											<img src="images/dui.png" alt="已审核" />
+										</c:when>
+										<c:otherwise>
+											<img src="images/no.png" alt="未审核" />
+										</c:otherwise>
+									</c:choose>
+								</td>
 								<td align="center">${item.title }</td>
 								<td align="center">${item.content }</td>
 								<td align="center">
 									<fmt:formatDate value="${item.date}" type="both" pattern="yyyy-MM-dd HH:mm:ss" />
 								</td>
+								<td align="center">${item.netName}</td>
+								<td align="center">${item.ip}</td>
+								<td align="center">
+									<a href="javascript:if(confirm('确定删除？')){window.location.href='msg_delete.action?message.id=${item.id }';}void(0);">删除</a>
+									<c:choose>
+										<c:when test="${item.display }">
+											<a href="javascript:if(confirm('确定撤销审核？')){window.location.href='msg_update.action?message.id=${item.id }&message.display=false';}void(0);"><font class="red">撤销</font></a>
+										</c:when>
+										<c:otherwise>
+											<a href="javascript:window.location.href='msg_update.action?message.id=${item.id }&message.display=true';void(0);">审核</a>
+										</c:otherwise>
+									</c:choose>
+								</td>
 							</tr>
 						</c:forEach>
 					<tr align="center">
-						<td height="25" colspan="6" class="nzcms_table_top">
+						<td height="25" colspan="8" class="nzcms_table_top">
 							<page:pagination pageBean="${pageBean}" url="msg_query.action" cssClass="txt_page" />
 						</td>
 					</tr>

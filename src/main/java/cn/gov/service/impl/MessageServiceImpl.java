@@ -20,12 +20,17 @@ public class MessageServiceImpl implements MessageService {
 		return messageMapper.deleteByPrimaryKey(id);
 	}
 
-	public List queryMessage(Map map) {
+	public List<Message> queryMessage(Map map) {
 		return extraMapper.queryMessage(map);
 	}
 
 	public int queryMessageCount() {
 		return messageMapper.countByExample(null);
+	}
+
+	@Override
+	public int updateMessage(Message message) {
+		return messageMapper.updateByPrimaryKeySelective(message);
 	}
 
 	public MessageMapper getMessageMapper() {

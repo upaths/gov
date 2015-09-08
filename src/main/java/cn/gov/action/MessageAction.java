@@ -40,7 +40,15 @@ public class MessageAction extends BasicAction {
 		message.setIp(IpUtil.getClientIp(request));
 		message.setDate(new Date());
 		messageService.insert(message);
-		AlertUtil.alertThenGo(response, "留言成功，我们会尽快与您联系！", "message.jsp");
+		AlertUtil.alertThenGo(response, "留言成功！", "message.jsp");
+		return null;
+	}
+
+	public String update() {
+		String msg;
+		int cnt = messageService.updateMessage(message);
+		msg = cnt > 0 ? "更新成功！" : "更新失败！";
+		AlertUtil.alertThenGo(response, msg, "msg_query.action");
 		return null;
 	}
 

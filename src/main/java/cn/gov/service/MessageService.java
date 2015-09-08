@@ -11,7 +11,9 @@ public interface MessageService {
 
 	public int delete(Integer id);
 
-	public List queryMessage(Map map);
+	public List<Message> queryMessage(Map map);
 	
 	public int queryMessageCount();
+
+	public int updateMessage(Message message);
 }

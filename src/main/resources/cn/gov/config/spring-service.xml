@@ -38,4 +38,8 @@
 	<bean id="ipForbidService" class="cn.gov.service.impl.IpForbidServiceImpl" autowire="byName" />
 
 	<bean id="linkCategoryService" class="cn.gov.service.impl.LinkCategoryServiceImpl" autowire="byName" />
+
+	<bean id="appointmentService" class="cn.gov.service.impl.AppointmentServiceImpl" autowire="byName" />
+
+	<bean id="topicService" class="cn.gov.service.impl.TopicServiceImpl" autowire="byName" />
 </beans>

@@ -182,9 +182,19 @@
 			<result name="query">/admin/ip_forbid.jsp</result>
 		</action>
 		
-		<!-- 投诉建议 -->
+		<!-- 留言管理 -->
 		<action name="msg_*" class="messageAction" method="{1}">
 			<result name="query">/admin/msg.jsp</result>
+		</action>
+
+		<!-- 预约登记 -->
+		<action name="apt_*" class="appointmentAction" method="{1}">
+			<result name="query">/admin/apt.jsp</result>
+		</action>
+		
+		<!-- 话题管理 -->
+		<action name="topic_*" class="topAction" method="{1}">
+			<result name="query">/admin/topic.jsp</result>
 		</action>
 	</package>
 </struts>
