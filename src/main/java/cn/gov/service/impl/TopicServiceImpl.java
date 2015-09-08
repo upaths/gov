@@ -5,6 +5,7 @@ import cn.gov.dao.TopicMapper;
 import cn.gov.model.Topic;
 import cn.gov.model.TopicComment;
 import cn.gov.model.TopicCommentExample;
+import cn.gov.model.TopicExample;
 import cn.gov.service.TopicService;
 
 import java.util.List;
@@ -34,7 +35,14 @@ public class TopicServiceImpl implements TopicService {
 
     @Override
     public List<Topic> queryTopic() {
-        return topicMapper.selectByExample(null);
+        TopicExample topicExample = new TopicExample();
+        topicExample.setOrderByClause("id desc");
+        return topicMapper.selectByExample(topicExample);
+    }
+
+    @Override
+    public Topic queryTopicById(Integer id) {
+        return topicMapper.selectByPrimaryKey(id);
     }
 
     @Override
@@ -57,6 +65,13 @@ public class TopicServiceImpl implements TopicService {
         TopicCommentExample topicCommentExample = new TopicCommentExample();
         topicCommentExample.createCriteria().andTopicIdEqualTo(TopicId);
         return topicCommentMapper.selectByExample(topicCommentExample);
+    }
+
+    @Override
+    public int countTopicCommentByTopicId(Integer TopicId, Boolean display) {
+        TopicCommentExample topicCommentExample = new TopicCommentExample();
+        topicCommentExample.createCriteria().andTopicIdEqualTo(TopicId).andDisplayEqualTo(display);
+        return topicCommentMapper.countByExample(topicCommentExample);
     }
 
     public TopicMapper getTopicMapper() {

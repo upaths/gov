@@ -30,15 +30,17 @@
 				<table width="100%" border="1" cellpadding="0" cellspacing="1"
 					bordercolor="#FFFFFF" bgcolor="#C9DEFA">
 					<tr align="center" bgcolor="#C9DEFA">
+						<td width="150" class="nzcms_table_top2">来源ID</td>
+						<td class="nzcms_table_top2">来源名称</td>
 						<td width="50" class="nzcms_table_top2">序号</td>
-						<td class="nzcms_table_top2">名称</td>
 						<td width="100" class="nzcms_table_top2">操作</td>
 					</tr>
 					<c:forEach items="${list }" var="item" varStatus="status">
 						<tr onMouseOver="this.bgColor='#E4EDF9';"
 							onMouseOut="this.bgColor='#FFFFFF';" bgcolor="#ffffff">
-							<td height="30" align="center">${status.count }</td>
+							<td height="30" align="center">${item.id }</td>
 							<td align="center">${item.name }</td>
+							<td align="center">${item.sort }</td>
 							<td align="center">
 								<a href="source_toUpdate.action?source.id=${item.id}">修改</a>|
 								<a href="javascript:if(window.confirm('确认删除？')){window.location.href='source_delete.action?source.id=${item.id}';}void(0);">删除</a>

@@ -21,6 +21,9 @@
 		<mapper resource="cn/gov/sqlmap/PositionMapper.xml" />
 		<mapper resource="cn/gov/sqlmap/IpForbidMapper.xml" />
 		<mapper resource="cn/gov/sqlmap/LinkCategoryMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/AppointmentMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/TopicMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/TopicCommentMapper.xml" />
 	</mappers>
     
 </configuration>

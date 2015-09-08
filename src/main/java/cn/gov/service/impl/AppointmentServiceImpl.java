@@ -32,13 +32,16 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public List<Appointment> queryAppointmentByDate(Date begDate, Date endDate) {
-        AppointmentExample appointmentExample = new AppointmentExample();
-        AppointmentExample.Criteria criteria = appointmentExample.createCriteria();
-        if (begDate != null) {
-            criteria.andDateGreaterThanOrEqualTo(begDate);
-        }
-        if (endDate != null) {
-            criteria.andDateLessThanOrEqualTo(endDate);
+        AppointmentExample appointmentExample = null;
+        if (begDate != null || endDate != null) {
+            appointmentExample = new AppointmentExample();
+            AppointmentExample.Criteria criteria = appointmentExample.createCriteria();
+            if (begDate != null) {
+                criteria.andDateGreaterThanOrEqualTo(begDate);
+            }
+            if (endDate != null) {
+                criteria.andDateLessThanOrEqualTo(endDate);
+            }
         }
         return appointmentMapper.selectByExample(appointmentExample);
     }

@@ -193,8 +193,11 @@
 		</action>
 		
 		<!-- 话题管理 -->
-		<action name="topic_*" class="topAction" method="{1}">
+		<action name="topic_*" class="topicAction" method="{1}">
 			<result name="query">/admin/topic.jsp</result>
+			<result name="toAdd">/admin/topic_add.jsp</result>
+			<result name="toUpdate">/admin/topic_update.jsp</result>
+			<result name="commentReview">/admin/topic_comment_review.jsp</result>
 		</action>
 	</package>
 </struts>

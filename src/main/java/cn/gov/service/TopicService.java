@@ -17,6 +17,8 @@ public interface TopicService {
 
     public List<Topic> queryTopic();
 
+    public Topic queryTopicById(Integer id);
+
     public void insertTopicComment(TopicComment topicComment);
 
     public int updateTopicComment(TopicComment topicComment);
@@ -24,4 +26,6 @@ public interface TopicService {
     public int deleteTopicComment(Integer id);
 
     public List<TopicComment> queryTopicCommentByTopicId(Integer TopicId);
+
+    public int countTopicCommentByTopicId(Integer TopicId, Boolean display);
 }
