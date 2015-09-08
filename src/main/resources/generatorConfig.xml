@@ -155,5 +155,8 @@
         <table tableName="position" schema="gov"></table>
         <table tableName="ip_forbid" schema="gov"></table>
         <table tableName="link_category" schema="gov"></table>
+        <table tableName="topic" schema="gov"></table>
+        <table tableName="topic_comment" schema="gov"></table>
+        <table tableName="appointment" schema="gov"></table>
     </context>
 </generatorConfiguration>

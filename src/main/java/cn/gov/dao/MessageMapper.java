@@ -46,10 +46,12 @@ public interface MessageMapper {
      * @mbggenerated
      */
     @Insert({
-        "insert into message (id, ip, ",
-        "title, date, content)",
-        "values (#{id,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, ",
-        "#{title,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})"
+        "insert into message (id, net_name, ",
+        "ip, title, date, ",
+        "display, content)",
+        "values (#{id,jdbcType=INTEGER}, #{netName,jdbcType=VARCHAR}, ",
+        "#{ip,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, ",
+        "#{display,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})"
     })
     int insert(Message record);
 
@@ -85,7 +87,7 @@ public interface MessageMapper {
      */
     @Select({
         "select",
-        "id, ip, title, date, content",
+        "id, net_name, ip, title, date, display, content",
         "from message",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -132,9 +134,11 @@ public interface MessageMapper {
      */
     @Update({
         "update message",
-        "set ip = #{ip,jdbcType=VARCHAR},",
+        "set net_name = #{netName,jdbcType=VARCHAR},",
+          "ip = #{ip,jdbcType=VARCHAR},",
           "title = #{title,jdbcType=VARCHAR},",
           "date = #{date,jdbcType=TIMESTAMP},",
+          "display = #{display,jdbcType=BIT},",
           "content = #{content,jdbcType=LONGVARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -148,9 +152,11 @@ public interface MessageMapper {
      */
     @Update({
         "update message",
-        "set ip = #{ip,jdbcType=VARCHAR},",
+        "set net_name = #{netName,jdbcType=VARCHAR},",
+          "ip = #{ip,jdbcType=VARCHAR},",
           "title = #{title,jdbcType=VARCHAR},",
-          "date = #{date,jdbcType=TIMESTAMP}",
+          "date = #{date,jdbcType=TIMESTAMP},",
+          "display = #{display,jdbcType=BIT}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Message record);
