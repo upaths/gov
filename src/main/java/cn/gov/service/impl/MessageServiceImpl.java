@@ -33,6 +33,33 @@ public class MessageServiceImpl implements MessageService {
 		return messageMapper.updateByPrimaryKeySelective(message);
 	}
 
+	@Override
+	public List<Message> queryDisplayMessage(String sort, Integer page, Integer size) {
+		MessageExample messageExample = new MessageExample();
+		messageExample.createCriteria().andDisplayEqualTo(true);
+		String limitSql = "";
+		if (size != null && size > 0) {
+			if (page != null && page > 0) {
+				limitSql += " limit " + (page - 1) * size + "," + size;
+			}else {
+				limitSql += " limit " + size;
+			}
+		}
+		if (sort != null && !"".equals(sort)) {
+			messageExample.setOrderByClause(sort + limitSql);
+		}else {
+			messageExample.setOrderByClause("id desc" + limitSql);
+		}
+		return messageMapper.selectByExample(messageExample);
+	}
+
+	@Override
+	public int countDisplayMessage() {
+		MessageExample messageExample = new MessageExample();
+		messageExample.createCriteria().andDisplayEqualTo(true);
+		return messageMapper.countByExample(messageExample);
+	}
+
 	public MessageMapper getMessageMapper() {
 		return messageMapper;
 	}

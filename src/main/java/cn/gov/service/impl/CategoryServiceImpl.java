@@ -148,6 +148,18 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryMapper.selectByPrimaryKey(id);
 	}
 
+	@Override
+	public List<Category> queryDisplayCategoryByPid(Integer pid) {
+		CategoryExample categoryExample = new CategoryExample();
+		if (pid != null && pid > 0) {
+			categoryExample.createCriteria().andParentIdEqualTo(pid).andDisplayEqualTo(true);
+		}else {
+			categoryExample.createCriteria().andParentIdIsNull().andDisplayEqualTo(true);
+		}
+		categoryExample.setOrderByClause("sort");
+		return categoryMapper.selectByExample(categoryExample);
+	}
+
 	public CategoryMapper getCategoryMapper() {
 		return categoryMapper;
 	}

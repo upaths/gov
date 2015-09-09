@@ -49,6 +49,60 @@ public class ArticleServiceImpl implements ArticleService {
 		return extraMapper.countArticle(map);
 	}
 
+	@Override
+	public List<Article> queryDisplayArticleByCatid(Integer catid, String sort, Integer page, Integer size) {
+		ArticleExample articleExample = new ArticleExample();
+		articleExample.createCriteria().andCatIdEqualTo(catid).andDisplayEqualTo(true);
+		String limitSql = "";
+		if (size != null && size > 0) {
+			if (page != null && page > 0) {
+				limitSql += " limit " + (page - 1) * size + "," + size;
+			}else {
+				limitSql += " limit " + size;
+			}
+		}
+		if (sort != null && !"".equals(sort)) {
+			articleExample.setOrderByClause(sort + limitSql);
+		}else {
+			articleExample.setOrderByClause("id desc" + limitSql);
+		}
+		return articleMapper.selectByExample(articleExample);
+	}
+
+	@Override
+	public int countDisplayArticleByCatid(Integer catid) {
+		ArticleExample articleExample = new ArticleExample();
+		articleExample.createCriteria().andCatIdEqualTo(catid).andDisplayEqualTo(true);
+		return articleMapper.countByExample(articleExample);
+	}
+
+	@Override
+	public List<Article> queryDisplayArticleByPosid(Integer posid, String sort, Integer page, Integer size) {
+		ArticleExample articleExample = new ArticleExample();
+		articleExample.createCriteria().andPositionIdEqualTo(posid).andDisplayEqualTo(true);
+		String limitSql = "";
+		if (size != null && size > 0) {
+			if (page != null && page > 0) {
+				limitSql += " limit " + (page - 1) * size + "," + size;
+			}else {
+				limitSql += " limit " + size;
+			}
+		}
+		if (sort != null && !"".equals(sort)) {
+			articleExample.setOrderByClause(sort + limitSql);
+		}else {
+			articleExample.setOrderByClause("id desc" + limitSql);
+		}
+		return articleMapper.selectByExample(articleExample);
+	}
+
+	@Override
+	public int countDisplayArticleByPosid(Integer posid) {
+		ArticleExample articleExample = new ArticleExample();
+		articleExample.createCriteria().andPositionIdEqualTo(posid).andDisplayEqualTo(true);
+		return articleMapper.countByExample(articleExample);
+	}
+
 	public ArticleMapper getArticleMapper() {
 		return articleMapper;
 	}

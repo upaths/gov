@@ -1,18 +1,13 @@
-package cn.gov.util;
+package cn.gov.freemarker.directive.sample;
+
+import freemarker.core.Environment;
+import freemarker.template.*;
+
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Iterator;
 import java.util.Map;
 
-import freemarker.core.Environment;
-import freemarker.template.SimpleNumber;
-import freemarker.template.TemplateBooleanModel;
-import freemarker.template.TemplateDirectiveBody;
-import freemarker.template.TemplateDirectiveModel;
-import freemarker.template.TemplateException;
-import freemarker.template.TemplateModel;
-import freemarker.template.TemplateModelException;
-import freemarker.template.TemplateNumberModel;
 /**
  * FreeMarker用户自定义指令来重复模板中的一部分，可选的是使用
  * <tt>&lt;hr&gt;</tt>来分隔输出内容中的重复部分。

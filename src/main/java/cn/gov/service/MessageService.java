@@ -16,4 +16,8 @@ public interface MessageService {
 	public int queryMessageCount();
 
 	public int updateMessage(Message message);
+
+	public List<Message> queryDisplayMessage(String sort, Integer page, Integer size);
+
+	public int countDisplayMessage();
 }

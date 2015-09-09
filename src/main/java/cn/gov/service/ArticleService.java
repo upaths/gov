@@ -23,4 +23,12 @@ public interface ArticleService {
 	
 	public int count(Map map);
 
+	public List<Article> queryDisplayArticleByCatid(Integer catid, String sort, Integer page, Integer size);
+
+	public int countDisplayArticleByCatid(Integer catid);
+
+	public List<Article> queryDisplayArticleByPosid(Integer posid, String sort, Integer page, Integer size);
+
+	public int countDisplayArticleByPosid(Integer posid);
+
 }

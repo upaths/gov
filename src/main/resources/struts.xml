@@ -73,13 +73,13 @@
 		</action>
 		<!-- freemarker测试 -->
 		<action name="test" class="indexAction" method="test">
-			<result type="freemarker">/WEB-INF/ftl/test.ftl</result>
+			<result type="freemarker">/ftl/sample/upper.ftl</result>
 		</action>
 		<action name="test_repeat" class="indexAction" method="test">
-			<result type="freemarker">/WEB-INF/ftl/test_repeat.ftl</result>
+			<result type="freemarker">/ftl/sample/repeat.ftl</result>
 		</action>
 		<action name="test_article" class="indexAction" method="test">
-			<result type="freemarker">/WEB-INF/ftl/test_article.ftl</result>
+			<result type="freemarker">/ftl/test_article.ftl</result>
 		</action>
 	</package>
 	

@@ -31,6 +31,14 @@ public class LinksServiceImpl implements LinksService {
 		return linksMapper.countByExample(null);
 	}
 
+	@Override
+	public List<Links> queryLinksByCatid(Integer catid) {
+		LinksExample linksExample = new LinksExample();
+		linksExample.createCriteria().andCatIdEqualTo(catid);
+		linksExample.setOrderByClause("sort");
+		return linksMapper.selectByExample(linksExample);
+	}
+
 	public LinksMapper getLinksMapper() {
 		return linksMapper;
 	}

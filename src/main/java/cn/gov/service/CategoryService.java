@@ -28,4 +28,6 @@ public interface CategoryService {
 	public Category queryByPrimaryKey(Integer id);
 	
 	public Category queryByName(String mc);
+
+	public List<Category> queryDisplayCategoryByPid(Integer pid);
 }

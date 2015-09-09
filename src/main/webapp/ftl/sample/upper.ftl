@@ -5,9 +5,7 @@
 </head>
 <body>
 <@upper>
-    <#list tpxwList as s>
-        ${s}<br />
-    </#list>
+    abc
 </@upper>
 </body>
 </html>

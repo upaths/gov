@@ -2,7 +2,8 @@ package cn.gov.freemarker.directive;
 
 import cn.gov.freemarker.DataChecker;
 import cn.gov.model.Article;
-import cn.gov.service.ArticleService;
+import cn.gov.model.Position;
+import cn.gov.service.PositionService;
 import freemarker.core.Environment;
 import freemarker.template.*;
 
@@ -11,10 +12,10 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * Created by 王勇 on 2015/8/25.
+ * Created by 王勇 on 2015/9/9.
  */
-public class ArticleDirective implements TemplateDirectiveModel {
-    private ArticleService articleService;
+public class PositionDirective implements TemplateDirectiveModel {
+    private PositionService positionService;
     private static final String ID_NAME = "id";
     @Override
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
@@ -34,11 +35,11 @@ public class ArticleDirective implements TemplateDirectiveModel {
         if (id < 0) {
             throw new TemplateModelException("参数" + ID_NAME + "不能为空");
         }
-        Article article = articleService.queryArticleById(id);
+        Position position = positionService.queryPositionById(id);
         // 执行真正指令的执行部分:
         if (body != null) {
             if (loopVars.length > 0) {
-                loopVars[0] = ObjectWrapper.DEFAULT_WRAPPER.wrap(article);
+                loopVars[0] = ObjectWrapper.DEFAULT_WRAPPER.wrap(position);
             }
             // 执行嵌入体部分（和 FTL 中的<#nested>一样）。
             // 这种情况下，我们不提供一个特殊的 writer 作为参数:
@@ -46,11 +47,11 @@ public class ArticleDirective implements TemplateDirectiveModel {
         }
     }
 
-    public ArticleService getArticleService() {
-        return articleService;
+    public PositionService getPositionService() {
+        return positionService;
     }
 
-    public void setArticleService(ArticleService articleService) {
-        this.articleService = articleService;
+    public void setPositionService(PositionService positionService) {
+        this.positionService = positionService;
     }
 }

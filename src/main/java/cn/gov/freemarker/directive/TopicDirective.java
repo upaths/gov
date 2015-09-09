@@ -2,7 +2,8 @@ package cn.gov.freemarker.directive;
 
 import cn.gov.freemarker.DataChecker;
 import cn.gov.model.Article;
-import cn.gov.service.ArticleService;
+import cn.gov.model.Topic;
+import cn.gov.service.TopicService;
 import freemarker.core.Environment;
 import freemarker.template.*;
 
@@ -11,10 +12,10 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * Created by 王勇 on 2015/8/25.
+ * Created by 王勇 on 2015/9/9.
  */
-public class ArticleDirective implements TemplateDirectiveModel {
-    private ArticleService articleService;
+public class TopicDirective implements TemplateDirectiveModel {
+    private TopicService topicService;
     private static final String ID_NAME = "id";
     @Override
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
@@ -34,11 +35,11 @@ public class ArticleDirective implements TemplateDirectiveModel {
         if (id < 0) {
             throw new TemplateModelException("参数" + ID_NAME + "不能为空");
         }
-        Article article = articleService.queryArticleById(id);
+        Topic topic = topicService.queryTopicById(id);
         // 执行真正指令的执行部分:
         if (body != null) {
             if (loopVars.length > 0) {
-                loopVars[0] = ObjectWrapper.DEFAULT_WRAPPER.wrap(article);
+                loopVars[0] = ObjectWrapper.DEFAULT_WRAPPER.wrap(topic);
             }
             // 执行嵌入体部分（和 FTL 中的<#nested>一样）。
             // 这种情况下，我们不提供一个特殊的 writer 作为参数:
@@ -46,11 +47,11 @@ public class ArticleDirective implements TemplateDirectiveModel {
         }
     }
 
-    public ArticleService getArticleService() {
-        return articleService;
+    public TopicService getTopicService() {
+        return topicService;
     }
 
-    public void setArticleService(ArticleService articleService) {
-        this.articleService = articleService;
+    public void setTopicService(TopicService topicService) {
+        this.topicService = topicService;
     }
 }

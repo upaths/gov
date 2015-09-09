@@ -74,6 +74,55 @@ public class TopicServiceImpl implements TopicService {
         return topicCommentMapper.countByExample(topicCommentExample);
     }
 
+    @Override
+    public List<Topic> queryTopic(String sort, Integer page, Integer size) {
+        TopicExample topicExample = new TopicExample();
+        String limitSql = "";
+        if (size != null && size > 0) {
+            if (page != null && page > 0) {
+                limitSql += " limit " + (page - 1) * size + "," + size;
+            }else {
+                limitSql += " limit " + size;
+            }
+        }
+        if (sort != null && !"".equals(sort)) {
+            topicExample.setOrderByClause(sort + limitSql);
+        }else {
+            topicExample.setOrderByClause("id desc" + limitSql);
+        }
+        return topicMapper.selectByExample(topicExample);
+    }
+
+    @Override
+    public int countTopic() {
+        return topicMapper.countByExample(null);
+    }
+
+    @Override
+    public List<TopicComment> queryDisplayTopicComment(Integer topicId, String sort, Integer page, Integer size) {
+        TopicCommentExample topicCommentExample = new TopicCommentExample();
+        topicCommentExample.createCriteria().andTopicIdEqualTo(topicId);
+        String limitSql = "";
+        if (size != null && size > 0) {
+            if (page != null && page > 0) {
+                limitSql += " limit " + (page - 1) * size + "," + size;
+            }else {
+                limitSql += " limit " + size;
+            }
+        }
+        if (sort != null && !"".equals(sort)) {
+            topicCommentExample.setOrderByClause(sort + limitSql);
+        }else {
+            topicCommentExample.setOrderByClause("id desc" + limitSql);
+        }
+        return topicCommentMapper.selectByExample(topicCommentExample);
+    }
+
+    @Override
+    public int countDisplayTopicComment(Integer topicId) {
+        return this.countTopicCommentByTopicId(topicId, true);
+    }
+
     public TopicMapper getTopicMapper() {
         return topicMapper;
     }

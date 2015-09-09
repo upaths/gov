@@ -1,4 +1,4 @@
-package cn.gov.util;
+package cn.gov.freemarker.directive.sample;
 
 import freemarker.core.Environment;
 import freemarker.template.*;
@@ -36,8 +36,8 @@ public class UpperDirective implements TemplateDirectiveModel {
         }
     }
     /**
-     * {@link Writer}改变字符流到大写形式，
-     * 而且把它发送到另外一个{@link Writer}中。
+     * {@link java.io.Writer}改变字符流到大写形式，
+     * 而且把它发送到另外一个{@link java.io.Writer}中。
      */
     private static class UpperCaseFilterWriter extends Writer {
         private final Writer out;

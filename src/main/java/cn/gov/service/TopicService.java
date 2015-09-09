@@ -28,4 +28,12 @@ public interface TopicService {
     public List<TopicComment> queryTopicCommentByTopicId(Integer TopicId);
 
     public int countTopicCommentByTopicId(Integer TopicId, Boolean display);
+
+    public List<Topic> queryTopic(String sort, Integer page, Integer size);
+
+    public int countTopic();
+
+    public List<TopicComment> queryDisplayTopicComment(Integer topicId, String sort, Integer page, Integer size);
+
+    public int countDisplayTopicComment(Integer topicId);
 }

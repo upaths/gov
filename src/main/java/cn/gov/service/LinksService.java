@@ -15,4 +15,6 @@ public interface LinksService {
 	public List query();
 	
 	public int queryCount();
+
+	public List<Links> queryLinksByCatid(Integer catid);
 }
