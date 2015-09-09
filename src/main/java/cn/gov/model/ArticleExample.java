@@ -1,6 +1,7 @@
 package cn.gov.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ArticleExample {
@@ -394,62 +395,52 @@ public class ArticleExample {
             return (Criteria) this;
         }
 
-        public Criteria andDateEqualTo(String value) {
+        public Criteria andDateEqualTo(Date value) {
             addCriterion("date =", value, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDateNotEqualTo(String value) {
+        public Criteria andDateNotEqualTo(Date value) {
             addCriterion("date <>", value, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDateGreaterThan(String value) {
+        public Criteria andDateGreaterThan(Date value) {
             addCriterion("date >", value, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDateGreaterThanOrEqualTo(String value) {
+        public Criteria andDateGreaterThanOrEqualTo(Date value) {
             addCriterion("date >=", value, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDateLessThan(String value) {
+        public Criteria andDateLessThan(Date value) {
             addCriterion("date <", value, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDateLessThanOrEqualTo(String value) {
+        public Criteria andDateLessThanOrEqualTo(Date value) {
             addCriterion("date <=", value, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDateLike(String value) {
-            addCriterion("date like", value, "date");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateNotLike(String value) {
-            addCriterion("date not like", value, "date");
-            return (Criteria) this;
-        }
-
-        public Criteria andDateIn(List<String> values) {
+        public Criteria andDateIn(List<Date> values) {
             addCriterion("date in", values, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDateNotIn(List<String> values) {
+        public Criteria andDateNotIn(List<Date> values) {
             addCriterion("date not in", values, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDateBetween(String value1, String value2) {
+        public Criteria andDateBetween(Date value1, Date value2) {
             addCriterion("date between", value1, value2, "date");
             return (Criteria) this;
         }
 
-        public Criteria andDateNotBetween(String value1, String value2) {
+        public Criteria andDateNotBetween(Date value1, Date value2) {
             addCriterion("date not between", value1, value2, "date");
             return (Criteria) this;
         }

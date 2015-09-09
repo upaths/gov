@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="page" uri="/WEB-INF/page.tld" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -70,7 +71,7 @@
 						<td align="center">&nbsp;${item.short_title }</td>
 						<td align="center">&nbsp;${item.cat_name }</td>
 						<td align="center">&nbsp;${item.source_name }</td>
-						<td align="center">&nbsp;${item.date }</td>
+						<td align="center">&nbsp;<fmt:formatDate value="${item.date}" pattern="yyyy-MM-dd HH:mm:ss"  /></td>
 						<td align="center">&nbsp;${item.position_name }</td>
 						<td align="center">
 							<a href="javascript:window.location.href='article_toUpdate.action?articleId=${item.id }&categoryId=${categoryId}';void(0);">修改</a>

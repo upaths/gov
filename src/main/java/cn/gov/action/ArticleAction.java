@@ -27,7 +27,7 @@ public class ArticleAction extends BasicAction {
 	private String title;
 	private Integer review;
 	private List list;
-	private String sysdate;
+	private Date sysdate;
 	private List<Source> sourceList;
 	private List<Position> positionList;
 	private File image;
@@ -104,7 +104,7 @@ public class ArticleAction extends BasicAction {
 		sourceList = sourceService.queryAllSource();
 		positionList = positionService.queryAllPosition();
 		category = categoryService.queryByPrimaryKey(categoryId);
-		sysdate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+		sysdate = new Date();
 		role = userService.queryRoleByUsername((String) ActionContext.getContext().getSession().get("user"));
 		return "toAdd";
 	}
@@ -193,7 +193,7 @@ public class ArticleAction extends BasicAction {
 		List<Article> articleList = articleService.queryArticlesByCategoryId(categoryId);
 		category = categoryService.queryByPrimaryKey(categoryId);
 		if (articleList == null || articleList.size() == 0) {
-			sysdate = new SimpleDateFormat("yyyy年MM月dd日").format(new Date());
+			sysdate = new Date();
 			return "toAdd";
 		}else {
 			article = articleList.get(0);
@@ -265,11 +265,11 @@ public class ArticleAction extends BasicAction {
 		this.article = article;
 	}
 
-	public String getSysdate() {
+	public Date getSysdate() {
 		return sysdate;
 	}
 
-	public void setSysdate(String sysdate) {
+	public void setSysdate(Date sysdate) {
 		this.sysdate = sysdate;
 	}
 

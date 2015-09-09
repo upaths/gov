@@ -9,7 +9,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="cat_id" jdbcType="INTEGER" property="catId" />
-    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
     <result column="source_id" jdbcType="INTEGER" property="sourceId" />
     <result column="short_title" jdbcType="VARCHAR" property="shortTitle" />
     <result column="position_id" jdbcType="INTEGER" property="positionId" />
@@ -221,7 +221,7 @@
         #{catId,jdbcType=INTEGER},
       </if>
       <if test="date != null">
-        #{date,jdbcType=VARCHAR},
+        #{date,jdbcType=TIMESTAMP},
       </if>
       <if test="sourceId != null">
         #{sourceId,jdbcType=INTEGER},
@@ -285,7 +285,7 @@
         cat_id = #{record.catId,jdbcType=INTEGER},
       </if>
       <if test="record.date != null">
-        date = #{record.date,jdbcType=VARCHAR},
+        date = #{record.date,jdbcType=TIMESTAMP},
       </if>
       <if test="record.sourceId != null">
         source_id = #{record.sourceId,jdbcType=INTEGER},
@@ -334,7 +334,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
       cat_id = #{record.catId,jdbcType=INTEGER},
-      date = #{record.date,jdbcType=VARCHAR},
+      date = #{record.date,jdbcType=TIMESTAMP},
       source_id = #{record.sourceId,jdbcType=INTEGER},
       short_title = #{record.shortTitle,jdbcType=VARCHAR},
       position_id = #{record.positionId,jdbcType=INTEGER},
@@ -359,7 +359,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
       cat_id = #{record.catId,jdbcType=INTEGER},
-      date = #{record.date,jdbcType=VARCHAR},
+      date = #{record.date,jdbcType=TIMESTAMP},
       source_id = #{record.sourceId,jdbcType=INTEGER},
       short_title = #{record.shortTitle,jdbcType=VARCHAR},
       position_id = #{record.positionId,jdbcType=INTEGER},
@@ -388,7 +388,7 @@
         cat_id = #{catId,jdbcType=INTEGER},
       </if>
       <if test="date != null">
-        date = #{date,jdbcType=VARCHAR},
+        date = #{date,jdbcType=TIMESTAMP},
       </if>
       <if test="sourceId != null">
         source_id = #{sourceId,jdbcType=INTEGER},

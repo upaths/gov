@@ -5,7 +5,7 @@
 </head>
 <body>
 <@wy_article catid=48; article>
-    <strong>${article.nr}</strong><br />
+    <strong>${article.content}</strong><br />
 </@wy_article>
 </body>
 </html>

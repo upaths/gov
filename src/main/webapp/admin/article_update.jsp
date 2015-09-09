@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -8,6 +9,7 @@
     <script type="text/javascript" src="../script/jquery-1.4.min.js"></script>
     <script charset="utf-8" src="editor/kindeditor-min.js"></script>
     <script charset="utf-8" src="editor/lang/zh_CN.js"></script>
+    <script src="../My97DatePicker/WdatePicker.js"></script>
     <script>
         <c:if test="${category.categoryType == '1' || category.categoryType == '2' || category.categoryType == '3'}">
         var editor;
@@ -138,7 +140,7 @@
         </tr>
         <tr bgcolor="#FFFFFF">
             <td height="30" align="center" bgcolor="#E4EDF9" >时间：</td>
-            <td height="30" valign="middle" class="gray" ><input name="article.date" id="date" type="text" value="${article.date }" size="20" maxlength="45">
+            <td height="30" valign="middle" class="gray" ><input name="article.date" id="date" type="text" class="Wdate" onfocus="WdatePicker({'dateFmt':'yyyy-MM-dd HH:mm:ss'})" value="<fmt:formatDate value="${article.date}" pattern="yyyy-MM-dd HH:mm:ss" />" size="20">
                 <font color="red">*</font> 时间可以修改</td>
         </tr>
         <c:choose>

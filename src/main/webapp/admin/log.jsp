@@ -43,7 +43,7 @@
 								<td align="center">${item.ip }</td>
 								<td align="center">${item.username }</td>
 								<td align="center">
-									<fmt:formatDate value="${item.loginTime}" type="both" pattern="yyyy-MM-dd HH:mm:ss" />
+									<fmt:formatDate value="${item.loginTime}" pattern="yyyy-MM-dd HH:mm:ss" />
 								</td>
 								<td align="center">
 									<c:if test="${item.success }">成功</c:if>
