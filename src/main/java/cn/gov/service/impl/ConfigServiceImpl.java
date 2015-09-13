@@ -2,6 +2,7 @@ package cn.gov.service.impl;
 
 import java.util.List;
 
+import cn.gov.cache.SiteCache;
 import cn.gov.dao.ConfigMapper;
 import cn.gov.model.Config;
 import cn.gov.model.ConfigExample;
@@ -9,6 +10,9 @@ import cn.gov.service.ConfigService;
 
 public class ConfigServiceImpl implements ConfigService {
 	private ConfigMapper configMapper;
+	public void initCache() {
+		SiteCache.updateConfigCache(this.queryConfig());
+	}
 	public boolean isExist() {
 		ConfigExample configExample = new ConfigExample();
 		return configMapper.countByExample(configExample) > 0;
@@ -25,6 +29,8 @@ public class ConfigServiceImpl implements ConfigService {
 		}else {
 			configMapper.insert(config);
 		}
+		// 更新缓存
+		SiteCache.updateConfigCache(this.queryConfig());
 	}
 
 	public ConfigMapper getConfigMapper() {

@@ -32,6 +32,10 @@ public class CategoryListDirective implements TemplateDirectiveModel {
                 throw new TemplateModelException("不支持参数: " + paramName);
             }
         }
+
+        if (pid < 0) {
+            throw new TemplateModelException("参数" + PARENT_ID_NAME + "不能为空");
+        }
         List<Category> categoryList = categoryService.queryDisplayCategoryByPid(pid);
         // 执行真正指令的执行部分:
         if (body != null) {

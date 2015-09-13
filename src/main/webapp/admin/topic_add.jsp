@@ -57,7 +57,7 @@ function check() {
     </tr>
     <tr bgcolor="#FFFFFF">
         <td height="30" align="center" bgcolor="#E4EDF9">年月：</td>
-        <td height="30"><input class="Wdate" name="topic.month" id="month" onfocus="WdatePicker({'dateFmt':'yyyy-MM'})" value="${month}" size="15" ></td>
+        <td height="30"><input name="topic.month" id="month" value="${month}" size="15" ></td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="30" align="center" bgcolor="#E4EDF9">&nbsp;</td>

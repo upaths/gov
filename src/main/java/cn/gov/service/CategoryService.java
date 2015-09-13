@@ -15,9 +15,11 @@ public interface CategoryService {
 
 	public int deleteChilds(Integer parentId);
 
-	public List<CategoryTree> queryCategoryTree();
+	public List<CategoryTree> queryCategoryTree(boolean showChild);
 
 	public String queryCategoryTreeJson();
+
+	public String queryFirstLevelCategoryTreeJson();
 
 	public List<Category> queryCategoryList();
 

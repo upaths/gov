@@ -1,7 +1,6 @@
 package cn.gov.freemarker.directive;
 
 import cn.gov.freemarker.DataChecker;
-import cn.gov.model.Message;
 import cn.gov.model.Topic;
 import cn.gov.service.TopicService;
 import freemarker.core.Environment;
@@ -52,10 +51,14 @@ public class TopicListDirective implements TemplateDirectiveModel {
             if (loopVars.length > 0) {
                 // 数据
                 loopVars[0] = ObjectWrapper.DEFAULT_WRAPPER.wrap(topicList);
-                // 当前页码
-                loopVars[1] = new SimpleNumber(page);
-                // 总页数
-                loopVars[2] = new SimpleNumber(cnt % size == 0 ? cnt / size : cnt / size + 1);
+                if (loopVars.length > 1) {
+                    // 当前页码
+                    loopVars[1] = new SimpleNumber(page);
+                }
+                if (loopVars.length > 2) {
+                    // 总页数
+                    loopVars[2] = new SimpleNumber(cnt % size == 0 ? (cnt == 0 ? 1 : cnt / size) : cnt / size + 1);
+                }
             }
             // 执行嵌入体部分（和 FTL 中的<#nested>一样）。
             // 这种情况下，我们不提供一个特殊的 writer 作为参数:

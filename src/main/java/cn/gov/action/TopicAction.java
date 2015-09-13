@@ -5,9 +5,11 @@ import cn.gov.model.TopicComment;
 import cn.gov.model.TopicDetail;
 import cn.gov.service.TopicService;
 import cn.gov.util.AlertUtil;
+import cn.gov.util.IpUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +41,7 @@ public class TopicAction extends BasicAction {
     }
 
     public String toAdd() {
-        month = new SimpleDateFormat("yyyy-MM").format(new Date());
+        month = new SimpleDateFormat("yyyy年M月").format(new Date());
         return "toAdd";
     }
 
@@ -78,8 +80,17 @@ public class TopicAction extends BasicAction {
     public String commentUpdate() {
         String msg;
         int cnt = topicService.updateTopicComment(topicComment);
-        msg = cnt > 0 ? "操作成功！" : "删除操作！";
+        msg = cnt > 0 ? "操作成功！" : "操作失败！";
         AlertUtil.alertThenGo(response, msg, "topic_commentReview.action?id=" + id);
+        return null;
+    }
+
+    public String insertTopicComment() {
+        topicComment.setIp(IpUtil.getClientIp(request));
+        topicComment.setDate(new Date());
+        topicComment.setDisplay(false);
+        topicService.insertTopicComment(topicComment);
+        AlertUtil.alertThenGo(response, "评论成功，请等待管理员审核！", request.getContextPath()+"/index.html");
         return null;
     }
 

@@ -1,5 +1,6 @@
 package cn.gov.freemarker.directive;
 
+import cn.gov.cache.SiteCache;
 import cn.gov.freemarker.DataChecker;
 import cn.gov.model.Article;
 import cn.gov.model.Links;
@@ -36,7 +37,11 @@ public class LinkListDirective implements TemplateDirectiveModel {
         if (catid < 0) {
             throw new TemplateModelException("参数" + CATEGORY_ID_NAME + "不能为空");
         }
-        List<Links> linksList = linksService.queryLinksByCatid(catid);
+        // 先从缓存取
+        List<Links> linksList = SiteCache.getLinkListMap().get(catid);
+        if (linksList == null) {
+            linksList = linksService.queryLinksByCatid(catid);
+        }
         // 执行真正指令的执行部分:
         if (body != null) {
             if (loopVars.length > 0) {

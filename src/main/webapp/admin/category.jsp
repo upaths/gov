@@ -80,7 +80,8 @@
 				</table>
 				<c:forEach items="${list }" var="item" varStatus="status">
 					<table width="100%" border="0" cellpadding="0" cellspacing="0" class="xux">
-						<tr>
+						<tr onMouseOver="this.bgColor='#E4EDF9';"
+							onMouseOut="this.bgColor='#FFFFFF';" bgcolor="#ffffff">
 							<td width="10%" height="35" align="center" valign="middle">&nbsp;&nbsp;${item.id }</td>
 							<td height="35" align="left" valign="middle">${item.name }</td>
 							<td width="10%" align="center" valign="middle">
@@ -91,12 +92,18 @@
 								<c:if test="${item.categoryType eq '5'}">文件</c:if>
 							</td>
 							<td width="10%" align="center" valign="middle">
-								<c:if test="${!item.display }">不显示</c:if>
-								<c:if test="${item.display }">显示</c:if>
+								<c:if test="${item.parentId == 0}">
+									<c:if test="${!item.display }"><span style="color: red;">不显示</span></c:if>
+									<c:if test="${item.display }"><span style="color: green;">显示</span></c:if>
+								</c:if>
 							</td>
-							<td width="10%" align="center" valign="middle">${item.sort }</td>
+							<td width="10%" align="center" valign="middle"<c:if test="${item.parentId == 0}"> style="color: red;"</c:if>>
+								${item.sort }
+							</td>
 							<td width="15%" align="center" valign="middle">
+								<c:if test="${item.parentId == 0}">
 								<a href="category_toAdd.action?type=${item.categoryType}&parentId=${item.id}">增加子栏目</a>|
+								</c:if>
 								<a href="category_toUpdate.action?id=${item.id}">修改</a>|
 								<a href="javascript:if(window.confirm('确认删除？')){del('${item.id }');}void(0);">删除</a>
 							</td>

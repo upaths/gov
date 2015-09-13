@@ -1,5 +1,6 @@
 package cn.gov.freemarker.directive;
 
+import cn.gov.cache.SiteCache;
 import cn.gov.model.Article;
 import cn.gov.model.Config;
 import cn.gov.service.ConfigService;
@@ -16,7 +17,14 @@ public class ConfigDirective implements TemplateDirectiveModel {
     private ConfigService configService;
     @Override
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
-        Config config = configService.queryConfig();
+        // 先从缓存取
+        Config config = SiteCache.getConfig();
+        if (config == null) {
+            config = configService.queryConfig();
+        }
+        if (config == null) {
+            throw new RuntimeException("网站尚未配置");
+        }
         // 执行真正指令的执行部分:
         if (body != null) {
             if (loopVars.length > 0) {

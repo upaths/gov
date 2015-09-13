@@ -42,7 +42,7 @@
 						<td align="center">&nbsp;${item.title }</td>
 						<td align="center">&nbsp;${item.content }</td>
 						<td align="center">&nbsp;${item.checked }</td>
-						<td align="center">&nbsp;${item.unchecked }</td>
+						<td align="center">&nbsp;<font color="red">${item.unchecked }</font></td>
 						<td align="center">
 							<a href="javascript:window.location.href='topic_toUpdate.action?id=${item.id }';void(0);">修改</a>
 							<a href="javascript:if(confirm('确定删除？')){window.location.href='topic_delete.action?id=${item.id }';}void(0);">删除</a>

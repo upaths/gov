@@ -24,7 +24,7 @@ public class CategoryAction extends BasicAction {
 	}
 
 	public void queryCategoryTree() {
-		StringBuffer sb = new StringBuffer("[{\"id\":\"\",\"text\":\"作为一级栏目\"");
+		StringBuffer sb = new StringBuffer("[{\"id\":\"0\",\"text\":\"作为一级栏目\"");
 		sb.append(",\"children\":[").append(categoryService.queryCategoryTreeJson()).append("]");
 		sb.append("}]");
 		response.setCharacterEncoding("UTF-8");
@@ -35,7 +35,22 @@ public class CategoryAction extends BasicAction {
 		}
 	}
 
+	public void queryFirstLevelCategoryTree() {
+		StringBuffer sb = new StringBuffer("[{\"id\":\"0\",\"text\":\"作为一级栏目\"");
+		sb.append(",\"children\":[").append(categoryService.queryFirstLevelCategoryTreeJson()).append("]");
+		sb.append("}]");
+		response.setCharacterEncoding("UTF-8");
+		try {
+			response.getWriter().write(sb.toString());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public String toAdd() {
+		if (parentId == null) {
+			parentId = 0;
+		}
 		return "toAdd";
 	}
 

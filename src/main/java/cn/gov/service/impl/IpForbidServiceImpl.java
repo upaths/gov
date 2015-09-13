@@ -1,5 +1,6 @@
 package cn.gov.service.impl;
 
+import cn.gov.cache.SiteCache;
 import cn.gov.dao.IpForbidMapper;
 import cn.gov.model.IpForbid;
 import cn.gov.model.IpForbidExample;
@@ -14,14 +15,22 @@ public class IpForbidServiceImpl implements IpForbidService {
 
     private IpForbidMapper ipForbidMapper;
 
+    public void initCache() {
+        SiteCache.updateIpForbidCache(ipForbidMapper.selectByExample(null));
+    }
     @Override
     public void insertForbiddenIp(IpForbid ipForbid) {
         ipForbidMapper.insert(ipForbid);
+        // 更新缓存
+        SiteCache.updateIpForbidCache(ipForbidMapper.selectByExample(null));
     }
 
     @Override
     public int deleteForbinddenIp(Integer id) {
-        return ipForbidMapper.deleteByPrimaryKey(id);
+        int cnt = ipForbidMapper.deleteByPrimaryKey(id);
+        // 更新缓存
+        SiteCache.updateIpForbidCache(ipForbidMapper.selectByExample(null));
+        return cnt;
     }
 
     @Override

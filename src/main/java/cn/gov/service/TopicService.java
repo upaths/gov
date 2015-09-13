@@ -36,4 +36,5 @@ public interface TopicService {
     public List<TopicComment> queryDisplayTopicComment(Integer topicId, String sort, Integer page, Integer size);
 
     public int countDisplayTopicComment(Integer topicId);
+
 }

@@ -28,11 +28,7 @@
 
 	<filter>
 		<filter-name>checkIpForbidFilter</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-		<init-param>
-			<param-name>targetFilterLifecycle</param-name>
-			<param-value>true</param-value>
-		</init-param>
+		<filter-class>cn.gov.filter.CheckIpForbidFilter</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>checkIpForbidFilter</filter-name>
@@ -48,6 +44,9 @@
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
 		<url-pattern>*.action</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
 	</filter-mapping>
 
 	<servlet>

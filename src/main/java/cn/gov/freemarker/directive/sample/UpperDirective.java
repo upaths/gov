@@ -11,14 +11,11 @@ import java.util.Map;
  * Created by Administrator on 2015/8/25.
  */
 public class UpperDirective implements TemplateDirectiveModel {
-    public UpperDirective() {
-        System.out.println("新建标签类=====================================================================");
-    }
+
     @Override
     public void execute(Environment env, Map params,
                         TemplateModel[] loopVars, TemplateDirectiveBody body)
             throws TemplateException, IOException {
-        System.out.println("执行标签方法=====================================================================");
         // 检查参数是否传入
         if (!params.isEmpty()) {
             throw new TemplateModelException("This directive doesn't allow parameters.");

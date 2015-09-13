@@ -64,4 +64,7 @@
 
 	<bean id="topicAction" class="cn.gov.action.TopicAction"
 		  scope="prototype" autowire="byName" />
+
+	<bean id="freemarkerAction" class="cn.gov.action.FreemarkerAction"
+		  scope="prototype" autowire="byName" />
 </beans>

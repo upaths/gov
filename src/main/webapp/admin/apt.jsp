@@ -61,7 +61,7 @@
 						<td align="center">&nbsp;${item.contactPerson }</td>
 						<td align="center">&nbsp;${item.contactInfo }</td>
 						<td align="center">&nbsp;${item.number }</td>
-						<td align="center">&nbsp;${item.content }</td>
+						<td align="center" width="400">&nbsp;${item.content }</td>
 						<td align="center">
 							&nbsp;<fmt:formatDate value="${item.date}" pattern="yyyy-MM-dd" />
 						</td>

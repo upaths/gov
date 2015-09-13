@@ -57,11 +57,11 @@
       <tr bgcolor="#D2E8F6">
         <td height="40" align="center" class="nzcms_table_top" ><a href="javascript:$('#news').toggle();void(0);">说明书<img src="images/help.png" alt="问" border="0" /></a></td>
         <td height="40" align="center" class="nzcms_table_top" >
-          <c:if test="${category.categoryType eq '1'}">添加栏目</c:if>
-          <c:if test="${category.categoryType eq '2'}">添加单页</c:if>
-          <c:if test="${category.categoryType eq '3'}">添加专题</c:if>
-          <c:if test="${category.categoryType eq '4'}">添加外链</c:if>
-          <c:if test="${category.categoryType eq '5'}">添加文件</c:if>
+          <c:if test="${category.categoryType eq '1'}">修改栏目</c:if>
+          <c:if test="${category.categoryType eq '2'}">修改单页</c:if>
+          <c:if test="${category.categoryType eq '3'}">修改专题</c:if>
+          <c:if test="${category.categoryType eq '4'}">修改外链</c:if>
+          <c:if test="${category.categoryType eq '5'}">修改文件</c:if>
       </td>
     </tr>
     <tr bgcolor="#D2E8F6">
@@ -72,7 +72,7 @@
     <tr bgcolor="#FFFFFF">
       <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >上级栏目：</td>
       <td height="30" class="gray">
-          <input class="easyui-combotree" data-options="url:'category_queryCategoryTree.action',required:true" id="parentIdComboTree" style="width: 200px;" value="${category.parentId}" />
+          <input class="easyui-combotree" data-options="url:'category_queryFirstLevelCategoryTree.action',required:true" id="parentIdComboTree" style="width: 200px;" value="${category.parentId}" />
           <font color="red">*</font>
       </td>
     </tr>
@@ -86,7 +86,7 @@
       <td height="30"><input name="category.sort" id="sort" type="text" value="${category.sort}" />
           <font color="red">*</font>&nbsp;&nbsp;<font color="gray">根据栏目序号进行排序</font></td>
     </tr>
-    <c:if test="${type eq '4'}">
+    <c:if test="${category.categoryType eq '4'}">
         <tr bgcolor="#FFFFFF">
             <td height="30" align="center" bgcolor="#E4EDF9" >外链地址：</td>
             <td height="30" valign="middle" class="gray" ><input name="category.url" id="url" type="text" size="50" value="${category.url}">

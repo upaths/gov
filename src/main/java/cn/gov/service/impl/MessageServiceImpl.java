@@ -50,7 +50,7 @@ public class MessageServiceImpl implements MessageService {
 		}else {
 			messageExample.setOrderByClause("id desc" + limitSql);
 		}
-		return messageMapper.selectByExample(messageExample);
+		return messageMapper.selectByExampleWithBLOBs(messageExample);
 	}
 
 	@Override

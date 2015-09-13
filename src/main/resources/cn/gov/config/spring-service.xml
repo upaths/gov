@@ -12,16 +12,16 @@
 		autowire="byName" />
 		
 	<bean id="configService" class="cn.gov.service.impl.ConfigServiceImpl"
-		autowire="byName" />
+		autowire="byName" init-method="initCache" />
 		
 	<bean id="categoryService" class="cn.gov.service.impl.CategoryServiceImpl"
-		autowire="byName" />
+		autowire="byName" init-method="initCache" />
 		
 	<bean id="articleService" class="cn.gov.service.impl.ArticleServiceImpl"
 		autowire="byName" />
 		
 	<bean id="linksService" class="cn.gov.service.impl.LinksServiceImpl"
-		autowire="byName" />
+		autowire="byName" init-method="initCache" />
 		
 	<bean id="logService" class="cn.gov.service.impl.LogServiceImpl"
 		autowire="byName" />
@@ -35,7 +35,7 @@
 
 	<bean id="positionService" class="cn.gov.service.impl.PositionServiceImpl" autowire="byName" />
 
-	<bean id="ipForbidService" class="cn.gov.service.impl.IpForbidServiceImpl" autowire="byName" />
+	<bean id="ipForbidService" class="cn.gov.service.impl.IpForbidServiceImpl" autowire="byName" init-method="initCache" />
 
 	<bean id="linkCategoryService" class="cn.gov.service.impl.LinkCategoryServiceImpl" autowire="byName" />
 

@@ -3,6 +3,7 @@ package cn.gov.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.gov.cache.SiteCache;
 import cn.gov.dao.CategoryMapper;
 import cn.gov.model.Category;
 import cn.gov.model.CategoryExample;
@@ -11,16 +12,27 @@ import cn.gov.service.CategoryService;
 
 public class CategoryServiceImpl implements CategoryService {
 	private CategoryMapper categoryMapper;
+	public void initCache() {
+		SiteCache.updateCategoryCache(categoryMapper.selectByExample(null));
+	}
 	public void insert(Category category) {
 		categoryMapper.insert(category);
+		// 更新缓存
+		SiteCache.updateCategoryCache(categoryMapper.selectByExample(null));
 	}
 
 	public int update(Category category) {
-		return categoryMapper.updateByPrimaryKey(category);
+		int cnt = categoryMapper.updateByPrimaryKey(category);
+		// 更新缓存
+		SiteCache.updateCategoryCache(categoryMapper.selectByExample(null));
+		return cnt;
 	}
 
 	public int delete(Integer id) {
-		return categoryMapper.deleteByPrimaryKey(id);
+		int cnt = categoryMapper.deleteByPrimaryKey(id);
+		// 更新缓存
+		SiteCache.updateCategoryCache(categoryMapper.selectByExample(null));
+		return cnt;
 	}
 
 	public int deleteChilds(Integer parentId) {
@@ -30,12 +42,15 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public List<CategoryTree> queryCategoryTree() {
+	public List<CategoryTree> queryCategoryTree(boolean showChild) {
 		List<CategoryTree> categoryTreeList = new ArrayList<CategoryTree>();
 		List<Category> list = this.queryFirstLevel();
 		for (Category c : list) {
 			CategoryTree categoryTree = new CategoryTree(c);
-			this.buildCategoryTree(categoryTree);
+			// 如果需要显示子节点，构建栏目树
+			if (showChild) {
+				this.buildCategoryTree(categoryTree);
+			}
 			categoryTreeList.add(categoryTree);
 		}
 		return categoryTreeList;
@@ -56,7 +71,25 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public String queryCategoryTreeJson() {
-		List<CategoryTree> trees = this.queryCategoryTree();
+		List<CategoryTree> trees = this.queryCategoryTree(true);
+		if (trees == null) {
+			return null;
+		}
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < trees.size(); i++) {
+			CategoryTree tree = trees.get(i);
+			if (i > 0) {
+				sb.append(",");
+			}
+			this.buildCategoryJson(tree, sb);
+		}
+		return sb.toString();
+	}
+
+	@Override
+	public String queryFirstLevelCategoryTreeJson() {
+		// 暂时只允许选择一级栏目作为父节点
+		List<CategoryTree> trees = this.queryCategoryTree(false);
 		if (trees == null) {
 			return null;
 		}
@@ -92,7 +125,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public List<Category> queryCategoryList() {
-		List<CategoryTree> trees = this.queryCategoryTree();
+		List<CategoryTree> trees = this.queryCategoryTree(true);
 		if (trees == null) {
 			return null;
 		}
@@ -124,7 +157,7 @@ public class CategoryServiceImpl implements CategoryService {
 
 	public List<Category> queryFirstLevel() {
 		CategoryExample categoryExample = new CategoryExample();
-		categoryExample.createCriteria().andParentIdIsNull();
+		categoryExample.createCriteria().andParentIdEqualTo(0);
 		categoryExample.setOrderByClause("sort");
 		return categoryMapper.selectByExample(categoryExample);
 	}
@@ -151,11 +184,7 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public List<Category> queryDisplayCategoryByPid(Integer pid) {
 		CategoryExample categoryExample = new CategoryExample();
-		if (pid != null && pid > 0) {
-			categoryExample.createCriteria().andParentIdEqualTo(pid).andDisplayEqualTo(true);
-		}else {
-			categoryExample.createCriteria().andParentIdIsNull().andDisplayEqualTo(true);
-		}
+		categoryExample.createCriteria().andParentIdEqualTo(pid).andDisplayEqualTo(true);
 		categoryExample.setOrderByClause("sort");
 		return categoryMapper.selectByExample(categoryExample);
 	}

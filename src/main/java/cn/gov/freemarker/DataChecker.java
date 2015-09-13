@@ -14,8 +14,8 @@ public class DataChecker {
             throw new TemplateModelException("参数 \"" + paramName + "\" 必须为数字.");
         }
         int result = ((TemplateNumberModel) paramValue).getAsNumber().intValue();
-        if (result <= 0) {
-            throw new TemplateModelException("参数 \"" + paramName + "\" 必须大于0.");
+        if (result < 0) {
+            throw new TemplateModelException("参数 \"" + paramName + "\" 必须大于等于0.");
         }
         return result;
     }

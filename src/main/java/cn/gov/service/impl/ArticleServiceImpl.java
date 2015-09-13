@@ -50,9 +50,16 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public List<Article> queryDisplayArticleByCatid(Integer catid, String sort, Integer page, Integer size) {
+	public List<Article> queryDisplayArticle(Integer catid, Integer posid, String sort, Integer page, Integer size) {
 		ArticleExample articleExample = new ArticleExample();
-		articleExample.createCriteria().andCatIdEqualTo(catid).andDisplayEqualTo(true);
+		ArticleExample.Criteria criteria = articleExample.createCriteria();
+		criteria.andDisplayEqualTo(true);
+		if (catid != null && catid > 0) {
+			criteria.andCatIdEqualTo(catid);
+		}
+		if (posid != null && posid > 0) {
+			criteria.andPositionIdEqualTo(posid);
+		}
 		String limitSql = "";
 		if (size != null && size > 0) {
 			if (page != null && page > 0) {
@@ -70,36 +77,16 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public int countDisplayArticleByCatid(Integer catid) {
+	public int countDisplayArticle(Integer catid, Integer posid) {
 		ArticleExample articleExample = new ArticleExample();
-		articleExample.createCriteria().andCatIdEqualTo(catid).andDisplayEqualTo(true);
-		return articleMapper.countByExample(articleExample);
-	}
-
-	@Override
-	public List<Article> queryDisplayArticleByPosid(Integer posid, String sort, Integer page, Integer size) {
-		ArticleExample articleExample = new ArticleExample();
-		articleExample.createCriteria().andPositionIdEqualTo(posid).andDisplayEqualTo(true);
-		String limitSql = "";
-		if (size != null && size > 0) {
-			if (page != null && page > 0) {
-				limitSql += " limit " + (page - 1) * size + "," + size;
-			}else {
-				limitSql += " limit " + size;
-			}
+		ArticleExample.Criteria criteria = articleExample.createCriteria();
+		criteria.andDisplayEqualTo(true);
+		if (catid != null && catid > 0) {
+			criteria.andCatIdEqualTo(catid);
 		}
-		if (sort != null && !"".equals(sort)) {
-			articleExample.setOrderByClause(sort + limitSql);
-		}else {
-			articleExample.setOrderByClause("id desc" + limitSql);
+		if (posid != null && posid > 0) {
+			criteria.andPositionIdEqualTo(posid);
 		}
-		return articleMapper.selectByExample(articleExample);
-	}
-
-	@Override
-	public int countDisplayArticleByPosid(Integer posid) {
-		ArticleExample articleExample = new ArticleExample();
-		articleExample.createCriteria().andPositionIdEqualTo(posid).andDisplayEqualTo(true);
 		return articleMapper.countByExample(articleExample);
 	}
 

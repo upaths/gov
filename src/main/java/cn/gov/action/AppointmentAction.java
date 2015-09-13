@@ -2,6 +2,7 @@ package cn.gov.action;
 
 import cn.gov.model.Appointment;
 import cn.gov.service.AppointmentService;
+import cn.gov.util.AlertUtil;
 
 import java.util.Date;
 import java.util.List;
@@ -22,6 +23,18 @@ public class AppointmentAction extends BasicAction {
     public String query() {
         list = appointmentService.queryAppointmentByDate(begDate, endDate);
         return "query";
+    }
+
+    public String insert() {
+        String msg;
+        try {
+            appointmentService.insert(appointment);
+            msg = "登记成功，我们会及时与您联系！";
+        }catch (Exception e) {
+            msg = "登记失败，请联系管理员！";
+        }
+        AlertUtil.alertThenGo(response, msg, request.getContextPath()+"/index.html");
+        return null;
     }
 
     public AppointmentService getAppointmentService() {

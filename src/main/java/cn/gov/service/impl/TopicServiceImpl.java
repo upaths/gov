@@ -101,7 +101,7 @@ public class TopicServiceImpl implements TopicService {
     @Override
     public List<TopicComment> queryDisplayTopicComment(Integer topicId, String sort, Integer page, Integer size) {
         TopicCommentExample topicCommentExample = new TopicCommentExample();
-        topicCommentExample.createCriteria().andTopicIdEqualTo(topicId);
+        topicCommentExample.createCriteria().andTopicIdEqualTo(topicId).andDisplayEqualTo(true);
         String limitSql = "";
         if (size != null && size > 0) {
             if (page != null && page > 0) {

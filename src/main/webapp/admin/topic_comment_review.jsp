@@ -29,6 +29,7 @@
 						<td class="nzcms_table_top2">序号</td>
 						<td class="nzcms_table_top2">状态</td>
 						<td class="nzcms_table_top2">姓名</td>
+						<td class="nzcms_table_top2">电话</td>
 						<td class="nzcms_table_top2">IP</td>
 						<td class="nzcms_table_top2">评论</td>
 						<td class="nzcms_table_top2">时间</td>
@@ -49,8 +50,9 @@
 							</c:choose>
 						</td>
 						<td align="center">&nbsp;${item.netName}</td>
+						<td align="center">&nbsp;${item.telephone }</td>
 						<td align="center">&nbsp;${item.ip }</td>
-						<td align="center">&nbsp;${item.comment }</td>
+						<td align="center" width="500">&nbsp;${item.comment }</td>
 						<td align="center">
 							<fmt:formatDate value="${item.date}" type="both" />
 						</td>

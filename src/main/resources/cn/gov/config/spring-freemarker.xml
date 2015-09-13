@@ -8,29 +8,31 @@
 			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
 			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-	<bean id="article" class="cn.gov.freemarker.directive.ArticleDirective" autowire="byName" />
+	<bean id="articleTag" class="cn.gov.freemarker.directive.ArticleDirective" autowire="byName" />
 
-	<bean id="articleList" class="cn.gov.freemarker.directive.ArticleListDirective" autowire="byName" />
+	<bean id="articleListTag" class="cn.gov.freemarker.directive.ArticleListDirective" autowire="byName" />
 
-	<bean id="categoryDirective" class="cn.gov.freemarker.directive.CategoryDirective" autowire="byName" />
+	<bean id="categoryTag" class="cn.gov.freemarker.directive.CategoryDirective" autowire="byName" />
 
-	<bean id="categoryListDirective" class="cn.gov.freemarker.directive.CategoryListDirective" autowire="byName" />
+	<bean id="categoryListTag" class="cn.gov.freemarker.directive.CategoryListDirective" autowire="byName" />
 
-	<bean id="configDirective" class="cn.gov.freemarker.directive.ConfigDirective" autowire="byName" />
+	<bean id="configTag" class="cn.gov.freemarker.directive.ConfigDirective" autowire="byName" />
 
-	<bean id="linkCategoryListDirective" class="cn.gov.freemarker.directive.LinkCategoryListDirective" autowire="byName" />
+	<bean id="linkCategoryListTag" class="cn.gov.freemarker.directive.LinkCategoryListDirective" autowire="byName" />
 
-	<bean id="linkListDirective" class="cn.gov.freemarker.directive.LinkListDirective" autowire="byName" />
+	<bean id="linkListTag" class="cn.gov.freemarker.directive.LinkListDirective" autowire="byName" />
 
-	<bean id="messageListDirective" class="cn.gov.freemarker.directive.MessageListDirective" autowire="byName" />
+	<bean id="messageListTag" class="cn.gov.freemarker.directive.MessageListDirective" autowire="byName" />
 
-	<bean id="positionDirective" class="cn.gov.freemarker.directive.PositionDirective" autowire="byName" />
+	<bean id="positionTag" class="cn.gov.freemarker.directive.PositionDirective" autowire="byName" />
 
-	<bean id="topicCommentListDirective" class="cn.gov.freemarker.directive.TopicCommentListDirective" autowire="byName" />
+	<bean id="sourceTag" class="cn.gov.freemarker.directive.SourceDirective" autowire="byName" />
 
-	<bean id="topicDirective" class="cn.gov.freemarker.directive.TopicDirective" autowire="byName" />
+	<bean id="topicCommentListTag" class="cn.gov.freemarker.directive.TopicCommentListDirective" autowire="byName" />
 
-	<bean id="topicListDirective" class="cn.gov.freemarker.directive.TopicListDirective" autowire="byName" />
+	<bean id="topicTag" class="cn.gov.freemarker.directive.TopicDirective" autowire="byName" />
+
+	<bean id="topicListTag" class="cn.gov.freemarker.directive.TopicListDirective" autowire="byName" />
 
 	<bean id="upper" class="cn.gov.freemarker.directive.sample.UpperDirective" />
 

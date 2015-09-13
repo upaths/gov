@@ -61,7 +61,7 @@
 						</c:choose>
 						</font></td>
 						<td>
-							&nbsp;<a href="../showNews.action?article.id=${item.id }" target="_blank">${item.title }</a>
+							&nbsp;<a href="<c:url value="${pageContext.request.contextPath}/content.action?id=${item.id }"/>" target="_blank">${item.title }</a>
 							<c:if test="${!(empty item.thumb) }">
 								<img src="../images/type_img.png" alt="图" />
 							</c:if>

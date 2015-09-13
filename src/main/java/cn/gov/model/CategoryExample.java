@@ -643,6 +643,76 @@ public class CategoryExample {
             addCriterion("url not between", value1, value2, "url");
             return (Criteria) this;
         }
+
+        public Criteria andTempletIsNull() {
+            addCriterion("templet is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTempletIsNotNull() {
+            addCriterion("templet is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTempletEqualTo(String value) {
+            addCriterion("templet =", value, "templet");
+            return (Criteria) this;
+        }
+
+        public Criteria andTempletNotEqualTo(String value) {
+            addCriterion("templet <>", value, "templet");
+            return (Criteria) this;
+        }
+
+        public Criteria andTempletGreaterThan(String value) {
+            addCriterion("templet >", value, "templet");
+            return (Criteria) this;
+        }
+
+        public Criteria andTempletGreaterThanOrEqualTo(String value) {
+            addCriterion("templet >=", value, "templet");
+            return (Criteria) this;
+        }
+
+        public Criteria andTempletLessThan(String value) {
+            addCriterion("templet <", value, "templet");
+            return (Criteria) this;
+        }
+
+        public Criteria andTempletLessThanOrEqualTo(String value) {
+            addCriterion("templet <=", value, "templet");
+            return (Criteria) this;
+        }
+
+        public Criteria andTempletLike(String value) {
+            addCriterion("templet like", value, "templet");
+            return (Criteria) this;
+        }
+
+        public Criteria andTempletNotLike(String value) {
+            addCriterion("templet not like", value, "templet");
+            return (Criteria) this;
+        }
+
+        public Criteria andTempletIn(List<String> values) {
+            addCriterion("templet in", values, "templet");
+            return (Criteria) this;
+        }
+
+        public Criteria andTempletNotIn(List<String> values) {
+            addCriterion("templet not in", values, "templet");
+            return (Criteria) this;
+        }
+
+        public Criteria andTempletBetween(String value1, String value2) {
+            addCriterion("templet between", value1, value2, "templet");
+            return (Criteria) this;
+        }
+
+        public Criteria andTempletNotBetween(String value1, String value2) {
+            addCriterion("templet not between", value1, value2, "templet");
+            return (Criteria) this;
+        }
     }
 
     /**

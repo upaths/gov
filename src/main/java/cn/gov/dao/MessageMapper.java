@@ -48,10 +48,12 @@ public interface MessageMapper {
     @Insert({
         "insert into message (id, net_name, ",
         "ip, title, date, ",
-        "display, content)",
+        "display, telephone, ",
+        "content)",
         "values (#{id,jdbcType=INTEGER}, #{netName,jdbcType=VARCHAR}, ",
         "#{ip,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, ",
-        "#{display,jdbcType=BIT}, #{content,jdbcType=LONGVARCHAR})"
+        "#{display,jdbcType=BIT}, #{telephone,jdbcType=VARCHAR}, ",
+        "#{content,jdbcType=LONGVARCHAR})"
     })
     int insert(Message record);
 
@@ -87,7 +89,7 @@ public interface MessageMapper {
      */
     @Select({
         "select",
-        "id, net_name, ip, title, date, display, content",
+        "id, net_name, ip, title, date, display, telephone, content",
         "from message",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -139,6 +141,7 @@ public interface MessageMapper {
           "title = #{title,jdbcType=VARCHAR},",
           "date = #{date,jdbcType=TIMESTAMP},",
           "display = #{display,jdbcType=BIT},",
+          "telephone = #{telephone,jdbcType=VARCHAR},",
           "content = #{content,jdbcType=LONGVARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -156,7 +159,8 @@ public interface MessageMapper {
           "ip = #{ip,jdbcType=VARCHAR},",
           "title = #{title,jdbcType=VARCHAR},",
           "date = #{date,jdbcType=TIMESTAMP},",
-          "display = #{display,jdbcType=BIT}",
+          "display = #{display,jdbcType=BIT},",
+          "telephone = #{telephone,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Message record);

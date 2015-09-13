@@ -33,6 +33,7 @@
 							<td class="nzcms_table_top2">内容</td>
 							<td class="nzcms_table_top2">时间</td>
 							<td class="nzcms_table_top2">姓名</td>
+							<td class="nzcms_table_top2">电话</td>
 							<td class="nzcms_table_top2">IP</td>
 							<td class="nzcms_table_top2">操作</td>
 						</tr>
@@ -51,11 +52,12 @@
 									</c:choose>
 								</td>
 								<td align="center">${item.title }</td>
-								<td align="center">${item.content }</td>
+								<td align="center" width="450">${item.content }</td>
 								<td align="center">
 									<fmt:formatDate value="${item.date}" type="both" pattern="yyyy-MM-dd HH:mm:ss" />
 								</td>
 								<td align="center">${item.netName}</td>
+								<td align="center">${item.telephone}</td>
 								<td align="center">${item.ip}</td>
 								<td align="center">
 									<a href="javascript:if(confirm('确定删除？')){window.location.href='msg_delete.action?message.id=${item.id }';}void(0);">删除</a>
@@ -71,7 +73,7 @@
 							</tr>
 						</c:forEach>
 					<tr align="center">
-						<td height="25" colspan="8" class="nzcms_table_top">
+						<td height="25" colspan="9" class="nzcms_table_top">
 							<page:pagination pageBean="${pageBean}" url="msg_query.action" cssClass="txt_page" />
 						</td>
 					</tr>

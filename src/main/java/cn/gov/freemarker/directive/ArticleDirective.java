@@ -8,6 +8,7 @@ import freemarker.template.*;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,25 +17,38 @@ import java.util.Map;
 public class ArticleDirective implements TemplateDirectiveModel {
     private ArticleService articleService;
     private static final String ID_NAME = "id";
+    private static final String CATEGORY_ID_NAME = "catid";
     @Override
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
         int id = -1;
+        int catid = -1;
         Iterator paramIterator = params.entrySet().iterator();
         while (paramIterator.hasNext()) {
             Map.Entry ent = (Map.Entry) paramIterator.next();
             String paramName = (String) ent.getKey();
             TemplateModel paramValue = (TemplateModel)
                     ent.getValue();
-            if (paramName.equals(ID_NAME)) {
+            if (paramName.equals(CATEGORY_ID_NAME)) {
+                catid = DataChecker.checkInt(paramValue, paramName);
+            }else if (paramName.equals(ID_NAME)) {
                 id = DataChecker.checkInt(paramValue, paramName);
             } else {
                 throw new TemplateModelException("不支持参数: " + paramName);
             }
         }
-        if (id < 0) {
-            throw new TemplateModelException("参数" + ID_NAME + "不能为空");
+        if ((catid > 0 && id > 0) || (catid < 0 && id < 0)) {
+            throw new TemplateModelException("参数" + CATEGORY_ID_NAME + "和" + ID_NAME + "有且只有一个");
         }
-        Article article = articleService.queryArticleById(id);
+        Article article = null;
+        if(id > 0) {
+            article = articleService.queryArticleById(id);
+        }else {
+            List<Article> articleList = articleService.queryArticlesByCategoryId(catid);
+            if (articleList != null && articleList.size() > 0) {
+                article = articleList.get(0);
+            }
+        }
+
         // 执行真正指令的执行部分:
         if (body != null) {
             if (loopVars.length > 0) {

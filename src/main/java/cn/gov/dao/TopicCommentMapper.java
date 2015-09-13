@@ -48,10 +48,10 @@ public interface TopicCommentMapper {
     @Insert({
         "insert into topic_comment (id, net_name, ",
         "ip, comment, date, ",
-        "display, topic_id)",
+        "display, topic_id, telephone)",
         "values (#{id,jdbcType=INTEGER}, #{netName,jdbcType=VARCHAR}, ",
         "#{ip,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, #{date,jdbcType=TIMESTAMP}, ",
-        "#{display,jdbcType=BIT}, #{topicId,jdbcType=INTEGER})"
+        "#{display,jdbcType=BIT}, #{topicId,jdbcType=INTEGER}, #{telephone,jdbcType=VARCHAR})"
     })
     int insert(TopicComment record);
 
@@ -79,7 +79,7 @@ public interface TopicCommentMapper {
      */
     @Select({
         "select",
-        "id, net_name, ip, comment, date, display, topic_id",
+        "id, net_name, ip, comment, date, display, topic_id, telephone",
         "from topic_comment",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -123,7 +123,8 @@ public interface TopicCommentMapper {
           "comment = #{comment,jdbcType=VARCHAR},",
           "date = #{date,jdbcType=TIMESTAMP},",
           "display = #{display,jdbcType=BIT},",
-          "topic_id = #{topicId,jdbcType=INTEGER}",
+          "topic_id = #{topicId,jdbcType=INTEGER},",
+          "telephone = #{telephone,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(TopicComment record);

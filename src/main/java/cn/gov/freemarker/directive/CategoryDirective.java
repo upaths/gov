@@ -1,5 +1,6 @@
 package cn.gov.freemarker.directive;
 
+import cn.gov.cache.SiteCache;
 import cn.gov.freemarker.DataChecker;
 import cn.gov.model.Article;
 import cn.gov.model.Category;
@@ -35,7 +36,14 @@ public class CategoryDirective implements TemplateDirectiveModel {
         if (id < 0) {
             throw new TemplateModelException("参数" + ID_NAME + "不能为空");
         }
-        Category category = categoryService.queryByPrimaryKey(id);
+        // 先从缓存取
+        Category category = SiteCache.getCategoryMap().get(id);
+        if (category == null) {
+            category = categoryService.queryByPrimaryKey(id);
+        }
+        if (category == null) {
+            throw new RuntimeException("没有id为"+id+"的栏目");
+        }
         // 执行真正指令的执行部分:
         if (body != null) {
             if (loopVars.length > 0) {

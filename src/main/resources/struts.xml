@@ -7,8 +7,14 @@
 	<constant name="struts.freemarker.manager.classname" value="cn.gov.freemarker.MyFreemarkerManager" />
 	<constant name="struts.multipart.maxSize" value="104857600"></constant>
 	<package name="gov" extends="struts-default">
+		<result-types>
+			<result-type name="listFreemarker" class="cn.gov.freemarker.ListFreemarkerResult"/>
+		</result-types>
+
 		<interceptors>
+			<interceptor name="siteClose" class="cn.gov.interceptor.SiteCloseInterceptor" />
 			<interceptor-stack name="appDefaultStack">
+				<interceptor-ref name="siteClose" />
 				<interceptor-ref name="defaultStack">
 					<param name="exception.logEnabled">true</param>
 					<param name="exception.logLevel">ERROR</param>
@@ -16,6 +22,9 @@
 			</interceptor-stack>
 		</interceptors>
 		<default-interceptor-ref name="appDefaultStack" />
+		<global-results>
+			<result name="close" type="freemarker">/ftl/close.ftl</result>
+		</global-results>
 
 		<!-- Random验证码 -->
 		<action name="rand" class="randomAction">
@@ -24,62 +33,41 @@
 				<param name="inputName">inputStream</param>
 			</result>
 		</action>
-		<!-- 页面头部 -->
-		<action name="top" class="topAction">
-			<result>top.jsp</result>
-		</action>
-		<!-- 页面尾部 -->
-		<action name="bottom" class="bottomAction">
-			<result>bottom.jsp</result>
-		</action>
 		<!-- 首页 -->
-		<action name="index" class="indexAction">
-			<result>index.jsp</result>
+		<action name="index" class="freemarkerAction" method="index">
+			<result type="freemarker">/ftl/index.ftl</result>
 		</action>
-		<!-- 投诉建议 -->
-		<action name="msg_insert" class="messageAction" method="insert">
+		<!-- 内容列表 -->
+		<action name="list" class="freemarkerAction" method="list">
+			<result type="listFreemarker" />
 		</action>
-		<!-- 机构设置查询 -->
-		<action name="org" class="organizationAction" method="showOrg">
-			<result>org.jsp</result>
+		<!-- 内容页面 -->
+		<action name="content" class="freemarkerAction" method="content">
+			<result type="freemarker">/ftl/content.ftl</result>
 		</action>
-		<!-- 一级分类展示 -->
-		<action name="cat1" class="articleAction" method="showCat1">
-			<result>cat1.jsp</result>
+		<!-- 专题 -->
+		<action name="topic" class="freemarkerAction" method="topic">
+			<result type="freemarker">/ftl/topic.ftl</result>
 		</action>
-		<!-- 二级分类展示 -->
-		<action name="cat2" class="articleAction" method="showCat2">
-			<result>cat2.jsp</result>
+		<!-- 预约登记 -->
+		<action name="appoint" class="appointmentAction" method="insert">
 		</action>
-		<!-- 信息检索 -->
-		<action name="search" class="articleAction" method="search">
-			<result>search.jsp</result>
+		<!-- 留言 -->
+		<action name="message" class="messageAction" method="insert">
 		</action>
-		<!-- 文章展示 -->
-		<action name="showNews" class="articleAction" method="showNews">
-			<result>show_news.jsp</result>
+		<!-- 专题评论 -->
+		<action name="comment" class="topicAction" method="insertTopicComment">
 		</action>
-		<!-- 图片新闻 -->
-		<action name="picNews" class="articleAction" method="picNews">
-			<result>pic_news.jsp</result>
-		</action>
-		<!-- 图片新闻幻灯片 -->
-		<action name="slide" class="articleAction" method="slide">
-			<result>slide.jsp</result>
-		</action>
-		<!-- 热点新闻 -->
-		<action name="hot" class="articleAction" method="hot">
-			<result>hot.jsp</result>
-		</action>
-		<!-- freemarker测试 -->
-		<action name="test" class="indexAction" method="test">
-			<result type="freemarker">/ftl/sample/upper.ftl</result>
-		</action>
-		<action name="test_repeat" class="indexAction" method="test">
-			<result type="freemarker">/ftl/sample/repeat.ftl</result>
-		</action>
-		<action name="test_article" class="indexAction" method="test">
-			<result type="freemarker">/ftl/test_article.ftl</result>
+	</package>
+
+	<package name="gov_random" extends="struts-default" namespace="/open">
+
+		<!-- Random验证码 -->
+		<action name="rand" class="randomAction">
+			<result type="stream">
+				<param name="contentType">image/jpeg</param>
+				<param name="inputName">inputStream</param>
+			</result>
 		</action>
 	</package>
 	

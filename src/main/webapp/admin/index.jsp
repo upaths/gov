@@ -135,7 +135,7 @@ a:active {
         <td width="50" align="center"><table width="62" height="28" border="0" cellpadding="0" cellspacing="0" background="images/yzm.gif" bgcolor="#FFFFFF">
           <tr>
             <td width="15">&nbsp;</td>
-            <td><img src="rand.action?d=<%=new java.util.Date() %>" alt="看不清？点击换一个" onclick="this.src='rand.action?d='+new Date()"></td>
+            <td><img src="${pageContext.request.contextPath}/open/rand.action?d=<%=new java.util.Date() %>" alt="看不清？点击换一个" onclick="this.src='rand.action?d='+new Date()"></td>
             <td>&nbsp;</td>
           </tr>
         </table></td>

@@ -71,7 +71,7 @@
     <tr bgcolor="#FFFFFF">
       <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >上级栏目：</td>
       <td height="30" class="gray">
-          <input class="easyui-combotree" data-options="url:'category_queryCategoryTree.action',required:true" id="parentIdComboTree" style="width: 200px;" value="${parentId}" />
+          <input class="easyui-combotree" data-options="url:'category_queryFirstLevelCategoryTree.action',required:true" id="parentIdComboTree" style="width: 200px;" value="${parentId}" />
           <font color="red">*</font>
       </td>
     </tr>

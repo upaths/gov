@@ -1,6 +1,5 @@
 package cn.gov.action;
 
-import cn.gov.filter.CheckIpForbidFilter;
 import cn.gov.model.IpForbid;
 import cn.gov.service.IpForbidService;
 import cn.gov.util.AlertUtil;
@@ -16,7 +15,6 @@ public class IpForbidAction extends BasicAction {
     private IpForbid ipForbid;
     private Integer id;
     private IpForbidService ipForbidService;
-    private CheckIpForbidFilter checkIpForbidFilter;
 
     public String query() {
         list = ipForbidService.queryForbiddenIp();
@@ -25,14 +23,12 @@ public class IpForbidAction extends BasicAction {
 
     public String insert() {
         ipForbidService.insertForbiddenIp(ipForbid);
-        checkIpForbidFilter.updateIpForbidList();
         AlertUtil.alertThenGo(response, "添加成功！", "ip_forbid_query.action");
         return null;
     }
 
     public String delete() {
         ipForbidService.deleteForbinddenIp(id);
-        checkIpForbidFilter.updateIpForbidList();
         AlertUtil.alertThenGo(response, "删除成功！", "ip_forbid_query.action");
         return null;
     }
@@ -69,11 +65,4 @@ public class IpForbidAction extends BasicAction {
         this.ipForbidService = ipForbidService;
     }
 
-    public CheckIpForbidFilter getCheckIpForbidFilter() {
-        return checkIpForbidFilter;
-    }
-
-    public void setCheckIpForbidFilter(CheckIpForbidFilter checkIpForbidFilter) {
-        this.checkIpForbidFilter = checkIpForbidFilter;
-    }
 }

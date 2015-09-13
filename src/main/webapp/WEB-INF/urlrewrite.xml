@@ -18,6 +18,76 @@
         <from>/test/status/</from>
         <to type="redirect">%{context-path}/rewrite-status</to>
     </rule>
+    <rule>
+        <note>
+            首页
+        </note>
+        <from>index.html</from>
+        <to>index.action</to>
+    </rule>
+    <rule>
+        <note>
+            内容列表
+        </note>
+        <from>list/([0-9]+).html</from>
+        <to>list.action?id=$1</to>
+    </rule>
+    <rule>
+        <note>
+            分页内容列表
+        </note>
+        <from>list/([0-9]+)/([0-9]+).html</from>
+        <to>list.action?id=$1&amp;page=$2</to>
+    </rule>
+    <rule>
+        <note>
+            内容信息
+        </note>
+        <from>content/([0-9]+).html</from>
+        <to>content.action?id=$1</to>
+    </rule>
+    <rule>
+        <note>
+            单页内容信息
+        </note>
+        <from>content/([0-9]+).html</from>
+        <to>content.action?catid=c$1</to>
+    </rule>
+    <rule>
+        <note>
+            预约登记
+        </note>
+        <from>appoint/</from>
+        <to>appoint.action</to>
+    </rule>
+    <rule>
+        <note>
+            留言
+        </note>
+        <from>message/</from>
+        <to>message.action</to>
+    </rule>
+    <rule>
+        <note>
+            话题评论
+        </note>
+        <from>comment/</from>
+        <to>comment.action</to>
+    </rule>
+    <rule>
+        <note>
+            专题栏目
+        </note>
+        <from>topic/([0-9]+)/([0-9]+).html</from>
+        <to>topic.action\?catid=$1&amp;page=$2</to>
+    </rule>
+    <rule>
+        <note>
+            专题
+        </note>
+        <from>topic/([0-9]+)/([0-9]+)/([0-9]+).html</from>
+        <to>topic.action\?catid=$1&amp;id=$2&amp;page=$3</to>
+    </rule>
 
 
     <outbound-rule>
@@ -31,6 +101,55 @@
         </note>
         <from>/rewrite-status</from>
         <to>/test/status/</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            首页
+        </note>
+        <from>index.action</from>
+        <to>index.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            内容列表
+        </note>
+        <from>list.action\?id=([0-9]+)$</from>
+        <to>list/$1.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            分页内容列表
+        </note>
+        <from>list.action\?id=([0-9]+)&amp;page=([0-9]+)$</from>
+        <to>list/$1/$2.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            内容信息
+        </note>
+        <from>content.action\?id=([0-9]+)$</from>
+        <to>content/$1.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            单页内容信息
+        </note>
+        <from>content.action\?catid=([0-9]+)$</from>
+        <to>content/c$1.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            专题栏目
+        </note>
+        <from>topic.action\?catid=([0-9]+)&amp;page=([0-9]+)$</from>
+        <to>topic/$1/$2.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            专题
+        </note>
+        <from>topic.action\?catid=([0-9]+)&amp;id=([0-9]+)&amp;page=([0-9]+)$</from>
+        <to>topic/$1/$2/$3.html</to>
     </outbound-rule>
 
 

@@ -69,5 +69,7 @@
 		</tx:attributes>
 	</tx:advice>
 
+	<bean id="SpringContextUtil " class="cn.gov.util.SpringContextUtil" scope="singleton"/>
+
 	<import resource="classpath:/cn/gov/config/spring-*.xml" />
 </beans>
