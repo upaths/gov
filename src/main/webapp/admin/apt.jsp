@@ -41,15 +41,15 @@
 				<table width="100%" border="1" align="center" cellpadding="0"
 					cellspacing="1" bordercolor="#FFFFFF" bgcolor="#C9DEFA">
 					<tr align="center" bgcolor="#C9DEFA">
-						<td class="nzcms_table_top2">序号</td>
-						<td class="nzcms_table_top2">单位名称</td>
-						<td class="nzcms_table_top2">领队名称</td>
-						<td class="nzcms_table_top2">职务</td>
-						<td class="nzcms_table_top2">联系人姓名</td>
-						<td class="nzcms_table_top2">联系方式</td>
-						<td class="nzcms_table_top2">参观方式</td>
+						<td class="nzcms_table_top2" width="40">序号</td>
+						<td class="nzcms_table_top2" width="120">单位名称</td>
+						<td class="nzcms_table_top2" width="120">领队名称</td>
+						<td class="nzcms_table_top2" width="120">职务</td>
+						<td class="nzcms_table_top2" width="120">联系人姓名</td>
+						<td class="nzcms_table_top2" width="120">联系方式</td>
+						<td class="nzcms_table_top2" width="120">参观方式</td>
 						<td class="nzcms_table_top2">参观内容</td>
-						<td class="nzcms_table_top2">参观时间</td>
+						<td class="nzcms_table_top2" width="150">参观时间</td>
 					</tr>
 					<c:forEach items="${list }" var="item" varStatus="status">
 					<tr onMouseOver="this.bgColor='#E4EDF9';"
@@ -61,7 +61,7 @@
 						<td align="center">&nbsp;${item.contactPerson }</td>
 						<td align="center">&nbsp;${item.contactInfo }</td>
 						<td align="center">&nbsp;${item.number }</td>
-						<td align="center" width="400">&nbsp;${item.content }</td>
+						<td align="center">&nbsp;${item.content }</td>
 						<td align="center">
 							&nbsp;<fmt:formatDate value="${item.date}" pattern="yyyy-MM-dd" />
 						</td>

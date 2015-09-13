@@ -3,6 +3,7 @@ package cn.gov.action;
 import cn.gov.model.Appointment;
 import cn.gov.service.AppointmentService;
 import cn.gov.util.AlertUtil;
+import org.apache.commons.lang.StringEscapeUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -26,6 +27,12 @@ public class AppointmentAction extends BasicAction {
     }
 
     public String insert() {
+        appointment.setContent(StringEscapeUtils.escapeHtml(appointment.getContent()));
+        appointment.setContactInfo(StringEscapeUtils.escapeHtml(appointment.getContactInfo()));
+        appointment.setContactPerson(StringEscapeUtils.escapeHtml(appointment.getContactPerson()));
+        appointment.setLeaderName(StringEscapeUtils.escapeHtml(appointment.getLeaderName()));
+        appointment.setOrgName(StringEscapeUtils.escapeHtml(appointment.getOrgName()));
+        appointment.setPost(StringEscapeUtils.escapeHtml(appointment.getPost()));
         String msg;
         try {
             appointmentService.insert(appointment);

@@ -7,6 +7,7 @@ import cn.gov.model.Message;
 import cn.gov.service.MessageService;
 import cn.gov.util.AlertUtil;
 import cn.gov.util.IpUtil;
+import org.apache.commons.lang.StringEscapeUtils;
 
 public class MessageAction extends BasicAction {
 	private Message message;
@@ -40,6 +41,10 @@ public class MessageAction extends BasicAction {
 		message.setIp(IpUtil.getClientIp(request));
 		message.setDate(new Date());
 		message.setDisplay(false);
+		message.setContent(StringEscapeUtils.escapeHtml(message.getContent()));
+		message.setNetName(StringEscapeUtils.escapeHtml(message.getNetName()));
+		message.setTelephone(StringEscapeUtils.escapeHtml(message.getTelephone()));
+		message.setTitle(StringEscapeUtils.escapeHtml(message.getTitle()));
 		messageService.insert(message);
 		AlertUtil.alertThenGo(response, "留言成功！", request.getContextPath()+"/index.html");
 		return null;

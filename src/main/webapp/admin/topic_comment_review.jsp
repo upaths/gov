@@ -26,14 +26,14 @@
 				<table width="100%" border="1" align="center" cellpadding="0"
 					cellspacing="1" bordercolor="#FFFFFF" bgcolor="#C9DEFA">
 					<tr align="center" bgcolor="#C9DEFA">
-						<td class="nzcms_table_top2">序号</td>
-						<td class="nzcms_table_top2">状态</td>
-						<td class="nzcms_table_top2">姓名</td>
-						<td class="nzcms_table_top2">电话</td>
-						<td class="nzcms_table_top2">IP</td>
+						<td class="nzcms_table_top2" width="40">序号</td>
+						<td class="nzcms_table_top2" width="40">状态</td>
+						<td class="nzcms_table_top2" width="120">姓名</td>
+						<td class="nzcms_table_top2" width="120">电话</td>
+						<td class="nzcms_table_top2" width="120">IP</td>
 						<td class="nzcms_table_top2">评论</td>
-						<td class="nzcms_table_top2">时间</td>
-						<td class="nzcms_table_top2">操作</td>
+						<td class="nzcms_table_top2" width="150">时间</td>
+						<td class="nzcms_table_top2" width="50">操作</td>
 					</tr>
 					<c:forEach items="${topicComments }" var="item" varStatus="status">
 					<tr onMouseOver="this.bgColor='#E4EDF9';"
@@ -52,7 +52,7 @@
 						<td align="center">&nbsp;${item.netName}</td>
 						<td align="center">&nbsp;${item.telephone }</td>
 						<td align="center">&nbsp;${item.ip }</td>
-						<td align="center" width="500">&nbsp;${item.comment }</td>
+						<td align="center">&nbsp;${item.comment }</td>
 						<td align="center">
 							<fmt:formatDate value="${item.date}" type="both" />
 						</td>

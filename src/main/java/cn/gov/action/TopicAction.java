@@ -6,6 +6,7 @@ import cn.gov.model.TopicDetail;
 import cn.gov.service.TopicService;
 import cn.gov.util.AlertUtil;
 import cn.gov.util.IpUtil;
+import org.apache.commons.lang.StringEscapeUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -89,6 +90,9 @@ public class TopicAction extends BasicAction {
         topicComment.setIp(IpUtil.getClientIp(request));
         topicComment.setDate(new Date());
         topicComment.setDisplay(false);
+        topicComment.setTelephone(StringEscapeUtils.escapeHtml(topicComment.getTelephone()));
+        topicComment.setComment(StringEscapeUtils.escapeHtml(topicComment.getComment()));
+        topicComment.setNetName(StringEscapeUtils.escapeHtml(topicComment.getNetName()));
         topicService.insertTopicComment(topicComment);
         AlertUtil.alertThenGo(response, "评论成功，请等待管理员审核！", request.getContextPath()+"/index.html");
         return null;

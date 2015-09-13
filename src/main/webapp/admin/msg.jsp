@@ -27,15 +27,15 @@
 				<table width="100%" border="1" cellpadding="0" cellspacing="1"
 					bordercolor="#FFFFFF" bgcolor="#C9DEFA">
 						<tr align="center" bgcolor="#C9DEFA">
-							<td width="5%" class="nzcms_table_top2">序号</td>
-							<td class="nzcms_table_top2">状态</td>
-							<td class="nzcms_table_top2">标题</td>
+							<td class="nzcms_table_top2" width="50">序号</td>
+							<td class="nzcms_table_top2" width="50">状态</td>
+							<td class="nzcms_table_top2" width="150">标题</td>
 							<td class="nzcms_table_top2">内容</td>
-							<td class="nzcms_table_top2">时间</td>
-							<td class="nzcms_table_top2">姓名</td>
-							<td class="nzcms_table_top2">电话</td>
-							<td class="nzcms_table_top2">IP</td>
-							<td class="nzcms_table_top2">操作</td>
+							<td class="nzcms_table_top2" width="150">时间</td>
+							<td class="nzcms_table_top2" width="120">姓名</td>
+							<td class="nzcms_table_top2" width="120">电话</td>
+							<td class="nzcms_table_top2" width="120">IP</td>
+							<td class="nzcms_table_top2" width="80">操作</td>
 						</tr>
 						<c:forEach items="${list }" var="item" varStatus="status">
 							<tr onMouseOver="this.bgColor='#E4EDF9';"
@@ -52,7 +52,7 @@
 									</c:choose>
 								</td>
 								<td align="center">${item.title }</td>
-								<td align="center" width="450">${item.content }</td>
+								<td align="center">${item.content }</td>
 								<td align="center">
 									<fmt:formatDate value="${item.date}" type="both" pattern="yyyy-MM-dd HH:mm:ss" />
 								</td>
