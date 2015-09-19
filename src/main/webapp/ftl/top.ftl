@@ -24,9 +24,9 @@
             <div class="header-nav-left"><a href="#" target="_blank">设为首页</a><span class="span-cut">|</span><a href="#" target="_blank">工作邮箱</a> </div>
             <div class="header-nav-right">
                 <div class="header-search">
-                    <form>
-                        <input name="q" class="keywords" type="text" />
-                        <input type="button" class="btn" value="" />
+                    <form action="${contextPath}/search/" target="_blank">
+                        <input name="title" class="keywords" type="text" />
+                        <input type="submit" class="btn" value="" />
                     </form>
                 </div>
             </div>

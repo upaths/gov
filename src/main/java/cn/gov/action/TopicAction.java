@@ -42,7 +42,7 @@ public class TopicAction extends BasicAction {
     }
 
     public String toAdd() {
-        month = new SimpleDateFormat("yyyy年M月").format(new Date());
+        month = new SimpleDateFormat("yyyy年MM月").format(new Date());
         return "toAdd";
     }
 

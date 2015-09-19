@@ -41,6 +41,10 @@
 		<action name="list" class="freemarkerAction" method="list">
 			<result type="listFreemarker" />
 		</action>
+		<!-- 搜索 -->
+		<action name="search" class="freemarkerAction" method="search">
+			<result type="freemarker">/ftl/list_search.ftl</result>
+		</action>
 		<!-- 内容页面 -->
 		<action name="content" class="freemarkerAction" method="content">
 			<result type="freemarker">/ftl/content.ftl</result>

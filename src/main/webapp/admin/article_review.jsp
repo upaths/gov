@@ -68,7 +68,7 @@
 						</td>
 						<td align="center">&nbsp;${item.short_title }</td>
 						<td align="center">&nbsp;${item.cat_name }</td>
-						<td align="center">&nbsp;${item.source_name }</td>
+						<td align="center">&nbsp;${item.source }</td>
 						<td align="center">&nbsp;<fmt:formatDate value="${item.date}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 						<td align="center">&nbsp;${item.position_name }</td>
 						<td align="center">

@@ -43,13 +43,7 @@
             <ul class="video-list">
                 <#list list as article>
                     <li>
-                        <#if cat.categoryType=="4">
-                        <a href="http://${article.url}" target="_blank">
-                        <#elseif cat.categoryType=="5">
-                        <a href="${contextPath}${article.doc}" target="_blank">
-                        <#else>
                         <a href="<@c.url value="${contextPath}/content.action?id=${article.id}"/>" target="_blank">
-                        </#if>
                             <img src="${contextPath}${article.thumb}" width="210" height="145" />
                             <p><#if article.shortTitle?? && article.shortTitle!="">${article.shortTitle}<#else>${article.title}</#if></p>
                         </a>

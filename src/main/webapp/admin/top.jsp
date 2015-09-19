@@ -28,7 +28,7 @@
     <td valign="top"><img src="images/logo.jpg" alt="后台标识" border="0"></td>
     <td align="right" valign="bottom" class="white"><table width="300" height="20" border="0" cellpadding="5" cellspacing="0" background="images/top_bg.png">
       <tr>
-        <td align="right" class="white">（&nbsp;<%=username %>&nbsp;）用户&nbsp;&nbsp;‖&nbsp;&nbsp;<a href="../index.action" target="_top"><font class="white">前台主页</font></a>&nbsp;&nbsp;‖&nbsp;&nbsp;<a href="out.jsp" target="_top" onClick="return confirm('您确定要退出是吗？');"><font class="white">安全退出</font></a></td>
+        <td align="right" class="white">（&nbsp;<%=username %>&nbsp;）用户&nbsp;&nbsp;‖&nbsp;&nbsp;<a href="../" target="_blank"><font class="white">前台主页</font></a>&nbsp;&nbsp;‖&nbsp;&nbsp;<a href="out.jsp" target="_top" onClick="return confirm('您确定要退出是吗？');"><font class="white">安全退出</font></a></td>
       </tr>
     </table>
       <table height="15" border="0" cellpadding="0" cellspacing="0">

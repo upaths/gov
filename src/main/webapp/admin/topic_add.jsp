@@ -3,34 +3,46 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="../css/admin_css.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="../script/jquery-1.4.min.js"></script>
-<script type="text/javascript" src="../script/script.js"></script>
-<script src="../My97DatePicker/WdatePicker.js"></script>
-<script type="text/javascript">
-function check() {
-	var title = $("#title");
-	var content = $("#content");
-    var month = $("#month");
-	if (title.val() == "") {
-		alert("标题不能为空！");
-        title.focus();
-		return false;
-	}
-	if (content.val() == "") {
-		alert("内容不能为空！");
-        content.focus();
-		return false;
-	}
-    if (month.val() == "") {
-        alert("月份不能为空！");
-        month.focus();
-        return false;
-    }
-	return true;
-}
-</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="../css/admin_css.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../script/jquery-1.4.min.js"></script>
+    <script type="text/javascript" src="../script/script.js"></script>
+    <script charset="utf-8" src="editor/kindeditor-min.js"></script>
+    <script charset="utf-8" src="editor/lang/zh_CN.js"></script>
+    <script src="../My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript">
+        var editor;
+        KindEditor.ready(function(K) {
+            editor = K.create('textarea[name="topic.content"]', {
+                cssPath : 'editor/plugins/code/prettify.css',
+                uploadJson : 'upload_json.jsp',
+                fileManagerJson : 'file_manager_json.jsp',
+                allowFileManager : true
+            });
+        });
+        function check() {
+            var title = $("#title");
+            var content = $("#content");
+            content.val(editor.html());
+            var month = $("#month");
+            if (title.val() == "") {
+                alert("标题不能为空！");
+                title.focus();
+                return false;
+            }
+            if (content.val() == "") {
+                alert("内容不能为空！");
+                content.focus();
+                return false;
+            }
+            if (month.val() == "") {
+                alert("月份不能为空！");
+                month.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
   <form action="topic_add.action" method="post" name="form1" id="form1" onsubmit="return check()">
@@ -52,7 +64,7 @@ function check() {
     <tr bgcolor="#FFFFFF">
       <td height="30" align="center" bgcolor="#E4EDF9">内容：</td>
       <td height="30">
-          <textarea name="topic.content" id="content" rows="4" cols="50"></textarea>
+          <textarea name="topic.content" id="content" cols="100" rows="8" style="width:700px;height:370px;visibility:hidden;"></textarea>
       </td>
     </tr>
     <tr bgcolor="#FFFFFF">

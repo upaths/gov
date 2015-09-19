@@ -22,11 +22,13 @@ public class ArticleListDirective implements TemplateDirectiveModel {
     private static final String SORT_NAME = "sort";
     private static final String PAGE_NUMBER_NAME = "page";
     private static final String PAGE_SIZE_NAME = "size";
+    private static final String TITLE_NAME = "title";
     @Override
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
         int catid = -1;
         int posid = -1;
         String sort = null;
+        String title = null;
         int page = -1;
         int size = -1;
         Iterator paramIterator = params.entrySet().iterator();
@@ -45,6 +47,8 @@ public class ArticleListDirective implements TemplateDirectiveModel {
                 size = DataChecker.checkInt(paramValue, paramName);
             }else if (paramName.equals(SORT_NAME)) {
                 sort = paramValue.toString();
+            }else if (paramName.equals(TITLE_NAME)) {
+                title = paramValue.toString();
             } else {
                 throw new TemplateModelException("不支持参数: " + paramName);
             }
@@ -54,8 +58,8 @@ public class ArticleListDirective implements TemplateDirectiveModel {
         }
         List<Article> list = null;
         int cnt = 0;
-        list = articleService.queryDisplayArticle(catid, posid, sort, page, size);
-        cnt = articleService.countDisplayArticle(catid, posid);
+        list = articleService.queryDisplayArticle(catid, posid, title, sort, page, size);
+        cnt = articleService.countDisplayArticle(catid, posid, title);
         // 执行真正指令的执行部分:
         if (body != null) {
             // 如果有循环变量，那么就设置它:
@@ -69,6 +73,10 @@ public class ArticleListDirective implements TemplateDirectiveModel {
                 if (loopVars.length > 2) {
                     // 总页数
                     loopVars[2] = new SimpleNumber(cnt % size == 0 ? (cnt == 0 ? 1 : cnt / size) : cnt / size + 1);
+                }
+                if (loopVars.length > 3) {
+                    // 总页数
+                    loopVars[3] = new SimpleNumber(cnt);
                 }
             }
             // 执行嵌入体部分（和 FTL 中的<#nested>一样）。

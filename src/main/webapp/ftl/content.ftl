@@ -23,11 +23,7 @@
         <div class="content-content">
             <div class="headings">
                 <h3>${article.title}</h3>
-                <#if article.sourceId??>
-                    <@sourceTag id=article.sourceId; source>
-                        <span>来源：${source.name}</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                    </@sourceTag>
-                </#if>
+                    <span>来源：${article.source}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                 <span>发布时间：${article.date?string("yyyy-MM-dd")}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                 <span>浏览次数： ${article.readTime}</span>
             </div>

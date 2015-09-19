@@ -6,7 +6,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="../css/admin_css.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="../script/jquery-1.4.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+<script type="text/javascript" src="../easyui/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="../easyui/easyloader.js"></script>
 <script charset="utf-8" src="editor/kindeditor-min.js"></script>
 <script charset="utf-8" src="editor/lang/zh_CN.js"></script>
 <script src="../My97DatePicker/WdatePicker.js"></script>
@@ -23,6 +26,8 @@
 	});
     </c:if>
 	function check() {
+        var source = $("#source").combobox('getText');
+        $("#source_text").val(source);
 		var title = $("#title");
 		var date = $("#date");
 		if (title.val() == "") {
@@ -38,18 +43,33 @@
         <c:if test="${category.categoryType == '1' || category.categoryType == '2' || category.categoryType == '3'}">
         var content = $("#content");
         content.val(editor.html());
-		if (content.val() == "") {
-			alert("内容不能为空！");
-            content.focus();
-			return;
-		}
+        var redirect = $("#redirect");
+        var url = $("#url");
+        if (redirect.is(':checked')) {
+            if (url.val() == "") {
+                alert("跳转链接不能为空！");
+                url.focus();
+                return;
+            }
+        }else {
+            if (content.val() == "") {
+                alert("内容不能为空！");
+                content.focus();
+                return;
+            }
+        }
         </c:if>
         <c:if test="${category.categoryType == '4'}">
+        var redirect = $("#redirect");
         var url = $("#url");
-        if (url.val() == "") {
-            alert("跳转链接不能为空！");
-            url.focus();
-            return;
+        if (redirect.is(':checked')) {
+            if (url.val() == "") {
+                alert("跳转链接不能为空！");
+                url.focus();
+                return;
+            }
+        }else {
+            alert("是否跳转必须选中！");
         }
         </c:if>
         <c:if test="${category.categoryType == '5'}">
@@ -62,6 +82,9 @@
         </c:if>
 		$("#myform").submit();
 	}
+    function initSource() {
+        $("#source").combobox('setText','');
+    }
 </script>
 </head>
 <body>
@@ -109,8 +132,8 @@
     <tr bgcolor="#FFFFFF">
       <td height="30" align="center" bgcolor="#E4EDF9" >来源：</td>
       <td height="30">
-          <select name="article.sourceId" id="sourceId">
-              <option value=""></option>
+          <input type="hidden" name="article.source" id="source_text" />
+          <select class="easyui-combobox" id="source" style="width:150px;" data-options="onLoadSuccess(){initSource();}">
               <c:forEach items="${sourceList}" var="item">
                   <option value="${item.id}">${item.name}</option>
               </c:forEach>
@@ -154,7 +177,14 @@
         </td>
     </tr>
     </c:if>
-    <c:if test="${category.categoryType == '4'}">
+    <c:if test="${category.categoryType == '1' || category.categoryType == '2' || category.categoryType == '3' || category.categoryType == '4'}">
+    <tr bgcolor="#FFFFFF">
+        <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >是否跳转：</td>
+        <td height="30">
+            <input name="article.redirect" id="redirect" type="checkbox" value="true" <c:if test="${category.categoryType == '4'}">checked</c:if> style="vertical-align:middle; margin: 0 4px;">
+            <font color="gray">(打&quot;√&quot;则会直接跳转到链接页面)</font>
+        </td>
+    </tr>
     <tr bgcolor="#FFFFFF">
         <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >跳转链接：</td>
         <td height="30"><input name="article.url" type="text" id="url" size="50" maxlength="100" />

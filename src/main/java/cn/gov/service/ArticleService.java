@@ -23,8 +23,8 @@ public interface ArticleService {
 	
 	public int count(Map map);
 
-	public List<Article> queryDisplayArticle(Integer catid, Integer posid, String sort, Integer page, Integer size);
+	public List<Article> queryDisplayArticle(Integer catid, Integer posid, String title, String sort, Integer page, Integer size);
 
-	public int countDisplayArticle(Integer catid, Integer posid);
+	public int countDisplayArticle(Integer catid, Integer posid, String title);
 
 }

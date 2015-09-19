@@ -8,6 +8,7 @@ import cn.gov.service.ArticleService;
 import cn.gov.service.CategoryService;
 import cn.gov.service.TopicService;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ public class FreemarkerAction extends BasicAction {
     private Integer catid;
     private Integer page;
     private Integer size = 10;
+    private String title;
     private CategoryService categoryService;
     private ArticleService articleService;
     private TopicService topicService;
@@ -47,11 +49,27 @@ public class FreemarkerAction extends BasicAction {
         return SUCCESS;
     }
 
-    public String content() {
+    public String search() {
+        if (page == null) {
+            page = 1;
+        }
+        return SUCCESS;
+    }
+
+    public String content() throws IOException {
         Article article = articleService.queryArticleById(id);
         article.setReadTime(article.getReadTime()==null?1:article.getReadTime()+1);
         articleService.updateSelective(article);
+        if (article.getRedirect() != null && article.getRedirect() && article.getUrl() != null) {
+            response.sendRedirect("http://"+article.getUrl());
+            return null;
+        }
         Category category = SiteCache.getCategoryMap().get(article.getCatId());
+        // 文件
+        if ("5".equals(category.getCategoryType())) {
+            response.sendRedirect(request.getContextPath()+article.getDoc());
+            return null;
+        }
         // 为导航栏样式准备参数
         if(category.getParentId() > 0) {
             pid = category.getParentId();
@@ -150,5 +168,13 @@ public class FreemarkerAction extends BasicAction {
 
     public void setTopicService(TopicService topicService) {
         this.topicService = topicService;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

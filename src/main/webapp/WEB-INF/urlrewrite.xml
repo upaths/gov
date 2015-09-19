@@ -88,6 +88,13 @@
         <from>topic/([0-9]+)/([0-9]+)/([0-9]+).html</from>
         <to>topic.action\?catid=$1&amp;id=$2&amp;page=$3</to>
     </rule>
+    <rule>
+        <note>
+            搜索
+        </note>
+        <from>search/</from>
+        <to>search.action</to>
+    </rule>
 
 
     <outbound-rule>
@@ -150,6 +157,13 @@
         </note>
         <from>topic.action\?catid=([0-9]+)&amp;id=([0-9]+)&amp;page=([0-9]+)$</from>
         <to>topic/$1/$2/$3.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            搜索
+        </note>
+        <from>search.action</from>
+        <to>search/</to>
     </outbound-rule>
 
 

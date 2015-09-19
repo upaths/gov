@@ -29,7 +29,6 @@
 						<td class="nzcms_table_top2">序号</td>
 						<td class="nzcms_table_top2">年月</td>
 						<td class="nzcms_table_top2">标题</td>
-						<td class="nzcms_table_top2">内容</td>
 						<td class="nzcms_table_top2">已审核评论</td>
 						<td class="nzcms_table_top2">未审核评论</td>
 						<td class="nzcms_table_top2">操作</td>
@@ -40,7 +39,6 @@
 						<td height="30" align="center">${status.count}</td>
 						<td align="center">&nbsp;${item.month}</td>
 						<td align="center">&nbsp;${item.title }</td>
-						<td align="center">&nbsp;${item.content }</td>
 						<td align="center">&nbsp;${item.checked }</td>
 						<td align="center">&nbsp;<font color="red">${item.unchecked }</font></td>
 						<td align="center">

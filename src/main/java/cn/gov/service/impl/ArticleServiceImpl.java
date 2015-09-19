@@ -50,7 +50,7 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public List<Article> queryDisplayArticle(Integer catid, Integer posid, String sort, Integer page, Integer size) {
+	public List<Article> queryDisplayArticle(Integer catid, Integer posid, String title, String sort, Integer page, Integer size) {
 		ArticleExample articleExample = new ArticleExample();
 		ArticleExample.Criteria criteria = articleExample.createCriteria();
 		criteria.andDisplayEqualTo(true);
@@ -59,6 +59,9 @@ public class ArticleServiceImpl implements ArticleService {
 		}
 		if (posid != null && posid > 0) {
 			criteria.andPositionIdEqualTo(posid);
+		}
+		if (title != null && !"".equals(title)) {
+			criteria.andTitleLike("%"+title+"%");
 		}
 		String limitSql = "";
 		if (size != null && size > 0) {
@@ -77,7 +80,7 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public int countDisplayArticle(Integer catid, Integer posid) {
+	public int countDisplayArticle(Integer catid, Integer posid, String title) {
 		ArticleExample articleExample = new ArticleExample();
 		ArticleExample.Criteria criteria = articleExample.createCriteria();
 		criteria.andDisplayEqualTo(true);
@@ -86,6 +89,9 @@ public class ArticleServiceImpl implements ArticleService {
 		}
 		if (posid != null && posid > 0) {
 			criteria.andPositionIdEqualTo(posid);
+		}
+		if (title != null && !"".equals(title)) {
+			criteria.andTitleLike("%"+title+"%");
 		}
 		return articleMapper.countByExample(articleExample);
 	}

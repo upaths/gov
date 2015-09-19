@@ -445,63 +445,73 @@ public class ArticleExample {
             return (Criteria) this;
         }
 
-        public Criteria andSourceIdIsNull() {
-            addCriterion("source_id is null");
+        public Criteria andSourceIsNull() {
+            addCriterion("source is null");
             return (Criteria) this;
         }
 
-        public Criteria andSourceIdIsNotNull() {
-            addCriterion("source_id is not null");
+        public Criteria andSourceIsNotNull() {
+            addCriterion("source is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSourceIdEqualTo(Integer value) {
-            addCriterion("source_id =", value, "sourceId");
+        public Criteria andSourceEqualTo(String value) {
+            addCriterion("source =", value, "source");
             return (Criteria) this;
         }
 
-        public Criteria andSourceIdNotEqualTo(Integer value) {
-            addCriterion("source_id <>", value, "sourceId");
+        public Criteria andSourceNotEqualTo(String value) {
+            addCriterion("source <>", value, "source");
             return (Criteria) this;
         }
 
-        public Criteria andSourceIdGreaterThan(Integer value) {
-            addCriterion("source_id >", value, "sourceId");
+        public Criteria andSourceGreaterThan(String value) {
+            addCriterion("source >", value, "source");
             return (Criteria) this;
         }
 
-        public Criteria andSourceIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("source_id >=", value, "sourceId");
+        public Criteria andSourceGreaterThanOrEqualTo(String value) {
+            addCriterion("source >=", value, "source");
             return (Criteria) this;
         }
 
-        public Criteria andSourceIdLessThan(Integer value) {
-            addCriterion("source_id <", value, "sourceId");
+        public Criteria andSourceLessThan(String value) {
+            addCriterion("source <", value, "source");
             return (Criteria) this;
         }
 
-        public Criteria andSourceIdLessThanOrEqualTo(Integer value) {
-            addCriterion("source_id <=", value, "sourceId");
+        public Criteria andSourceLessThanOrEqualTo(String value) {
+            addCriterion("source <=", value, "source");
             return (Criteria) this;
         }
 
-        public Criteria andSourceIdIn(List<Integer> values) {
-            addCriterion("source_id in", values, "sourceId");
+        public Criteria andSourceLike(String value) {
+            addCriterion("source like", value, "source");
             return (Criteria) this;
         }
 
-        public Criteria andSourceIdNotIn(List<Integer> values) {
-            addCriterion("source_id not in", values, "sourceId");
+        public Criteria andSourceNotLike(String value) {
+            addCriterion("source not like", value, "source");
             return (Criteria) this;
         }
 
-        public Criteria andSourceIdBetween(Integer value1, Integer value2) {
-            addCriterion("source_id between", value1, value2, "sourceId");
+        public Criteria andSourceIn(List<String> values) {
+            addCriterion("source in", values, "source");
             return (Criteria) this;
         }
 
-        public Criteria andSourceIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("source_id not between", value1, value2, "sourceId");
+        public Criteria andSourceNotIn(List<String> values) {
+            addCriterion("source not in", values, "source");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourceBetween(String value1, String value2) {
+            addCriterion("source between", value1, value2, "source");
+            return (Criteria) this;
+        }
+
+        public Criteria andSourceNotBetween(String value1, String value2) {
+            addCriterion("source not between", value1, value2, "source");
             return (Criteria) this;
         }
 
@@ -1102,6 +1112,66 @@ public class ArticleExample {
 
         public Criteria andDocNotBetween(String value1, String value2) {
             addCriterion("doc not between", value1, value2, "doc");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedirectIsNull() {
+            addCriterion("redirect is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedirectIsNotNull() {
+            addCriterion("redirect is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedirectEqualTo(Boolean value) {
+            addCriterion("redirect =", value, "redirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedirectNotEqualTo(Boolean value) {
+            addCriterion("redirect <>", value, "redirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedirectGreaterThan(Boolean value) {
+            addCriterion("redirect >", value, "redirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedirectGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("redirect >=", value, "redirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedirectLessThan(Boolean value) {
+            addCriterion("redirect <", value, "redirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedirectLessThanOrEqualTo(Boolean value) {
+            addCriterion("redirect <=", value, "redirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedirectIn(List<Boolean> values) {
+            addCriterion("redirect in", values, "redirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedirectNotIn(List<Boolean> values) {
+            addCriterion("redirect not in", values, "redirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedirectBetween(Boolean value1, Boolean value2) {
+            addCriterion("redirect between", value1, value2, "redirect");
+            return (Criteria) this;
+        }
+
+        public Criteria andRedirectNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("redirect not between", value1, value2, "redirect");
             return (Criteria) this;
         }
     }
