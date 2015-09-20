@@ -19,6 +19,11 @@
 			name.focus();
 			return;
 		}
+        if (categoryType.val() == "") {
+            alert("栏目类型不能为空！");
+            categoryType.focus();
+            return;
+        }
 		if (sort.val() == "") {
 			alert("栏目序号不能为空！");
 			sort.focus();
@@ -46,7 +51,6 @@
 <body>
 <form name="myform" id="myform" action="category_update.action" method="post">
     <input type="hidden" name="category.id" id="id" value="${category.id}" />
-    <input type="hidden" name="category.categoryType" id="categoryType" value="${category.categoryType}" />
     <input type="hidden" name="category.parentId" id="parentId" value="" />
     <table width="0" height="6" border="0" cellpadding="0" cellspacing="0">
         <tr>
@@ -57,11 +61,7 @@
       <tr bgcolor="#D2E8F6">
         <td height="40" align="center" class="nzcms_table_top" ><a href="javascript:$('#news').toggle();void(0);">说明书<img src="images/help.png" alt="问" border="0" /></a></td>
         <td height="40" align="center" class="nzcms_table_top" >
-          <c:if test="${category.categoryType eq '1'}">修改栏目</c:if>
-          <c:if test="${category.categoryType eq '2'}">修改单页</c:if>
-          <c:if test="${category.categoryType eq '3'}">修改专题</c:if>
-          <c:if test="${category.categoryType eq '4'}">修改外链</c:if>
-          <c:if test="${category.categoryType eq '5'}">修改文件</c:if>
+          修改栏目
       </td>
     </tr>
     <tr bgcolor="#D2E8F6">
@@ -80,6 +80,19 @@
       <td height="30" align="center" bgcolor="#E4EDF9" >栏目名称：</td>
       <td height="30" valign="middle" class="gray" ><input name="category.name" id="name" type="text" size="50" value="${category.name}">
       <font color="red">*</font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+        <td height="30" align="center" bgcolor="#E4EDF9" >栏目类型：</td>
+        <td height="30" valign="middle" class="gray" >
+            <select name="category.categoryType" id="categoryType">
+                <option value="1" <c:if test="${category.categoryType eq '1'}">selected</c:if>>栏目</option>
+                <option value="2" <c:if test="${category.categoryType eq '2'}">selected</c:if>>单页</option>
+                <option value="3" <c:if test="${category.categoryType eq '3'}">selected</c:if>>专题</option>
+                <option value="4" <c:if test="${category.categoryType eq '4'}">selected</c:if>>外链</option>
+                <option value="5" <c:if test="${category.categoryType eq '5'}">selected</c:if>>文件</option>
+            </select>
+            <font color="red">*</font>
+        </td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td height="30" align="center" bgcolor="#E4EDF9" >栏目序号：</td>
