@@ -106,6 +106,11 @@ public class FreemarkerAction extends BasicAction {
         return SUCCESS;
     }
 
+    public String direct() {
+        pid = 0;
+        return SUCCESS;
+    }
+
     public Integer getId() {
         return id;
     }

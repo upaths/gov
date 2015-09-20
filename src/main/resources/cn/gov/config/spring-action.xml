@@ -67,4 +67,10 @@
 
 	<bean id="freemarkerAction" class="cn.gov.action.FreemarkerAction"
 		  scope="prototype" autowire="byName" />
+
+	<bean id="inspectionAction" class="cn.gov.action.InspectionAction"
+		  scope="prototype" autowire="byName" />
+
+	<bean id="reportAction" class="cn.gov.action.ReportAction"
+		  scope="prototype" autowire="byName" />
 </beans>

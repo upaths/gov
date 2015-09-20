@@ -24,6 +24,9 @@
 		<mapper resource="cn/gov/sqlmap/AppointmentMapper.xml" />
 		<mapper resource="cn/gov/sqlmap/TopicMapper.xml" />
 		<mapper resource="cn/gov/sqlmap/TopicCommentMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/InspectionMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/InspectReportMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/ReportMapper.xml" />
 	</mappers>
     
 </configuration>

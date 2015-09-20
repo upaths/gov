@@ -158,5 +158,8 @@
         <table tableName="topic" schema="gov"></table>
         <table tableName="topic_comment" schema="gov"></table>
         <table tableName="appointment" schema="gov"></table>
+        <table tableName="inspection" schema="gov"></table>
+        <table tableName="inspect_report" schema="gov"></table>
+        <table tableName="report" schema="gov"></table>
     </context>
 </generatorConfiguration>

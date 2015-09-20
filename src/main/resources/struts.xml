@@ -26,13 +26,6 @@
 			<result name="close" type="freemarker">/ftl/close.ftl</result>
 		</global-results>
 
-		<!-- Random验证码 -->
-		<action name="rand" class="randomAction">
-			<result type="stream">
-				<param name="contentType">image/jpeg</param>
-				<param name="inputName">inputStream</param>
-			</result>
-		</action>
 		<!-- 首页 -->
 		<action name="index" class="freemarkerAction" method="index">
 			<result type="freemarker">/ftl/index.ftl</result>
@@ -62,10 +55,49 @@
 		<!-- 专题评论 -->
 		<action name="comment" class="topicAction" method="insertTopicComment">
 		</action>
+		<!-- 巡查信箱 -->
+		<action name="inspection" class="inspectionAction" method="inspection">
+			<result type="freemarker">/ftl/inspection.ftl</result>
+		</action>
+		<!-- 巡查信箱举报页面 -->
+		<action name="inspect_report" class="freemarkerAction" method="direct">
+			<result type="freemarker">/ftl/inspect_report.ftl</result>
+		</action>
+		<!-- 巡查信箱举报 -->
+		<action name="inspect_report_insert" class="inspectionAction" method="insertInspectReport">
+			<interceptor-ref name="siteClose" />
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					application/msword,application/excel,application/vnd.ms-excel,
+					image/bmp,image/png,image/gif,image/jpeg,application/pdf,image/tiff,
+					application/octet-stream,application/zip
+				</param>
+				<param name="maximumSize">1048576</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="input">struts_error.jsp</result>
+		</action>
+		<!-- 四风举报页面 -->
+		<action name="report" class="freemarkerAction" method="direct">
+			<result type="freemarker">/ftl/report.ftl</result>
+		</action>
+		<!-- 四风举报 -->
+		<action name="report_insert" class="reportAction" method="insert">
+			<interceptor-ref name="siteClose" />
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					application/msword,application/excel,application/vnd.ms-excel,
+					image/bmp,image/png,image/gif,image/jpeg,application/pdf,image/tiff,
+					application/octet-stream,application/zip
+				</param>
+				<param name="maximumSize">1048576</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="input">struts_error.jsp</result>
+		</action>
 	</package>
 
 	<package name="gov_random" extends="struts-default" namespace="/open">
-
 		<!-- Random验证码 -->
 		<action name="rand" class="randomAction">
 			<result type="stream">
@@ -191,5 +223,19 @@
 			<result name="toUpdate">/admin/topic_update.jsp</result>
 			<result name="commentReview">/admin/topic_comment_review.jsp</result>
 		</action>
+
+		<!-- 巡视组 -->
+		<action name="inspection_*" class="inspectionAction" method="{1}">
+			<result name="query">/admin/inspection.jsp</result>
+			<result name="toAdd">/admin/inspection_add.jsp</result>
+			<result name="toUpdate">/admin/inspection_update.jsp</result>
+			<result name="inspectReport">/admin/inspect_report.jsp</result>
+		</action>
+
+		<!-- 四风举报 -->
+		<action name="report_*" class="reportAction" method="{1}">
+			<result name="query">/admin/report.jsp</result>
+		</action>
+
 	</package>
 </struts>

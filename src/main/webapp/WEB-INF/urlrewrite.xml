@@ -95,6 +95,41 @@
         <from>search/</from>
         <to>search.action</to>
     </rule>
+    <rule>
+        <note>
+            巡查信箱
+        </note>
+        <from>inspection.html</from>
+        <to>inspection.action</to>
+    </rule>
+    <rule>
+        <note>
+            巡查信箱举报页面
+        </note>
+        <from>inspect_report/([0-9]+).html</from>
+        <to>inspect_report.action\?id=$1</to>
+    </rule>
+    <rule>
+        <note>
+            巡查信箱举报
+        </note>
+        <from>inspect_report_insert/</from>
+        <to>inspect_report_insert.action</to>
+    </rule>
+    <rule>
+        <note>
+            四风举报页面
+        </note>
+        <from>report.html</from>
+        <to>report.action</to>
+    </rule>
+    <rule>
+        <note>
+            四风举报
+        </note>
+        <from>report_insert/</from>
+        <to>report_insert.action</to>
+    </rule>
 
 
     <outbound-rule>
@@ -164,6 +199,41 @@
         </note>
         <from>search.action</from>
         <to>search/</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            巡查信箱
+        </note>
+        <from>inspection.action</from>
+        <to>inspection.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            巡查信箱举报页面
+        </note>
+        <from>inspect_report.action\?id=([0-9]+)</from>
+        <to>inspect_report/$1.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            巡查信箱举报
+        </note>
+        <from>inspect_report_insert.action</from>
+        <to>inspect_report_insert/</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            四风举报页面
+        </note>
+        <from>report.action</from>
+        <to>report.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            四风举报
+        </note>
+        <from>report_insert.action</from>
+        <to>report_insert/</to>
     </outbound-rule>
 
 
