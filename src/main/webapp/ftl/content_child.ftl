@@ -33,7 +33,11 @@
                             <#if cat.templet?? && cat.templet!="">
                                 <a href="<@c.url value="${contextPath}/list.action?id=${cat.id}&page=1"/>"<#if cat.id=id> class="hover"</#if>>${cat.name}</a>
                             <#elseif cat.url?? && cat.url!="">
-                                <a href="http://${cat.url}" target="_blank<#if cat.id=id> class="hover"</#if>>${cat.name}</a>
+                                <#if cat.url?substring(0,4)=="http">
+                                    <a href="${cat.url}" target="_blank" <#if cat.id=id> class="hover"</#if>>${cat.name}</a>
+                                <#else>
+                                    <a href="${contextPath}/${cat.url}" target="_blank" <#if cat.id=id> class="hover"</#if>>${cat.name}</a>
+                                </#if>
                             <#else>
                                 <a href="javascript:void(0)"<#if cat.id=id> class="hover"</#if>>${cat.name}</a>
                             </#if>

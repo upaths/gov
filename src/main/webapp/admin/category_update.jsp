@@ -106,6 +106,13 @@
                 <font color="red">*</font></td>
         </tr>
     </c:if>
+    <c:if test="${(category.categoryType eq '1') || (category.categoryType eq '2') || (category.categoryType eq '3')}">
+        <tr bgcolor="#FFFFFF">
+            <td height="30" align="center" bgcolor="#E4EDF9" >模版页面：</td>
+            <td height="30" valign="middle" class="gray" ><input name="category.templet" id="templet" type="text" size="50" value="${category.templet}">
+                <font color="red">*</font></td>
+        </tr>
+    </c:if>
     <tr bgcolor="#FFFFFF">
       <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >是否显示：</td>
       <td height="30"><input name="category.display" type="checkbox" value="true" <c:if test="${category.display}">checked</c:if> style="vertical-align:middle; margin: 0 4px;">

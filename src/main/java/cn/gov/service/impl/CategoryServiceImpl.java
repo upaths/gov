@@ -22,7 +22,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	public int update(Category category) {
-		int cnt = categoryMapper.updateByPrimaryKey(category);
+		int cnt = categoryMapper.updateByPrimaryKeySelective(category);
 		// 更新缓存
 		SiteCache.updateCategoryCache(categoryMapper.selectByExample(null));
 		return cnt;

@@ -92,6 +92,13 @@
                 <font color="red">*</font></td>
         </tr>
     </c:if>
+    <c:if test="${(type eq '1') || (type eq '2') || (type eq '3')}">
+        <tr bgcolor="#FFFFFF">
+            <td height="30" align="center" bgcolor="#E4EDF9" >模版页面：</td>
+            <td height="30" valign="middle" class="gray" ><input name="category.templet" id="templet" type="text" size="50">
+                <font color="red">*</font></td>
+        </tr>
+    </c:if>
     <tr bgcolor="#FFFFFF">
       <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >是否显示：</td>
       <td height="30"><input name="category.display" type="checkbox" value="true" checked style="vertical-align:middle; margin: 0 4px;">
