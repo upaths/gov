@@ -45,10 +45,10 @@
         <div class="header-menu">
             <div class="header-menu-nav">
                 <ul>
-                    <li><a href="<@c.url value="${contextPath}/index.action"/>"<#if pid = 0> class="on"</#if>>网站首页</a></li>
+                    <li><a href="<@c.url value="${contextPath}/index.action"/>"<#if pid??&&pid = 0> class="on"</#if>>网站首页</a></li>
                     <@categoryListTag pid=0; list>
                         <#list list as cat>
-                            <li><a href="<@c.url value="${contextPath}/list.action?id=${cat.id}&page=1"/>"<#if pid = cat.id> class="on"</#if>>${cat.name}</a></li>
+                            <li><a href="<@c.url value="${contextPath}/list.action?id=${cat.id}&page=1"/>"<#if pid??&&pid = cat.id> class="on"</#if>>${cat.name}</a></li>
                         </#list>
                     </@categoryListTag>
                 </ul>
