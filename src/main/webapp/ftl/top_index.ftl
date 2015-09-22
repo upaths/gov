@@ -9,14 +9,11 @@
     <meta name="Keywords" content="${config.keyword }" />
     <meta name="Description" content="${config.description }" />
     <link href="${contextPath}/css/style.css" rel="stylesheet" type="text/css">
-    <link href="${contextPath}/css/content.css" rel="stylesheet" type="text/css">
-    <script src="${contextPath}/easyui/jquery-1.8.0.min.js" 
+    <script src="${contextPath}/script/jquery.js" 
 type="text/javascript"></script>
     <script src="${contextPath}/script/jquery.SuperSlide.js" 
 type="text/javascript"></script>
-    <script src="${contextPath}/script/jquery.validate.min.js"></script>
-    <script src="${contextPath}/script/jquery.validate.plugin.js"></script>
-    <script src="${contextPath}/My97DatePicker/WdatePicker.js"></script>
+
 </head>
 <body <#if config.preventCopy?? && config.preventCopy>onselectstart="return false" 
 oncut="return false;" oncopy="return false;" onpaste="return false"</#if>>

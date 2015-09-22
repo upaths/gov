@@ -94,6 +94,7 @@
 		</listener-class>
 	</listener>
 
+	<!--
 	<error-page>
 		<error-code>403</error-code>
 		<location>/403.html</location>
@@ -106,6 +107,7 @@
 		<error-code>500</error-code>
 		<location>/500.html</location>
 	</error-page>
+	-->
 
 	<welcome-file-list>
 		<welcome-file>default.jsp</welcome-file>
