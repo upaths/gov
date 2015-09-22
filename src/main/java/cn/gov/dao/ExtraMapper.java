@@ -3,6 +3,7 @@ package cn.gov.dao;
 import java.util.List;
 import java.util.Map;
 
+import cn.gov.model.Article;
 import cn.gov.model.Message;
 
 public interface ExtraMapper {
@@ -15,4 +16,6 @@ public interface ExtraMapper {
 	public List queryMessage(Map map);
 	
 	public List<Map> queryAllUser();
+
+	public int updateArticleSort(Article article);
 }

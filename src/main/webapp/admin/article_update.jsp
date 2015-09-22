@@ -30,6 +30,7 @@
             $("#source_text").val($("#source").combobox('getText'));
             var title = $("#title");
             var date = $("#date");
+            var sort = $("#sort");
             if (title.val() == "") {
                 alert("标题不能为空！");
                 title.focus();
@@ -38,6 +39,11 @@
             if (date.val() == "") {
                 alert("时间不能为空！");
                 date.focus();
+                return;
+            }
+            if (sort.val() != "" && isNaN(sort.val())) {
+                alert("顺序请输入数字！");
+                sort.select();
                 return;
             }
             <c:if test="${category.categoryType == '1' || category.categoryType == '2' || category.categoryType == '3'}">
@@ -218,6 +224,11 @@
                 </td>
             </tr>
         </c:if>
+        <tr bgcolor="#FFFFFF">
+            <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >序号：</td>
+            <td height="30"><input name="article.sort" type="text" id="sort" value="${article.sort}" />
+                <FONT color=gray></FONT></td>
+        </tr>
         <tr bgcolor="#FFFFFF">
             <td width="10%" height="30" bgcolor="#E4EDF9" >&nbsp;</td>
             <td height="30"><input type="button" class="button" value=" 提 交 " onclick="check();">

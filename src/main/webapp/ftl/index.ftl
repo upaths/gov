@@ -64,7 +64,12 @@
                     <div class="headline-xsjw">
                     <@categoryTag id=59; cat>
                         <a href="<@c.url value="${contextPath}/list.action?id=${cat.id}&page=1"/>" target="_blank">
-                            ${cat.name}<span class="span-cut">|</span>加强党的领导是头等大事
+                            ${cat.name}<span class="span-cut">|</span>
+                            <@articleListTag catid=59 size=1; list>
+                                <#list list as article>
+                                    <#if article.shortTitle?? && article.shortTitle!="">${article.shortTitle}<#else>${article.title}</#if>
+                                </#list>
+                            </@articleListTag>
                         </a>
                     </@categoryTag>
 

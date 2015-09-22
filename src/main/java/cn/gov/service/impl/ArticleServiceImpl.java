@@ -25,6 +25,11 @@ public class ArticleServiceImpl implements ArticleService {
 		return articleMapper.updateByPrimaryKeySelective(article);
 	}
 
+	@Override
+	public int updateSort(Article article) {
+		return extraMapper.updateArticleSort(article);
+	}
+
 	public int delete(Integer id) {
 		return articleMapper.deleteByPrimaryKey(id);
 	}
@@ -74,7 +79,7 @@ public class ArticleServiceImpl implements ArticleService {
 		if (sort != null && !"".equals(sort)) {
 			articleExample.setOrderByClause(sort + limitSql);
 		}else {
-			articleExample.setOrderByClause("id desc" + limitSql);
+			articleExample.setOrderByClause("isnull(sort),sort,id desc" + limitSql);
 		}
 		return articleMapper.selectByExample(articleExample);
 	}

@@ -35,7 +35,7 @@
 				and a.display = ${display}
 			</if>
 		</where>
-		order by id desc
+		order by isnull(sort),sort,id desc
 		<include refid="basic.mysql_page"/>
 	</select>
 	
@@ -74,4 +74,10 @@
 		where a.username = b.username and b.role_id = c.id
 		]]>
 	</select>
+
+	<update id="updateArticleSort" parameterType="cn.gov.model.Article">
+		<![CDATA[
+		update article set sort = #{sort} where id = #{id}
+		]]>
+	</update>
 </mapper>

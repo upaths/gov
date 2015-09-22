@@ -13,6 +13,8 @@ public interface ArticleService {
 	
 	public int updateSelective(Article article);
 
+	public int updateSort(Article article);
+
 	public int delete(Integer id);
 	
 	public Article queryArticleById(Integer id);

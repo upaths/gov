@@ -35,6 +35,7 @@ public class ArticleAction extends BasicAction {
 	private File doc;
 	private String docFileName;
 	private Role role;
+	private List<Article> articles;
 
 	/**
 	 * 文章主页面
@@ -156,6 +157,21 @@ public class ArticleAction extends BasicAction {
 		}else {
 			AlertUtil.alertThenGo(response, "更新成功！", "article_query.action?categoryId="+categoryId);
 		}
+		return null;
+	}
+
+	public String updateBatch() {
+		String msg = "更新失败！";
+		if (articles != null && articles.size() > 0) {
+			int cnt = 0;
+			for (Article a : articles) {
+				cnt += articleService.updateSort(a);
+			}
+			if (cnt == articles.size()) {
+				msg = "更新成功！";
+			}
+		}
+		AlertUtil.alertThenGo(response, msg, "article_query.action?categoryId="+categoryId);
 		return null;
 	}
 
@@ -359,5 +375,13 @@ public class ArticleAction extends BasicAction {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public List<Article> getArticles() {
+		return articles;
+	}
+
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
 	}
 }

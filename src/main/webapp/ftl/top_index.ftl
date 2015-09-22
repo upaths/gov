@@ -25,7 +25,7 @@ oncut="return false;" oncopy="return false;" onpaste="return false"</#if>>
 </a><span class="span-cut">|</span><a href="#" target="_blank">工作邮箱</a> </div>
             <div class="header-nav-right">
                 <div class="header-search">
-                    <form action="${contextPath}/search/" target="_blank">
+                    <form action="${contextPath}/search/" target="_blank" method="post">
                         <input name="title" class="keywords" type="text" />
                         <input type="submit" class="btn" value="" />
                     </form>

@@ -38,14 +38,15 @@
 				<table width="100%" border="1" align="center" cellpadding="0"
 					cellspacing="1" bordercolor="#FFFFFF" bgcolor="#C9DEFA">
 					<tr align="center" bgcolor="#C9DEFA">
-						<td class="nzcms_table_top2">状态</td>
-						<td class="nzcms_table_top2">标题</td>
-						<td class="nzcms_table_top2">短标题</td>
-						<td class="nzcms_table_top2">所属栏目</td>
-						<td class="nzcms_table_top2">来源</td>
-						<td class="nzcms_table_top2">时间</td>
-						<td align="center" class="nzcms_table_top2">推荐位</td>
-						<td class="nzcms_table_top2">操作</td>
+						<td class="nzcms_table_top2" nowrap>状态</td>
+						<td class="nzcms_table_top2" nowrap>标题</td>
+						<td class="nzcms_table_top2" nowrap>短标题</td>
+						<td class="nzcms_table_top2" nowrap>所属栏目</td>
+						<td class="nzcms_table_top2" nowrap>来源</td>
+						<td class="nzcms_table_top2" nowrap>时间</td>
+						<td class="nzcms_table_top2" nowrap>推荐位</td>
+						<td class="nzcms_table_top2" nowrap>序号</td>
+						<td class="nzcms_table_top2" nowrap>操作</td>
 					</tr>
 					<c:forEach items="${list }" var="item">
 					<tr onMouseOver="this.bgColor='#E4EDF9';"
@@ -66,12 +67,13 @@
 								<img src="../images/type_img.png" alt="图" />
 							</c:if>
 						</td>
-						<td align="center">&nbsp;${item.short_title }</td>
-						<td align="center">&nbsp;${item.cat_name }</td>
+						<td>&nbsp;${item.short_title }</td>
+						<td align="center" nowrap>&nbsp;${item.cat_name }</td>
 						<td align="center">&nbsp;${item.source }</td>
 						<td align="center">&nbsp;<fmt:formatDate value="${item.date}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-						<td align="center">&nbsp;${item.position_name }</td>
-						<td align="center">
+						<td align="center" nowrap>&nbsp;${item.position_name }</td>
+						<td align="center">&nbsp;${item.sort }</td>
+						<td align="center" nowrap>
 							<c:choose>
 								<c:when test="${item.sfxs }">
 									<a href="javascript:if(confirm('确定撤销审核？')){window.location.href='article_updateReview.action?article.id=${item.id }&article.display=false';}void(0);"><font class="red">撤销</font></a>
@@ -84,7 +86,7 @@
 					</tr>
 					</c:forEach>
 					<tr align="center">
-						<td height="25" colspan="8" class="nzcms_table_top">
+						<td height="25" colspan="9" class="nzcms_table_top">
 							<page:pagination pageBean="${pageBean}" url="article_review.action" cssClass="txt_page"/>
 						</td>
 					</tr>
