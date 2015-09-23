@@ -61,7 +61,11 @@ public class FreemarkerAction extends BasicAction {
         article.setReadTime(article.getReadTime()==null?1:article.getReadTime()+1);
         articleService.updateSelective(article);
         if (article.getRedirect() != null && article.getRedirect() && article.getUrl() != null) {
-            response.sendRedirect("http://"+article.getUrl());
+            if (article.getUrl().startsWith("http")) {
+                response.sendRedirect(article.getUrl());
+            }else {
+                response.sendRedirect(request.getContextPath()+"/"+article.getUrl());
+            }
             return null;
         }
         Category category = SiteCache.getCategoryMap().get(article.getCatId());
