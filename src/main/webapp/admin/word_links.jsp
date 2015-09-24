@@ -100,7 +100,7 @@ function check(form) {
       	<input name="links.name" type="text" value="${item.name }">
       </td>
       <td align="center" bgcolor="#FFFFFF">
-        <select name="links.cat_id">
+        <select name="links.catId">
           <c:forEach items="${linkCategoryList}" var="cat">
             <option value="${cat.id}" <c:if test="${item.catId == cat.id}">selected</c:if>>${cat.name}</option>
           </c:forEach>
