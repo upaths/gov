@@ -1,5 +1,6 @@
 package cn.gov.action;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -7,6 +8,7 @@ import cn.gov.model.Category;
 import cn.gov.model.CategoryTree;
 import cn.gov.service.CategoryService;
 import cn.gov.util.AlertUtil;
+import cn.gov.util.FileUtil;
 
 public class CategoryAction extends BasicAction {
 
@@ -16,6 +18,8 @@ public class CategoryAction extends BasicAction {
 	private Category category;
 	private List<Category> list;
 	private CategoryService categoryService;
+	private File image;
+	private String imageFileName;
 	
 	@SuppressWarnings("unchecked")
 	public String query() {
@@ -63,6 +67,10 @@ public class CategoryAction extends BasicAction {
 		if (category.getDisplay() == null) {
 			category.setDisplay(false);
 		}
+		if (image != null) {
+			String url = FileUtil.uploadFile(image, imageFileName, request);
+			category.setThumb(url);
+		}
 		categoryService.insert(category);
 		AlertUtil.alertThenGo(response, "添加成功！", "category_query.action");
 		return null;
@@ -71,6 +79,10 @@ public class CategoryAction extends BasicAction {
 	public String update() {
 		if (category.getDisplay() == null) {
 			category.setDisplay(false);
+		}
+		if (image != null) {
+			String url = FileUtil.uploadFile(image, imageFileName, request);
+			category.setThumb(url);
 		}
 		categoryService.update(category);
 		AlertUtil.alertThenGo(response, "更新成功！", "category_query.action");
@@ -125,5 +137,21 @@ public class CategoryAction extends BasicAction {
 
 	public void setParentId(Integer parentId) {
 		this.parentId = parentId;
+	}
+
+	public File getImage() {
+		return image;
+	}
+
+	public void setImage(File image) {
+		this.image = image;
+	}
+
+	public String getImageFileName() {
+		return imageFileName;
+	}
+
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
 	}
 }

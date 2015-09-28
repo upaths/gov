@@ -49,7 +49,7 @@
 </script>
 </head>
 <body>
-<form name="myform" id="myform" action="category_update.action" method="post">
+<form name="myform" id="myform" action="category_update.action" method="post" enctype="multipart/form-data">
     <input type="hidden" name="category.id" id="id" value="${category.id}" />
     <input type="hidden" name="category.parentId" id="parentId" value="" />
     <table width="0" height="6" border="0" cellpadding="0" cellspacing="0">
@@ -117,6 +117,16 @@
       <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >是否显示：</td>
       <td height="30"><input name="category.display" type="checkbox" value="true" <c:if test="${category.display}">checked</c:if> style="vertical-align:middle; margin: 0 4px;">
           <font color="gray">(打&quot;√&quot;则会在网页上面显示，否则为隐藏在后台)</font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF">
+        <td height="30" align="center" bgcolor="#E4EDF9" >缩略图：</td>
+        <td height="30" valign="middle" class="gray" >
+            <input name="image" id="thumb" type="file" />
+            <input type="hidden" name="category.thumb" value="${category.thumb}" />
+            <c:if test="${!empty category.thumb }">
+                <a href="${pageContext.request.contextPath }${category.thumb}" target="_blank">点击查看缩略图</a>
+            </c:if>
+        </td>
     </tr>
     <tr bgcolor="#FFFFFF">
       <td width="10%" height="30" bgcolor="#E4EDF9" >&nbsp;</td>

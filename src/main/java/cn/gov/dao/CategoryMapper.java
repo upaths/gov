@@ -49,11 +49,11 @@ public interface CategoryMapper {
         "insert into category (id, name, ",
         "parent_id, sort, ",
         "category_type, display, ",
-        "url, templet)",
+        "url, templet, thumb)",
         "values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, ",
         "#{parentId,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, ",
         "#{categoryType,jdbcType=VARCHAR}, #{display,jdbcType=BIT}, ",
-        "#{url,jdbcType=VARCHAR}, #{templet,jdbcType=VARCHAR})"
+        "#{url,jdbcType=VARCHAR}, #{templet,jdbcType=VARCHAR}, #{thumb,jdbcType=VARCHAR})"
     })
     int insert(Category record);
 
@@ -81,7 +81,7 @@ public interface CategoryMapper {
      */
     @Select({
         "select",
-        "id, name, parent_id, sort, category_type, display, url, templet",
+        "id, name, parent_id, sort, category_type, display, url, templet, thumb",
         "from category",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -126,7 +126,8 @@ public interface CategoryMapper {
           "category_type = #{categoryType,jdbcType=VARCHAR},",
           "display = #{display,jdbcType=BIT},",
           "url = #{url,jdbcType=VARCHAR},",
-          "templet = #{templet,jdbcType=VARCHAR}",
+          "templet = #{templet,jdbcType=VARCHAR},",
+          "thumb = #{thumb,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Category record);

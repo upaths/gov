@@ -713,6 +713,76 @@ public class CategoryExample {
             addCriterion("templet not between", value1, value2, "templet");
             return (Criteria) this;
         }
+
+        public Criteria andThumbIsNull() {
+            addCriterion("thumb is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andThumbIsNotNull() {
+            addCriterion("thumb is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andThumbEqualTo(String value) {
+            addCriterion("thumb =", value, "thumb");
+            return (Criteria) this;
+        }
+
+        public Criteria andThumbNotEqualTo(String value) {
+            addCriterion("thumb <>", value, "thumb");
+            return (Criteria) this;
+        }
+
+        public Criteria andThumbGreaterThan(String value) {
+            addCriterion("thumb >", value, "thumb");
+            return (Criteria) this;
+        }
+
+        public Criteria andThumbGreaterThanOrEqualTo(String value) {
+            addCriterion("thumb >=", value, "thumb");
+            return (Criteria) this;
+        }
+
+        public Criteria andThumbLessThan(String value) {
+            addCriterion("thumb <", value, "thumb");
+            return (Criteria) this;
+        }
+
+        public Criteria andThumbLessThanOrEqualTo(String value) {
+            addCriterion("thumb <=", value, "thumb");
+            return (Criteria) this;
+        }
+
+        public Criteria andThumbLike(String value) {
+            addCriterion("thumb like", value, "thumb");
+            return (Criteria) this;
+        }
+
+        public Criteria andThumbNotLike(String value) {
+            addCriterion("thumb not like", value, "thumb");
+            return (Criteria) this;
+        }
+
+        public Criteria andThumbIn(List<String> values) {
+            addCriterion("thumb in", values, "thumb");
+            return (Criteria) this;
+        }
+
+        public Criteria andThumbNotIn(List<String> values) {
+            addCriterion("thumb not in", values, "thumb");
+            return (Criteria) this;
+        }
+
+        public Criteria andThumbBetween(String value1, String value2) {
+            addCriterion("thumb between", value1, value2, "thumb");
+            return (Criteria) this;
+        }
+
+        public Criteria andThumbNotBetween(String value1, String value2) {
+            addCriterion("thumb not between", value1, value2, "thumb");
+            return (Criteria) this;
+        }
     }
 
     /**
