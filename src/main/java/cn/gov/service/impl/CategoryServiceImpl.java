@@ -182,11 +182,26 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public List<Category> queryDisplayCategoryByPid(Integer pid) {
+	public List<Category> queryDisplayCategoryByPid(Integer pid, Integer page, Integer size) {
 		CategoryExample categoryExample = new CategoryExample();
 		categoryExample.createCriteria().andParentIdEqualTo(pid).andDisplayEqualTo(true);
-		categoryExample.setOrderByClause("sort");
+		String limitSql = "";
+		if (size != null && size > 0) {
+			if (page != null && page > 0) {
+				limitSql += " limit " + (page - 1) * size + "," + size;
+			}else {
+				limitSql += " limit " + size;
+			}
+		}
+		categoryExample.setOrderByClause("sort" + limitSql);
 		return categoryMapper.selectByExample(categoryExample);
+	}
+
+	@Override
+	public int countDisplayCategoryByPid(Integer pid) {
+		CategoryExample categoryExample = new CategoryExample();
+		categoryExample.createCriteria().andParentIdEqualTo(pid);
+		return categoryMapper.countByExample(categoryExample);
 	}
 
 	public CategoryMapper getCategoryMapper() {

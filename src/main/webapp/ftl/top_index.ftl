@@ -50,8 +50,7 @@ oncut="return false;" oncopy="return false;" onpaste="return false"</#if>>
 pid??&&pid = 0> class="on"</#if>>网站首页</a></li>
                     <@categoryListTag pid=0; list>
                         <#list list as cat>
-                            <li><a href="<@c.url value="${contextPath}/list.action?
-id=${cat.id}&page=1"/>"<#if pid??&&pid = cat.id> class="on"</#if>>${cat.name}
+                            <li><a href="<@c.url value="${contextPath}/list.action?id=${cat.id}&page=1"/>"<#if pid??&&pid = cat.id> class="on"</#if>>${cat.name}
 </a></li>
                         </#list>
                     </@categoryListTag>

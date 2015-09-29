@@ -31,5 +31,7 @@ public interface CategoryService {
 	
 	public Category queryByName(String mc);
 
-	public List<Category> queryDisplayCategoryByPid(Integer pid);
+	public List<Category> queryDisplayCategoryByPid(Integer pid, Integer page, Integer size);
+
+	public int countDisplayCategoryByPid(Integer pid);
 }
