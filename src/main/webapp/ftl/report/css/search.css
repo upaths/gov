@@ -1,0 +1,100 @@
+.sear_tit {
+	background-image: url("../images/icon_jbcx.png");
+	background-repeat: no-repeat;
+	background-position: left center;
+	width: 600px;
+	height: 60px;
+}
+
+.sear_tit_con {
+	background-image: url("../images/search.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	width: 600px;
+	height: 60px;
+	margin-left: 60px;
+}
+
+.font14 {
+	height: 18px;
+	line-height: 20px;
+	font-size: 14px;
+	border: 1px solid gray;
+	padding: 1px 0;
+}
+
+.sear_con {
+	width: 720px;
+	margin-top: 10px;
+	line-height: 30px;
+	text-align: left;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.sear_table {
+	width: 720px;
+}
+
+.table_report td {
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: left;
+	line-height: 30px;
+	white-space: nowrap;
+}
+
+.redStar {
+	width: 15px;
+	line-height: 25px;
+	color: red;
+	font-size: 14px;
+	background-color: #EEF0F7;
+	text-align: center;
+	border: 1px solid #DDE5E7;
+	border-right: 0px;
+}
+
+.read_cons_sear {
+	width: 125px;
+	line-height: 25px;
+	color: #000000;
+	font-size: 14px;
+	border: 1px solid #DDE5E7;
+	border-left: 0px;
+	background-color: #EEF0F7;
+	text-align: justify;
+	text-justify: distribute-all-lines;
+	text-align-last: justify;
+}
+
+.read_cons_sear2 {
+	width: 140px;
+	line-height: 25px;
+	color: #000000;
+	font-size: 14px;
+	border: 1px solid #DDE5E7;
+	border-left: 0px;
+	background-color: #EEF0F7;
+	text-align: justify;
+	text-justify: distribute-all-lines;
+	text-align-last: justify;
+	white-space: no-wrap;
+}
+
+.report_info {
+	width: 565px;
+	background-color: #ffffff;
+	border: 1px solid #DDE5E7;
+}
+
+.fresult {
+	border: 1px solid #7F9DB9;
+	width: 560px;
+	height: 200px;
+	font-size: 14px;
+	overflow-y: scroll;
+	text-align: left;
+	line-height: 28px;
+	margin-left: 5px;
+}

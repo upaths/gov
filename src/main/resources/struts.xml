@@ -95,6 +95,29 @@
 			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="input">struts_error.jsp</result>
 		</action>
+
+		<!-- 举报进入页面 -->
+		<action name="report_index" class="freemarkerAction" method="direct">
+			<result type="freemarker">/ftl/report/report_index.ftl</result>
+		</action>
+		<!-- 举报条款页面 -->
+		<action name="report_clause" class="freemarkerAction" method="direct">
+			<result type="freemarker">/ftl/report/report_clause.ftl</result>
+		</action>
+		<!-- 举报页面 -->
+		<action name="report_form" class="freemarkerAction" method="direct">
+			<result type="freemarker">/ftl/report/report_form.ftl</result>
+		</action>
+		<!-- 举报查询页面 -->
+		<action name="report_search" class="freemarkerAction" method="direct">
+			<result type="freemarker">/ftl/report/report_search.ftl</result>
+		</action>
+		<!-- 插入举报 -->
+		<action name="report_msg_insert" class="reportAction" method="insertMsg">
+		</action>
+		<!-- 插入查询 -->
+		<action name="report_msg_search" class="reportAction" method="searchMsg">
+		</action>
 	</package>
 
 	<package name="gov_random" extends="struts-default" namespace="/open">
@@ -237,5 +260,61 @@
 			<result name="query">/admin/report.jsp</result>
 		</action>
 
+	</package>
+
+	<package name="gov_report_admin" extends="struts-default"
+			 namespace="/report/admin">
+		<!-- admin命名空间默认拦截器 -->
+		<interceptors>
+			<interceptor name="checkLogin" class="cn.gov.interceptor.CheckReportLoginInterceptor" />
+			<interceptor-stack name="adminStack">
+				<interceptor-ref name="checkLogin" />
+				<interceptor-ref name="defaultStack">
+					<!--覆盖defultStack中的exception设置，启用它的日志功能-->
+					<param name="exception.logEnabled">true</param>
+					<param name="exception.logLevel">ERROR</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="adminStack" />
+		<global-results>
+			<result name="login" type="redirect">/report/admin/to_login.jsp</result>
+		</global-results>
+
+		<!-- 登录验证 -->
+		<action name="login" class="loginAction" method="reportLogin">
+			<result name="success" type="redirect">/report/admin/manage.jsp</result>
+			<interceptor-ref name="defaultStack" />
+		</action>
+
+		<!-- 修改密码 -->
+		<action name="changePassword" class="userAction" method="changeReportPassword">
+		</action>
+
+		<!-- 署名举报 -->
+		<action name="signReport" class="reportAction" method="queryReport">
+			<param name="sign">true</param>
+			<result>/report/admin/sign_report.jsp</result>
+		</action>
+
+		<!-- 匿名举报 -->
+		<action name="noSignReport" class="reportAction" method="queryReport">
+			<param name="sign">false</param>
+			<result>/report/admin/no_sign_report.jsp</result>
+		</action>
+
+		<!-- 署名举报详情 -->
+		<action name="signReportDetail" class="reportAction" method="queryReportDetail">
+			<result>/report/admin/sign_report_detail.jsp</result>
+		</action>
+
+		<!-- 匿名举报详情 -->
+		<action name="noSignReportDetail" class="reportAction" method="queryReportDetail">
+			<result>/report/admin/no_sign_report_detail.jsp</result>
+		</action>
+
+		<!-- 答复 -->
+		<action name="reportAnswer" class="reportAction" method="reportAnswer">
+		</action>
 	</package>
 </struts>

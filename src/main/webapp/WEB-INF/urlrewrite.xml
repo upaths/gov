@@ -130,6 +130,48 @@
         <from>report_insert/</from>
         <to>report_insert.action</to>
     </rule>
+    <rule>
+        <note>
+            举报索引页
+        </note>
+        <from>report_index.html</from>
+        <to>report_index.action</to>
+    </rule>
+    <rule>
+        <note>
+            举报条款页
+        </note>
+        <from>report_clause/([^/]+).html</from>
+        <to>report_clause.action\?org=$1</to>
+    </rule>
+    <rule>
+        <note>
+            举报表单页
+        </note>
+        <from>report_form/([^/]+)/([0-9]+).html</from>
+        <to>report_form.action\?org=$1&amp;flag=$2</to>
+    </rule>
+    <rule>
+        <note>
+            举报插入
+        </note>
+        <from>report_msg_insert/</from>
+        <to>report_msg_insert.action</to>
+    </rule>
+    <rule>
+        <note>
+            举报查询页
+        </note>
+        <from>report_search.html</from>
+        <to>report_search.action</to>
+    </rule>
+    <rule>
+        <note>
+            举报查询
+        </note>
+        <from>report_msg_search/</from>
+        <to>report_msg_search.action</to>
+    </rule>
 
 
     <outbound-rule>
@@ -197,8 +239,8 @@
         <note>
             搜索
         </note>
-        <from>search.action</from>
-        <to>search/</to>
+        <from>/search.action</from>
+        <to>/search/</to>
     </outbound-rule>
     <outbound-rule>
         <note>
@@ -234,6 +276,48 @@
         </note>
         <from>report_insert.action</from>
         <to>report_insert/</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            举报索引页
+        </note>
+        <from>/report_index.action</from>
+        <to>/report_index.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            举报条款页
+        </note>
+        <from>report_clause.action\?org=([^/]+)</from>
+        <to>report_clause/$1.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            举报表单页
+        </note>
+        <from>report_form.action\?org=([^/]+)&amp;flag=([0-9]+)</from>
+        <to>report_form/$1/$2.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            举报插入
+        </note>
+        <from>report_msg_insert.action</from>
+        <to>report_msg_insert/</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            举报查询页
+        </note>
+        <from>/report_search.action</from>
+        <to>/report_search.html</to>
+    </outbound-rule>
+    <outbound-rule>
+        <note>
+            举报查询
+        </note>
+        <from>report_msg_search.action</from>
+        <to>report_msg_search/</to>
     </outbound-rule>
 
 

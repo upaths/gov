@@ -1,0 +1,45 @@
+body {
+	text-align: center;
+	font-size: 12px;
+	margin: 0px;
+	background-color: #336699;
+}
+
+.left {
+	float: left;
+	display: inline;
+	overflow: hidden;
+}
+
+.right {
+	float: right;
+	display: inline;
+	overflow: hidden;
+}
+
+TABLE {
+	border-collapse: collapse;
+}
+
+.page_main {
+	width: 1000px;
+	background-color: #ffffff;
+}
+
+/**
+.page_main_bg {
+	width: 996px;
+	background-color: #ffffff;
+	margin-left: 2px;
+	background-image: url("../images/bg/page_bg.jpg");
+	background-repeat: repeat-x;
+	background-position: top;
+	margin-top: 2px;
+}**/
+
+.page_main_con {
+	width: 700px;
+	margin-left: 150px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

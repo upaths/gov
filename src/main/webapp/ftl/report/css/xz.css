@@ -1,0 +1,66 @@
+.xz_tit {
+	background-image: url("../images/icon_jbxz.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	width: 600px;
+	height: 60px;
+}
+
+.xz_tit_con {
+	background-image: url("../images/jbxz.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	width: 600px;
+	height: 60px;
+	margin-left: 60px;
+	
+}
+
+.font14 {
+	LINE-HEIGHT: 30px;
+	FONT-SIZE: 14px
+}
+
+.button_sm {
+	width: 131px;
+	height: 37px;
+	line-height: 37px;
+	background-image: url("../images/but_sm.gif");
+	background-repeat: no-repeat;
+	background-position: left;
+	border: 0px;
+	cursor: pointer;
+}
+
+.button_nm {
+	width: 131px;
+	height: 37px;
+	line-height: 37px;
+	background-image: url("../images/but_nm.gif");
+	background-repeat: no-repeat;
+	background-position: left;
+	border: 0px;
+	cursor: pointer;
+}
+
+.button_sm_grey {
+	width: 131px;
+	height: 37px;
+	line-height: 37px;
+	background-image: url("../images/but_sm_grey.gif");
+	background-repeat: no-repeat;
+	background-position: left;
+	border: 0px;
+	cursor: pointer;
+}
+
+.button_nm_grey {
+	width: 131px;
+	height: 37px;
+	line-height: 37px;
+	background-image: url("../images/but_nm_grey.gif");
+	background-repeat: no-repeat;
+	background-position: left;
+	border: 0px;
+	cursor: pointer;
+}

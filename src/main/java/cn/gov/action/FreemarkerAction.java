@@ -24,6 +24,8 @@ public class FreemarkerAction extends BasicAction {
     private CategoryService categoryService;
     private ArticleService articleService;
     private TopicService topicService;
+    private String org;
+    private Integer flag;
     public String index() {
         pid = 0;
         return SUCCESS;
@@ -185,5 +187,21 @@ public class FreemarkerAction extends BasicAction {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getOrg() {
+        return org;
+    }
+
+    public void setOrg(String org) {
+        this.org = org;
+    }
+
+    public Integer getFlag() {
+        return flag;
+    }
+
+    public void setFlag(Integer flag) {
+        this.flag = flag;
     }
 }

@@ -1,0 +1,81 @@
+.jb_sj {
+	background-repeat: no-repeat;
+	background-position: left top;
+	width: 810px;
+	margin-left: 140px;
+	margin-top: 20px;
+}
+
+.link_list_box {
+	width: 810px;
+	margin-top: 160px;
+}
+
+.link_list_item {
+	width: 160px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 15px;
+	font-weight: bolder;
+	color: #2074B2;
+	text-align: left;
+}
+
+.link_list_item a {
+	color: #2074B2;
+}
+
+.link_list_item a:hover {
+	color: #FF6600;
+}
+
+.jb_sj2 {
+	width: 810px;
+	margin-left: 110px;
+	margin-top: 10px;
+}
+
+.jb_sj2_title {
+	width: 740px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 18px;
+	color: #2074B2;
+	font-weight: bolder;
+	margin-top: 0px;
+}
+
+.jb_sj2_title a{
+	color: #2074B2;
+}
+.jb_sj2_title a:hover{
+	color: #FF6600;
+}
+.link_list_box2 {
+	margin-top: 10px;
+	width: 810px;
+}
+
+.link_list_box3 {
+	margin-top: 0px;
+	width: 810px;
+}
+
+.link_list_item2 {
+	width: 160px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 15px;
+	font-weight: bolder;
+	color: #000000;
+	text-align: left;
+}
+
+.link_list_item2 a {
+	color: #000000;
+	text-decoration: underline;
+}
+
+.link_list_item2 a:hover {
+	color: #FF6600;
+}

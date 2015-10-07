@@ -1,0 +1,230 @@
+body {
+	text-align: center;
+	font-size: 12px;
+	margin: 0px;
+}
+
+DIV {
+	margin: 0px auto;
+}
+
+IMG {
+	border: 0px;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.left {
+	float: left;
+	display: inline;
+	overflow: hidden;
+}
+
+.right {
+	float: right;
+	display: inline;
+	overflow: hidden;
+}
+
+.page {
+	width: 1000px;
+}
+
+.page_main {
+	width: 1000px;
+	background-color: #ffffff;
+}
+
+.page_main_bg {
+	width: 996px;
+	background-color: #ffffff;
+	margin-left: 2px;
+}
+/**
+.page_main_bg {
+	width: 996px;
+	background-color: #ffffff;
+	margin-left: 2px;
+	background-image: url("../images/bg/page_bg.jpg");
+	background-repeat: repeat-x;
+	background-position: top;
+	margin-top: 2px;
+}**/
+
+.page_main_con {
+	width: 700px;
+	margin-left: 150px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.page_main_tit {
+	width: 700px;;
+	font-size: 18px;
+	line-height: 50px;
+	color: #000000;
+	text-align: center;
+	font-weight: bolder;
+}
+
+.law_main_tit {
+	width: 700px;;
+	font-size: 22px;
+	line-height: 50px;
+	color: #000000;
+	text-align: center;
+	font-weight: bolder;
+}
+
+.page_main_text {
+	width: 700px;;
+	font-size: 15px;
+	line-height: 30px;
+	color: #000000;
+	text-align: left;
+}
+
+TABLE {
+	border-collapse: collapse;
+}
+
+SELECT {
+	text-align: 22px;
+	height: 22px;
+	border: 1px solid #7F9CB9;
+	font-size: 12px;
+}
+
+.iframe_style {
+	background-color: #ffffff;
+	width: 1000px;
+}
+
+.input_1 {
+	text-align: 16px;
+	height: 16px;
+	border: 1px solid #7F9CB9;
+	font-size: 11px;
+	width: 90%;
+}
+
+.input_2 {
+	line-height: 16px;
+	height: 16px;
+	border: 1px solid #7F9CB9;
+	font-size: 11px;
+	width: 100px;
+}
+
+.input_3 {
+	line-height: 16px;
+	height: 16px;
+	border: 1px solid #7F9CB9;
+	font-size: 11px;
+	width: 200px;
+}
+
+.select_2 {
+	width: 70px;
+}
+
+.select_3 {
+	line-height: 20px;
+	height: 20px;
+	border: 1px solid #7F9CB9;
+	font-size: 11px;
+	width: 204px;
+}
+
+.select_4 {
+	font-size: 12px;
+	width: 205px;
+	height: 24px;
+	line-height: 24px;
+	border: 1px solid #dfdfdf;
+}
+
+.select_5 {
+	font-size: 12px;
+	width: 705px;;
+	border: 1px solid #dfdfdf;
+}
+
+.left_bar {
+	width: 268px;
+}
+
+.red {
+	font-weight: bolder;
+	font-size: 15px;
+	color: red;
+}
+
+.red2 {
+	font-size: 12px;
+	color: red;
+}
+
+.grey {
+	font-size: 12px;
+	color: #8A8A8A;
+}
+
+.red_mess {
+	font-size: 13px;
+	color: red;
+	letter-spacing: 0px;
+}
+
+.pagination {
+	border-top: 1px dotted #CACACA;
+	border-bottom: 1px dotted #CACACA;
+	width: 690px;
+	height: 40px;
+	margin-left: 10px;
+	text-align: right;
+	font-size: 13px;
+	color: #0081CC;
+	line-height: 40px;
+}
+
+.page_cur {
+	font-size: 13px;
+	color: #fff;
+	line-height: 40px;
+	background-color: #E8DEDF;
+	padding-left: 3px;
+	padding-right: 3px;
+	height: 30px;
+}
+
+.position {
+	line-height: 30px;
+	font-size: 13px;
+	margin-top: 10px;
+	margin-left: 120px;
+	color: #838282;
+	width: 500px;
+	text-align: left;
+}
+
+.position a {
+	color: #838282;
+}
+
+.but_back {
+	background-color: #FFFFFF;
+	background-image: url("../images/button/back3.png");
+	border: 0px;
+	width: 105px;
+	height: 43px;
+	cursor: pointer;
+}

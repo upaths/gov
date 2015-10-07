@@ -5,6 +5,7 @@ import java.util.Date;
 import cn.gov.model.Log;
 import cn.gov.model.User;
 import cn.gov.service.LogService;
+import cn.gov.service.ReportService;
 import cn.gov.service.UserService;
 import cn.gov.util.IpUtil;
 
@@ -16,6 +17,7 @@ public class LoginAction extends BasicAction {
 	private String rand; // 表单中的rand
 	private UserService userService;
 	private LogService logService;
+	private ReportService reportService;
 
 	@SuppressWarnings("unchecked")
 	public String execute() {
@@ -41,6 +43,20 @@ public class LoginAction extends BasicAction {
 		user.setIp(IpUtil.getClientIp(request));
 		user.setLoginTime(new Date());
 		userService.updateSelective(user);
+		return isSuc;
+	}
+
+	public String reportLogin() {
+		String isSuc = LOGIN;
+		// 从session中取出RandomAction.java 中生成的验证码random
+		String arandom = (String) (ActionContext.getContext().getSession().get("random"));
+		// 下面就是将session中保存验证码字符串与客户输入的验证码字符串对比了
+		if (rand != null && rand.equals(arandom)) {
+			if (reportService.check(username, password)) {
+				ActionContext.getContext().getSession().put("report_user", username);
+				isSuc = SUCCESS;
+			}
+		}
 		return isSuc;
 	}
 
@@ -83,5 +99,12 @@ public class LoginAction extends BasicAction {
 	public void setLogService(LogService logService) {
 		this.logService = logService;
 	}
-	
+
+	public ReportService getReportService() {
+		return reportService;
+	}
+
+	public void setReportService(ReportService reportService) {
+		this.reportService = reportService;
+	}
 }

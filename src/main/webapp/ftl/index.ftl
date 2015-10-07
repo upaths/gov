@@ -190,21 +190,17 @@
                         <img src="images/ruhejubao.png" width="235" height="58"/>
                     </a></li>
                 </@categoryTag>
-                <@categoryTag id=96; cat>
-                    <li><a href="${cat.url}" target="_blank">
-                        <img src="images/woyaojubao.png" width="235" height="58"/>
-                    </a></li>
-                </@categoryTag>
+                <li><a href="<@c.url value="${contextPath}/report_index.action"/>" target="_blank">
+                    <img src="images/woyaojubao.png" width="235" height="58"/>
+                </a></li>
                 <@categoryTag id=97; cat>
                     <li><a href="<@c.url value="${contextPath}/list.action?id=${cat.id}&page=1"/>" target="_blank">
                         <img src="images/qitatujing.png" width="235" height="58"/>
                     </a></li>
                 </@categoryTag>
-                <@categoryTag id=98; cat>
-                    <li><a href="${cat.url}" target="_blank">
-                        <img src="images/jubaochaxun.png" width="235" height="58"/>
-                    </a></li>
-                </@categoryTag>
+                <li><a href="<@c.url value="${contextPath}/report_search.action"/>" target="_blank">
+                    <img src="images/jubaochaxun.png" width="235" height="58"/>
+                </a></li>
                 </ul>
             </div>
             <div class="module-contact">

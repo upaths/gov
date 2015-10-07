@@ -3,9 +3,11 @@ package cn.gov.action;
 import java.io.IOException;
 import java.util.List;
 
+import cn.gov.model.ReportAdmin;
 import cn.gov.model.Role;
 import cn.gov.model.User;
 import cn.gov.model.UserRole;
+import cn.gov.service.ReportService;
 import cn.gov.service.UserService;
 import cn.gov.util.AlertUtil;
 import com.opensymphony.xwork2.ActionContext;
@@ -16,6 +18,8 @@ public class UserAction extends BasicAction {
 	private List list;
 	private List<Role> roleList;
 	private Integer roleId;
+	private ReportService reportService;
+	private ReportAdmin reportAdmin;
 	public String query() {
 		list = userService.query();
 		roleList = userService.queryRoles();
@@ -102,6 +106,25 @@ public class UserAction extends BasicAction {
 		return null;
 	}
 
+	public String changeReportPassword() {
+		String msg;
+		String username = (String) ActionContext.getContext().getSession().get("report_user");
+		if (username != null && !"".equals(username)) {
+			reportAdmin.setUsername(username);
+			int cnt = reportService.updateReportAdminSelective(reportAdmin);
+			if (cnt > 0) {
+				msg = "修改成功，请重新登录！";
+				request.getSession().invalidate();
+			}else {
+				msg = "修改失败！";
+			}
+		}else {
+			msg = "修改失败！";
+		}
+		AlertUtil.alertThenGo(response, msg, "user_chg_pwd.jsp");
+		return null;
+	}
+
 	public UserService getUserService() {
 		return userService;
 	}
@@ -137,5 +160,21 @@ public class UserAction extends BasicAction {
 
 	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
+	}
+
+	public ReportService getReportService() {
+		return reportService;
+	}
+
+	public void setReportService(ReportService reportService) {
+		this.reportService = reportService;
+	}
+
+	public ReportAdmin getReportAdmin() {
+		return reportAdmin;
+	}
+
+	public void setReportAdmin(ReportAdmin reportAdmin) {
+		this.reportAdmin = reportAdmin;
 	}
 }

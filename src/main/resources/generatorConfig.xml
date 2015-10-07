@@ -161,5 +161,7 @@
         <table tableName="inspection" schema="gov"></table>
         <table tableName="inspect_report" schema="gov"></table>
         <table tableName="report" schema="gov"></table>
+        <table tableName="report_admin" schema="gov"></table>
+        <table tableName="report_msg" schema="gov"></table>
     </context>
 </generatorConfiguration>
