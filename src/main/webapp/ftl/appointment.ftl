@@ -55,13 +55,11 @@
                         <div class="forms">
                             <form action="${contextPath}/appoint/" id="appointment_form" method="post">
                                 <p><label for=""><span>*</span>单位名称：</label><input type="text" name="appointment.orgName" /></p>
-                                <p><label for=""><span>*</span>领队姓名：</label><input type="text" name="appointment.leaderName" /></p>
-                                <p><label for=""><span>*</span>职　　务：</label><input type="text" name="appointment.post" /></p>
                                 <p><label for=""><span>*</span>联系人姓名：</label><input type="text" name="appointment.contactPerson" /></p>
-                                <p><label for=""><span>*</span>联系方式：</label><input type="text" name="appointment.contactInfo" /></p>
+                                <p><label for=""><span>*</span>联系人职务：</label><input type="text" name="appointment.post" /></p>
+                                <p><label for=""><span>*</span>手机：</label><input type="text" name="appointment.leaderName" /></p>
+                                <p><label for=""><span>*</span>办公电话：</label><input type="text" name="appointment.contactInfo" /></p>
                                 <p><label for=""><span>*</span>参观人数：</label><input type="text" name="appointment.number" /></p>
-                                <p><label for=""><span>*</span> 参观时间：</label><input type="text" name="appointment.date" class="Wdate" onfocus="WdatePicker({'dateFmt':'yyyy-MM-dd HH:mm:ss'})" /></p>
-                                <p><label for=""><span>*</span> 内容：</label><textarea name="appointment.content" rows="4" cols="30" style="width:250px;"></textarea></p>
                                 <p class="btn"><input type="submit" value="提交" class="btn-l" /><input type="reset" value="重置" class="btn-r" /></p>
                             </form>
                         </div>
@@ -88,9 +86,7 @@
                 "appointment.post": {required: true, maxlength:45},
                 "appointment.contactPerson": {required: true, maxlength:45},
                 "appointment.contactInfo": {required: true, maxlength:45},
-                "appointment.number": {required: true, digits:true},
-                "appointment.date": {required: true, date:true},
-                "appointment.content": {required: true, maxlength:200}
+                "appointment.number": {required: true, digits:true}
             }
         });
     });

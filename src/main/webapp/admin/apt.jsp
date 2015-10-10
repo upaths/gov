@@ -42,29 +42,23 @@
 					cellspacing="1" bordercolor="#FFFFFF" bgcolor="#C9DEFA">
 					<tr align="center" bgcolor="#C9DEFA">
 						<td class="nzcms_table_top2" width="40">序号</td>
-						<td class="nzcms_table_top2" width="120">单位名称</td>
-						<td class="nzcms_table_top2" width="120">领队名称</td>
-						<td class="nzcms_table_top2" width="120">职务</td>
+						<td class="nzcms_table_top2">单位名称</td>
 						<td class="nzcms_table_top2" width="120">联系人姓名</td>
-						<td class="nzcms_table_top2" width="120">联系方式</td>
-						<td class="nzcms_table_top2" width="120">参观方式</td>
-						<td class="nzcms_table_top2">参观内容</td>
-						<td class="nzcms_table_top2" width="150">参观时间</td>
+						<td class="nzcms_table_top2" width="120">联系人职务</td>
+						<td class="nzcms_table_top2" width="120">手机</td>
+						<td class="nzcms_table_top2" width="120">办公电话</td>
+						<td class="nzcms_table_top2" width="120">参观人数</td>
 					</tr>
 					<c:forEach items="${list }" var="item" varStatus="status">
 					<tr onMouseOver="this.bgColor='#E4EDF9';"
 						onMouseOut="this.bgColor='#FFFFFF';" bgcolor="#ffffff">
 						<td height="30" align="center"><font class="sidebarblock">${status.count}</font></td>
 						<td align="center">&nbsp;${item.orgName}</td>
-						<td align="center">&nbsp;${item.leaderName }</td>
-						<td align="center">&nbsp;${item.post }</td>
 						<td align="center">&nbsp;${item.contactPerson }</td>
+						<td align="center">&nbsp;${item.post }</td>
+						<td align="center">&nbsp;${item.leaderName }</td>
 						<td align="center">&nbsp;${item.contactInfo }</td>
 						<td align="center">&nbsp;${item.number }</td>
-						<td align="center">&nbsp;${item.content }</td>
-						<td align="center">
-							&nbsp;<fmt:formatDate value="${item.date}" pattern="yyyy-MM-dd" />
-						</td>
 					</tr>
 					</c:forEach>
 				</table>
