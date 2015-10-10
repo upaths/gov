@@ -38,12 +38,14 @@ public class FreemarkerAction extends BasicAction {
             pid = category.getParentId();
         }else {
             pid = id;
-            List<Category> childs = categoryService.queryChilds(id);
-            if (childs != null && childs.size() > 0) {
-                for (Category child : childs) {
-                    if (child.getTemplet() != null && !"".equals(child.getTemplet())) {
-                        id = child.getId();
-                        break;
+            if (category.getTemplet() == null || "".equals(category.getTemplet())) {
+                List<Category> childs = categoryService.queryChilds(id);
+                if (childs != null && childs.size() > 0) {
+                    for (Category child : childs) {
+                        if (child.getTemplet() != null && !"".equals(child.getTemplet())) {
+                            id = child.getId();
+                            break;
+                        }
                     }
                 }
             }

@@ -92,7 +92,7 @@
                 <font color="red">*</font></td>
         </tr>
     </c:if>
-    <c:if test="${(type eq '1') || (type eq '2') || (type eq '3')}">
+    <c:if test="${(type eq '1') || (type eq '2') || (type eq '3') || (type eq '5')}">
         <tr bgcolor="#FFFFFF">
             <td height="30" align="center" bgcolor="#E4EDF9" >模版页面：</td>
             <td height="30" valign="middle" class="gray" ><input name="category.templet" id="templet" type="text" size="50">

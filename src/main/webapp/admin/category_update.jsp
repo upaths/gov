@@ -106,7 +106,7 @@
                 <font color="red">*</font></td>
         </tr>
     </c:if>
-    <c:if test="${(category.categoryType eq '1') || (category.categoryType eq '2') || (category.categoryType eq '3')}">
+    <c:if test="${(category.categoryType eq '1') || (category.categoryType eq '2') || (category.categoryType eq '3') || (category.categoryType eq '5')}">
         <tr bgcolor="#FFFFFF">
             <td height="30" align="center" bgcolor="#E4EDF9" >模版页面：</td>
             <td height="30" valign="middle" class="gray" ><input name="category.templet" id="templet" type="text" size="50" value="${category.templet}">
