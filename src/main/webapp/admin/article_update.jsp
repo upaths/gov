@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
     <script type="text/javascript" src="../easyui/jquery-1.8.0.min.js"></script>
-    <script type="text/javascript" src="../easyui/easyloader.js"></script>
+    <script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
     <script charset="utf-8" src="editor/kindeditor-min.js"></script>
     <script charset="utf-8" src="editor/lang/zh_CN.js"></script>
     <script src="../My97DatePicker/WdatePicker.js"></script>
@@ -78,7 +78,7 @@
                 alert("是否跳转必须选中！");
             }
             </c:if>
-            <c:if test="${category.categoryType == '5'}">
+            <c:if test="${(category.categoryType == '5') && (empty article.doc)}">
             var doc = $("#doc");
             if (doc.val() == "") {
                 alert("文件不能为空！");
@@ -87,9 +87,6 @@
             }
             </c:if>
             $("#myform").submit();
-        }
-        function initSource() {
-            $("#source").combobox('setText','${article.source}');
         }
     </script>
 </head>
@@ -145,9 +142,9 @@
             <td height="30" align="center" bgcolor="#E4EDF9" >来源：</td>
             <td height="30">
                 <input type="hidden" name="article.source" id="source_text" />
-                <select class="easyui-combobox" id="source" style="width:150px;" data-options="onLoadSuccess(){initSource();}">
+                <select class="easyui-combobox" id="source" style="width:150px;">
                     <c:forEach items="${sourceList}" var="item">
-                        <option value="${item.id}">${item.name}</option>
+                        <option value="${item.id}"<c:if test="${item.name eq article.source}"> selected</c:if>>${item.name}</option>
                     </c:forEach>
                 </select>
                 <font color="gray">信息摘取哪里</font></td>

@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
 <script type="text/javascript" src="../easyui/jquery-1.8.0.min.js"></script>
-<script type="text/javascript" src="../easyui/easyloader.js"></script>
+<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript">
     function check() {
 		var name = $("#name");

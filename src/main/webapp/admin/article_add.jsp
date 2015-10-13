@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
 <script type="text/javascript" src="../easyui/jquery-1.8.0.min.js"></script>
-<script type="text/javascript" src="../easyui/easyloader.js"></script>
+<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
 <script charset="utf-8" src="editor/kindeditor-min.js"></script>
 <script charset="utf-8" src="editor/lang/zh_CN.js"></script>
 <script src="../My97DatePicker/WdatePicker.js"></script>
@@ -88,9 +88,6 @@
         </c:if>
 		$("#myform").submit();
 	}
-    function initSource() {
-        $("#source").combobox('setText','');
-    }
 </script>
 </head>
 <body>
@@ -139,8 +136,8 @@
       <td height="30" align="center" bgcolor="#E4EDF9" >来源：</td>
       <td height="30">
           <input type="hidden" name="article.source" id="source_text" />
-          <select class="easyui-combobox" id="source" style="width:150px;" data-options="onLoadSuccess(){initSource();}">
-              <c:forEach items="${sourceList}" var="item">
+          <select class="easyui-combobox" id="source" style="width:150px;">
+              <c:forEach items="${sourceList}" var="item" varStatus="status">
                   <option value="${item.id}">${item.name}</option>
               </c:forEach>
           </select>
