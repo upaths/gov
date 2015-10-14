@@ -55,22 +55,42 @@
                     </li>
                 </#list>
             </ul>
-            <div class="page">
-                <#if currentPage=1>
-                    <a href="javascript:void(0)">上一页</a>
-                <#else>
-                    <a href="<@c.url value="${contextPath}/list.action?id=${id}&page=${currentPage-1}"/>">上一页</a>
-                </#if>
-                <@repeat count=totalPage; cnt>
-                    <a href="<@c.url value="${contextPath}/list.action?id=${id}&page=${cnt}"/>">${cnt}</a>
-                </@repeat>
-                <#if currentPage=totalPage>
-                    <a href="javascript:void(0)">下一页</a>
-                <#else>
-                    <a href="<@c.url value="${contextPath}/list.action?id=${id}&page=${currentPage+1}"/>">下一页</a>
-                </#if>
-                <div class="clear"></div>
-            </div>
+                <div class="page">
+                    <#if currentPage=1>
+                        <a href="javascript:void(0)">上一页</a>
+                    <#else>
+                        <a href="<@c.url value="${contextPath}/list.action?id=${id}&page=${currentPage-1}"/>">上一页</a>
+                    </#if>
+                    <#if currentPage=1>
+                        <a href="javascript:void(0)">1</a>
+                    <#else>
+                        <a href="<@c.url value="${contextPath}/list.action?id=${id}&page=1"/>">1</a>
+                    </#if>
+                    <#if currentPage&gt;4&&totalPage&gt;4>
+                        <a href="javascript:void(0)">...</a>
+                    </#if>
+                    <@repeat count=totalPage; cnt>
+                        <#if (cnt&gt;=currentPage-2&&cnt<=currentPage+2)&&cnt!=1&&cnt!=totalPage>
+                            <a href="<@c.url value="${contextPath}/list.action?id=${id}&page=${cnt}"/>">${cnt}</a>
+                        </#if>
+                    </@repeat>
+                    <#if currentPage<=totalPage-4>
+                        <a href="javascript:void(0)">...</a>
+                    </#if>
+                    <#if totalPage!=1>
+                        <#if currentPage=totalPage && totalPage!=1>
+                            <a href="javascript:void(0)">${totalPage}</a>
+                        <#else>
+                            <a href="<@c.url value="${contextPath}/list.action?id=${id}&page=${totalPage}"/>">${totalPage}</a>
+                        </#if>
+                    </#if>
+                    <#if currentPage=totalPage>
+                        <a href="javascript:void(0)">下一页</a>
+                    <#else>
+                        <a href="<@c.url value="${contextPath}/list.action?id=${id}&page=${currentPage+1}"/>">下一页</a>
+                    </#if>
+                    <div class="clear"></div>
+                </div>
             </@articleListTag>
         </@categoryTag>
         </div>
