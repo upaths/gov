@@ -67,7 +67,19 @@
                     <a href="<@c.url value="${contextPath}/list.action?id=${id}&page=${currentPage-1}"/>">上一页</a>
                 </#if>
                 <@repeat count=totalPage; cnt>
-                    <a href="<@c.url value="${contextPath}/list.action?id=${id}&page=${cnt}"/>">${cnt}</a>
+                    <#if cnt=totalPage>
+                        <#if currentPage<=totalPage-4>
+                            <a href="javascript:void(0)">...</a>
+                        </#if>
+                    </#if>
+                    <#if (cnt&gt;=currentPage-2&&cnt<=currentPage+2)||cnt=1||cnt=totalPage>
+                        <a href="<@c.url value="${contextPath}/list.action?id=${id}&page=${cnt}"/>"<#if cnt=currentPage> style="color:red"</#if>>${cnt}</a>
+                    </#if>
+                    <#if cnt=1>
+                        <#if currentPage&gt;4&&totalPage&gt;4>
+                            <a href="javascript:void(0)">...</a>
+                        </#if>
+                    </#if>
                 </@repeat>
                 <#if currentPage=totalPage>
                     <a href="javascript:void(0)">下一页</a>
