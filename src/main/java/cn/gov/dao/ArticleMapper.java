@@ -52,14 +52,16 @@ public interface ArticleMapper {
         "display, read_time, keyword, ",
         "summary, thumb, ",
         "url, doc, redirect, ",
-        "sort, content)",
+        "sort, sub_title, ",
+        "bold, color, content)",
         "values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, ",
         "#{catId,jdbcType=INTEGER}, #{date,jdbcType=TIMESTAMP}, #{source,jdbcType=VARCHAR}, ",
         "#{shortTitle,jdbcType=VARCHAR}, #{positionId,jdbcType=INTEGER}, ",
         "#{display,jdbcType=BIT}, #{readTime,jdbcType=INTEGER}, #{keyword,jdbcType=VARCHAR}, ",
         "#{summary,jdbcType=VARCHAR}, #{thumb,jdbcType=VARCHAR}, ",
         "#{url,jdbcType=VARCHAR}, #{doc,jdbcType=VARCHAR}, #{redirect,jdbcType=BIT}, ",
-        "#{sort,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})"
+        "#{sort,jdbcType=INTEGER}, #{subTitle,jdbcType=VARCHAR}, ",
+        "#{bold,jdbcType=BIT}, #{color,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR})"
     })
     int insert(Article record);
 
@@ -96,7 +98,7 @@ public interface ArticleMapper {
     @Select({
         "select",
         "id, title, cat_id, date, source, short_title, position_id, display, read_time, ",
-        "keyword, summary, thumb, url, doc, redirect, sort, content",
+        "keyword, summary, thumb, url, doc, redirect, sort, sub_title, bold, color, content",
         "from article",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -158,6 +160,9 @@ public interface ArticleMapper {
           "doc = #{doc,jdbcType=VARCHAR},",
           "redirect = #{redirect,jdbcType=BIT},",
           "sort = #{sort,jdbcType=INTEGER},",
+          "sub_title = #{subTitle,jdbcType=VARCHAR},",
+          "bold = #{bold,jdbcType=BIT},",
+          "color = #{color,jdbcType=VARCHAR},",
           "content = #{content,jdbcType=LONGVARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -185,7 +190,10 @@ public interface ArticleMapper {
           "url = #{url,jdbcType=VARCHAR},",
           "doc = #{doc,jdbcType=VARCHAR},",
           "redirect = #{redirect,jdbcType=BIT},",
-          "sort = #{sort,jdbcType=INTEGER}",
+          "sort = #{sort,jdbcType=INTEGER},",
+          "sub_title = #{subTitle,jdbcType=VARCHAR},",
+          "bold = #{bold,jdbcType=BIT},",
+          "color = #{color,jdbcType=VARCHAR}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(Article record);

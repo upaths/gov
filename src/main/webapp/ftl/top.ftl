@@ -5,9 +5,9 @@
 <@configTag; config>
 <head>
     <meta charset="utf-8">
-    <title>${config.title}</title>
-    <meta name="Keywords" content="${config.keyword }" />
-    <meta name="Description" content="${config.description }" />
+    <title>${config.title}<#if article??&&article.title??&&article.title!="">-${article.title}</#if></title>
+    <meta name="Keywords" content="<#if article??&&article.keyword??&&article.keyword!="">${article.keyword}<#else>${config.keyword }</#if>" />
+    <meta name="Description" content="<#if article??&&article.summary??&&article.summary!="">${article.summary}<#else>${config.description }</#if>" />
     <link href="${contextPath}/css/style.css" rel="stylesheet" type="text/css">
     <link href="${contextPath}/css/content.css" rel="stylesheet" type="text/css">
     <script src="${contextPath}/easyui/jquery-1.8.0.min.js" 

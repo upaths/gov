@@ -6,7 +6,7 @@
 <struts>
 	<constant name="struts.freemarker.manager.classname" value="cn.gov.freemarker.MyFreemarkerManager" />
 	<constant name="struts.multipart.maxSize" value="104857600"></constant>
-	<package name="gov" extends="struts-default">
+	<package name="gov" extends="struts-default" namespace="/">
 		<result-types>
 			<result-type name="listFreemarker" class="cn.gov.freemarker.ListFreemarkerResult"/>
 		</result-types>
@@ -146,7 +146,7 @@
 		</interceptors>
 		<default-interceptor-ref name="adminStack" />
 		<global-results>
-			<result name="login" type="redirect">/admin/to_login.jsp</result>
+			<result name="login" type="redirect">/fail.html</result>
 		</global-results>
 		
 		<!-- 登录验证 -->
@@ -246,20 +246,6 @@
 			<result name="toUpdate">/admin/topic_update.jsp</result>
 			<result name="commentReview">/admin/topic_comment_review.jsp</result>
 		</action>
-
-		<!-- 巡视组 -->
-		<action name="inspection_*" class="inspectionAction" method="{1}">
-			<result name="query">/admin/inspection.jsp</result>
-			<result name="toAdd">/admin/inspection_add.jsp</result>
-			<result name="toUpdate">/admin/inspection_update.jsp</result>
-			<result name="inspectReport">/admin/inspect_report.jsp</result>
-		</action>
-
-		<!-- 四风举报 -->
-		<action name="report_*" class="reportAction" method="{1}">
-			<result name="query">/admin/report.jsp</result>
-		</action>
-
 	</package>
 
 	<package name="gov_report_admin" extends="struts-default"
@@ -278,7 +264,7 @@
 		</interceptors>
 		<default-interceptor-ref name="adminStack" />
 		<global-results>
-			<result name="login" type="redirect">/report/admin/to_login.jsp</result>
+			<result name="login" type="redirect">/fail.html</result>
 		</global-results>
 
 		<!-- 登录验证 -->
@@ -315,6 +301,19 @@
 
 		<!-- 答复 -->
 		<action name="reportAnswer" class="reportAction" method="reportAnswer">
+		</action>
+
+		<!-- 巡视组 -->
+		<action name="inspection_*" class="inspectionAction" method="{1}">
+			<result name="query">/admin/inspection.jsp</result>
+			<result name="toAdd">/admin/inspection_add.jsp</result>
+			<result name="toUpdate">/admin/inspection_update.jsp</result>
+			<result name="inspectReport">/admin/inspect_report.jsp</result>
+		</action>
+
+		<!-- 四风举报 -->
+		<action name="report_*" class="reportAction" method="{1}">
+			<result name="query">/admin/report.jsp</result>
 		</action>
 	</package>
 </struts>

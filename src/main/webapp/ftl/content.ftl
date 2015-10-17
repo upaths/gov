@@ -22,7 +22,7 @@
         <@articleTag id=id; article>
         <div class="content-content">
             <div class="headings">
-                <h3>${article.title}</h3>
+                <h3>${article.title?replace("\n","<br/>")}</h3>
                     <span>来源：${article.source}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                 <span>发布时间：${article.date?string("yyyy-MM-dd")}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                 <span>浏览次数： ${article.readTime}</span>

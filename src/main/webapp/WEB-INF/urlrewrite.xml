@@ -172,6 +172,13 @@
         <from>report_msg_search/</from>
         <to>report_msg_search.action</to>
     </rule>
+    <rule>
+        <note>
+            后台登录页面
+        </note>
+        <from>/admin/in.html</from>
+        <to>/admin/</to>
+    </rule>
 
 
     <outbound-rule>

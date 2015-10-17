@@ -46,6 +46,15 @@
         $("#parentId").val(parentId)
 		$("#myform").submit();
 	}
+    function changeType(type) {
+        if(type=="4") {
+            $("#url_tr").show();
+            $("#templet_tr").hide();
+        }else {
+            $("#url_tr").hide();
+            $("#templet_tr").show();
+        }
+    }
 </script>
 </head>
 <body>
@@ -84,7 +93,7 @@
     <tr bgcolor="#FFFFFF">
         <td height="30" align="center" bgcolor="#E4EDF9" >栏目类型：</td>
         <td height="30" valign="middle" class="gray" >
-            <select name="category.categoryType" id="categoryType">
+            <select name="category.categoryType" id="categoryType" onchange="changeType(this.value)">
                 <option value="1" <c:if test="${category.categoryType eq '1'}">selected</c:if>>栏目</option>
                 <option value="2" <c:if test="${category.categoryType eq '2'}">selected</c:if>>单页</option>
                 <option value="3" <c:if test="${category.categoryType eq '3'}">selected</c:if>>专题</option>
@@ -99,20 +108,16 @@
       <td height="30"><input name="category.sort" id="sort" type="text" value="${category.sort}" />
           <font color="red">*</font>&nbsp;&nbsp;<font color="gray">根据栏目序号进行排序</font></td>
     </tr>
-    <c:if test="${category.categoryType eq '4'}">
-        <tr bgcolor="#FFFFFF">
-            <td height="30" align="center" bgcolor="#E4EDF9" >外链地址：</td>
-            <td height="30" valign="middle" class="gray" ><input name="category.url" id="url" type="text" size="50" value="${category.url}">
-                <font color="red">*</font></td>
-        </tr>
-    </c:if>
-    <c:if test="${(category.categoryType eq '1') || (category.categoryType eq '2') || (category.categoryType eq '3') || (category.categoryType eq '5')}">
-        <tr bgcolor="#FFFFFF">
-            <td height="30" align="center" bgcolor="#E4EDF9" >模版页面：</td>
-            <td height="30" valign="middle" class="gray" ><input name="category.templet" id="templet" type="text" size="50" value="${category.templet}">
-                <font color="red">*</font></td>
-        </tr>
-    </c:if>
+    <tr bgcolor="#FFFFFF" id="url_tr" <c:if test="${category.categoryType ne '4'}">style="display: none"</c:if>>
+        <td height="30" align="center" bgcolor="#E4EDF9" >外链地址：</td>
+        <td height="30" valign="middle" class="gray" ><input name="category.url" id="url" type="text" size="50" value="${category.url}">
+            <font color="red">*</font></td>
+    </tr>
+    <tr bgcolor="#FFFFFF" id="templet_tr" <c:if test="${category.categoryType eq '4'}">style="display: none"</c:if>>
+        <td height="30" align="center" bgcolor="#E4EDF9" >模版页面：</td>
+        <td height="30" valign="middle" class="gray" ><input name="category.templet" id="templet" type="text" size="50" value="${category.templet}">
+            <font color="red">*</font></td>
+    </tr>
     <tr bgcolor="#FFFFFF">
       <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >是否显示：</td>
       <td height="30"><input name="category.display" type="checkbox" value="true" <c:if test="${category.display}">checked</c:if> style="vertical-align:middle; margin: 0 4px;">

@@ -26,6 +26,7 @@ public class FreemarkerAction extends BasicAction {
     private TopicService topicService;
     private String org;
     private Integer flag;
+    private Article article;
     public String index() {
         pid = 0;
         return SUCCESS;
@@ -61,7 +62,7 @@ public class FreemarkerAction extends BasicAction {
     }
 
     public String content() throws IOException {
-        Article article = articleService.queryArticleById(id);
+        article = articleService.queryArticleById(id);
         article.setReadTime(article.getReadTime()==null?1:article.getReadTime()+1);
         articleService.updateSelective(article);
         if (article.getRedirect() != null && article.getRedirect() && article.getUrl() != null) {
@@ -205,5 +206,13 @@ public class FreemarkerAction extends BasicAction {
 
     public void setFlag(Integer flag) {
         this.flag = flag;
+    }
+
+    public Article getArticle() {
+        return article;
+    }
+
+    public void setArticle(Article article) {
+        this.article = article;
     }
 }

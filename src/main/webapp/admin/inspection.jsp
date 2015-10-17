@@ -6,9 +6,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="../css/admin_css.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="../script/jquery-1.4.min.js"></script>
-<script src="../My97DatePicker/WdatePicker.js"></script>
+<link href="${pageContext.request.contextPath}/css/admin_css.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/script/jquery-1.4.min.js"></script>
+<script src="${pageContext.request.contextPath}/My97DatePicker/WdatePicker.js"></script>
 </head>
 <body>
 	<table width="0" height="6" border="0" cellpadding="0" cellspacing="0">

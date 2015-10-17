@@ -1,6 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -8,11 +9,25 @@
     <link href="../css/admin_css.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+    <link rel="stylesheet" href="../css/spectrum.css"/>
     <script type="text/javascript" src="../easyui/jquery-1.8.0.min.js"></script>
     <script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
     <script charset="utf-8" src="editor/kindeditor-min.js"></script>
     <script charset="utf-8" src="editor/lang/zh_CN.js"></script>
     <script src="../My97DatePicker/WdatePicker.js"></script>
+    <script src="../script/spectrum.js"></script>
+    <script src="../script/jquery.spectrum-zh-cn.js"></script>
+    <style type="text/css">
+        .file {
+            filter:alpha(opacity=0);
+            -moz-opacity:0;
+            -khtml-opacity: 0;
+            opacity: 0;
+            position: relative;
+            left: -75px;
+            width: 70px;
+        }
+    </style>
     <script>
         <c:if test="${category.categoryType == '1' || category.categoryType == '2' || category.categoryType == '3'}">
         var editor;
@@ -24,7 +39,31 @@
                 allowFileManager : true
             });
         });
+        function fetchKeywords(sub) {
+            var content = delHtmlTag(editor.html());
+            if (content == null) {
+                alert("内容为空，不能提取关键词！");
+                return;
+            }
+            $.post("article_fetchKeywords.action",{content:content},function(result){
+                $("#keyword").val(result);
+                if (sub) {
+                    $("#myform").submit();
+                }
+            });
+        }
         </c:if>
+        $(function() {
+            $("#color").spectrum({
+                showInput: true,
+                allowEmpty:true,
+                preferredFormat: "hex"
+            });
+        });
+        function delHtmlTag(str){
+            var title = str.replace(/<[^>]+>/g,"").replace(/&nbsp;/ig,"").replace(/\s/g,"");//去掉所有的html标记
+            return title;
+        }
         function check() {
             $("#catId").val($("#catid_tree").combotree('getValue'));
             $("#source_text").val($("#source").combobox('getText'));
@@ -111,14 +150,25 @@
         </tr>
         <tr bgcolor="#FFFFFF">
             <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >标题：</td>
-            <td height="30" class="gray"><input name="article.title" type="text" id="title" size="50" maxlength="100" value="${article.title}"/>
+            <td height="30" class="gray">
+                <textarea rows="2" cols="50" name="article.title" id="title" maxlength="100">${article.title}</textarea>
                 <font color="red">*</font> 信息标题
             </td>
         </tr>
         <tr bgcolor="#FFFFFF">
             <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >短标题：</td>
-            <td height="30" class="gray"><input name="article.shortTitle" type="text" id="shortTitle" size="30" maxlength="50" value="${article.shortTitle}"/>
-                信息短标题
+            <td height="30" class="gray">
+                <input name="article.shortTitle" type="text" id="shortTitle" size="30" maxlength="50" value="${article.shortTitle}"/>
+                <input name="article.bold" id="bold" type="checkbox" value="true" <c:if test="${article.bold}">checked</c:if> style="vertical-align:middle; margin: 0 0 0 4px;">
+                <span style="color:#0E2D5F; margin-right: 5px;">加粗</span>
+                <input type="text" id="color" name="article.color" value="${article.color}" />
+            </td>
+        </tr>
+        <tr bgcolor="#FFFFFF">
+            <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >副标题：</td>
+            <td height="30" class="gray">
+                <input name="article.subTitle" type="text" id="subTitle" size="30" maxlength="100" value="${article.subTitle}"/>
+                信息副标题
             </td>
         </tr>
         <tr bgcolor="#FFFFFF">
@@ -130,8 +180,12 @@
         </tr>
         <tr bgcolor="#FFFFFF">
             <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >关键词：</td>
-            <td height="30"><input name="article.keyword" type="text" id="keyword" size="50" maxlength="100" value="${article.keyword}" />
-                <FONT color=gray></FONT></td>
+            <td height="30">
+                <input name="article.keyword" type="text" id="keyword" size="50" maxlength="100" value="${article.keyword}" />
+                <c:if test="${category.categoryType == '1' || category.categoryType == '2' || category.categoryType == '3'}">
+                    <input type="button" class="button" onClick="fetchKeywords()" value="提取关键词">
+                </c:if>
+            </td>
         </tr>
         <tr bgcolor="#FFFFFF">
             <td width="10%" height="30" align="center" bgcolor="#E4EDF9" >摘要：</td>
@@ -163,10 +217,18 @@
         <tr bgcolor="#FFFFFF">
             <td height="30" align="center" bgcolor="#E4EDF9" >缩略图：</td>
             <td height="30" valign="middle" class="gray" >
-                <input name="image" id="thumb" type="file" />
-                <input type="hidden" name="article.thumb" value="${article.thumb}" />
+                <input name="article.thumb" id="thumb" style="width: 200px" maxlength="200" value="${article.thumb}" />
+                <input type="button" value="选择文件" style="width: 70px" />
+                <input name="image" class="file" type="file" onchange="$('#thumb').val(this.value)" />
                 <c:if test="${!empty article.thumb }">
-                    <a href="${pageContext.request.contextPath }${article.thumb}" target="_blank">点击查看缩略图</a>
+                    <c:choose>
+                        <c:when test="${fn:startsWith(article.thumb, 'http')}">
+                            <a href="${article.thumb}" target="_blank">点击查看缩略图</a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="${pageContext.request.contextPath }${article.thumb}" target="_blank">点击查看缩略图</a>
+                        </c:otherwise>
+                    </c:choose>
                 </c:if>
             </td>
         </tr>

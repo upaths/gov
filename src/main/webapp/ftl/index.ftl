@@ -53,7 +53,7 @@
                             <#list list as article>
                                 <li>
                                     <i></i>
-                                    <a href="<@c.url value="${contextPath}/content.action?id=${article.id}"/>" target="_blank">
+                                    <a href="<@c.url value="${contextPath}/content.action?id=${article.id}"/>" target="_blank"<#if article.bold?? || article.color??> style="<#if article.bold??&&article.bold>font-weight:bold;</#if><#if article.color??>color:${article.color};</#if>"</#if>>
                                         <#if article.shortTitle?? && article.shortTitle!="">${article.shortTitle}<#else>${article.title}</#if>
                                     </a>
                                 </li>

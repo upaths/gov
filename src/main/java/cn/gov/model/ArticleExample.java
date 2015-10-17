@@ -1234,6 +1234,206 @@ public class ArticleExample {
             addCriterion("sort not between", value1, value2, "sort");
             return (Criteria) this;
         }
+
+        public Criteria andSubTitleIsNull() {
+            addCriterion("sub_title is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubTitleIsNotNull() {
+            addCriterion("sub_title is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubTitleEqualTo(String value) {
+            addCriterion("sub_title =", value, "subTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubTitleNotEqualTo(String value) {
+            addCriterion("sub_title <>", value, "subTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubTitleGreaterThan(String value) {
+            addCriterion("sub_title >", value, "subTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubTitleGreaterThanOrEqualTo(String value) {
+            addCriterion("sub_title >=", value, "subTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubTitleLessThan(String value) {
+            addCriterion("sub_title <", value, "subTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubTitleLessThanOrEqualTo(String value) {
+            addCriterion("sub_title <=", value, "subTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubTitleLike(String value) {
+            addCriterion("sub_title like", value, "subTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubTitleNotLike(String value) {
+            addCriterion("sub_title not like", value, "subTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubTitleIn(List<String> values) {
+            addCriterion("sub_title in", values, "subTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubTitleNotIn(List<String> values) {
+            addCriterion("sub_title not in", values, "subTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubTitleBetween(String value1, String value2) {
+            addCriterion("sub_title between", value1, value2, "subTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andSubTitleNotBetween(String value1, String value2) {
+            addCriterion("sub_title not between", value1, value2, "subTitle");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoldIsNull() {
+            addCriterion("bold is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoldIsNotNull() {
+            addCriterion("bold is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoldEqualTo(Boolean value) {
+            addCriterion("bold =", value, "bold");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoldNotEqualTo(Boolean value) {
+            addCriterion("bold <>", value, "bold");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoldGreaterThan(Boolean value) {
+            addCriterion("bold >", value, "bold");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoldGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("bold >=", value, "bold");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoldLessThan(Boolean value) {
+            addCriterion("bold <", value, "bold");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoldLessThanOrEqualTo(Boolean value) {
+            addCriterion("bold <=", value, "bold");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoldIn(List<Boolean> values) {
+            addCriterion("bold in", values, "bold");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoldNotIn(List<Boolean> values) {
+            addCriterion("bold not in", values, "bold");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoldBetween(Boolean value1, Boolean value2) {
+            addCriterion("bold between", value1, value2, "bold");
+            return (Criteria) this;
+        }
+
+        public Criteria andBoldNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("bold not between", value1, value2, "bold");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorIsNull() {
+            addCriterion("color is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorIsNotNull() {
+            addCriterion("color is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorEqualTo(String value) {
+            addCriterion("color =", value, "color");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorNotEqualTo(String value) {
+            addCriterion("color <>", value, "color");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorGreaterThan(String value) {
+            addCriterion("color >", value, "color");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorGreaterThanOrEqualTo(String value) {
+            addCriterion("color >=", value, "color");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorLessThan(String value) {
+            addCriterion("color <", value, "color");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorLessThanOrEqualTo(String value) {
+            addCriterion("color <=", value, "color");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorLike(String value) {
+            addCriterion("color like", value, "color");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorNotLike(String value) {
+            addCriterion("color not like", value, "color");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorIn(List<String> values) {
+            addCriterion("color in", values, "color");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorNotIn(List<String> values) {
+            addCriterion("color not in", values, "color");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorBetween(String value1, String value2) {
+            addCriterion("color between", value1, value2, "color");
+            return (Criteria) this;
+        }
+
+        public Criteria andColorNotBetween(String value1, String value2) {
+            addCriterion("color not between", value1, value2, "color");
+            return (Criteria) this;
+        }
     }
 
     /**

@@ -1,6 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%
 	session.invalidate();
-	response.sendRedirect(request.getContextPath()+"/");
+	out.print("<script>window.location.href='index.jsp'</script>"); 
 %>
 

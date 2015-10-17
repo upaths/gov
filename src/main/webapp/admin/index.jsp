@@ -95,10 +95,10 @@ a:active {
 </script>
 </head>
 <BODY bgColor=#ffffff leftMargin=0 topMargin=0> 
-<form name="form" method="post" action="login.action" onSubmit="return check();">
+<form name="form" method="post" action="${pageContext.request.contextPath}/admin/login.action" onSubmit="return check();">
 <table width="100%" height="90"  border="0" align="center" cellpadding="10" cellspacing="0" bgcolor="#00309C">
   <tr>
-    <td align="left" valign="bottom"><img src="images/nzcms_admin.jpg"></td>
+    <td align="left" valign="bottom"><img src="${pageContext.request.contextPath}/admin/images/nzcms_admin.jpg"></td>
     <td align="center" valign="middle">&nbsp;</td>
   </tr>
 </table>
@@ -114,10 +114,10 @@ a:active {
 </table>
 <table width="100%" height="62%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#5A7EDC">
   <tr>
-    <td width="10%" align="left" valign="top" ><img src="images/nz_05.gif" width="100" height="100"></td>
+    <td width="10%" align="left" valign="top" ><img src="${pageContext.request.contextPath}/admin/images/nz_05.gif" width="100" height="100"></td>
     <td width="35%" align="right" valign="middle" class="zx"><table border="0" cellpadding="0" cellspacing="50">
       <tr>
-        <td width="67" height="67" align="center" valign="middle" background="images/www.ningzhi.net.jpg" bgcolor="#FFFFFF"><img src="images/nz.gif" border="0"></td>
+        <td width="67" height="67" align="center" valign="middle" background="${pageContext.request.contextPath}/admin/images/www.ningzhi.net.jpg" bgcolor="#FFFFFF"><img src="${pageContext.request.contextPath}/admin/images/nz.gif" border="0"></td>
       </tr>
     </table></td>
     <td align="left" valign="middle"><table width="375" border="0" cellpadding="5" cellspacing="0" >
@@ -132,7 +132,7 @@ a:active {
       <tr>
         <td width="140" align="right"><span class="white">输入验证：</span></td>
         <td height="40" align="left"><input name="rand" type=text class="tite" id="rand" value="" size=6 maxlength=6></td>
-        <td width="50" align="center"><table width="62" height="28" border="0" cellpadding="0" cellspacing="0" background="images/yzm.gif" bgcolor="#FFFFFF">
+        <td width="50" align="center"><table width="62" height="28" border="0" cellpadding="0" cellspacing="0" background="${pageContext.request.contextPath}/admin/images/yzm.gif" bgcolor="#FFFFFF">
           <tr>
             <td width="15">&nbsp;</td>
             <td><img src="${pageContext.request.contextPath}/open/rand.action?d=<%=new java.util.Date() %>" alt="看不清？点击换一个" onclick="this.src='${pageContext.request.contextPath}/open/rand.action?d='+new Date()"></td>

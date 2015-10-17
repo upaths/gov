@@ -1,17 +1,19 @@
 package cn.gov.action;
 
+import cn.gov.cache.SiteCache;
 import cn.gov.enums.CategoryEnum;
 import cn.gov.model.*;
 import cn.gov.service.*;
 import cn.gov.util.AlertUtil;
 import cn.gov.util.FileUtil;
 import com.opensymphony.xwork2.ActionContext;
+import org.ansj.domain.Term;
+import org.ansj.splitWord.analysis.ToAnalysis;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class ArticleAction extends BasicAction {
 
@@ -36,6 +38,10 @@ public class ArticleAction extends BasicAction {
 	private String docFileName;
 	private Role role;
 	private List<Article> articles;
+	private String content;
+	private String ids;
+	private Integer chgCatid;
+	private String synCatids;
 
 	/**
 	 * 文章主页面
@@ -132,6 +138,22 @@ public class ArticleAction extends BasicAction {
 			article.setDisplay(false);
 		}
 		articleService.insert(article);
+		if (synCatids != null && !"".equals(synCatids)) {
+			synCatids = synCatids.replaceAll(" ", "");
+			String[] catids = synCatids.split(",");
+			for (String catidStr : catids) {
+				try {
+					Integer catid = Integer.valueOf(catidStr);
+					List<Category> childs = categoryService.queryChilds(catid);
+					if (catid != categoryId && (childs == null || childs.size() == 0)) {
+						article.setCatId(catid);
+						articleService.insert(article);
+					}
+				}catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		category = categoryService.queryByPrimaryKey(categoryId);
 		if (CategoryEnum.PAGE.toString().equals(category.getCategoryType())) {
 			AlertUtil.alertThenGo(response, "添加成功！", "article_page.action?categoryId="+categoryId);
@@ -215,6 +237,90 @@ public class ArticleAction extends BasicAction {
 			article = articleList.get(0);
 			return "toUpdate";
 		}
+	}
+
+	public void fetchKeywords() {
+		StringBuffer keywordBuffer = new StringBuffer();
+		if (content != null && !"".equals(content)) {
+			List<Term> keywordList = ToAnalysis.parse(content);
+			System.out.println(keywordList);
+			if (keywordList != null) {
+				Map<String, Integer> map = new HashMap<String, Integer>();
+				for (int i = 0; i <keywordList.size(); i++) {
+					Term term = keywordList.get(i);
+					if (term.getRealName().length() > 1 && (term.getNatrue().natureStr.contains("a") || term.getNatrue().natureStr.contains("n"))) {
+						if (map.get(term.getRealName()) == null) {
+							map.put(term.getRealName(), 0);
+						}
+						map.put(term.getRealName(), map.get(term.getRealName()) + 1);
+					}
+				}
+				System.out.println(map);
+				Map<Integer, List<String>> sortedMap = new TreeMap<Integer, List<String>>(new Comparator<Integer>() {
+					public int compare(Integer key1, Integer key2) {
+						return key2 - key1;
+					}
+				});
+				for (Map.Entry<String, Integer> entry : map.entrySet()) {
+					if (sortedMap.get(entry.getValue()) == null) {
+						sortedMap.put(entry.getValue(), new ArrayList<String>());
+					}
+					sortedMap.get(entry.getValue()).add(entry.getKey());
+				}
+				System.out.println(sortedMap);
+				int cnt = 0;
+				topLoop: for (Map.Entry<Integer, List<String>> entry : sortedMap.entrySet()) {
+					List<String> list = entry.getValue();
+					for (String keyword : list) {
+						keywordBuffer.append(keyword).append(",");
+						cnt++;
+						if (cnt >= 5) {
+							break topLoop;
+						}
+					}
+				}
+			}
+		}
+		String result = keywordBuffer.length() > 0 ? keywordBuffer.substring(0, keywordBuffer.length()-1):"";
+		response.setCharacterEncoding("UTF-8");
+		try {
+			response.getWriter().write(result);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public String moveBatch() {
+		String msg = "批量移动失败！";
+		try {
+			String[] idsAry = ids.split(",");
+			for (String id : idsAry) {
+				Article a = new Article();
+				a.setId(Integer.valueOf(id));
+				a.setCatId(chgCatid);
+				articleService.updateSelective(a);
+			}
+			msg = "批量移动成功！";
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		AlertUtil.alertThenGo(response, msg, "article_query.action?categoryId="+categoryId);
+		return null;
+	}
+
+	public String deleteBatch() {
+		String msg = "批量删除失败！";
+		try {
+			String[] idsAry = ids.split(",");
+			for (String id : idsAry) {
+				articleService.delete(Integer.valueOf(id));
+			}
+			msg = "批量删除成功！";
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		AlertUtil.alertThenGo(response, msg, "article_query.action?categoryId="+categoryId);
+		return null;
 	}
 
 	public CategoryService getCategoryService() {
@@ -383,5 +489,37 @@ public class ArticleAction extends BasicAction {
 
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getIds() {
+		return ids;
+	}
+
+	public void setIds(String ids) {
+		this.ids = ids;
+	}
+
+	public Integer getChgCatid() {
+		return chgCatid;
+	}
+
+	public void setChgCatid(Integer chgCatid) {
+		this.chgCatid = chgCatid;
+	}
+
+	public String getSynCatids() {
+		return synCatids;
+	}
+
+	public void setSynCatids(String synCatids) {
+		this.synCatids = synCatids;
 	}
 }

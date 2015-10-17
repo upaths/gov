@@ -5,9 +5,54 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link href="../css/admin_css.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="../script/jquery-1.4.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link href="../css/admin_css.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="../easyui/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../easyui/themes/icon.css">
+	<script type="text/javascript" src="../easyui/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript">
+		function toggleChecked(obj) {
+			if($(obj).is(':checked')) {
+				$(".article_id").attr("checked", true);
+			}else {
+				$(".article_id").attr("checked", false);
+			}
+		}
+		function moveBatch() {
+			var checked = $(".article_id:checked");
+			if (checked.length == 0) {
+				alert("未选择要批量移动的文章！");
+				return;
+			}
+			var chgCatid = $("#catid_tree").combotree('getValue');
+			if (chgCatid <= 0) {
+				alert("请选择要移动到的栏目！");
+				return;
+			}
+			window.location.href='article_moveBatch.action?ids='+contact(checked)+'&categoryId=${categoryId}&chgCatid='+chgCatid;
+		}
+		function deleteBatch() {
+			var checked = $(".article_id:checked");
+			if (checked.length == 0) {
+				alert("未选择要批量删除的文章！");
+				return;
+			}
+			if(confirm('确定删除？')){
+				window.location.href='article_deleteBatch.action?ids='+contact(checked)+'&categoryId=${categoryId}';
+			}
+		}
+		function contact(ary) {
+			var ids = "";
+			ary.each(function(index,element) {
+				ids += element.value;
+				if (index < ary.length - 1) {
+					ids += ",";
+				}
+			});
+			return ids;
+		}
+	</script>
 </head>
 <body>
 	<table width="0" height="6" border="0" cellpadding="0" cellspacing="0">
@@ -31,6 +76,10 @@
 								<input type="submit" value="搜索" />
 								<input type="button" value="新增" onclick="window.location.href='article_toAdd.action?categoryId=${categoryId }'" />
 								<input type="button" value="保存排序" onclick="$('#article_form').submit()" />
+								<span style="margin: 0 30px; font-weight: bold">|</span>
+								<input id="catid_tree" class="easyui-combotree" style="width:170px" data-options="url:'category_queryCategoryTree.action',required:true" value="${categoryId}"/>
+								<input type="button" value="批量移动" onclick="moveBatch()" />
+								<input type="button" value="批量删除" onclick="deleteBatch()" />
 							</td>
 						</tr>
 					</form>
@@ -41,6 +90,7 @@
 				<table width="100%" border="1" align="center" cellpadding="0"
 					cellspacing="1" bordercolor="#FFFFFF" bgcolor="#C9DEFA">
 					<tr align="center" bgcolor="#C9DEFA">
+						<td class="nzcms_table_top2" nowrap><input type="checkbox" onclick="toggleChecked(this)" /></td>
 						<td class="nzcms_table_top2" nowrap>状态</td>
 						<td class="nzcms_table_top2" nowrap>标题</td>
 						<td class="nzcms_table_top2" nowrap>短标题</td>
@@ -56,6 +106,9 @@
 						<c:forEach items="${list }" var="item" varStatus="status">
 						<tr onMouseOver="this.bgColor='#E4EDF9';"
 							onMouseOut="this.bgColor='#FFFFFF';" bgcolor="#ffffff">
+							<td height="30" align="center">
+								<input type="checkbox" class="article_id" value="${item.id }" />
+							</td>
 							<td height="30" align="center"><font class="sidebarblock">
 							<c:choose>
 								<c:when test="${item.display }">
@@ -99,7 +152,7 @@
 						</c:forEach>
 					</form>
 					<tr align="center">
-						<td height="25" colspan="9" class="nzcms_table_top">
+						<td height="25" colspan="10" class="nzcms_table_top">
 							<page:pagination pageBean="${pageBean}" url="article_query.action" cssClass="txt_page"/>
 						</td>
 					</tr>

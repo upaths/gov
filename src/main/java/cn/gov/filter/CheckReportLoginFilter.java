@@ -19,8 +19,8 @@ public class CheckReportLoginFilter implements Filter {
 		HttpSession session = request.getSession();
 		String username = (String)session.getAttribute("report_user");
 		String url = request.getServletPath();
-		if (url.endsWith(".jsp") && !url.contains("/report/admin/index.jsp") && !url.contains("/report/admin/to_login.jsp") && (username == null || "".equals(username))) {
-			response.sendRedirect(request.getContextPath()+"/report/admin/to_login.jsp");
+		if (url.endsWith(".jsp") && !url.contains("/report/admin/index.jsp") && (username == null || "".equals(username))) {
+			response.sendRedirect(request.getContextPath()+"/fail.html");
 		}else {
 			chain.doFilter(arg0, arg1);
 		}

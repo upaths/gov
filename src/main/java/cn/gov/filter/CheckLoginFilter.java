@@ -25,8 +25,8 @@ public class CheckLoginFilter implements Filter {
 		HttpSession session = request.getSession();
 		String username = (String)session.getAttribute("user");
 		String url = request.getServletPath();
-		if (url.endsWith(".jsp") && !url.contains("/admin/index.jsp") && !url.contains("/admin/to_login.jsp") && (username == null || "".equals(username))) {
-			response.sendRedirect(request.getContextPath()+"/admin/to_login.jsp");
+		if (url.endsWith(".jsp") && (username == null || "".equals(username))) {
+			response.sendRedirect(request.getContextPath()+"/fail.html");
 		}else {
 			chain.doFilter(arg0, arg1);
 		}

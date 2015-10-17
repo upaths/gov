@@ -23,7 +23,11 @@
                 <ul>
                     <li><a href="javascript:jump('signReport.action');void(0);" style="color: #000; text-decoration: none;">署名举报</a></li>
                     <li><a href="javascript:jump('noSignReport.action');void(0);" style="color: #000; text-decoration: none;">匿名举报</a></li>
+                    <li><a href="javascript:jump('inspection_query.action');void(0);" style="color: #000; text-decoration: none;">管理巡视组</a></li>
+                    <li><a href="javascript:jump('inspection_toAdd.action');void(0);" style="color: #000; text-decoration: none;">添加巡视组</a></li>
+                    <li><a href="javascript:jump('report_query.action');void(0);" style="color: #000; text-decoration: none;">四风举报</a></li>
                     <li><a href="javascript:jump('user_chg_pwd.jsp');void(0);" style="color: #000; text-decoration: none;">修改密码</a></li>
+                    <li><a href="out.jsp" onClick="return confirm('您确定要退出是吗？');" style="color: #000; text-decoration: none;">退出系统</a></li>
                 </ul>
             </li>
         </ul>
