@@ -63,7 +63,7 @@ public class ArticleServiceImpl implements ArticleService {
 			criteria.andCatIdEqualTo(catid);
 		}
 		if (posid != null && posid > 0) {
-			criteria.andPositionIdEqualTo(posid);
+			criteria.addCriterion("concat(',',position_id,',') like '%,"+posid+",%'");
 		}
 		if (title != null && !"".equals(title)) {
 			criteria.andTitleLike("%"+title+"%");
@@ -93,7 +93,7 @@ public class ArticleServiceImpl implements ArticleService {
 			criteria.andCatIdEqualTo(catid);
 		}
 		if (posid != null && posid > 0) {
-			criteria.andPositionIdEqualTo(posid);
+			criteria.addCriterion("concat(',',position_id,',') like '%," + posid+",%'");
 		}
 		if (title != null && !"".equals(title)) {
 			criteria.andTitleLike("%"+title+"%");

@@ -19,8 +19,7 @@
 
 	<select id="queryArticle" parameterType="map" resultType="java.util.HashMap">
 		<![CDATA[select * from
-		(select a.*, b.name cat_name,
-		(select name from position where id = a.position_id) position_name
+		(select a.*, b.name cat_name
 		from article a, category b
 			where a.cat_id = b.id
 		) a]]>

@@ -44,7 +44,6 @@
 						<td class="nzcms_table_top2" nowrap>所属栏目</td>
 						<td class="nzcms_table_top2" nowrap>来源</td>
 						<td class="nzcms_table_top2" nowrap>时间</td>
-						<td class="nzcms_table_top2" nowrap>推荐位</td>
 						<td class="nzcms_table_top2" nowrap>序号</td>
 						<td class="nzcms_table_top2" nowrap>操作</td>
 					</tr>
@@ -71,7 +70,6 @@
 						<td align="center" nowrap>&nbsp;${item.cat_name }</td>
 						<td align="center">&nbsp;${item.source }</td>
 						<td align="center">&nbsp;<fmt:formatDate value="${item.date}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-						<td align="center" nowrap>&nbsp;${item.position_name }</td>
 						<td align="center">&nbsp;${item.sort }</td>
 						<td align="center" nowrap>
 							<c:choose>
@@ -86,7 +84,7 @@
 					</tr>
 					</c:forEach>
 					<tr align="center">
-						<td height="25" colspan="9" class="nzcms_table_top">
+						<td height="25" colspan="8" class="nzcms_table_top">
 							<page:pagination pageBean="${pageBean}" url="article_review.action" cssClass="txt_page"/>
 						</td>
 					</tr>

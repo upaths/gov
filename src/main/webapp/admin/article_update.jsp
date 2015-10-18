@@ -59,6 +59,8 @@
                 allowEmpty:true,
                 preferredFormat: "hex"
             });
+            // 初始化推荐位
+            $('#positionId').combobox('setValues', [${article.positionId}]);
         });
         function delHtmlTag(str){
             var title = str.replace(/<[^>]+>/g,"").replace(/&nbsp;/ig,"").replace(/\s/g,"");//去掉所有的html标记
@@ -206,10 +208,10 @@
         <tr bgcolor="#FFFFFF">
             <td width="10%" height="30" align="center" bgcolor="#E4EDF9">推荐位：</td>
             <td height="30">
-                <select name="article.positionId" id="positionId">
+                <select class="easyui-combobox" name="article.positionId" id="positionId" multiple style="width:150px;">
                     <option value=""></option>
                     <c:forEach items="${positionList}" var="item">
-                        <option value="${item.id}" <c:if test="${item.id == article.positionId}">selected</c:if>>${item.name}</option>
+                        <option value="${item.id}">${item.name}</option>
                     </c:forEach>
                 </select>
                 <font color="gray">是否推荐到首页</font></td>

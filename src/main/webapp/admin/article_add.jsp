@@ -214,7 +214,7 @@
     <tr bgcolor="#FFFFFF">
       <td width="10%" height="30" align="center" bgcolor="#E4EDF9">推荐位：</td>
       <td height="30">
-          <select name="article.positionId" id="positionId">
+          <select class="easyui-combobox" name="article.positionId" id="positionId" multiple style="width:150px;">
               <option value=""></option>
               <c:forEach items="${positionList}" var="item">
                   <option value="${item.id}">${item.name}</option>

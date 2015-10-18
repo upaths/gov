@@ -137,6 +137,9 @@ public class ArticleAction extends BasicAction {
 		if (article.getDisplay() == null) {
 			article.setDisplay(false);
 		}
+		if (article.getPositionId() != null && !"".equals(article.getPositionId())) {
+			article.setPositionId(article.getPositionId().replaceAll(" ", ""));
+		}
 		articleService.insert(article);
 		if (synCatids != null && !"".equals(synCatids)) {
 			synCatids = synCatids.replaceAll(" ", "");
@@ -171,6 +174,9 @@ public class ArticleAction extends BasicAction {
 		if (doc != null) {
 			String url = FileUtil.uploadFile(doc, docFileName, request);
 			article.setDoc(url);
+		}
+		if (article.getPositionId() != null && !"".equals(article.getPositionId())) {
+			article.setPositionId(article.getPositionId().replaceAll(" ", ""));
 		}
 		articleService.update(article);
 		category = categoryService.queryByPrimaryKey(categoryId);
@@ -255,7 +261,6 @@ public class ArticleAction extends BasicAction {
 						map.put(term.getRealName(), map.get(term.getRealName()) + 1);
 					}
 				}
-				System.out.println(map);
 				Map<Integer, List<String>> sortedMap = new TreeMap<Integer, List<String>>(new Comparator<Integer>() {
 					public int compare(Integer key1, Integer key2) {
 						return key2 - key1;
@@ -267,7 +272,6 @@ public class ArticleAction extends BasicAction {
 					}
 					sortedMap.get(entry.getValue()).add(entry.getKey());
 				}
-				System.out.println(sortedMap);
 				int cnt = 0;
 				topLoop: for (Map.Entry<Integer, List<String>> entry : sortedMap.entrySet()) {
 					List<String> list = entry.getValue();

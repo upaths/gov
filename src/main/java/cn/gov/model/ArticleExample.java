@@ -174,7 +174,7 @@ public class ArticleExample {
             return criteria;
         }
 
-        protected void addCriterion(String condition) {
+        public void addCriterion(String condition) {
             if (condition == null) {
                 throw new RuntimeException("Value for condition cannot be null");
             }
@@ -595,52 +595,62 @@ public class ArticleExample {
             return (Criteria) this;
         }
 
-        public Criteria andPositionIdEqualTo(Integer value) {
+        public Criteria andPositionIdEqualTo(String value) {
             addCriterion("position_id =", value, "positionId");
             return (Criteria) this;
         }
 
-        public Criteria andPositionIdNotEqualTo(Integer value) {
+        public Criteria andPositionIdNotEqualTo(String value) {
             addCriterion("position_id <>", value, "positionId");
             return (Criteria) this;
         }
 
-        public Criteria andPositionIdGreaterThan(Integer value) {
+        public Criteria andPositionIdGreaterThan(String value) {
             addCriterion("position_id >", value, "positionId");
             return (Criteria) this;
         }
 
-        public Criteria andPositionIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPositionIdGreaterThanOrEqualTo(String value) {
             addCriterion("position_id >=", value, "positionId");
             return (Criteria) this;
         }
 
-        public Criteria andPositionIdLessThan(Integer value) {
+        public Criteria andPositionIdLessThan(String value) {
             addCriterion("position_id <", value, "positionId");
             return (Criteria) this;
         }
 
-        public Criteria andPositionIdLessThanOrEqualTo(Integer value) {
+        public Criteria andPositionIdLessThanOrEqualTo(String value) {
             addCriterion("position_id <=", value, "positionId");
             return (Criteria) this;
         }
 
-        public Criteria andPositionIdIn(List<Integer> values) {
+        public Criteria andPositionIdLike(String value) {
+            addCriterion("position_id like", value, "positionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPositionIdNotLike(String value) {
+            addCriterion("position_id not like", value, "positionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPositionIdIn(List<String> values) {
             addCriterion("position_id in", values, "positionId");
             return (Criteria) this;
         }
 
-        public Criteria andPositionIdNotIn(List<Integer> values) {
+        public Criteria andPositionIdNotIn(List<String> values) {
             addCriterion("position_id not in", values, "positionId");
             return (Criteria) this;
         }
 
-        public Criteria andPositionIdBetween(Integer value1, Integer value2) {
+        public Criteria andPositionIdBetween(String value1, String value2) {
             addCriterion("position_id between", value1, value2, "positionId");
             return (Criteria) this;
         }
 
-        public Criteria andPositionIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andPositionIdNotBetween(String value1, String value2) {
             addCriterion("position_id not between", value1, value2, "positionId");
             return (Criteria) this;
         }

@@ -12,7 +12,7 @@
     <result column="date" jdbcType="TIMESTAMP" property="date" />
     <result column="source" jdbcType="VARCHAR" property="source" />
     <result column="short_title" jdbcType="VARCHAR" property="shortTitle" />
-    <result column="position_id" jdbcType="INTEGER" property="positionId" />
+    <result column="position_id" jdbcType="VARCHAR" property="positionId" />
     <result column="display" jdbcType="BIT" property="display" />
     <result column="read_time" jdbcType="INTEGER" property="readTime" />
     <result column="keyword" jdbcType="VARCHAR" property="keyword" />
@@ -250,7 +250,7 @@
         #{shortTitle,jdbcType=VARCHAR},
       </if>
       <if test="positionId != null">
-        #{positionId,jdbcType=INTEGER},
+        #{positionId,jdbcType=VARCHAR},
       </if>
       <if test="display != null">
         #{display,jdbcType=BIT},
@@ -329,7 +329,7 @@
         short_title = #{record.shortTitle,jdbcType=VARCHAR},
       </if>
       <if test="record.positionId != null">
-        position_id = #{record.positionId,jdbcType=INTEGER},
+        position_id = #{record.positionId,jdbcType=VARCHAR},
       </if>
       <if test="record.display != null">
         display = #{record.display,jdbcType=BIT},
@@ -387,7 +387,7 @@
       date = #{record.date,jdbcType=TIMESTAMP},
       source = #{record.source,jdbcType=VARCHAR},
       short_title = #{record.shortTitle,jdbcType=VARCHAR},
-      position_id = #{record.positionId,jdbcType=INTEGER},
+      position_id = #{record.positionId,jdbcType=VARCHAR},
       display = #{record.display,jdbcType=BIT},
       read_time = #{record.readTime,jdbcType=INTEGER},
       keyword = #{record.keyword,jdbcType=VARCHAR},
@@ -417,7 +417,7 @@
       date = #{record.date,jdbcType=TIMESTAMP},
       source = #{record.source,jdbcType=VARCHAR},
       short_title = #{record.shortTitle,jdbcType=VARCHAR},
-      position_id = #{record.positionId,jdbcType=INTEGER},
+      position_id = #{record.positionId,jdbcType=VARCHAR},
       display = #{record.display,jdbcType=BIT},
       read_time = #{record.readTime,jdbcType=INTEGER},
       keyword = #{record.keyword,jdbcType=VARCHAR},
@@ -457,7 +457,7 @@
         short_title = #{shortTitle,jdbcType=VARCHAR},
       </if>
       <if test="positionId != null">
-        position_id = #{positionId,jdbcType=INTEGER},
+        position_id = #{positionId,jdbcType=VARCHAR},
       </if>
       <if test="display != null">
         display = #{display,jdbcType=BIT},
