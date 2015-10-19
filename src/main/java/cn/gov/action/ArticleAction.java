@@ -12,7 +12,6 @@ import org.ansj.splitWord.analysis.ToAnalysis;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class ArticleAction extends BasicAction {

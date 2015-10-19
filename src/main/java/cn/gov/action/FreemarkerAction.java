@@ -90,7 +90,11 @@ public class FreemarkerAction extends BasicAction {
                 catid = childs.get(0).getId();
             }
         }
-        return SUCCESS;
+        if (article.getCatId() == 106) {
+            return "shian";
+        }else {
+            return SUCCESS;
+        }
     }
 
     public String topic() {

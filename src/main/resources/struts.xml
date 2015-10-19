@@ -41,6 +41,7 @@
 		<!-- 内容页面 -->
 		<action name="content" class="freemarkerAction" method="content">
 			<result type="freemarker">/ftl/content.ftl</result>
+			<result name="shian" type="freemarker">/ftl/content_shian.ftl</result>
 		</action>
 		<!-- 专题 -->
 		<action name="topic" class="freemarkerAction" method="topic">
