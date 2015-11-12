@@ -84,6 +84,8 @@
                 sort.select();
                 return;
             }
+            var synCatids = $("#catid_tree").combotree('getValues');
+            $("#synCatids").val(synCatids);
             <c:if test="${category.categoryType == '1' || category.categoryType == '2' || category.categoryType == '3'}">
             var content = $("#content");
             content.val(editor.html());
@@ -110,6 +112,11 @@
                     summary.val(summary_val);
                 }
             }
+            if ($("#keyword").val()=="") {
+                fetchKeywords(true);
+            }else {
+                $("#myform").submit();
+            }
             </c:if>
             <c:if test="${category.categoryType == '4'}">
             var redirect = $("#redirect");
@@ -122,7 +129,9 @@
                 }
             }else {
                 alert("是否跳转必须选中！");
+                return;
             }
+            $("#myform").submit();
             </c:if>
             <c:if test="${category.categoryType == '5'}">
             var doc = $("#doc");
@@ -131,14 +140,8 @@
                 doc.focus();
                 return;
             }
+            $("#myform").submit();
             </c:if>
-            var synCatids = $("#catid_tree").combotree('getValues');
-            $("#synCatids").val(synCatids);
-            if ($("#keyword").val()=="") {
-                fetchKeywords(true);
-            }else {
-                $("#myform").submit();
-            }
         }
     </script>
 </head>
