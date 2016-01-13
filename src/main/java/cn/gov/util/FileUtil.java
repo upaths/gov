@@ -40,4 +40,26 @@ public class FileUtil {
 		}
 		return null;
 	}
+
+	public static String uploadBytesToFile(byte[] bytes, String suffix, HttpServletRequest request) {
+		try {
+			String uuid = UUID.randomUUID().toString();
+			String path = "/upload/" + uuid + "." + suffix;
+			String realPath = request.getSession().getServletContext().getRealPath("") + path;
+			File outFile = new File(realPath);
+			if (!outFile.getParentFile().exists()) {
+				outFile.getParentFile().mkdirs();
+			}
+			OutputStream out = new FileOutputStream(outFile);
+			out.write(bytes);
+			out.flush();
+			out.close();
+			return path;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

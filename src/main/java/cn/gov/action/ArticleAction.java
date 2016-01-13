@@ -5,6 +5,7 @@ import cn.gov.enums.CategoryEnum;
 import cn.gov.model.*;
 import cn.gov.service.*;
 import cn.gov.util.AlertUtil;
+import cn.gov.util.Base64ImageUtil;
 import cn.gov.util.FileUtil;
 import com.opensymphony.xwork2.ActionContext;
 import org.ansj.domain.Term;
@@ -41,6 +42,7 @@ public class ArticleAction extends BasicAction {
 	private String ids;
 	private Integer chgCatid;
 	private String synCatids;
+	private String base64Thumb;
 
 	/**
 	 * 文章主页面
@@ -127,6 +129,12 @@ public class ArticleAction extends BasicAction {
 		if (image != null) {
 			String url = FileUtil.uploadFile(image, imageFileName, request);
 			article.setThumb(url);
+		}else if (base64Thumb != null && !"".equals(base64Thumb)){
+			byte[] bytes = Base64ImageUtil.GenerateImage(base64Thumb);
+			if (bytes != null && bytes.length > 0) {
+				String url = FileUtil.uploadBytesToFile(bytes, "jepg", request);
+				article.setThumb(url);
+			}
 		}
 		if (doc != null) {
 			String url = FileUtil.uploadFile(doc, docFileName, request);
@@ -169,6 +177,12 @@ public class ArticleAction extends BasicAction {
 		if (image != null) {
 			String url = FileUtil.uploadFile(image, imageFileName, request);
 			article.setThumb(url);
+		}else if (base64Thumb != null && !"".equals(base64Thumb)){
+			byte[] bytes = Base64ImageUtil.GenerateImage(base64Thumb);
+			if (bytes != null && bytes.length > 0) {
+				String url = FileUtil.uploadBytesToFile(bytes, "jepg", request);
+				article.setThumb(url);
+			}
 		}
 		if (doc != null) {
 			String url = FileUtil.uploadFile(doc, docFileName, request);
@@ -524,5 +538,13 @@ public class ArticleAction extends BasicAction {
 
 	public void setSynCatids(String synCatids) {
 		this.synCatids = synCatids;
+	}
+
+	public String getBase64Thumb() {
+		return base64Thumb;
+	}
+
+	public void setBase64Thumb(String base64Thumb) {
+		this.base64Thumb = base64Thumb;
 	}
 }
