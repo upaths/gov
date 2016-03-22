@@ -42,6 +42,7 @@
 		<action name="content" class="freemarkerAction" method="content">
 			<result type="freemarker">/ftl/content.ftl</result>
 			<result name="shian" type="freemarker">/ftl/content_shian.ftl</result>
+			<result name="fangtan" type="freemarker">/ftl/content_fangtan.ftl</result>
 		</action>
 		<!-- 专题 -->
 		<action name="topic" class="freemarkerAction" method="topic">
