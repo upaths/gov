@@ -92,6 +92,8 @@ public class FreemarkerAction extends BasicAction {
         }
         if (article.getCatId() == 106) {
             return "shian";
+        }else if (article.getCatId() == 135) {
+            return "fangtan";
         }else {
             return SUCCESS;
         }
