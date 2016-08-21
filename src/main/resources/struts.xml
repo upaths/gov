@@ -233,6 +233,7 @@
 		<!-- 留言管理 -->
 		<action name="msg_*" class="messageAction" method="{1}">
 			<result name="query">/admin/msg.jsp</result>
+			<result name="reply">/admin/msg_reply.jsp</result>
 		</action>
 
 		<!-- 预约登记 -->

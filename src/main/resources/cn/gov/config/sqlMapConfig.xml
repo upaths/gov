@@ -29,6 +29,7 @@
 		<mapper resource="cn/gov/sqlmap/ReportMapper.xml" />
 		<mapper resource="cn/gov/sqlmap/ReportAdminMapper.xml" />
 		<mapper resource="cn/gov/sqlmap/ReportMsgMapper.xml" />
+		<mapper resource="cn/gov/sqlmap/MessageReplyMapper.xml" />
 	</mappers>
     
 </configuration>

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import cn.gov.model.Message;
+import cn.gov.model.MessageReply;
 
 public interface MessageService {
 	
@@ -20,4 +21,12 @@ public interface MessageService {
 	public List<Message> queryDisplayMessage(String sort, Integer page, Integer size);
 
 	public int countDisplayMessage();
+
+	public void insertMsgReply(MessageReply messageReply);
+
+	public int deleteMsgReply(Integer msgReplyId);
+
+	public List<MessageReply> queryMsgReply(Integer msgId);
+
+	public int countMsgReply(Integer msgId);
 }

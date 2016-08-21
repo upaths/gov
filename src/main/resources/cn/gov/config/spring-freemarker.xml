@@ -34,6 +34,8 @@
 
 	<bean id="topicListTag" class="cn.gov.freemarker.directive.TopicListDirective" autowire="byName" />
 
+	<bean id="msgReplyListTag" class="cn.gov.freemarker.directive.MessageReplyListDirective" autowire="byName" />
+
 	<bean id="upper" class="cn.gov.freemarker.directive.sample.UpperDirective" />
 
 	<bean id="repeat" class="cn.gov.freemarker.directive.sample.RepeatDirective" />

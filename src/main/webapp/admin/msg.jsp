@@ -69,6 +69,7 @@
 											<a href="javascript:window.location.href='msg_update.action?message.id=${item.id }&message.display=true';void(0);">审核</a>
 										</c:otherwise>
 									</c:choose>
+									<a href="msg_reply.action?msgId=${item.id }">答复(${replyCnt[item.id]})</a>
 								</td>
 							</tr>
 						</c:forEach>

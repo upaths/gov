@@ -88,6 +88,15 @@
                         <span><#if msg.netName?? && msg.netName!="">网友：${msg.netName}</#if>   发表时间：${msg.date?string("yyyy-MM-dd")}</span>
                         <div class="clear"></div>
                     </li>
+                    <@msgReplyListTag msgId=msg.id; replys>
+                        <#list replys as reply>
+                            <li>
+                                <p>${reply.reply}</p>
+                                <span>答复时间：${msg.date?string("yyyy-MM-dd")}</span>
+                                <div class="clear"></div>
+                            </li>
+                        </#list>
+                    </@msgReplyListTag>
                 </#list>
                 </ul>
             </div>
