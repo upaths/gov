@@ -8,6 +8,7 @@ import cn.gov.util.AlertUtil;
 import cn.gov.util.Base64ImageUtil;
 import cn.gov.util.FileUtil;
 import com.opensymphony.xwork2.ActionContext;
+import org.ansj.domain.Result;
 import org.ansj.domain.Term;
 import org.ansj.splitWord.analysis.ToAnalysis;
 
@@ -261,13 +262,15 @@ public class ArticleAction extends BasicAction {
 	public void fetchKeywords() {
 		StringBuffer keywordBuffer = new StringBuffer();
 		if (content != null && !"".equals(content)) {
-			List<Term> keywordList = ToAnalysis.parse(content);
+//			List<Term> keywordList = ToAnalysis.parse(content);
+			Result result = ToAnalysis.parse(content);
+			List<Term> keywordList = result.getTerms();
 			System.out.println(keywordList);
 			if (keywordList != null) {
 				Map<String, Integer> map = new HashMap<String, Integer>();
 				for (int i = 0; i <keywordList.size(); i++) {
 					Term term = keywordList.get(i);
-					if (term.getRealName().length() > 1 && (term.getNatrue().natureStr.contains("a") || term.getNatrue().natureStr.contains("n"))) {
+					if (term.getRealName().length() > 1 && (term.getNatureStr().contains("a") || term.getNatureStr().contains("n"))) {
 						if (map.get(term.getRealName()) == null) {
 							map.put(term.getRealName(), 0);
 						}
